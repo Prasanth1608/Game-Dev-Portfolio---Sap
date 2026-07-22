@@ -1,0 +1,747 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=JetBrains+Mono:wght@400;500;700&family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet">
+  <style>
+    html, body { margin: 0; padding: 0; background: #000000; }
+    html { scroll-behavior: auto; }
+    :root {
+      --cur-default: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='26' height='26' viewBox='0 0 26 26'%3E%3Cdefs%3E%3ClinearGradient id='g1' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop offset='0%25' stop-color='%23FFC857'/%3E%3Cstop offset='50%25' stop-color='%23FF6F91'/%3E%3Cstop offset='100%25' stop-color='%234DC3FF'/%3E%3C/linearGradient%3E%3C/defs%3E%3Cpath d='M2 1 L2 20 L7 15.5 L10.5 22.5 L13.5 21 L10 14 L16.5 14 Z' fill='url(%23g1)' stroke='%23000000' stroke-width='1.1' stroke-linejoin='round'/%3E%3C/svg%3E") 2 1, auto;
+      --cur-hover: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='26' height='26' viewBox='0 0 26 26'%3E%3Cdefs%3E%3ClinearGradient id='g2' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop offset='0%25' stop-color='%23FF6F91'/%3E%3Cstop offset='50%25' stop-color='%23B98BFF'/%3E%3Cstop offset='100%25' stop-color='%234DC3FF'/%3E%3C/linearGradient%3E%3C/defs%3E%3Cpath d='M9 4.5c0-.9.7-1.6 1.6-1.6s1.6.7 1.6 1.6v5.3l1-.2c0-1 .7-1.8 1.7-1.8s1.7.8 1.7 1.8v.3l.7-.1c.9 0 1.7.8 1.7 1.7v3.4c0 3.3-2.5 6-5.8 6h-1.8c-2 0-3.3-.7-4.4-2.3l-2.8-4c-.5-.7-.3-1.7.4-2.2.7-.4 1.6-.3 2.1.3l1.1 1.3V4.5Z' fill='url(%23g2)' stroke='%23000000' stroke-width='1' stroke-linejoin='round'/%3E%3C/svg%3E") 11 4, pointer;
+    }
+    body { cursor: var(--cur-default); }
+    a, button { cursor: var(--cur-hover); }
+    a { color: #FFC857; text-decoration: none; }
+    a:hover { filter: brightness(1.15); }
+    @keyframes ap-blink { 0%, 49% { opacity: 1; } 50%, 100% { opacity: 0; } }
+    @keyframes ap-marquee { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+    @keyframes ap-marquee-rev { from { transform: translateX(-50%); } to { transform: translateX(0); } }
+    @keyframes circuitDrift { from { background-position: 0 0, 0 0; } to { background-position: 240px 240px, -240px 240px; } }
+    .circuit-bg {
+      background-image:
+        linear-gradient(rgba(234,243,248,0.05) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(234,243,248,0.05) 1px, transparent 1px);
+      background-size: 60px 60px, 60px 60px;
+      animation: circuitDrift 30s linear infinite;
+    }
+    .exp-card { transition: transform 0.2s ease, box-shadow 0.2s ease; }
+    .exp-card:hover { transform: translateY(-4px); box-shadow: 0 20px 50px -18px rgba(0,0,0,0.6); }
+    @keyframes ap-teleport-in { 0% { opacity: 0; transform: translate(-50%, -55%) scale(0.3); filter: brightness(3) saturate(2); } 55% { opacity: 1; transform: translate(-50%, -65%) scale(1.15); filter: brightness(1.6); } 100% { opacity: 1; transform: translate(-50%, -60%) scale(1); filter: brightness(1); } }
+    @keyframes ap-idle-sway { 0%, 100% { transform: rotate(-2deg); } 50% { transform: rotate(2deg); } }
+    @keyframes ap-scroll-bounce { 0%, 100% { transform: translateY(0); opacity: 0.6; } 50% { transform: translateY(8px); opacity: 1; } }
+    @keyframes heroVideoReveal { 0%, 65% { opacity: 1; } 100% { opacity: 0; } }
+    @media (max-width: 900px) {
+      .rt-nav-links { gap: 12px !important; font-size: 10.5px !important; flex-wrap: wrap !important; justify-content: flex-end !important; }
+      .rt-grid3 { grid-template-columns: 1fr !important; }
+      .rt-journey-row { justify-content: center !important; padding: 26px 0 !important; }
+      .rt-journey-card { width: 100% !important; }
+    }
+    @media (max-width: 640px) {
+      .rt-nav-links { gap: 8px !important; font-size: 9.5px !important; }
+      .rt-nav-brand { font-size: 20px !important; }
+      section[id] > div[style*='padding: 60px 40px'] { padding-left: 20px !important; padding-right: 20px !important; }
+    }
+  </style>
+  <template id="__bundler_thumbnail">
+    <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"><rect width="100" height="100" fill="#000000"/><text x="50" y="58" font-family="sans-serif" font-weight="bold" font-size="30" fill="#FFC857" text-anchor="middle">AP</text></svg>
+  </template>
+</helmet>
+
+<div style="position: relative; background: #000000; font-family: 'Space Grotesk', sans-serif; color: #EAF3F8; padding-top: 68px">
+
+  <!-- ===== ONE shared fixed backdrop (pattern + colour) for the whole page ===== -->
+  <div ref="{{ sharedBackdropRef }}" style="position: fixed; inset: 0; pointer-events: none; z-index: 0; background: {{ sharedBackdropBg }}"></div>
+  <div style="position: fixed; inset: 0; pointer-events: none; z-index: 0; opacity: 0.035; mix-blend-mode: overlay; background-image: url(&quot;data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E&quot;)"></div>
+  <div class="circuit-bg" style="position: fixed; inset: 0; pointer-events: none; z-index: 0"></div>
+
+  <!-- ===== ONE persistent header, fixed on top of everything ===== -->
+  <div style="position: fixed; top: 0; left: 0; right: 0; display: flex; justify-content: space-between; align-items: center; padding: 18px 40px; z-index: 100; background: #000000; border-bottom: 1px solid rgba(255,255,255,0.06)">
+    <a href="#home" onClick="{{ goTo }}" data-target="home" class="rt-nav-brand" style="font-family: 'Bebas Neue', sans-serif; font-size: 24px; letter-spacing: 0.08em; color: #EAF3F8">AP<span style="color: #FFC857">®</span></a>
+    <div class="rt-nav-links" style="display: flex; align-items: center; gap: 24px; font-family: 'JetBrains Mono', monospace; font-size: 12px; letter-spacing: 0.2em">
+      <a href="#home" onClick="{{ goTo }}" data-target="home" style="{{ navStyles.home }}">HOME</a>
+      <a href="#expertise" onClick="{{ goTo }}" data-target="expertise" style="{{ navStyles.expertise }}">EXPERTISE</a>
+      <a href="#games" onClick="{{ goTo }}" data-target="games" style="{{ navStyles.games }}">GAMES</a>
+      <a href="#professional" onClick="{{ goTo }}" data-target="professional" style="{{ navStyles.professional }}">PROFESSIONAL</a>
+      <a href="#tools" onClick="{{ goTo }}" data-target="tools" style="{{ navStyles.tools }}">TOOLS</a>
+      <a href="#journey" onClick="{{ goTo }}" data-target="journey" style="{{ navStyles.journey }}">JOURNEY</a>
+    </div>
+  </div>
+
+  <!-- ================= HOME ================= -->
+  <section id="home" ref="{{ sectionRefs.home }}" style="position: relative; width: 100%; height: 100vh; min-height: 700px; overflow: hidden">
+    <div style="position: absolute; inset: 0; z-index: 0; overflow: hidden">
+      <iframe src="https://www.youtube-nocookie.com/embed/AKqoDcYymbk?autoplay=1&mute=1&loop=1&controls=0&showinfo=0&modestbranding=1&rel=0&playsinline=1&iv_load_policy=3&disablekb=1&fs=0&start=2&playlist=AKqoDcYymbk" title="Background video" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen="true" style="position: absolute; top: 50%; left: 50%; width: 177.78vh; min-width: 100%; height: 100vh; min-height: 56.25vw; transform: translate(-50%, -50%); border: 0; pointer-events: none" allow="autoplay; encrypted-media; picture-in-picture"></iframe>
+      <div style="position: absolute; inset: 0; background: #000000; animation: heroVideoReveal 2.6s ease forwards; pointer-events: none"></div>
+      <div style="position: absolute; inset: 0; background: radial-gradient(ellipse at center, rgba(0,0,0,0.3) 30%, rgba(0,0,0,0.88) 100%), linear-gradient(180deg, rgba(0,0,0,0.88) 0%, rgba(0,0,0,0.48) 22%, rgba(0,0,0,0.32) 40%, rgba(0,0,0,0.32) 60%, rgba(0,0,0,0.88) 100%); pointer-events: none"></div>
+      <div class="circuit-bg" style="position: absolute; inset: 0; pointer-events: none; opacity: 0.5; mix-blend-mode: screen"></div>
+    </div>
+
+    <div style="position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; z-index: 7; pointer-events: none; padding-bottom: 110px">
+      <div style="font-family: 'JetBrains Mono', monospace; font-size: 13px; letter-spacing: 0.4em; color: #FFC857; margin-bottom: 18px">&gt; WELCOME, GUEST</div>
+      <h1 style="margin: 0; text-align: center; white-space: nowrap; font-family: 'Bebas Neue', sans-serif; font-weight: 400; font-size: clamp(32px, 5vw, 92px); line-height: 0.86; letter-spacing: 0.01em; color: #EAF3F8; text-shadow: 0 0 60px rgba(77,195,255,0.25)">ANANTHA <span style="color: #FFC857">PRASANTH</span></h1>
+      <div style="display: flex; align-items: center; gap: 16px; margin-top: 26px">
+        <div style="width: 46px; height: 1px; background: rgba(255,200,87,0.6)"></div>
+        <div style="font-family: 'JetBrains Mono', monospace; font-size: 15px; letter-spacing: 0.45em; color: rgba(234,243,248,0.85)">GAME DEV<span style="display: inline-block; width: 9px; height: 16px; background: #FFC857; vertical-align: middle; margin-left: 8px; animation: ap-blink 1s steps(1) infinite"></span></div>
+        <div style="width: 46px; height: 1px; background: rgba(255,200,87,0.6)"></div>
+      </div>
+      <a href="#games" onClick="{{ goTo }}" data-target="games" style="margin-top: 34px; pointer-events: auto; font-family: 'Bebas Neue', sans-serif; font-size: 20px; letter-spacing: 0.12em; border: 1px solid #FF6F91; color: #FF6F91; padding: 11px 26px; cursor: pointer" style-hover="border-color: #FFFFFF; color: #FFFFFF">PRESS START ▸</a>
+    </div>
+
+    <div style="position: absolute; left: 0; right: 0; bottom: 78px; z-index: 8; display: flex; flex-direction: column; align-items: center; gap: 8px; pointer-events: none">
+      <div style="font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.3em; color: rgba(234,243,248,0.55)">SCROLL</div>
+      <svg width="18" height="24" viewBox="0 0 18 24" fill="none" stroke="#FFC857" stroke-width="1.4" style="animation: ap-scroll-bounce 1.6s ease-in-out infinite"><rect x="1" y="1" width="16" height="22" rx="8"></rect><circle cx="9" cy="7" r="1.6" fill="#FFC857" stroke="none"></circle></svg>
+    </div>
+
+
+  </section>
+
+  <!-- ================= EXPERTISE ================= -->
+  <section id="expertise" ref="{{ sectionRefs.expertise }}" style="position: relative; min-height: 100vh; box-sizing: border-box; overflow: hidden; padding-bottom: 42px; display: flex; flex-direction: column">
+
+    <div style="position: relative; z-index: 2; text-align: center; padding: 60px 40px 0 40px; font-family: 'Bebas Neue', sans-serif; font-size: 40px; letter-spacing: 0.06em">EXPERTISE</div>
+
+    <div style="flex: 1; display: flex; align-items: center">
+    <div style="position: relative; z-index: 2; max-width: 1500px; width: 100%; margin: 0 auto; padding: 24px 40px 0 40px; box-sizing: border-box">
+      <div class="rt-grid3" style="display: grid; grid-template-columns: repeat(3, 1fr); grid-template-rows: repeat(2, minmax(0, 1fr)); gap: 22px; margin-top: 28px">
+        <sc-for list="{{ categories }}" as="cat" hint-placeholder-count="6">
+          <div class="exp-card" onMouseEnter="{{ cat.onEnter }}" style="border: 1px solid {{ cat.borderColor }}; background: {{ cat.cardBg }}; padding: 14px 22px; border-radius: 2px; box-sizing: border-box; box-shadow: 0 24px 60px -20px rgba(0,0,0,0.65), 0 4px 24px rgba(0,0,0,0.4), inset 0 1px 0 rgba(255,255,255,0.05); display: flex; flex-direction: column; justify-content: flex-start; overflow: hidden; min-height: 0; min-width: 0" style-hover="border-color: {{ cat.accent }}">
+            <div style="display: flex; align-items: baseline; gap: 9px; margin-bottom: 6px; flex-shrink: 0">
+              <div style="font-family: 'JetBrains Mono', monospace; font-size: 13px; letter-spacing: 0.15em; color: {{ cat.accent }}">{{ cat.index }}</div>
+              <div style="font-family: 'Bebas Neue', sans-serif; font-size: 21px; letter-spacing: 0.03em; color: {{ cat.lightAccent }}">{{ cat.title }}</div>
+            </div>
+            <div style="display: flex; flex-wrap: wrap; gap: 6px">
+              <sc-for list="{{ cat.points }}" as="point" hint-placeholder-count="4">
+                <div style="font-size: 12.5px; line-height: 1.2; color: #FFFFFF; border: 1px solid {{ cat.borderColor }}; background: rgba(0,0,0,0.25); padding: 6px 10px; border-radius: 3px">{{ point }}</div>
+              </sc-for>
+            </div>
+          </div>
+        </sc-for>
+      </div>
+
+      <div style="margin-top: 34px; border-top: 1px solid rgba(255,255,255,0.12); padding-top: 22px">
+        <div style="font-family: 'JetBrains Mono', monospace; font-size: 12px; letter-spacing: 0.3em; color: rgba(234,243,248,0.5); text-align: center; margin-bottom: 20px">TOOLS &amp; TECH I RUN ON</div>
+        <div style="display: flex; flex-direction: column; gap: 18px">
+          <div style="overflow: hidden">
+          <div style="display: flex; align-items: center; flex-wrap: nowrap; width: max-content; animation: ap-marquee 55s linear infinite">
+            <div style="display: flex; align-items: center; gap: 16px; flex: none; padding: 0 32px"><svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#EAF3F8" stroke-width="1.3"><circle cx="12" cy="12" r="10"></circle><path d="M8 7v6a4 4 0 0 0 8 0V7"></path></svg><span style="font-family: 'JetBrains Mono', monospace; font-size: 17px; letter-spacing: 0.15em; color: rgba(234,243,248,0.85)">UNREAL</span></div>
+            <div style="display: flex; align-items: center; gap: 16px; flex: none; padding: 0 32px"><svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#FF8A5B" stroke-width="1.3"><path d="M9 6l-6 6 6 6"></path><path d="M15 6l6 6-6 6"></path></svg><span style="font-family: 'JetBrains Mono', monospace; font-size: 17px; letter-spacing: 0.15em; color: rgba(234,243,248,0.85)">C++</span></div>
+            <div style="display: flex; align-items: center; gap: 16px; flex: none; padding: 0 32px"><svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#6EE7C8" stroke-width="1.3"><rect x="4" y="8" width="16" height="9" rx="1"></rect><path d="M8 12h1M8 15h4"></path></svg><span style="font-family: 'JetBrains Mono', monospace; font-size: 17px; letter-spacing: 0.15em; color: rgba(234,243,248,0.85)">TERMINAL</span></div>
+            <div style="display: flex; align-items: center; gap: 16px; flex: none; padding: 0 32px"><svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#EAF3F8" stroke-width="1.3"><rect x="4" y="4" width="16" height="16" rx="2"></rect><path d="M8 8v8l8-8v8"></path></svg><span style="font-family: 'JetBrains Mono', monospace; font-size: 17px; letter-spacing: 0.15em; color: rgba(234,243,248,0.85)">NOTION</span></div>
+            <div style="display: flex; align-items: center; gap: 16px; flex: none; padding: 0 32px"><svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#FFC857" stroke-width="1.3"><rect x="3" y="4" width="18" height="14" rx="1.5"></rect><rect x="6" y="7.5" width="4" height="4" fill="#FFC857" stroke="none"></rect><rect x="12" y="10.5" width="4" height="4" fill="none"></rect></svg><span style="font-family: 'JetBrains Mono', monospace; font-size: 17px; letter-spacing: 0.15em; color: rgba(234,243,248,0.85)">MIRO BOARD</span></div>
+            <div style="display: flex; align-items: center; gap: 16px; flex: none; padding: 0 32px"><svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#F05032" stroke-width="1.3"><circle cx="6" cy="5" r="2.4"></circle><circle cx="6" cy="19" r="2.4"></circle><circle cx="18" cy="9" r="2.4"></circle><path d="M6 7.4v9.2M18 11.4c0 3-3 4-7 4"></path></svg><span style="font-family: 'JetBrains Mono', monospace; font-size: 17px; letter-spacing: 0.15em; color: rgba(234,243,248,0.85)">GIT</span></div>
+            <div style="display: flex; align-items: center; gap: 16px; flex: none; padding: 0 32px"><svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#B98BFF" stroke-width="1.3"><rect x="3" y="3" width="7" height="7" rx="1"></rect><rect x="14" y="3" width="7" height="7" rx="1"></rect><rect x="3" y="14" width="7" height="7" rx="1"></rect><rect x="14" y="14" width="7" height="7" rx="1"></rect></svg><span style="font-family: 'JetBrains Mono', monospace; font-size: 17px; letter-spacing: 0.15em; color: rgba(234,243,248,0.85)">VS CODE</span></div>
+            <div style="display: flex; align-items: center; gap: 16px; flex: none; padding: 0 32px"><svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#FFDE59" stroke-width="1.3"><polygon points="12,3 20,8 20,16 12,21 4,16 4,8"></polygon><circle cx="12" cy="12" r="3.2"></circle></svg><span style="font-family: 'JetBrains Mono', monospace; font-size: 17px; letter-spacing: 0.15em; color: rgba(234,243,248,0.85)">OPENGL</span></div>
+            <div style="display: flex; align-items: center; gap: 16px; flex: none; padding: 0 32px"><svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#FFC857" stroke-width="1.3"><path d="M6 9h12a4 4 0 0 1 4 4v2a3 3 0 0 1-5.5 1.7L15 15H9l-1.5 1.7A3 3 0 0 1 2 15v-2a4 4 0 0 1 4-4z"></path><path d="M8 11v3M6.5 12.5h3"></path><circle cx="16.5" cy="11.5" r="0.9" fill="#FFC857"></circle><circle cx="18.5" cy="13.5" r="0.9" fill="#FFC857"></circle></svg><span style="font-family: 'JetBrains Mono', monospace; font-size: 17px; letter-spacing: 0.15em; color: rgba(234,243,248,0.85)">GAMEPLAY</span></div>
+            <div style="display: flex; align-items: center; gap: 16px; flex: none; padding: 0 32px"><svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#B98BFF" stroke-width="1.3"><rect x="3" y="4" width="18" height="16" rx="1.5"></rect><path d="M3 8h18M8 8v12"></path></svg><span style="font-family: 'JetBrains Mono', monospace; font-size: 17px; letter-spacing: 0.15em; color: rgba(234,243,248,0.85)">UI</span></div>
+            <div style="display: flex; align-items: center; gap: 16px; flex: none; padding: 0 32px"><svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#FF8A5B" stroke-width="1.3"><path d="M12 3v3M12 18v3M3 12h3M18 12h3"></path><circle cx="12" cy="12" r="5"></circle></svg><span style="font-family: 'JetBrains Mono', monospace; font-size: 17px; letter-spacing: 0.15em; color: rgba(234,243,248,0.85)">AI</span></div>
+            <div style="display: flex; align-items: center; gap: 16px; flex: none; padding: 0 32px"><svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#6EE7C8" stroke-width="1.3"><path d="M8 12V9a4 4 0 0 1 8 0v3"></path><rect x="5" y="12" width="5" height="5" rx="1"></rect><rect x="14" y="12" width="5" height="5" rx="1"></rect></svg><span style="font-family: 'JetBrains Mono', monospace; font-size: 17px; letter-spacing: 0.15em; color: rgba(234,243,248,0.85)">UNREAL PLUGINS</span></div>
+            <div style="display: flex; align-items: center; gap: 16px; flex: none; padding: 0 32px"><svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#FF6EC7" stroke-width="1.3"><path d="M12 3l2 6 6 2-6 2-2 6-2-6-6-2 6-2z"></path></svg><span style="font-family: 'JetBrains Mono', monospace; font-size: 17px; letter-spacing: 0.15em; color: rgba(234,243,248,0.85)">SHADERS</span></div>
+            <div aria-hidden="true" style="display: flex; align-items: center; gap: 16px; flex: none; padding: 0 32px"><svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#EAF3F8" stroke-width="1.3"><circle cx="12" cy="12" r="10"></circle><path d="M8 7v6a4 4 0 0 0 8 0V7"></path></svg><span style="font-family: 'JetBrains Mono', monospace; font-size: 17px; letter-spacing: 0.15em; color: rgba(234,243,248,0.85)">UNREAL</span></div>
+            <div aria-hidden="true" style="display: flex; align-items: center; gap: 16px; flex: none; padding: 0 32px"><svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#FF8A5B" stroke-width="1.3"><path d="M9 6l-6 6 6 6"></path><path d="M15 6l6 6-6 6"></path></svg><span style="font-family: 'JetBrains Mono', monospace; font-size: 17px; letter-spacing: 0.15em; color: rgba(234,243,248,0.85)">C++</span></div>
+            <div aria-hidden="true" style="display: flex; align-items: center; gap: 16px; flex: none; padding: 0 32px"><svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#6EE7C8" stroke-width="1.3"><rect x="4" y="8" width="16" height="9" rx="1"></rect><path d="M8 12h1M8 15h4"></path></svg><span style="font-family: 'JetBrains Mono', monospace; font-size: 17px; letter-spacing: 0.15em; color: rgba(234,243,248,0.85)">TERMINAL</span></div>
+            <div aria-hidden="true" style="display: flex; align-items: center; gap: 16px; flex: none; padding: 0 32px"><svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#EAF3F8" stroke-width="1.3"><rect x="4" y="4" width="16" height="16" rx="2"></rect><path d="M8 8v8l8-8v8"></path></svg><span style="font-family: 'JetBrains Mono', monospace; font-size: 17px; letter-spacing: 0.15em; color: rgba(234,243,248,0.85)">NOTION</span></div>
+            <div aria-hidden="true" style="display: flex; align-items: center; gap: 16px; flex: none; padding: 0 32px"><svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#FFC857" stroke-width="1.3"><rect x="3" y="4" width="18" height="14" rx="1.5"></rect><rect x="6" y="7.5" width="4" height="4" fill="#FFC857" stroke="none"></rect><rect x="12" y="10.5" width="4" height="4" fill="none"></rect></svg><span style="font-family: 'JetBrains Mono', monospace; font-size: 17px; letter-spacing: 0.15em; color: rgba(234,243,248,0.85)">MIRO BOARD</span></div>
+            <div aria-hidden="true" style="display: flex; align-items: center; gap: 16px; flex: none; padding: 0 32px"><svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#F05032" stroke-width="1.3"><circle cx="6" cy="5" r="2.4"></circle><circle cx="6" cy="19" r="2.4"></circle><circle cx="18" cy="9" r="2.4"></circle><path d="M6 7.4v9.2M18 11.4c0 3-3 4-7 4"></path></svg><span style="font-family: 'JetBrains Mono', monospace; font-size: 17px; letter-spacing: 0.15em; color: rgba(234,243,248,0.85)">GIT</span></div>
+            <div aria-hidden="true" style="display: flex; align-items: center; gap: 16px; flex: none; padding: 0 32px"><svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#B98BFF" stroke-width="1.3"><rect x="3" y="3" width="7" height="7" rx="1"></rect><rect x="14" y="3" width="7" height="7" rx="1"></rect><rect x="3" y="14" width="7" height="7" rx="1"></rect><rect x="14" y="14" width="7" height="7" rx="1"></rect></svg><span style="font-family: 'JetBrains Mono', monospace; font-size: 17px; letter-spacing: 0.15em; color: rgba(234,243,248,0.85)">VS CODE</span></div>
+            <div aria-hidden="true" style="display: flex; align-items: center; gap: 16px; flex: none; padding: 0 32px"><svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#FFDE59" stroke-width="1.3"><polygon points="12,3 20,8 20,16 12,21 4,16 4,8"></polygon><circle cx="12" cy="12" r="3.2"></circle></svg><span style="font-family: 'JetBrains Mono', monospace; font-size: 17px; letter-spacing: 0.15em; color: rgba(234,243,248,0.85)">OPENGL</span></div>
+            <div aria-hidden="true" style="display: flex; align-items: center; gap: 16px; flex: none; padding: 0 32px"><svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#FFC857" stroke-width="1.3"><path d="M6 9h12a4 4 0 0 1 4 4v2a3 3 0 0 1-5.5 1.7L15 15H9l-1.5 1.7A3 3 0 0 1 2 15v-2a4 4 0 0 1 4-4z"></path><path d="M8 11v3M6.5 12.5h3"></path><circle cx="16.5" cy="11.5" r="0.9" fill="#FFC857"></circle><circle cx="18.5" cy="13.5" r="0.9" fill="#FFC857"></circle></svg><span style="font-family: 'JetBrains Mono', monospace; font-size: 17px; letter-spacing: 0.15em; color: rgba(234,243,248,0.85)">GAMEPLAY</span></div>
+            <div aria-hidden="true" style="display: flex; align-items: center; gap: 16px; flex: none; padding: 0 32px"><svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#B98BFF" stroke-width="1.3"><rect x="3" y="4" width="18" height="16" rx="1.5"></rect><path d="M3 8h18M8 8v12"></path></svg><span style="font-family: 'JetBrains Mono', monospace; font-size: 17px; letter-spacing: 0.15em; color: rgba(234,243,248,0.85)">UI</span></div>
+            <div aria-hidden="true" style="display: flex; align-items: center; gap: 16px; flex: none; padding: 0 32px"><svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#FF8A5B" stroke-width="1.3"><path d="M12 3v3M12 18v3M3 12h3M18 12h3"></path><circle cx="12" cy="12" r="5"></circle></svg><span style="font-family: 'JetBrains Mono', monospace; font-size: 17px; letter-spacing: 0.15em; color: rgba(234,243,248,0.85)">AI</span></div>
+            <div aria-hidden="true" style="display: flex; align-items: center; gap: 16px; flex: none; padding: 0 32px"><svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#6EE7C8" stroke-width="1.3"><path d="M8 12V9a4 4 0 0 1 8 0v3"></path><rect x="5" y="12" width="5" height="5" rx="1"></rect><rect x="14" y="12" width="5" height="5" rx="1"></rect></svg><span style="font-family: 'JetBrains Mono', monospace; font-size: 17px; letter-spacing: 0.15em; color: rgba(234,243,248,0.85)">UNREAL PLUGINS</span></div>
+            <div aria-hidden="true" style="display: flex; align-items: center; gap: 16px; flex: none; padding: 0 32px"><svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#FF6EC7" stroke-width="1.3"><path d="M12 3l2 6 6 2-6 2-2 6-2-6-6-2 6-2z"></path></svg><span style="font-family: 'JetBrains Mono', monospace; font-size: 17px; letter-spacing: 0.15em; color: rgba(234,243,248,0.85)">SHADERS</span></div>
+          </div>
+        </div>
+          <div style="overflow: hidden">
+          <div style="display: flex; align-items: center; flex-wrap: nowrap; width: max-content; animation: ap-marquee-rev 55s linear infinite">
+            <div style="display: flex; align-items: center; gap: 16px; flex: none; padding: 0 32px"><svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#FFC857" stroke-width="1.3"><path d="M6 9h12a4 4 0 0 1 4 4v2a3 3 0 0 1-5.5 1.7L15 15H9l-1.5 1.7A3 3 0 0 1 2 15v-2a4 4 0 0 1 4-4z"></path><path d="M8 11v3M6.5 12.5h3"></path><circle cx="16.5" cy="11.5" r="0.9" fill="#FFC857"></circle><circle cx="18.5" cy="13.5" r="0.9" fill="#FFC857"></circle></svg><span style="font-family: 'JetBrains Mono', monospace; font-size: 17px; letter-spacing: 0.15em; color: rgba(234,243,248,0.85)">GAMEPLAY</span></div>
+            <div style="display: flex; align-items: center; gap: 16px; flex: none; padding: 0 32px"><svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#F05032" stroke-width="1.3"><circle cx="6" cy="5" r="2.4"></circle><circle cx="6" cy="19" r="2.4"></circle><circle cx="18" cy="9" r="2.4"></circle><path d="M6 7.4v9.2M18 11.4c0 3-3 4-7 4"></path></svg><span style="font-family: 'JetBrains Mono', monospace; font-size: 17px; letter-spacing: 0.15em; color: rgba(234,243,248,0.85)">GIT</span></div>
+            <div style="display: flex; align-items: center; gap: 16px; flex: none; padding: 0 32px"><svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#FF6EC7" stroke-width="1.3"><path d="M12 3l2 6 6 2-6 2-2 6-2-6-6-2 6-2z"></path></svg><span style="font-family: 'JetBrains Mono', monospace; font-size: 17px; letter-spacing: 0.15em; color: rgba(234,243,248,0.85)">SHADERS</span></div>
+            <div style="display: flex; align-items: center; gap: 16px; flex: none; padding: 0 32px"><svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#FF8A5B" stroke-width="1.3"><path d="M9 6l-6 6 6 6"></path><path d="M15 6l6 6-6 6"></path></svg><span style="font-family: 'JetBrains Mono', monospace; font-size: 17px; letter-spacing: 0.15em; color: rgba(234,243,248,0.85)">C++</span></div>
+            <div style="display: flex; align-items: center; gap: 16px; flex: none; padding: 0 32px"><svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#B98BFF" stroke-width="1.3"><rect x="3" y="4" width="18" height="16" rx="1.5"></rect><path d="M3 8h18M8 8v12"></path></svg><span style="font-family: 'JetBrains Mono', monospace; font-size: 17px; letter-spacing: 0.15em; color: rgba(234,243,248,0.85)">UI</span></div>
+            <div style="display: flex; align-items: center; gap: 16px; flex: none; padding: 0 32px"><svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#FFC857" stroke-width="1.3"><rect x="3" y="4" width="18" height="14" rx="1.5"></rect><rect x="6" y="7.5" width="4" height="4" fill="#FFC857" stroke="none"></rect><rect x="12" y="10.5" width="4" height="4" fill="none"></rect></svg><span style="font-family: 'JetBrains Mono', monospace; font-size: 17px; letter-spacing: 0.15em; color: rgba(234,243,248,0.85)">MIRO BOARD</span></div>
+            <div style="display: flex; align-items: center; gap: 16px; flex: none; padding: 0 32px"><svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#FF8A5B" stroke-width="1.3"><path d="M12 3v3M12 18v3M3 12h3M18 12h3"></path><circle cx="12" cy="12" r="5"></circle></svg><span style="font-family: 'JetBrains Mono', monospace; font-size: 17px; letter-spacing: 0.15em; color: rgba(234,243,248,0.85)">AI</span></div>
+            <div style="display: flex; align-items: center; gap: 16px; flex: none; padding: 0 32px"><svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#EAF3F8" stroke-width="1.3"><circle cx="12" cy="12" r="10"></circle><path d="M8 7v6a4 4 0 0 0 8 0V7"></path></svg><span style="font-family: 'JetBrains Mono', monospace; font-size: 17px; letter-spacing: 0.15em; color: rgba(234,243,248,0.85)">UNREAL</span></div>
+            <div style="display: flex; align-items: center; gap: 16px; flex: none; padding: 0 32px"><svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#FFDE59" stroke-width="1.3"><polygon points="12,3 20,8 20,16 12,21 4,16 4,8"></polygon><circle cx="12" cy="12" r="3.2"></circle></svg><span style="font-family: 'JetBrains Mono', monospace; font-size: 17px; letter-spacing: 0.15em; color: rgba(234,243,248,0.85)">OPENGL</span></div>
+            <div style="display: flex; align-items: center; gap: 16px; flex: none; padding: 0 32px"><svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#6EE7C8" stroke-width="1.3"><rect x="4" y="8" width="16" height="9" rx="1"></rect><path d="M8 12h1M8 15h4"></path></svg><span style="font-family: 'JetBrains Mono', monospace; font-size: 17px; letter-spacing: 0.15em; color: rgba(234,243,248,0.85)">TERMINAL</span></div>
+            <div style="display: flex; align-items: center; gap: 16px; flex: none; padding: 0 32px"><svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#6EE7C8" stroke-width="1.3"><path d="M8 12V9a4 4 0 0 1 8 0v3"></path><rect x="5" y="12" width="5" height="5" rx="1"></rect><rect x="14" y="12" width="5" height="5" rx="1"></rect></svg><span style="font-family: 'JetBrains Mono', monospace; font-size: 17px; letter-spacing: 0.15em; color: rgba(234,243,248,0.85)">UNREAL PLUGINS</span></div>
+            <div style="display: flex; align-items: center; gap: 16px; flex: none; padding: 0 32px"><svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#EAF3F8" stroke-width="1.3"><rect x="4" y="4" width="16" height="16" rx="2"></rect><path d="M8 8v8l8-8v8"></path></svg><span style="font-family: 'JetBrains Mono', monospace; font-size: 17px; letter-spacing: 0.15em; color: rgba(234,243,248,0.85)">NOTION</span></div>
+            <div style="display: flex; align-items: center; gap: 16px; flex: none; padding: 0 32px"><svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#B98BFF" stroke-width="1.3"><rect x="3" y="3" width="7" height="7" rx="1"></rect><rect x="14" y="3" width="7" height="7" rx="1"></rect><rect x="3" y="14" width="7" height="7" rx="1"></rect><rect x="14" y="14" width="7" height="7" rx="1"></rect></svg><span style="font-family: 'JetBrains Mono', monospace; font-size: 17px; letter-spacing: 0.15em; color: rgba(234,243,248,0.85)">VS CODE</span></div>
+            <div aria-hidden="true" style="display: flex; align-items: center; gap: 16px; flex: none; padding: 0 32px"><svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#FFC857" stroke-width="1.3"><path d="M6 9h12a4 4 0 0 1 4 4v2a3 3 0 0 1-5.5 1.7L15 15H9l-1.5 1.7A3 3 0 0 1 2 15v-2a4 4 0 0 1 4-4z"></path><path d="M8 11v3M6.5 12.5h3"></path><circle cx="16.5" cy="11.5" r="0.9" fill="#FFC857"></circle><circle cx="18.5" cy="13.5" r="0.9" fill="#FFC857"></circle></svg><span style="font-family: 'JetBrains Mono', monospace; font-size: 17px; letter-spacing: 0.15em; color: rgba(234,243,248,0.85)">GAMEPLAY</span></div>
+            <div aria-hidden="true" style="display: flex; align-items: center; gap: 16px; flex: none; padding: 0 32px"><svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#F05032" stroke-width="1.3"><circle cx="6" cy="5" r="2.4"></circle><circle cx="6" cy="19" r="2.4"></circle><circle cx="18" cy="9" r="2.4"></circle><path d="M6 7.4v9.2M18 11.4c0 3-3 4-7 4"></path></svg><span style="font-family: 'JetBrains Mono', monospace; font-size: 17px; letter-spacing: 0.15em; color: rgba(234,243,248,0.85)">GIT</span></div>
+            <div aria-hidden="true" style="display: flex; align-items: center; gap: 16px; flex: none; padding: 0 32px"><svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#FF6EC7" stroke-width="1.3"><path d="M12 3l2 6 6 2-6 2-2 6-2-6-6-2 6-2z"></path></svg><span style="font-family: 'JetBrains Mono', monospace; font-size: 17px; letter-spacing: 0.15em; color: rgba(234,243,248,0.85)">SHADERS</span></div>
+            <div aria-hidden="true" style="display: flex; align-items: center; gap: 16px; flex: none; padding: 0 32px"><svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#FF8A5B" stroke-width="1.3"><path d="M9 6l-6 6 6 6"></path><path d="M15 6l6 6-6 6"></path></svg><span style="font-family: 'JetBrains Mono', monospace; font-size: 17px; letter-spacing: 0.15em; color: rgba(234,243,248,0.85)">C++</span></div>
+            <div aria-hidden="true" style="display: flex; align-items: center; gap: 16px; flex: none; padding: 0 32px"><svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#B98BFF" stroke-width="1.3"><rect x="3" y="4" width="18" height="16" rx="1.5"></rect><path d="M3 8h18M8 8v12"></path></svg><span style="font-family: 'JetBrains Mono', monospace; font-size: 17px; letter-spacing: 0.15em; color: rgba(234,243,248,0.85)">UI</span></div>
+            <div aria-hidden="true" style="display: flex; align-items: center; gap: 16px; flex: none; padding: 0 32px"><svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#FFC857" stroke-width="1.3"><rect x="3" y="4" width="18" height="14" rx="1.5"></rect><rect x="6" y="7.5" width="4" height="4" fill="#FFC857" stroke="none"></rect><rect x="12" y="10.5" width="4" height="4" fill="none"></rect></svg><span style="font-family: 'JetBrains Mono', monospace; font-size: 17px; letter-spacing: 0.15em; color: rgba(234,243,248,0.85)">MIRO BOARD</span></div>
+            <div aria-hidden="true" style="display: flex; align-items: center; gap: 16px; flex: none; padding: 0 32px"><svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#FF8A5B" stroke-width="1.3"><path d="M12 3v3M12 18v3M3 12h3M18 12h3"></path><circle cx="12" cy="12" r="5"></circle></svg><span style="font-family: 'JetBrains Mono', monospace; font-size: 17px; letter-spacing: 0.15em; color: rgba(234,243,248,0.85)">AI</span></div>
+            <div aria-hidden="true" style="display: flex; align-items: center; gap: 16px; flex: none; padding: 0 32px"><svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#EAF3F8" stroke-width="1.3"><circle cx="12" cy="12" r="10"></circle><path d="M8 7v6a4 4 0 0 0 8 0V7"></path></svg><span style="font-family: 'JetBrains Mono', monospace; font-size: 17px; letter-spacing: 0.15em; color: rgba(234,243,248,0.85)">UNREAL</span></div>
+            <div aria-hidden="true" style="display: flex; align-items: center; gap: 16px; flex: none; padding: 0 32px"><svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#FFDE59" stroke-width="1.3"><polygon points="12,3 20,8 20,16 12,21 4,16 4,8"></polygon><circle cx="12" cy="12" r="3.2"></circle></svg><span style="font-family: 'JetBrains Mono', monospace; font-size: 17px; letter-spacing: 0.15em; color: rgba(234,243,248,0.85)">OPENGL</span></div>
+            <div aria-hidden="true" style="display: flex; align-items: center; gap: 16px; flex: none; padding: 0 32px"><svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#6EE7C8" stroke-width="1.3"><rect x="4" y="8" width="16" height="9" rx="1"></rect><path d="M8 12h1M8 15h4"></path></svg><span style="font-family: 'JetBrains Mono', monospace; font-size: 17px; letter-spacing: 0.15em; color: rgba(234,243,248,0.85)">TERMINAL</span></div>
+            <div aria-hidden="true" style="display: flex; align-items: center; gap: 16px; flex: none; padding: 0 32px"><svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#6EE7C8" stroke-width="1.3"><path d="M8 12V9a4 4 0 0 1 8 0v3"></path><rect x="5" y="12" width="5" height="5" rx="1"></rect><rect x="14" y="12" width="5" height="5" rx="1"></rect></svg><span style="font-family: 'JetBrains Mono', monospace; font-size: 17px; letter-spacing: 0.15em; color: rgba(234,243,248,0.85)">UNREAL PLUGINS</span></div>
+            <div aria-hidden="true" style="display: flex; align-items: center; gap: 16px; flex: none; padding: 0 32px"><svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#EAF3F8" stroke-width="1.3"><rect x="4" y="4" width="16" height="16" rx="2"></rect><path d="M8 8v8l8-8v8"></path></svg><span style="font-family: 'JetBrains Mono', monospace; font-size: 17px; letter-spacing: 0.15em; color: rgba(234,243,248,0.85)">NOTION</span></div>
+            <div aria-hidden="true" style="display: flex; align-items: center; gap: 16px; flex: none; padding: 0 32px"><svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#B98BFF" stroke-width="1.3"><rect x="3" y="3" width="7" height="7" rx="1"></rect><rect x="14" y="3" width="7" height="7" rx="1"></rect><rect x="3" y="14" width="7" height="7" rx="1"></rect><rect x="14" y="14" width="7" height="7" rx="1"></rect></svg><span style="font-family: 'JetBrains Mono', monospace; font-size: 17px; letter-spacing: 0.15em; color: rgba(234,243,248,0.85)">VS CODE</span></div>
+          </div>
+        </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    </div>
+  </section>
+
+  <!-- ================= GAMES ================= -->
+  <section id="games" ref="{{ sectionRefs.games }}" style="position: relative; min-height: 100vh; padding-bottom: 40px; box-sizing: border-box; overflow: hidden">
+
+    <div style="position: relative; z-index: 2; text-align: center; padding: 60px 40px 0 40px; font-family: 'Bebas Neue', sans-serif; font-size: 40px; letter-spacing: 0.06em; color: #FFFFFF">GAMES</div>
+
+    <div style="position: relative; z-index: 2; display: flex; flex-direction: column; gap: 40px; padding: 40px 40px 0 40px; max-width: 1240px; margin: 0 auto">
+      <sc-for list="{{ projects }}" as="project" hint-placeholder-count="3">
+        <div ref="{{ project.setCardRef }}" style="border: 1px solid {{ project.borderStrong }}; border-image: {{ project.borderImage }}; background: {{ project.cardBg }}; border-radius: 2px; box-shadow: 0 24px 60px -20px rgba(0,0,0,0.65), 0 4px 24px rgba(0,0,0,0.4), inset 0 1px 0 rgba(255,255,255,0.05)">
+          <div style="height: 380px; background: {{ project.bannerBg }}; display: flex; align-items: center; justify-content: center; border-bottom: 1px solid {{ project.borderMid }}; position: relative">
+            <sc-if value="{{ project.noBanner }}" hint-placeholder-val="{{ false }}">
+              <div style="font-family: 'JetBrains Mono', monospace; font-size: 12px; letter-spacing: 0.2em; color: rgba(234,243,248,0.35)">PROJECT_STILL / KEY ART</div>
+            </sc-if>
+            <div style="position: absolute; inset: 0; background: linear-gradient(0deg, rgba(0,0,0,0.85) 0%, transparent 45%); pointer-events: none"></div>
+            <div style="position: absolute; top: 18px; left: 22px; font-family: 'Bebas Neue', sans-serif; font-size: 16px; letter-spacing: 0.1em; color: {{ project.accent }}">{{ project.index }}</div>
+            <div style="position: absolute; left: 30px; bottom: 22px; right: 30px; display: flex; justify-content: space-between; align-items: flex-end; gap: 20px">
+              <div>
+                <div style="font-family: 'Bebas Neue', sans-serif; font-size: 44px; letter-spacing: 0.02em; color: #EAF3F8; line-height: 1; text-shadow: 0 2px 20px rgba(0,0,0,0.8)">{{ project.title }}</div>
+                <div style="font-family: 'JetBrains Mono', monospace; font-size: 12px; letter-spacing: 0.12em; color: {{ project.accent }}; margin-top: 8px">{{ project.tags }}</div>
+              </div>
+              <a href="{{ project.detailHref }}" style="{{ project.playButtonStyle }}">VIEW PROJECT →</a>
+            </div>
+          </div>
+          <div style="display: flex; align-items: center; gap: 6px; padding: 20px 30px 0 30px; border-bottom: 1px solid {{ project.borderLight }}">
+            <div onClick="{{ project.selectOverview }}" style="{{ project.overviewTabStyle }}">OVERVIEW</div>
+            <div onClick="{{ project.selectTrailer }}" style="{{ project.trailerTabStyle }}">TRAILER</div>
+            <div onClick="{{ project.selectGit }}" style="{{ project.gitTabStyle }}">GIT</div>
+            <a href="{{ project.detailHref }}" style="display: inline-flex; align-items: center; gap: 8px; font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.15em; padding: 10px 18px; color: rgba(234,243,248,0.65); border: 1px solid {{ project.borderLight }}; border-bottom: none">TECHNICAL BREAKDOWN <span>▸</span></a>
+          </div>
+          <div style="padding: 26px 30px 30px 30px; min-height: {{ project.tabMinHeight }}; display: flex; justify-content: {{ project.tabJustify }}; align-items: {{ project.tabAlignItems }}; gap: 20px; flex-wrap: wrap">
+            <div style="flex: 1; min-width: 260px; text-align: {{ project.tabTextAlign }}">
+              <sc-if value="{{ project.isOverview }}" hint-placeholder-val="{{ true }}">
+                <div style="font-size: 15px; line-height: 1.7; color: rgba(234,243,248,0.8); white-space: pre-line">{{ project.overview }}</div>
+              </sc-if>
+              <sc-if value="{{ project.isTrailer }}" hint-placeholder-val="{{ false }}">
+                <sc-if value="{{ project.trailerId }}" hint-placeholder-val="{{ false }}">
+                  <div style="max-width: 720px; margin: 0 auto; aspect-ratio: 16/9; border: 1px solid {{ project.borderMid }}">
+                    <iframe src="{{ project.trailerEmbedSrc }}" title="Trailer" style="width: 100%; height: 100%; border: 0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen="true"></iframe>
+                  </div>
+                </sc-if>
+                <sc-if value="{{ project.noTrailer }}" hint-placeholder-val="{{ true }}">
+                  <div style="height: 260px; max-width: 720px; margin: 0 auto; border: 1px dashed {{ project.borderMid }}; display: flex; align-items: center; justify-content: center; font-family: 'JetBrains Mono', monospace; font-size: 12px; letter-spacing: 0.15em; color: rgba(234,243,248,0.45)">TRAILER VIDEO — drop file here</div>
+                </sc-if>
+              </sc-if>
+              <sc-if value="{{ project.isGit }}" hint-placeholder-val="{{ false }}">
+                <a href="{{ project.gitUrl }}" style="display: inline-flex; align-items: center; gap: 10px; font-family: 'JetBrains Mono', monospace; font-size: 13px; letter-spacing: 0.08em; color: {{ project.accent }}">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="6" cy="5" r="2.4"></circle><circle cx="6" cy="19" r="2.4"></circle><circle cx="18" cy="9" r="2.4"></circle><path d="M6 7.4v9.2M18 11.4c0 3-3 4-7 4"></path></svg>
+                  {{ project.gitLabel }}
+                </a>
+              </sc-if>
+            </div>
+          </div>
+        </div>
+      </sc-for>
+    </div>
+  </section>
+
+  <!-- ================= PROFESSIONAL ================= -->
+  <section id="professional" ref="{{ sectionRefs.professional }}" style="position: relative; padding-bottom: 40px; box-sizing: border-box; overflow: hidden">
+
+    <div style="position: relative; z-index: 2; text-align: center; padding: 60px 40px 0 40px; font-family: 'Bebas Neue', sans-serif; font-size: 40px; letter-spacing: 0.06em; color: #FFFFFF">PROFESSIONAL</div>
+
+    <div style="position: relative; z-index: 2; display: flex; flex-direction: column; gap: 40px; padding: 40px 40px 0 40px; max-width: 1240px; margin: 0 auto">
+      <sc-for list="{{ roles }}" as="project" hint-placeholder-count="1">
+        <div ref="{{ project.setCardRef }}" style="border: 1px solid {{ project.borderStrong }}; border-image: {{ project.borderImage }}; background: {{ project.cardBg }}; border-radius: 2px; box-shadow: 0 24px 60px -20px rgba(0,0,0,0.65), 0 4px 24px rgba(0,0,0,0.4), inset 0 1px 0 rgba(255,255,255,0.05)">
+          <div style="height: 380px; background: {{ project.bannerBg }}; display: flex; align-items: center; justify-content: center; border-bottom: 1px solid {{ project.borderMid }}; position: relative">
+            <sc-if value="{{ project.noBanner }}" hint-placeholder-val="{{ false }}">
+              <div style="font-family: 'JetBrains Mono', monospace; font-size: 12px; letter-spacing: 0.2em; color: rgba(234,243,248,0.35)">ROLE_STILL / KEY ART</div>
+            </sc-if>
+            <div style="position: absolute; inset: 0; background: linear-gradient(0deg, rgba(0,0,0,0.85) 0%, transparent 45%); pointer-events: none"></div>
+            <div style="position: absolute; top: 18px; left: 22px; font-family: 'Bebas Neue', sans-serif; font-size: 16px; letter-spacing: 0.1em; color: {{ project.accent }}">{{ project.index }}</div>
+            <div style="position: absolute; left: 30px; bottom: 22px; right: 30px; display: flex; justify-content: space-between; align-items: flex-end; gap: 20px">
+              <div>
+                <div style="font-family: 'Bebas Neue', sans-serif; font-size: 44px; letter-spacing: 0.02em; color: #EAF3F8; line-height: 1; text-shadow: 0 2px 20px rgba(0,0,0,0.8)">{{ project.title }}</div>
+                <div style="font-family: 'JetBrains Mono', monospace; font-size: 12px; letter-spacing: 0.12em; color: {{ project.accent }}; margin-top: 8px">{{ project.tags }}</div>
+              </div>
+              <a href="{{ project.detailHref }}" style="{{ project.playButtonStyle }}">VIEW PROJECT →</a>
+            </div>
+          </div>
+          <div style="display: flex; align-items: center; gap: 6px; padding: 20px 30px 0 30px; border-bottom: 1px solid {{ project.borderLight }}">
+            <div onClick="{{ project.selectOverview }}" style="{{ project.overviewTabStyle }}">OVERVIEW</div>
+            <div onClick="{{ project.selectTrailer }}" style="{{ project.trailerTabStyle }}">TRAILER</div>
+            <a href="{{ project.detailHref }}" style="display: inline-flex; align-items: center; gap: 8px; font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.15em; padding: 10px 18px; color: rgba(234,243,248,0.65); border: 1px solid {{ project.borderLight }}; border-bottom: none">TECHNICAL BREAKDOWN <span>▸</span></a>
+          </div>
+          <div style="padding: 26px 30px 30px 30px; min-height: {{ project.tabMinHeight }}; display: flex; justify-content: {{ project.tabJustify }}; align-items: {{ project.tabAlignItems }}; gap: 20px; flex-wrap: wrap">
+            <div style="flex: 1; min-width: 260px; text-align: {{ project.tabTextAlign }}">
+              <sc-if value="{{ project.isOverview }}" hint-placeholder-val="{{ true }}">
+                <div style="font-size: 15px; line-height: 1.7; color: rgba(234,243,248,0.8); white-space: pre-line">{{ project.overview }}</div>
+              </sc-if>
+              <sc-if value="{{ project.isTrailer }}" hint-placeholder-val="{{ false }}">
+                <sc-if value="{{ project.trailerId }}" hint-placeholder-val="{{ false }}">
+                  <div style="max-width: 720px; margin: 0 auto; aspect-ratio: 16/9; border: 1px solid {{ project.borderMid }}">
+                    <iframe src="{{ project.trailerEmbedSrc }}" title="Trailer" style="width: 100%; height: 100%; border: 0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen="true"></iframe>
+                  </div>
+                </sc-if>
+                <sc-if value="{{ project.noTrailer }}" hint-placeholder-val="{{ true }}">
+                  <div style="height: 260px; max-width: 720px; margin: 0 auto; border: 1px dashed {{ project.borderMid }}; display: flex; align-items: center; justify-content: center; font-family: 'JetBrains Mono', monospace; font-size: 12px; letter-spacing: 0.15em; color: rgba(234,243,248,0.45)">TRAILER VIDEO, drop file here</div>
+                </sc-if>
+              </sc-if>
+            </div>
+          </div>
+        </div>
+      </sc-for>
+    </div>
+  </section>
+
+  <!-- ================= TOOLS ================= -->
+  <section id="tools" ref="{{ sectionRefs.tools }}" style="position: relative; min-height: 100vh; padding-bottom: 40px; box-sizing: border-box; overflow: hidden">
+
+    <div style="position: relative; z-index: 2; text-align: center; padding: 60px 40px 0 40px; font-family: 'Bebas Neue', sans-serif; font-size: 40px; letter-spacing: 0.06em; color: #FFFFFF">TOOLS</div>
+
+    <div style="position: relative; z-index: 2; display: flex; flex-direction: column; gap: 40px; padding: 40px 40px 0 40px; max-width: 1240px; margin: 0 auto">
+      <sc-for list="{{ tools }}" as="project" hint-placeholder-count="1">
+        <div ref="{{ project.setCardRef }}" style="border: 1px solid {{ project.borderStrong }}; border-image: {{ project.borderImage }}; background: {{ project.cardBg }}; border-radius: 2px; box-shadow: 0 24px 60px -20px rgba(0,0,0,0.65), 0 4px 24px rgba(0,0,0,0.4), inset 0 1px 0 rgba(255,255,255,0.05)">
+          <div style="height: 380px; background: {{ project.bannerBg }}; display: flex; align-items: center; justify-content: center; border-bottom: 1px solid {{ project.borderMid }}; position: relative">
+            <sc-if value="{{ project.noBanner }}" hint-placeholder-val="{{ false }}">
+              <div style="font-family: 'JetBrains Mono', monospace; font-size: 12px; letter-spacing: 0.2em; color: rgba(234,243,248,0.35)">TOOL_STILL / KEY ART</div>
+            </sc-if>
+            <div style="position: absolute; inset: 0; background: linear-gradient(0deg, rgba(0,0,0,0.85) 0%, transparent 45%); pointer-events: none"></div>
+            <div style="position: absolute; top: 18px; left: 22px; font-family: 'Bebas Neue', sans-serif; font-size: 16px; letter-spacing: 0.1em; color: {{ project.accent }}">{{ project.index }}</div>
+            <div style="position: absolute; left: 30px; bottom: 22px; right: 30px; display: flex; justify-content: space-between; align-items: flex-end; gap: 20px">
+              <div>
+                <div style="font-family: 'Bebas Neue', sans-serif; font-size: 44px; letter-spacing: 0.02em; color: #EAF3F8; line-height: 1; text-shadow: 0 2px 20px rgba(0,0,0,0.8)">{{ project.title }}</div>
+                <div style="font-family: 'JetBrains Mono', monospace; font-size: 12px; letter-spacing: 0.12em; color: {{ project.accent }}; margin-top: 8px">{{ project.tags }}</div>
+              </div>
+              <a href="{{ project.detailHref }}" style="{{ project.playButtonStyle }}">VIEW PROJECT →</a>
+            </div>
+          </div>
+          <div style="display: flex; align-items: center; gap: 6px; padding: 20px 30px 0 30px; border-bottom: 1px solid {{ project.borderLight }}">
+            <div onClick="{{ project.selectOverview }}" style="{{ project.overviewTabStyle }}">OVERVIEW</div>
+            <div onClick="{{ project.selectTrailer }}" style="{{ project.trailerTabStyle }}">TRAILER</div>
+            <div onClick="{{ project.selectGit }}" style="{{ project.gitTabStyle }}">GIT</div>
+            <a href="{{ project.detailHref }}" style="display: inline-flex; align-items: center; gap: 8px; font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.15em; padding: 10px 18px; color: rgba(234,243,248,0.65); border: 1px solid {{ project.borderLight }}; border-bottom: none">TECHNICAL BREAKDOWN <span>▸</span></a>
+          </div>
+          <div style="padding: 26px 30px 30px 30px; min-height: {{ project.tabMinHeight }}; display: flex; justify-content: {{ project.tabJustify }}; align-items: {{ project.tabAlignItems }}; gap: 20px; flex-wrap: wrap">
+            <div style="flex: 1; min-width: 260px; text-align: {{ project.tabTextAlign }}">
+              <sc-if value="{{ project.isOverview }}" hint-placeholder-val="{{ true }}">
+                <div style="font-size: 15px; line-height: 1.7; color: rgba(234,243,248,0.8); white-space: pre-line">{{ project.overview }}</div>
+              </sc-if>
+              <sc-if value="{{ project.isTrailer }}" hint-placeholder-val="{{ false }}">
+                <sc-if value="{{ project.trailerId }}" hint-placeholder-val="{{ false }}">
+                  <div style="max-width: 720px; margin: 0 auto; aspect-ratio: 16/9; border: 1px solid {{ project.borderMid }}">
+                    <iframe src="{{ project.trailerEmbedSrc }}" title="Trailer" style="width: 100%; height: 100%; border: 0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen="true"></iframe>
+                  </div>
+                </sc-if>
+                <sc-if value="{{ project.noTrailer }}" hint-placeholder-val="{{ true }}">
+                  <div style="height: 260px; max-width: 720px; margin: 0 auto; border: 1px dashed {{ project.borderMid }}; display: flex; align-items: center; justify-content: center; font-family: 'JetBrains Mono', monospace; font-size: 12px; letter-spacing: 0.15em; color: rgba(234,243,248,0.45)">TRAILER VIDEO — drop file here</div>
+                </sc-if>
+              </sc-if>
+              <sc-if value="{{ project.isGit }}" hint-placeholder-val="{{ false }}">
+                <a href="{{ project.gitUrl }}" style="display: inline-flex; align-items: center; gap: 10px; font-family: 'JetBrains Mono', monospace; font-size: 13px; letter-spacing: 0.08em; color: {{ project.accent }}">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="6" cy="5" r="2.4"></circle><circle cx="6" cy="19" r="2.4"></circle><circle cx="18" cy="9" r="2.4"></circle><path d="M6 7.4v9.2M18 11.4c0 3-3 4-7 4"></path></svg>
+                  {{ project.gitLabel }}
+                </a>
+              </sc-if>
+            </div>
+          </div>
+        </div>
+      </sc-for>
+    </div>
+  </section>
+
+  <!-- ================= JOURNEY ================= -->
+  <section id="journey" ref="{{ sectionRefs.journey }}" style="position: relative; min-height: 100vh; padding-bottom: 60px; box-sizing: border-box; overflow: hidden">
+
+    <div style="position: relative; z-index: 2; text-align: center; padding: 44px 40px 10px 40px">
+      <div style="font-family: 'JetBrains Mono', monospace; font-size: 12px; letter-spacing: 0.4em; color: #6EE7C8">&gt; LEVEL PROGRESSION</div>
+      <h1 style="margin: 12px 0 0 0; font-family: 'Bebas Neue', sans-serif; font-weight: 400; font-size: clamp(46px, 7vw, 96px); line-height: 0.9; color: #EAF3F8">THE GAME DEV RUN</h1>
+      <div style="font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.15em; color: rgba(234,243,248,0.45); margin-top: 10px">scroll and teleport with me through my timeline — no flux capacitor required ↓</div>
+    </div>
+
+    <div style="position: relative; z-index: 2; max-width: 900px; margin: 40px auto 0 auto; padding: 0 40px">
+      <div style="position: absolute; top: 0; bottom: 0; left: 50%; width: 2px; background: repeating-linear-gradient(0deg, rgba(234,243,248,0.25) 0px, rgba(234,243,248,0.25) 10px, transparent 10px, transparent 20px); transform: translateX(-50%)"></div>
+
+      <sc-for list="{{ milestones }}" as="stop" hint-placeholder-count="6">
+        <div class="rt-journey-row" style="{{ stop.rowStyle }}">
+          <div ref="{{ stop.setMilestoneRef }}" class="rt-journey-card" style="{{ stop.cardStyle }}">
+            <div style="font-family: 'Bebas Neue', sans-serif; font-size: 46px; letter-spacing: 0.05em; color: {{ stop.accent }}; line-height: 1">{{ stop.year }}</div>
+            <div style="font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.12em; color: {{ stop.accent }}; margin: 8px 0 10px 0">{{ stop.tag }}</div>
+            <div style="font-size: 14px; line-height: 1.6; color: rgba(234,243,248,0.8)">{{ stop.text }}</div>
+            <sc-if value="{{ stop.showRunner }}" hint-placeholder-val="{{ false }}">
+              <div key="{{ stop.year }}" style="{{ stop.runnerStyle }}">
+                <div style="animation: ap-idle-sway 2.2s ease-in-out infinite">
+                  <img src="uploads/Final-removebg-preview.png" alt="Runner" style="width: 92px; height: auto; image-rendering: pixelated; display: block; filter: drop-shadow(0 8px 10px rgba(0,0,0,0.6))">
+                </div>
+              </div>
+            </sc-if>
+          </div>
+          <div style="{{ stop.dotStyle }}"></div>
+        </div>
+      </sc-for>
+    </div>
+  </section>
+
+  <!-- ===== single footer ===== -->
+  <div style="position: relative; z-index: 2; border-top: 1px solid rgba(255,255,255,0.15); padding: 20px 40px; display: flex; justify-content: space-between; align-items: center; font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.15em; color: rgba(234,243,248,0.5)">
+    <span>© ANANTHA PRASANTH</span>
+    <div style="display: flex; align-items: center; gap: 22px">
+      <a href="https://www.linkedin.com/in/anantha-prasanth" target="_blank" rel="noopener" aria-label="LinkedIn" style="color: #0A66C2; display: flex" style-hover="color: #4DC3FF">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M20.45 20.45h-3.55v-5.57c0-1.33-.02-3.03-1.85-3.03-1.85 0-2.14 1.45-2.14 2.94v5.66H9.36V9h3.41v1.56h.05c.48-.9 1.64-1.85 3.38-1.85 3.61 0 4.28 2.38 4.28 5.47v6.27zM5.34 7.43a2.06 2.06 0 1 1 0-4.12 2.06 2.06 0 0 1 0 4.12zM7.12 20.45H3.56V9h3.56v11.45z"></path></svg>
+      </a>
+      <a href="https://gitlab.com/prasanth1608" target="_blank" rel="noopener" aria-label="GitLab" style="color: #FC6D26; display: flex" style-hover="color: #F05032">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="6" cy="5" r="2.4"></circle><circle cx="6" cy="19" r="2.4"></circle><circle cx="18" cy="9" r="2.4"></circle><path d="M6 7.4v9.2M18 11.4c0 3-3 4-7 4"></path></svg>
+      </a>
+      <a href="https://prasanth1608.itch.io" target="_blank" rel="noopener" aria-label="itch.io" style="color: #FA5C5C; display: flex" style-hover="color: #FF6F91">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M3 8c1-2.5 2.5-4 4-4h10c1.5 0 3 1.5 4 4-0.5 2-2 3-3.5 3-1.2 0-2.2-.7-2.7-1.7-.5 1-1.5 1.7-2.8 1.7s-2.3-.7-2.8-1.7c-.5 1-1.5 1.7-2.7 1.7C5 11 3.5 10 3 8z"></path><path d="M4 10.5L4.6 18c.15 1.2 1.1 2 2.3 2h10.2c1.2 0 2.15-.8 2.3-2l.6-7.5"></path><path d="M9.5 14.5a2.2 2.2 0 0 1 4.5 0v2"></path></svg>
+      </a>
+    </div>
+    <a href="#home" onClick="{{ goTo }}" data-target="home" style="color: #6EE7C8" style-hover="color: #FFDE59">◂ BACK TO TITLE</a>
+  </div>
+</div>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+const RAW_CATEGORIES = [
+  { title: 'UNREAL C++ ARCHITECTURE', points: ['Gameplay framework (Actors, Components, Interfaces)', 'Gameplay Ability System (GAS)', 'Replication & networked actors', 'Delegates & event-driven design', 'Profilers & memory size maps', 'Build & packaging strategies'] },
+  { title: 'AI SYSTEMS', points: ['Behavior Trees', 'AI vision & detection', 'State machines', 'NPC behaviors'] },
+  { title: 'GAMEPLAY SYSTEMS', points: ['Character movement systems', 'Abilities & combat systems', 'Weapon systems & stats', 'Vehicle systems (spaceship)', 'Interaction systems', 'Enhanced Input systems', 'Inventory systems', 'Save / load systems'] },
+  { title: 'TOOLS & PLUGINS', points: ['Interactive visualization', 'Custom editor tooling', 'Marketplace plugins', 'UMG / Slate / Common UI'] },
+  { title: 'DEVELOPMENT PRACTICES', points: ['Version control with Git', 'Visual planning with Miro board', 'Team comms on Slack', 'Documentation', 'Sprint planning in Notion'] },
+  { title: 'ENGINEERING PRACTICES', points: ['Object Oriented Programming & SOLID principles', 'Problem solving', 'Debugging & error handling', 'Optimisation & multi-threading', 'Vector & quaternion math', 'Algorithms & data structures'] }
+];
+const EXP_ACCENTS = ['#4DC3FF', '#FFC857', '#FF6F91', '#6EE7C8', '#B98BFF', '#FFDE59'];
+
+const RAW_PROJECTS = [
+  {
+    title: 'CLUCKMARE', tags: 'UNREAL ENGINE 5 · C++ · SHOOTER', accent: '#1C6FC2',
+    banner: 'assets/games/cluckmare/banner.jpg', trailerId: 'AKqoDcYymbk', gitUrl: 'https://gitlab.com/prasanth1608/cluckmare',
+    overview: 'A first-person shooter where you fight your way through a nightmare chicken factory. Built solo as the sole programmer on a 5-person team, driving character movement, dual weapon types, combat/damage resolution, and AI enemies that chase, attack, and visibly grow with every hit. Hacking terminals gate checkpoint progress, escalating from a tutorial encounter to a 25-enemy final wave.'
+  },
+  {
+    title: 'AIM GL', tags: 'OPENGL · C++ · GAME ENGINE', accent: '#FFC857',
+    banner: 'assets/games/aimgl/banner.png', gitUrl: 'https://gitlab.com/prasanth1608/aimgl', trailerId: '9u1FXztli2k',
+    overview: 'AimGL is a retro-style demake of a game called "Aimlabs", available on the Steam platform. Designed as an aim training tool, AimGL helps players enhance their accuracy and precision in competitive shooter games. AimGL was demade using OpenGL and C++ in a cartoon-ish theme.\n\nUpon entering the training arena, players are ready to begin their practice session. Each session lasts 60 seconds, during which players aim to achieve their highest possible score. The HUD (Heads-Up Display) provides real-time information, including a timer and score tracker. The game features two distinct modes: Hitscan bullet mode and Projectile bullet mode.'
+  }
+];
+
+const RAW_ROLES = [
+  {
+    title: 'INTERACTIVE WALKTHROUGH APPLICATION', tags: 'UNREAL ENGINE 5 · BLUEPRINTS · ARCHITECTURAL VISUALIZATION', accent: '#EAF3F8',
+    banner: 'assets/professional/cavalli-couture/banner-2.png', trailerId: 'StRz906EKm8',
+    overview: 'At PropVR, I built interactive real-time walkthrough applications in Unreal Engine 5 for major real-estate developers including DAMAC, LODHA, KAFD, and Prestige Group, letting clients and prospective buyers explore developments before they existed.\n\nI implemented a data-driven UI system so screens and layouts could be reconfigured per-project without touching code, built a day/night cycle slider using Ultra Dynamic Sky, and debugged and fixed the save/load quest system used to track walkthrough progress.\n\nI also implemented an analytics pipeline in Unreal Engine 5 using JSON parsing, designed so new events could be added entirely through data with no code or editor changes required. After reading through Game Analytics\' documentation and scoping the client\'s requirements, I deployed the system to their dashboard within two months.'
+  }
+];
+
+const RAW_TOOLS = [
+  {
+    title: 'WIND FIELD', tags: 'UNREAL ENGINE · C++ · PLUGIN', accent: '#FF7A4D',
+    banner: 'assets/plugins/windfield/card-thumbnail.png', trailerId: 'nAI2--ftOKQ',
+    overview: 'WindField is a designer-friendly Unreal Engine plugin that makes creating interactive wind effects simple and intuitive. Just drag and drop a Wind Volume into your level, choose a wind mode, and start bringing your environments to life.\n\nUnlike traditional wind systems that only provide visual effects, WindField applies dynamic forces to physics-enabled static meshes, allowing objects to react naturally to airflow. Whether you\'re creating gentle breezes, industrial fans, powerful storms, or gameplay-driven wind mechanics, WindField provides a flexible toolkit for building immersive environmental interactions.\n\nChoose from multiple built-in wind modes, including constant wind, gusts, bursts, storms, and other customizable behaviours. Adjust wind strength and settings to suit your gameplay while keeping the workflow accessible for both designers and programmers.',
+    gitUrl: ''
+  }
+];
+
+const MILESTONES = [
+  { year: '2021', tag: 'THE BEGINNING', accent: '#6EE7C8', text: 'While studying for a Bachelor\'s in I.T., a sudden idea struck: make games, not just play them. Explored game dev routes, engines and starting steps, understood the basics of game development, and built my first ever game in Unity using C#.' },
+  { year: '2022', tag: 'FIRST JOB', accent: '#FFC857', text: 'Followed by my first game, I became more enthusiastic about building further prototypes and games to learn game dev concepts, built a portfolio within 6 months of learning, and landed my first job as a Unity developer, choosing among 3 offers from studios.' },
+  { year: '2023', tag: 'TURNING POINT', accent: '#FF6F91', text: "This was my career's next turning point, the time I explored Unreal Engine and was impressed by its quality and capabilities. I started to learn Unreal and C++, and landed an Unreal developer role at a studio." },
+  { year: '2024', tag: 'EDUCATION', accent: '#B98BFF', text: 'This was an education-focused period in my career. I started exploring game dev opportunities internationally, chose a UK university for a Master\'s in Game Programming, and started my course in September 2024.' },
+  { year: '2025', tag: 'SPECIALIZED', accent: '#00E5CC', text: 'I\'ve been learning core Unreal, programming principles, and building games, tools and projects, both personally and academically. I successfully finished my Master\'s in Game Programming and started seeking industry opportunities.' },
+  { year: '2026', tag: 'NOW', accent: '#FF8A5B', text: 'I am constantly learning new features in Unreal Engine, strengthening my programming principles, and actively building my portfolio to stay up to date.' }
+];
+
+function hexToRgba(hex, alpha) {
+  const h = hex.replace('#', '');
+  const r = parseInt(h.substring(0, 2), 16);
+  const g = parseInt(h.substring(2, 4), 16);
+  const b = parseInt(h.substring(4, 6), 16);
+  return `rgba(${r},${g},${b},${alpha})`;
+}
+function mixWithDark(hex, ratio, dark) {
+  const h = hex.replace('#', '');
+  const r = parseInt(h.substring(0, 2), 16);
+  const g = parseInt(h.substring(2, 4), 16);
+  const b = parseInt(h.substring(4, 6), 16);
+  const [dr, dg, db] = dark;
+  return `rgb(${Math.round(r * ratio + dr * (1 - ratio))},${Math.round(g * ratio + dg * (1 - ratio))},${Math.round(b * ratio + db * (1 - ratio))})`;
+}
+function hexToRgbObj(hex) {
+  const h = hex.replace('#', '');
+  return { r: parseInt(h.substring(0, 2), 16), g: parseInt(h.substring(2, 4), 16), b: parseInt(h.substring(4, 6), 16) };
+}
+function lerp(a, b, t) { return a + (b - a) * t; }
+function bgFromRgbFlat(r, g, b, alpha, dark) {
+  const rr = Math.round(r), rg = Math.round(g), rb = Math.round(b);
+  const mix = (ratio) => `rgb(${Math.round(rr * ratio + dark[0] * (1 - ratio))},${Math.round(rg * ratio + dark[1] * (1 - ratio))},${Math.round(rb * ratio + dark[2] * (1 - ratio))})`;
+  return `linear-gradient(180deg, ${mix(alpha)} 0%, ${mix(alpha * 0.7)} 100%)`;
+}
+
+function nearestToCenter(refsArr) {
+  const mid = window.innerHeight / 2;
+  let best = null, bestDist = Infinity;
+  refsArr.forEach((el, i) => {
+    if (!el) return;
+    const rect = el.getBoundingClientRect();
+    if (rect.bottom < 0 || rect.top > window.innerHeight) return;
+    const center = rect.top + rect.height / 2;
+    const dist = Math.abs(center - mid);
+    if (dist < bestDist) { bestDist = dist; best = i; }
+  });
+  return best;
+}
+
+class Component extends DCLogic {
+  state = {
+    expAccent: '#000000',
+    worksAccent: RAW_PROJECTS[0].accent,
+    proAccent: RAW_ROLES[0].accent,
+    toolsAccent: RAW_TOOLS[0].accent,
+    journeyIndex: 0,
+    projectTabs: RAW_PROJECTS.map(() => 'overview'),
+    roleTabs: RAW_ROLES.map(() => 'overview'),
+    toolTabs: RAW_TOOLS.map(() => 'overview'),
+    activeSection: 'home'
+  };
+
+  constructor(props) {
+    super(props);
+    this.sectionRefs = { home: React.createRef(), expertise: React.createRef(), games: React.createRef(), professional: React.createRef(), tools: React.createRef(), journey: React.createRef() };
+    this.sharedBackdropRef = React.createRef();
+    this.projectCardEls = [];
+    this.roleCardEls = [];
+    this.toolCardEls = [];
+    this.milestoneEls = [];
+    this.sharedRGB = hexToRgbObj('#15181a');
+  }
+
+  setProjectTab(i, tab) { this.setState((s) => { const t = s.projectTabs.slice(); t[i] = tab; return { projectTabs: t }; }); }
+  setRoleTab(i, tab) { this.setState((s) => { const t = s.roleTabs.slice(); t[i] = tab; return { roleTabs: t }; }); }
+  setToolTab(i, tab) { this.setState((s) => { const t = s.toolTabs.slice(); t[i] = tab; return { toolTabs: t }; }); }
+
+  goToId(id) {
+    const el = this.sectionRefs[id] && this.sectionRefs[id].current;
+    if (!el) return;
+    const headerOffset = 60;
+    const top = el.getBoundingClientRect().top + window.scrollY - headerOffset;
+    window.scrollTo({ top, behavior: 'smooth' });
+  }
+
+  componentDidMount() {
+    if (window.location.hash) {
+      const id = window.location.hash.slice(1);
+      requestAnimationFrame(() => requestAnimationFrame(() => this.goToId(id)));
+    }
+    this.onScroll = () => {
+      if (this.raf) return;
+      this.raf = requestAnimationFrame(() => {
+        this.raf = null;
+
+        const bestProject = nearestToCenter(this.projectCardEls);
+        if (bestProject !== null) {
+          const accent = RAW_PROJECTS[bestProject].accent;
+          if (accent !== this.state.worksAccent) this.setState({ worksAccent: accent });
+        }
+        const bestRole = nearestToCenter(this.roleCardEls);
+        if (bestRole !== null) {
+          const accent = RAW_ROLES[bestRole].accent;
+          if (accent !== this.state.proAccent) this.setState({ proAccent: accent });
+        }
+        const bestTool = nearestToCenter(this.toolCardEls);
+        if (bestTool !== null) {
+          const accent = RAW_TOOLS[bestTool].accent;
+          if (accent !== this.state.toolsAccent) this.setState({ toolsAccent: accent });
+        }
+        const bestMilestone = nearestToCenter(this.milestoneEls);
+        const atBottom = window.innerHeight + window.scrollY >= document.documentElement.scrollHeight - 4;
+        const finalMilestone = atBottom ? MILESTONES.length - 1 : bestMilestone;
+        if (finalMilestone !== null && finalMilestone !== this.state.journeyIndex) {
+          this.setState({ journeyIndex: finalMilestone });
+        }
+
+        // which section is active for nav highlighting
+        const order = ['home', 'expertise', 'games', 'professional', 'tools', 'journey'];
+        let active = 'home';
+        for (const id of order) {
+          const el = this.sectionRefs[id].current;
+          if (!el) continue;
+          const rect = el.getBoundingClientRect();
+          if (rect.top <= window.innerHeight * 0.4) active = id;
+        }
+        if (active !== this.state.activeSection) this.setState({ activeSection: active });
+      });
+    };
+    window.addEventListener('scroll', this.onScroll, { passive: true });
+    this.onScroll();
+
+    const currentAccent = () => {
+      switch (this.state.activeSection) {
+        case 'expertise': return '#000000';
+        case 'games': return this.state.worksAccent;
+        case 'professional': return this.state.proAccent;
+        case 'tools': return this.state.toolsAccent;
+        case 'journey': return MILESTONES[this.state.journeyIndex].accent;
+        default: return '#000000';
+      }
+    };
+
+    const tick = () => {
+      const target = hexToRgbObj(currentAccent());
+      this.sharedRGB = { r: lerp(this.sharedRGB.r, target.r, 0.08), g: lerp(this.sharedRGB.g, target.g, 0.08), b: lerp(this.sharedRGB.b, target.b, 0.08) };
+      if (this.sharedBackdropRef.current) {
+        this.sharedBackdropRef.current.style.background = bgFromRgbFlat(this.sharedRGB.r, this.sharedRGB.g, this.sharedRGB.b, 0.19, [0, 0, 0]);
+      }
+      this.lerpRaf = requestAnimationFrame(tick);
+    };
+    this.lerpRaf = requestAnimationFrame(tick);
+  }
+
+  componentWillUnmount() {
+    window.removeEventListener('scroll', this.onScroll);
+    if (this.raf) cancelAnimationFrame(this.raf);
+    if (this.lerpRaf) cancelAnimationFrame(this.lerpRaf);
+  }
+
+  renderVals() {
+    const tabStyle = (active, color, inactiveBorder) => ({
+      fontFamily: "'JetBrains Mono', monospace", fontSize: '11px', letterSpacing: '0.15em', padding: '10px 18px', cursor: 'var(--cur-hover)',
+      color: active ? '#001018' : 'rgba(234,243,248,0.65)', background: active ? color : 'transparent',
+      border: `1px solid ${active ? color : inactiveBorder}`, borderBottom: 'none'
+    });
+
+    const navOrder = ['home', 'expertise', 'games', 'professional', 'tools', 'journey'];
+    const navStyles = {};
+    navOrder.forEach((id) => {
+      navStyles[id] = this.state.activeSection === id ? { color: '#FFC857' } : { color: 'rgba(234,243,248,0.75)' };
+    });
+
+    const categories = RAW_CATEGORIES.map((c, i) => {
+      const isLast = i === RAW_CATEGORIES.length - 1;
+      const accent = isLast ? '#9AA5AC' : EXP_ACCENTS[i % EXP_ACCENTS.length];
+      return {
+        ...c, index: String(i + 1).padStart(2, '0'), accent,
+        borderColor: hexToRgba(accent, 0.4),
+        lightAccent: mixWithDark(accent, 0.55, [255, 255, 255]),
+        cardBg: `linear-gradient(160deg, ${mixWithDark(accent, 0.4, [10, 10, 11])} 0%, ${mixWithDark(accent, 0.22, [10, 10, 11])} 50%, ${mixWithDark(accent, 0.1, [10, 10, 11])} 100%)`,
+        onEnter: () => this.setState({ expAccent: accent })
+      };
+    });
+
+    const projects = RAW_PROJECTS.map((p, i) => {
+      const slug = p.title.toLowerCase().replace(/\s+/g, '-');
+      const tab = this.state.projectTabs[i];
+      return {
+        ...p, setCardRef: (el) => { this.projectCardEls[i] = el; },
+        borderStrong: hexToRgba(p.accent, 0.45), borderMid: hexToRgba(p.accent, 0.35), borderLight: hexToRgba(p.accent, 0.25),
+        cardBg: `linear-gradient(160deg, ${mixWithDark(p.accent, 0.32, [5, 8, 9])} 0%, ${mixWithDark(p.accent, 0.12, [5, 8, 9])} 45%, #050809 100%)`,
+        borderImage: 'none',
+        bannerBg: p.banner ? `center / cover no-repeat url(${p.banner}), linear-gradient(160deg, #0C1418, #050809)` : `linear-gradient(160deg, #0C1418, #050809)`,
+        noBanner: !p.banner, trailerEmbedSrc: p.trailerId ? `https://www.youtube.com/embed/${p.trailerId}` : '', noTrailer: !p.trailerId,
+        index: String(i + 1).padStart(2, '0'), slug,
+        gitUrl: p.gitUrl || '#', gitLabel: p.gitUrl ? p.gitUrl.replace(/^https?:\/\//, '') : `link your repo here`,
+        tabMinHeight: tab === 'git' ? '0' : tab === 'trailer' ? '0' : '140px',
+        tabJustify: tab === 'trailer' ? 'center' : 'space-between',
+        tabAlignItems: tab === 'git' ? 'center' : tab === 'overview' ? 'flex-start' : 'flex-end',
+        tabTextAlign: tab === 'trailer' ? 'center' : 'left',
+        detailHref: `Project.dc.html?slug=${slug}`,
+        isOverview: tab === 'overview', isTrailer: tab === 'trailer', isGit: tab === 'git',
+        overviewTabStyle: tabStyle(tab === 'overview', p.accent, hexToRgba(p.accent, 0.35)),
+        trailerTabStyle: tabStyle(tab === 'trailer', '#EAF3F8', hexToRgba(p.accent, 0.35)),
+        gitTabStyle: tabStyle(tab === 'git', '#4DC3FF', hexToRgba(p.accent, 0.35)),
+        playButtonStyle: { fontFamily: "'Bebas Neue', sans-serif", fontSize: '18px', letterSpacing: '0.12em', color: '#001018', background: p.accent, padding: '11px 26px', flex: 'none', boxShadow: `0 0 18px ${hexToRgba(p.accent, 0.45)}` },
+        selectOverview: () => this.setProjectTab(i, 'overview'),
+        selectTrailer: () => this.setProjectTab(i, 'trailer'),
+        selectGit: () => this.setProjectTab(i, 'git')
+      };
+    });
+
+    const roles = RAW_ROLES.map((p, i) => {
+      const slug = p.title.toLowerCase().replace(/\s+/g, '-');
+      const tab = this.state.roleTabs[i];
+      return {
+        ...p, detailHref: `ProfessionalProject.dc.html?slug=${slug}`,
+        setCardRef: (el) => { this.roleCardEls[i] = el; },
+        borderStrong: hexToRgba(p.accent, 0.45), borderMid: hexToRgba(p.accent, 0.35), borderLight: hexToRgba(p.accent, 0.25),
+        cardBg: `linear-gradient(160deg, ${mixWithDark(p.accent, 0.32, [5, 8, 9])} 0%, ${mixWithDark(p.accent, 0.12, [5, 8, 9])} 45%, #050809 100%)`,
+        borderImage: 'none',
+        bannerBg: p.banner ? `center / cover no-repeat url(${p.banner}), linear-gradient(160deg, #0C1418, #050809)` : `linear-gradient(160deg, #0C1418, #050809)`,
+        noBanner: !p.banner, trailerEmbedSrc: p.trailerId ? `https://www.youtube.com/embed/${p.trailerId}` : '', noTrailer: !p.trailerId,
+        index: String(i + 1).padStart(2, '0'),
+        gitUrl: p.gitUrl || '#', gitLabel: p.gitUrl ? p.gitUrl.replace(/^https?:\/\//, '') : `link your repo here`,
+        tabMinHeight: tab === 'trailer' ? '0' : '140px', tabJustify: tab === 'trailer' ? 'center' : 'space-between',
+        tabAlignItems: tab === 'overview' ? 'flex-start' : 'flex-end', tabTextAlign: tab === 'trailer' ? 'center' : 'left',
+        isOverview: tab === 'overview', isTrailer: tab === 'trailer',
+        overviewTabStyle: tabStyle(tab === 'overview', p.accent, hexToRgba(p.accent, 0.35)),
+        trailerTabStyle: tabStyle(tab === 'trailer', '#EAF3F8', hexToRgba(p.accent, 0.35)),
+        playButtonStyle: { fontFamily: "'Bebas Neue', sans-serif", fontSize: '18px', letterSpacing: '0.12em', color: '#001018', background: p.accent, padding: '11px 26px', flex: 'none', boxShadow: `0 8px 24px -8px ${hexToRgba(p.accent, 0.6)}` },
+        selectOverview: () => this.setRoleTab(i, 'overview'),
+        selectTrailer: () => this.setRoleTab(i, 'trailer')
+      };
+    });
+
+    const tools = RAW_TOOLS.map((p, i) => {
+      const tab = this.state.toolTabs[i];
+      return {
+        ...p, setCardRef: (el) => { this.toolCardEls[i] = el; },
+        borderStrong: hexToRgba(p.accent, 0.45), borderMid: hexToRgba(p.accent, 0.35), borderLight: hexToRgba(p.accent, 0.25),
+        cardBg: `linear-gradient(160deg, ${mixWithDark(p.accent, 0.32, [5, 8, 9])} 0%, ${mixWithDark(p.accent, 0.12, [5, 8, 9])} 45%, #050809 100%)`,
+        borderImage: 'none',
+        bannerBg: p.banner ? `center / cover no-repeat url(${p.banner}), linear-gradient(160deg, #0C1418, #050809)` : `linear-gradient(160deg, #0C1418, #050809)`,
+        noBanner: !p.banner, trailerEmbedSrc: p.trailerId ? `https://www.youtube.com/embed/${p.trailerId}` : '', noTrailer: !p.trailerId,
+        index: String(i + 1).padStart(2, '0'),
+        detailHref: `ToolsProject.dc.html?slug=${p.title.toLowerCase().replace(/\s+/g, '-')}`,
+        gitUrl: p.gitUrl || '#', gitLabel: p.gitUrl ? p.gitUrl.replace(/^https?:\/\//, '') : `link your repo here`,
+        tabMinHeight: tab === 'git' ? '0' : tab === 'trailer' ? '0' : '140px',
+        tabJustify: tab === 'trailer' ? 'center' : 'space-between',
+        tabAlignItems: tab === 'git' ? 'center' : tab === 'overview' ? 'flex-start' : 'flex-end',
+        tabTextAlign: tab === 'trailer' ? 'center' : 'left',
+        isOverview: tab === 'overview', isTrailer: tab === 'trailer', isGit: tab === 'git',
+        overviewTabStyle: tabStyle(tab === 'overview', p.accent, hexToRgba(p.accent, 0.35)),
+        trailerTabStyle: tabStyle(tab === 'trailer', '#EAF3F8', hexToRgba(p.accent, 0.35)),
+        gitTabStyle: tabStyle(tab === 'git', '#4DC3FF', hexToRgba(p.accent, 0.35)),
+        playButtonStyle: { fontFamily: "'Bebas Neue', sans-serif", fontSize: '18px', letterSpacing: '0.12em', color: '#001018', background: p.accent, padding: '11px 26px', flex: 'none', boxShadow: `0 8px 24px -8px ${hexToRgba(p.accent, 0.6)}` },
+        selectOverview: () => this.setToolTab(i, 'overview'),
+        selectTrailer: () => this.setToolTab(i, 'trailer'),
+        selectGit: () => this.setToolTab(i, 'git')
+      };
+    });
+
+    const milestones = MILESTONES.map((m, i) => {
+      const left = i % 2 === 0;
+      const active = i === this.state.journeyIndex;
+      return {
+        ...m, showRunner: active,
+        setMilestoneRef: (el) => { this.milestoneEls[i] = el; },
+        rowStyle: { position: 'relative', display: 'flex', justifyContent: left ? 'flex-start' : 'flex-end', padding: '50px 0', minHeight: '160px' },
+        cardStyle: { position: 'relative', width: 'calc(50% - 40px)', border: `2px solid ${m.accent}55`, background: '#050809', padding: '22px 24px', boxSizing: 'border-box', overflow: 'visible' },
+        runnerStyle: { position: 'absolute', top: 0, left: '50%', transform: 'translate(-50%, -60%)', zIndex: 5, pointerEvents: 'none', animation: 'ap-teleport-in 0.5s cubic-bezier(0.2, 0.9, 0.3, 1) both' },
+        dotStyle: { position: 'absolute', top: '58px', left: '50%', transform: 'translateX(-50%)', width: '14px', height: '14px', borderRadius: '50%', background: m.accent, boxShadow: `0 0 14px ${m.accent}` }
+      };
+    });
+
+    return {
+      sectionRefs: this.sectionRefs,
+      navStyles,
+      goTo: (e) => { e.preventDefault(); this.goToId(e.currentTarget.getAttribute('data-target')); },
+      sharedBackdropRef: this.sharedBackdropRef,
+      sharedBackdropBg: bgFromRgbFlat(this.sharedRGB.r, this.sharedRGB.g, this.sharedRGB.b, 0.19, [0, 0, 0]),
+      categories,
+      projects,
+      roles,
+      tools,
+      milestones
+    };
+  }
+}
+
+</script>
+</body>
+</html>

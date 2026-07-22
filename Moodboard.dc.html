@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+  <meta name="design_doc_mode" content="canvas">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=JetBrains+Mono:wght@400;500;700&family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet">
+  <style>
+    html, body { margin: 0; padding: 0; background: #000000; }
+    a { color: #4DC3FF; text-decoration: none; }
+    a:hover { color: #A8E4FF; }
+    @keyframes ms-blink { 0%, 49% { opacity: 1; } 50%, 100% { opacity: 0; } }
+  </style>
+</helmet>
+
+<div data-screen-label="Moodboard" style="width: 1760px; margin: 0 auto; background: #000000; color: #EAF3F8; font-family: 'Space Grotesk', sans-serif; padding: 48px 40px 80px 40px; box-sizing: border-box; position: relative">
+
+  <!-- ============ BOARD HEADER ============ -->
+  <div style="display: flex; align-items: flex-end; justify-content: space-between; border-bottom: 1px solid rgba(77,195,255,0.35); padding-bottom: 20px; margin-bottom: 28px">
+    <div>
+      <div style="font-family: 'JetBrains Mono', monospace; font-size: 12px; letter-spacing: 0.3em; color: #4DC3FF; margin-bottom: 10px">MOODBOARD // PORTFOLIO — HOME PAGE</div>
+      <div style="font-family: 'Bebas Neue', sans-serif; font-size: 88px; line-height: 0.9; letter-spacing: 0.01em; color: #EAF3F8">GAME DEV <span style="color: #4DC3FF">ARCADE</span> DIRECTION</div>
+    </div>
+    <div style="font-family: 'JetBrains Mono', monospace; font-size: 12px; color: rgba(234,243,248,0.5); text-align: right; line-height: 1.8">REF: BLACK × LIGHT BLUE<br>V.01 — JUL 2026</div>
+  </div>
+
+  <!-- ============ ROW 1: HERO SKETCH + PALETTE/TYPE ============ -->
+  <div style="display: grid; grid-template-columns: 1120px 1fr; gap: 24px; margin-bottom: 24px">
+
+    <!-- HERO SKETCH -->
+    <div data-screen-label="Hero sketch" style="border: 1px solid rgba(77,195,255,0.3); background: #050809; position: relative; display: flex; flex-direction: column">
+      <div style="font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.25em; color: #4DC3FF; padding: 12px 16px; border-bottom: 1px solid rgba(77,195,255,0.2); display: flex; justify-content: space-between"><span>01 — HOME / HERO SKETCH</span><span style="color: rgba(234,243,248,0.4)">1920×1080</span></div>
+
+      <div style="position: relative; height: 620px; overflow: hidden; background: #030506">
+        <!-- faint blueprint grid -->
+        <sc-if value="{{ showGrid }}" hint-placeholder-val="{{ true }}">
+          <div style="position: absolute; inset: 0; background-image: linear-gradient(rgba(77,195,255,0.06) 1px, transparent 1px), linear-gradient(90deg, rgba(77,195,255,0.06) 1px, transparent 1px); background-size: 48px 48px; pointer-events: none"></div>
+        </sc-if>
+
+        <!-- mini nav -->
+        <div style="position: absolute; top: 0; left: 0; right: 0; display: flex; justify-content: space-between; align-items: center; padding: 18px 28px; z-index: 3; pointer-events: none">
+          <div style="font-family: 'Bebas Neue', sans-serif; font-size: 22px; letter-spacing: 0.08em; color: #EAF3F8">YN<span style="color: #4DC3FF">®</span></div>
+          <div style="display: flex; gap: 22px; font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.2em; color: rgba(234,243,248,0.7)">
+            <span>WORK</span><span>ABOUT</span><span>LAB</span><span style="color: #4DC3FF">[ CONTACT ]</span>
+          </div>
+        </div>
+
+        <!-- giant headline behind machine -->
+        <div style="position: absolute; top: 54px; left: 0; right: 0; text-align: center; z-index: 1; pointer-events: none">
+          <div style="font-family: 'Bebas Neue', sans-serif; font-size: 220px; line-height: 0.85; letter-spacing: 0.01em; color: #EAF3F8">INSERT COIN</div>
+          <div style="font-family: 'Bebas Neue', sans-serif; font-size: 220px; line-height: 0.85; letter-spacing: 0.01em; color: transparent; -webkit-text-stroke: 2px rgba(77,195,255,0.8)">TO PLAY</div>
+        </div>
+
+        <!-- arcade machine image slot, center -->
+        <div style="position: absolute; left: 50%; bottom: -8px; transform: translateX(-50%); width: 330px; height: 470px; z-index: 2; filter: drop-shadow(0 0 40px rgba(77,195,255,0.35))">
+          <image-slot id="arcade-hero" shape="rect" placeholder="RETRO ARCADE MACHINE — cut-out / dark photo"></image-slot>
+        </div>
+
+        <!-- left meta column -->
+        <div style="position: absolute; left: 28px; bottom: 28px; z-index: 3; font-family: 'JetBrains Mono', monospace; font-size: 11px; line-height: 2; color: rgba(234,243,248,0.65); pointer-events: none">
+          <div style="color: #4DC3FF">&gt; GAME DEVELOPER</div>
+          <div>&gt; UNITY / UNREAL / WEB</div>
+          <div>&gt; PLAYABLE SINCE 2019<span style="display: inline-block; width: 8px; height: 14px; background: #4DC3FF; vertical-align: middle; margin-left: 4px; animation: ms-blink 1s steps(1) infinite"></span></div>
+        </div>
+
+        <!-- right rail: game-dev elements -->
+        <div style="position: absolute; right: 28px; top: 90px; bottom: 28px; width: 170px; z-index: 3; display: flex; flex-direction: column; gap: 14px; justify-content: flex-end">
+          <!-- code chip -->
+          <div style="border: 1px solid rgba(77,195,255,0.4); background: rgba(3,8,10,0.85); padding: 12px 14px; font-family: 'JetBrains Mono', monospace; font-size: 11px; line-height: 1.7">
+            <div style="color: #4DC3FF">&lt;/&gt; code</div>
+            <div style="color: rgba(234,243,248,0.55)">player.jump();</div>
+          </div>
+          <!-- joystick chip -->
+          <div style="border: 1px solid rgba(77,195,255,0.4); background: rgba(3,8,10,0.85); padding: 14px; display: flex; align-items: center; gap: 12px">
+            <div style="width: 40px; height: 44px; position: relative; flex: none">
+              <div style="position: absolute; left: 50%; top: 0; transform: translateX(-50%); width: 18px; height: 18px; border-radius: 50%; background: #4DC3FF; box-shadow: 0 0 14px rgba(77,195,255,0.8)"></div>
+              <div style="position: absolute; left: 50%; top: 14px; transform: translateX(-50%); width: 5px; height: 20px; background: #EAF3F8"></div>
+              <div style="position: absolute; left: 50%; bottom: 0; transform: translateX(-50%); width: 36px; height: 10px; background: #10181C; border: 1px solid rgba(77,195,255,0.5)"></div>
+            </div>
+            <div style="font-family: 'JetBrains Mono', monospace; font-size: 11px; color: rgba(234,243,248,0.7)">joystick<br><span style="color: #4DC3FF">P1</span></div>
+          </div>
+          <!-- WASD chip -->
+          <div style="border: 1px solid rgba(77,195,255,0.4); background: rgba(3,8,10,0.85); padding: 12px 14px">
+            <div style="display: flex; flex-direction: column; gap: 4px; align-items: center">
+              <div style="width: 26px; height: 26px; border: 1px solid #4DC3FF; color: #4DC3FF; font-family: 'JetBrains Mono', monospace; font-size: 12px; display: grid; place-items: center">W</div>
+              <div style="display: flex; gap: 4px">
+                <div style="width: 26px; height: 26px; border: 1px solid rgba(234,243,248,0.5); color: rgba(234,243,248,0.7); font-family: 'JetBrains Mono', monospace; font-size: 12px; display: grid; place-items: center">A</div>
+                <div style="width: 26px; height: 26px; border: 1px solid rgba(234,243,248,0.5); color: rgba(234,243,248,0.7); font-family: 'JetBrains Mono', monospace; font-size: 12px; display: grid; place-items: center">S</div>
+                <div style="width: 26px; height: 26px; border: 1px solid rgba(234,243,248,0.5); color: rgba(234,243,248,0.7); font-family: 'JetBrains Mono', monospace; font-size: 12px; display: grid; place-items: center">D</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- scanline overlay -->
+        <sc-if value="{{ showScanlines }}" hint-placeholder-val="{{ true }}">
+          <div style="position: absolute; inset: 0; background: repeating-linear-gradient(0deg, rgba(0,0,0,0.35) 0px, rgba(0,0,0,0.35) 2px, transparent 2px, transparent 5px); pointer-events: none; z-index: 4"></div>
+        </sc-if>
+
+        <!-- bottom marquee strip -->
+        <div style="position: absolute; left: 0; right: 0; bottom: 0; border-top: 1px solid rgba(77,195,255,0.4); background: #000000; padding: 8px 0; overflow: hidden; white-space: nowrap; font-family: 'Bebas Neue', sans-serif; font-size: 20px; letter-spacing: 0.15em; color: #4DC3FF; z-index: 5">
+          &nbsp;PLAY ✦ BUILD ✦ SHIP ✦ REPEAT ✦ PLAY ✦ BUILD ✦ SHIP ✦ REPEAT ✦ PLAY ✦ BUILD ✦ SHIP ✦ REPEAT ✦ PLAY ✦ BUILD ✦ SHIP ✦ REPEAT ✦
+        </div>
+      </div>
+    </div>
+
+    <!-- PALETTE + TYPE STACK -->
+    <div style="display: flex; flex-direction: column; gap: 24px">
+      <!-- palette -->
+      <div data-screen-label="Palette" style="border: 1px solid rgba(77,195,255,0.3); background: #050809">
+        <div style="font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.25em; color: #4DC3FF; padding: 12px 16px; border-bottom: 1px solid rgba(77,195,255,0.2)">02 — PALETTE</div>
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px; padding: 16px">
+          <div style="height: 92px; background: #000000; border: 1px solid rgba(234,243,248,0.25); display: flex; align-items: flex-end; padding: 10px; box-sizing: border-box; font-family: 'JetBrains Mono', monospace; font-size: 11px; color: rgba(234,243,248,0.7)">#000000<br>BASE</div>
+          <div style="height: 92px; background: #4DC3FF; display: flex; align-items: flex-end; padding: 10px; box-sizing: border-box; font-family: 'JetBrains Mono', monospace; font-size: 11px; color: #001018">#4DC3FF<br>SIGNAL</div>
+          <div style="height: 92px; background: #EAF3F8; display: flex; align-items: flex-end; padding: 10px; box-sizing: border-box; font-family: 'JetBrains Mono', monospace; font-size: 11px; color: #0A1216">#EAF3F8<br>INK</div>
+          <div style="height: 92px; background: #0C1418; display: flex; align-items: flex-end; padding: 10px; box-sizing: border-box; font-family: 'JetBrains Mono', monospace; font-size: 11px; color: rgba(234,243,248,0.7)">#0C1418<br>PANEL</div>
+        </div>
+        <div style="padding: 0 16px 16px 16px; font-family: 'JetBrains Mono', monospace; font-size: 11px; line-height: 1.8; color: rgba(234,243,248,0.55)">RULE: 90% black, 8% ink, 2% signal blue. Blue = interactive + glow only.</div>
+      </div>
+
+      <!-- typography -->
+      <div data-screen-label="Typography" style="border: 1px solid rgba(77,195,255,0.3); background: #050809; flex: 1">
+        <div style="font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.25em; color: #4DC3FF; padding: 12px 16px; border-bottom: 1px solid rgba(77,195,255,0.2)">03 — TYPE</div>
+        <div style="padding: 18px 16px; display: flex; flex-direction: column; gap: 16px">
+          <div>
+            <div style="font-family: 'Bebas Neue', sans-serif; font-size: 84px; line-height: 0.9; color: #EAF3F8">LEVEL 01</div>
+            <div style="font-family: 'JetBrains Mono', monospace; font-size: 11px; color: rgba(234,243,248,0.5); margin-top: 6px">BEBAS NEUE — display, all caps, tall &amp; tight</div>
+          </div>
+          <div>
+            <div style="font-family: 'Bebas Neue', sans-serif; font-size: 40px; line-height: 1; color: transparent; -webkit-text-stroke: 1.5px #4DC3FF">OUTLINE VARIANT</div>
+            <div style="font-family: 'JetBrains Mono', monospace; font-size: 11px; color: rgba(234,243,248,0.5); margin-top: 6px">stroke-only for secondary lines</div>
+          </div>
+          <div>
+            <div style="font-family: 'JetBrains Mono', monospace; font-size: 14px; color: #4DC3FF">&gt; JETBRAINS MONO — hud labels, meta, code_</div>
+          </div>
+          <div>
+            <div style="font-size: 15px; line-height: 1.6; color: rgba(234,243,248,0.8)">Space Grotesk carries body copy — short, plain sentences under loud headlines.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ ROW 2: TEXTURES ============ -->
+  <div data-screen-label="Textures" style="border: 1px solid rgba(77,195,255,0.3); background: #050809; margin-bottom: 24px">
+    <div style="font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.25em; color: #4DC3FF; padding: 12px 16px; border-bottom: 1px solid rgba(77,195,255,0.2)">04 — TEXTURE &amp; LIGHT</div>
+    <div style="display: grid; grid-template-columns: repeat(5, 1fr); gap: 16px; padding: 16px">
+      <!-- scanlines -->
+      <div style="height: 190px; background: repeating-linear-gradient(0deg, #071014 0px, #071014 2px, #02070A 2px, #02070A 5px); border: 1px solid rgba(77,195,255,0.25); position: relative">
+        <div style="position: absolute; bottom: 8px; left: 10px; font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.2em; color: #4DC3FF">CRT SCANLINES</div>
+      </div>
+      <!-- glow edge -->
+      <div style="height: 190px; background: #02070A; border: 1px solid #4DC3FF; box-shadow: 0 0 24px rgba(77,195,255,0.6), inset 0 0 24px rgba(77,195,255,0.25); position: relative">
+        <div style="position: absolute; bottom: 8px; left: 10px; font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.2em; color: #4DC3FF">NEON GLOW EDGE</div>
+      </div>
+      <!-- hud corners -->
+      <div style="height: 190px; background: #02070A; border: 1px solid rgba(77,195,255,0.2); position: relative; box-sizing: border-box">
+        <div style="position: absolute; top: 10px; left: 10px; width: 22px; height: 22px; border-top: 2px solid #4DC3FF; border-left: 2px solid #4DC3FF"></div>
+        <div style="position: absolute; top: 10px; right: 10px; width: 22px; height: 22px; border-top: 2px solid #4DC3FF; border-right: 2px solid #4DC3FF"></div>
+        <div style="position: absolute; bottom: 34px; left: 10px; width: 22px; height: 22px; border-bottom: 2px solid #4DC3FF; border-left: 2px solid #4DC3FF"></div>
+        <div style="position: absolute; bottom: 34px; right: 10px; width: 22px; height: 22px; border-bottom: 2px solid #4DC3FF; border-right: 2px solid #4DC3FF"></div>
+        <div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); font-family: 'JetBrains Mono', monospace; font-size: 11px; color: rgba(234,243,248,0.6)">TARGET_LOCK</div>
+        <div style="position: absolute; bottom: 8px; left: 10px; font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.2em; color: #4DC3FF">HUD BRACKETS</div>
+      </div>
+      <!-- dither -->
+      <div style="height: 190px; background-color: #02070A; background-image: radial-gradient(rgba(77,195,255,0.5) 1px, transparent 1px); background-size: 7px 7px; border: 1px solid rgba(77,195,255,0.25); position: relative">
+        <div style="position: absolute; inset: 0; background: linear-gradient(180deg, #02070A 15%, transparent 100%)"></div>
+        <div style="position: absolute; bottom: 8px; left: 10px; font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.2em; color: #4DC3FF">PIXEL DITHER FADE</div>
+      </div>
+      <!-- terminal -->
+      <div style="height: 190px; background: #02070A; border: 1px solid rgba(77,195,255,0.25); position: relative; padding: 12px; box-sizing: border-box; font-family: 'JetBrains Mono', monospace; font-size: 11px; line-height: 1.9; color: rgba(234,243,248,0.65)">
+        <div style="color: #4DC3FF">$ run portfolio --mode=arcade</div>
+        <div>loading assets ▓▓▓▓▓▓░░ 78%</div>
+        <div>audio: ON &nbsp;crt: ON</div>
+        <div style="color: #4DC3FF">ready. press any key_</div>
+        <div style="position: absolute; bottom: 8px; left: 10px; color: #4DC3FF; letter-spacing: 0.2em; font-size: 10px">TERMINAL CHROME</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ ROW 3: MOTIFS + UI + IMAGE SLOTS ============ -->
+  <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 24px">
+
+    <!-- UI components -->
+    <div data-screen-label="UI components" style="border: 1px solid rgba(77,195,255,0.3); background: #050809">
+      <div style="font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.25em; color: #4DC3FF; padding: 12px 16px; border-bottom: 1px solid rgba(77,195,255,0.2)">05 — UI PIECES</div>
+      <div style="padding: 18px 16px; display: flex; flex-direction: column; gap: 16px">
+        <div style="display: flex; gap: 12px; align-items: center">
+          <div style="font-family: 'Bebas Neue', sans-serif; font-size: 20px; letter-spacing: 0.12em; background: #4DC3FF; color: #001018; padding: 10px 22px">PRESS START</div>
+          <div style="font-family: 'Bebas Neue', sans-serif; font-size: 20px; letter-spacing: 0.12em; border: 1px solid #4DC3FF; color: #4DC3FF; padding: 10px 22px">VIEW WORK ↗</div>
+        </div>
+        <div style="display: flex; gap: 8px; flex-wrap: wrap; font-family: 'JetBrains Mono', monospace; font-size: 11px">
+          <span style="border: 1px solid rgba(234,243,248,0.35); color: rgba(234,243,248,0.75); padding: 5px 12px">[ UNITY ]</span>
+          <span style="border: 1px solid rgba(234,243,248,0.35); color: rgba(234,243,248,0.75); padding: 5px 12px">[ C# ]</span>
+          <span style="border: 1px solid rgba(234,243,248,0.35); color: rgba(234,243,248,0.75); padding: 5px 12px">[ SHADERS ]</span>
+          <span style="border: 1px solid #4DC3FF; color: #4DC3FF; padding: 5px 12px">[ WEBGL ]</span>
+        </div>
+        <div>
+          <div style="font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.2em; color: rgba(234,243,248,0.5); margin-bottom: 6px">XP BAR / SCROLL PROGRESS</div>
+          <div style="height: 10px; border: 1px solid rgba(77,195,255,0.5); padding: 2px; box-sizing: content-box">
+            <div style="height: 100%; width: 62%; background: repeating-linear-gradient(90deg, #4DC3FF 0px, #4DC3FF 8px, transparent 8px, transparent 11px)"></div>
+          </div>
+        </div>
+        <div style="display: flex; justify-content: space-between; align-items: center; border: 1px solid rgba(77,195,255,0.25); padding: 12px 14px; font-family: 'JetBrains Mono', monospace; font-size: 11px">
+          <span style="color: rgba(234,243,248,0.75)">PROJECT_01 — SPACE ROGUE</span>
+          <span style="color: #4DC3FF">▶ PLAY</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- image slots -->
+    <div data-screen-label="Image drops" style="border: 1px solid rgba(77,195,255,0.3); background: #050809">
+      <div style="font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.25em; color: #4DC3FF; padding: 12px 16px; border-bottom: 1px solid rgba(77,195,255,0.2)">06 — IMAGE DROPS</div>
+      <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px; padding: 16px">
+        <div style="height: 150px"><image-slot id="crt-closeup" shape="rect" placeholder="CRT screen close-up"></image-slot></div>
+        <div style="height: 150px"><image-slot id="joystick-macro" shape="rect" placeholder="Joystick / buttons macro"></image-slot></div>
+        <div style="height: 150px"><image-slot id="game-shot" shape="rect" placeholder="Your game screenshot"></image-slot></div>
+        <div style="height: 150px"><image-slot id="workspace" shape="rect" placeholder="Desk / dev setup"></image-slot></div>
+      </div>
+      <div style="padding: 0 16px 16px 16px; font-family: 'JetBrains Mono', monospace; font-size: 11px; line-height: 1.8; color: rgba(234,243,248,0.55)">Treatment: dark, high-contrast photos; blue rim-light; crushed blacks so they sink into #000.</div>
+    </div>
+
+    <!-- motifs -->
+    <div data-screen-label="Motifs" style="border: 1px solid rgba(77,195,255,0.3); background: #050809">
+      <div style="font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.25em; color: #4DC3FF; padding: 12px 16px; border-bottom: 1px solid rgba(77,195,255,0.2)">07 — MOTIF LIBRARY</div>
+      <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 12px; padding: 16px">
+        <div style="height: 96px; border: 1px solid rgba(77,195,255,0.25); display: grid; place-items: center; font-family: 'JetBrains Mono', monospace; font-size: 24px; color: #4DC3FF">&lt;/&gt;</div>
+        <div style="height: 96px; border: 1px solid rgba(77,195,255,0.25); display: grid; place-items: center; font-family: 'JetBrains Mono', monospace; font-size: 22px; color: #4DC3FF">{ }</div>
+        <div style="height: 96px; border: 1px solid rgba(77,195,255,0.25); display: grid; place-items: center; font-family: 'JetBrains Mono', monospace; font-size: 22px; color: #EAF3F8">▲ ● ■</div>
+        <div style="height: 96px; border: 1px solid rgba(77,195,255,0.25); display: grid; place-items: center; font-family: 'JetBrains Mono', monospace; font-size: 20px; color: #4DC3FF">↑↑↓↓←→</div>
+        <div style="height: 96px; border: 1px solid rgba(77,195,255,0.25); display: grid; place-items: center; font-family: 'Bebas Neue', sans-serif; font-size: 26px; letter-spacing: 0.1em; color: #EAF3F8">1UP</div>
+        <div style="height: 96px; border: 1px solid rgba(77,195,255,0.25); display: grid; place-items: center; font-family: 'JetBrains Mono', monospace; font-size: 20px; color: #4DC3FF">[ ▶ ]</div>
+      </div>
+      <div style="padding: 0 16px 16px 16px; font-family: 'JetBrains Mono', monospace; font-size: 11px; line-height: 1.8; color: rgba(234,243,248,0.55)">Motifs stay typographic — glyphs from the mono font, never illustrated icons. Konami code as easter-egg nav.</div>
+    </div>
+  </div>
+
+  <div style="width: 0px; height: 0px; overflow: hidden; position: absolute; left: 0; top: 0">
+    <x-import component-from-global-scope="image-slot" from="./image-slot.js" hint-size="0,0"></x-import>
+  </div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;showScanlines&quot;: {&quot;editor&quot;: &quot;boolean&quot;, &quot;default&quot;: true, &quot;tsType&quot;: &quot;boolean&quot;, &quot;section&quot;: &quot;Hero overlays&quot;}, &quot;showGrid&quot;: {&quot;editor&quot;: &quot;boolean&quot;, &quot;default&quot;: true, &quot;tsType&quot;: &quot;boolean&quot;, &quot;section&quot;: &quot;Hero overlays&quot;}}">
+class Component extends DCLogic {
+  renderVals() {
+    return {
+      showScanlines: this.props.showScanlines ?? true,
+      showGrid: this.props.showGrid ?? true
+    };
+  }
+}
+</script>
+</body>
+</html>

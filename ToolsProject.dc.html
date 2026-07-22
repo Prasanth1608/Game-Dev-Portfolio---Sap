@@ -1,0 +1,429 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+
+<helmet>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=JetBrains+Mono:wght@400;500;700&family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet">
+  <style>
+    html, body { margin: 0; padding: 0; background: #000000; }
+    :root {
+      --cur-default: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='26' height='26' viewBox='0 0 26 26'%3E%3Cdefs%3E%3ClinearGradient id='g1' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop offset='0%25' stop-color='%234DC3FF'/%3E%3Cstop offset='50%25' stop-color='%23FF6F91'/%3E%3Cstop offset='100%25' stop-color='%23FFC857'/%3E%3C/linearGradient%3E%3C/defs%3E%3Cpath d='M2 1 L2 20 L7 15.5 L10.5 22.5 L13.5 21 L10 14 L16.5 14 Z' fill='url(%23g1)' stroke='%23000000' stroke-width='1.1' stroke-linejoin='round'/%3E%3C/svg%3E") 2 1, auto;
+      --cur-hover: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='26' height='26' viewBox='0 0 26 26'%3E%3Cdefs%3E%3ClinearGradient id='g2' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop offset='0%25' stop-color='%23FF6F91'/%3E%3Cstop offset='50%25' stop-color='%23B98BFF'/%3E%3Cstop offset='100%25' stop-color='%234DC3FF'/%3E%3C/linearGradient%3E%3C/defs%3E%3Cpath d='M9 4.5c0-.9.7-1.6 1.6-1.6s1.6.7 1.6 1.6v5.3l1-.2c0-1 .7-1.8 1.7-1.8s1.7.8 1.7 1.8v.3l.7-.1c.9 0 1.7.8 1.7 1.7v3.4c0 3.3-2.5 6-5.8 6h-1.8c-2 0-3.3-.7-4.4-2.3l-2.8-4c-.5-.7-.3-1.7.4-2.2.7-.4 1.6-.3 2.1.3l1.1 1.3V4.5Z' fill='url(%23g2)' stroke='%23000000' stroke-width='1' stroke-linejoin='round'/%3E%3C/svg%3E") 11 4, pointer;
+    }
+    body { cursor: var(--cur-default); }
+    a, button { cursor: var(--cur-hover); }
+    a { color: #FFC857; text-decoration: none; }
+    a:hover { filter: brightness(1.15); }
+    @keyframes circuitDrift {
+      from { background-position: 0 0, 0 0; }
+      to { background-position: 240px 240px, -240px 240px; }
+    }
+    .circuit-bg {
+      background-image:
+        linear-gradient(rgba(234,243,248,0.05) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(234,243,248,0.05) 1px, transparent 1px);
+      background-size: 60px 60px, 60px 60px;
+      animation: circuitDrift 30s linear infinite;
+    }
+    @media (max-width: 900px) {
+      .rt-grid3, .rt-grid4 { grid-template-columns: 1fr 1fr !important; }
+      .rt-grid2 { grid-template-columns: 1fr !important; }
+      .rt-media-grid img, .rt-media-grid image-slot, .rt-media-grid video { height: 220px !important; }
+    }
+    @media (max-width: 600px) {
+      .rt-grid3, .rt-grid4, .rt-grid2 { grid-template-columns: 1fr !important; }
+      .rt-nav-links { gap: 10px !important; font-size: 10px !important; flex-wrap: wrap !important; justify-content: flex-end !important; }
+    }
+  </style>
+  <template id="__bundler_thumbnail">
+    <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"><rect width="100" height="100" fill="#000000"/><text x="50" y="58" font-family="sans-serif" font-weight="bold" font-size="14" fill="#6EE7C8" text-anchor="middle">TOOL</text></svg>
+  </template>
+</helmet>
+
+<div data-screen-label="Tools Project detail" style="position: relative; min-height: 100vh; background: #000000; font-family: 'Space Grotesk', sans-serif; color: #EAF3F8; padding-bottom: 60px; box-sizing: border-box">
+
+  <!-- ===== backdrop glow ===== -->
+  <div style="position: fixed; inset: 0; pointer-events: none; z-index: 0; background: {{ backdropBg }}"></div>
+  <div style="position: fixed; inset: 0; pointer-events: none; z-index: 0; opacity: 0.035; mix-blend-mode: overlay; background-image: url(&quot;data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E&quot;)"></div>
+  <div class="circuit-bg" style="position: fixed; inset: 0; pointer-events: none; z-index: 0"></div>
+
+  <!-- ===== nav (sticky, full navigation) ===== -->
+  <div style="position: sticky; top: 0; display: flex; justify-content: space-between; align-items: center; padding: 18px 40px; z-index: 20; background: #000000; -webkit-backdrop-filter: blur(10px); border-bottom: 1px solid rgba(255,255,255,0.06)">
+    <a href="Home.dc.html#home" style="font-family: 'Bebas Neue', sans-serif; font-size: 24px; letter-spacing: 0.08em; color: #EAF3F8">AP<span style="color: #FFC857">®</span></a>
+    <div class="rt-nav-links" style="display: flex; align-items: center; gap: 24px; font-family: 'JetBrains Mono', monospace; font-size: 12px; letter-spacing: 0.2em">
+      <a href="Home.dc.html#home" style="color: rgba(234,243,248,0.75)" style-hover="color: #FFDE59">HOME</a>
+      <a href="Home.dc.html#expertise" style="color: rgba(234,243,248,0.75)" style-hover="color: #FFDE59">EXPERTISE</a>
+      <a href="Home.dc.html#games" style="color: rgba(234,243,248,0.75)" style-hover="color: #FFDE59">GAMES</a>
+      <a href="Home.dc.html#professional" style="color: rgba(234,243,248,0.75)" style-hover="color: #FFDE59">PROFESSIONAL</a>
+      <a href="Home.dc.html#tools" style="color: #FFC857">TOOLS</a>
+      <a href="Home.dc.html#journey" style="color: rgba(234,243,248,0.75)" style-hover="color: #FFDE59">JOURNEY</a>
+    </div>
+  </div>
+
+  <!-- ===== not found ===== -->
+  <sc-if value="{{ notFound }}" hint-placeholder-val="{{ false }}">
+    <div style="position: relative; z-index: 2; padding: 100px 40px; text-align: center; font-family: 'JetBrains Mono', monospace; color: rgba(234,243,248,0.6)">
+      Tool not found. <a href="Home.dc.html#tools" style="color: #4DC3FF">◂ back to tools</a>
+    </div>
+  </sc-if>
+
+  <sc-if value="{{ found }}" hint-placeholder-val="{{ true }}">
+    <div style="position: relative; z-index: 2; padding: 30px 40px 0 40px">
+      <a href="Home.dc.html#tools" style="display: inline-flex; align-items: center; gap: 8px; font-family: 'JetBrains Mono', monospace; font-size: 12px; letter-spacing: 0.15em; color: {{ project.accent }}">◂ ALL TOOLS</a>
+    </div>
+
+    <!-- big preview, wide banner -->
+    <div style="width: 100vw; position: relative; left: 50%; margin-left: -50vw; height: min(52vh, 40vw); border-bottom: 1px solid {{ project.borderMid }}; background: {{ project.bannerBg }}; display: flex; align-items: center; justify-content: center; box-sizing: border-box">
+      <sc-if value="{{ project.noBanner }}" hint-placeholder-val="{{ false }}">
+        <div style="font-family: 'JetBrains Mono', monospace; font-size: 12px; letter-spacing: 0.2em; color: rgba(234,243,248,0.35)">TOOL_STILL / KEY ART</div>
+      </sc-if>
+      <div style="position: absolute; inset: 0; background: linear-gradient(0deg, rgba(0,0,0,0.85) 0%, transparent 45%); pointer-events: none"></div>
+      <div style="position: absolute; top: 18px; left: 62px; font-family: 'Bebas Neue', sans-serif; font-size: 16px; letter-spacing: 0.1em; color: {{ project.accent }}">{{ project.index }}</div>
+      <div style="position: absolute; left: 70px; bottom: 30px; right: 70px; display: flex; justify-content: space-between; align-items: flex-end; gap: 20px">
+        <div>
+          <div style="font-family: 'JetBrains Mono', monospace; font-size: 12px; letter-spacing: 0.4em; color: {{ project.accent }}; margin-bottom: 10px">{{ project.eyebrow }}</div>
+          <div style="font-family: 'Bebas Neue', sans-serif; font-size: 60px; letter-spacing: 0.02em; color: #EAF3F8; line-height: 1; text-shadow: 0 2px 20px rgba(0,0,0,0.8)">{{ project.title }}</div>
+          <div style="font-family: 'JetBrains Mono', monospace; font-size: 13px; letter-spacing: 0.12em; color: {{ project.accent }}; margin-top: 10px">{{ project.tags }}</div>
+        </div>
+      </div>
+    </div>
+
+    <div style="position: relative; z-index: 2; max-width: 1080px; margin: 0 auto; padding: 0 40px; box-sizing: border-box">
+      <!-- ===== OVERVIEW ===== -->
+      <div style="margin-top: 64px">
+        <div style="font-family: 'JetBrains Mono', monospace; font-size: 12px; letter-spacing: 0.35em; color: rgba(234,243,248,0.45); text-align: center">01. OVERVIEW</div>
+        <div style="font-family: 'Bebas Neue', sans-serif; font-size: 36px; letter-spacing: 0.03em; text-align: center; margin-top: 8px">WHAT IS WINDFIELD</div>
+        <div style="font-size: 16px; line-height: 1.8; color: rgba(234,243,248,0.8); max-width: 820px; margin: 22px auto 0 auto; text-align: center">{{ project.overviewIntro }}</div>
+
+        <div class="rt-grid3" style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; margin-top: 36px">
+          <sc-for list="{{ project.overviewTriad }}" as="card" hint-placeholder-count="3">
+            <div style="border: 1px solid {{ card.borderColor }}; background: {{ card.bg }}; border-radius: 3px; padding: 24px 22px">
+              <div style="font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.25em; color: {{ card.color }}">{{ card.label }}</div>
+              <div style="font-family: 'Bebas Neue', sans-serif; font-size: 22px; letter-spacing: 0.02em; margin-top: 8px; color: #EAF3F8">{{ card.title }}</div>
+              <div style="font-size: 14px; line-height: 1.6; color: rgba(255,255,255,0.85); margin-top: 10px">{{ card.body }}</div>
+            </div>
+          </sc-for>
+        </div>
+
+      </div>
+
+      <!-- hero gif slot -->
+      <div style="margin-top: 48px">
+        <img src="assets/plugins/windfield/hero.gif" alt="WindField hero" onError="this.style.display='none'" loading="lazy" style="width: 100%; height: 420px; object-fit: cover; border-radius: 4px; border: 1px solid rgba(255,255,255,0.14)">
+      </div>
+
+      <!-- ===== WHY IT'S DIFFERENT ===== -->
+      <div style="margin-top: 84px">
+        <div style="font-family: 'JetBrains Mono', monospace; font-size: 12px; letter-spacing: 0.35em; color: rgba(234,243,248,0.45); text-align: center">02. WHAT MAKES IT UNIQUE?</div>
+        <div style="font-family: 'Bebas Neue', sans-serif; font-size: 36px; letter-spacing: 0.03em; text-align: center; margin-top: 8px">BUILT TO STAND ON ITS OWN</div>
+
+        <div class="rt-grid3" style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; margin-top: 36px">
+          <sc-for list="{{ project.comparison }}" as="c" hint-placeholder-count="3">
+            <div style="border: 1px solid {{ c.borderColor }}; background: {{ c.bg }}; border-radius: 3px; padding: 26px 22px; position: relative">
+              <sc-if value="{{ c.highlight }}" hint-placeholder-val="{{ false }}">
+                <div style="position: absolute; top: -11px; left: 20px; font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.2em; background: {{ c.color }}; color: #001018; padding: 4px 10px; border-radius: 2px">THIS PLUGIN</div>
+              </sc-if>
+              <div style="font-family: 'Bebas Neue', sans-serif; font-size: 21px; letter-spacing: 0.02em; color: {{ c.color }}; margin-top: {{ c.titleMarginTop }}">{{ c.title }}</div>
+              <div style="font-size: 14px; line-height: 1.65; color: rgba(255,255,255,0.88); margin-top: 12px">{{ c.body }}</div>
+            </div>
+          </sc-for>
+        </div>
+      </div>
+
+      <!-- ===== HEADLINE FEATURES ===== -->
+      <!-- ===== FEATURE DEEP DIVES ===== -->
+      <div style="margin-top: 84px">
+        <div style="font-family: 'JetBrains Mono', monospace; font-size: 12px; letter-spacing: 0.35em; color: rgba(234,243,248,0.45); text-align: center">03. FEATURE DEEP DIVE</div>
+
+        <sc-for list="{{ project.deepDives }}" as="d" hint-placeholder-count="3">
+          <div style="margin-top: 44px; border-top: 1px solid rgba(255,255,255,0.1); padding-top: 34px">
+            <div style="font-family: 'Bebas Neue', sans-serif; font-size: 30px; letter-spacing: 0.02em; color: {{ d.color }}">{{ d.title }}</div>
+            <div style="font-size: 15px; line-height: 1.75; color: rgba(255,255,255,0.9); margin-top: 12px; max-width: 760px">{{ d.intro }}</div>
+            <div style="display: flex; flex-direction: column; gap: 10px; margin-top: 18px">
+              <sc-for list="{{ d.bullets }}" as="b" hint-placeholder-count="3">
+                <div style="font-family: 'JetBrains Mono', monospace; font-size: 13.5px; line-height: 1.6; color: rgba(255,255,255,0.9); display: flex; gap: 10px">
+                  <span style="color: {{ d.color }}">▸</span>{{ b }}
+                </div>
+              </sc-for>
+            </div>
+            <img src="{{ d.mediaSrc }}" alt="{{ d.mediaPlaceholder }}" onError="this.style.display='none'" loading="lazy" style="width: 100%; height: 320px; object-fit: cover; border-radius: 4px; margin-top: 22px; border: 1px solid rgba(255,255,255,0.14)">
+          </div>
+        </sc-for>
+      </div>
+
+      <!-- ===== CUSTOMIZATION ===== -->
+      <div style="margin-top: 84px">
+        <div style="font-family: 'JetBrains Mono', monospace; font-size: 12px; letter-spacing: 0.35em; color: rgba(234,243,248,0.45); text-align: center">04. CUSTOMIZATION</div>
+        <div style="font-family: 'Bebas Neue', sans-serif; font-size: 36px; letter-spacing: 0.03em; text-align: center; margin-top: 8px">DEEP CONTROL, ONE PROPERTY AT A TIME</div>
+
+        <div class="rt-grid2" style="display: grid; grid-template-columns: 1fr 1fr; gap: 0; margin-top: 40px; border-top: 1px solid rgba(255,255,255,0.12)">
+          <sc-for list="{{ project.customization }}" as="c" hint-placeholder-count="6">
+            <div style="display: flex; align-items: baseline; gap: 16px; padding: 22px 20px; border-bottom: 1px solid rgba(255,255,255,0.12); border-right: {{ c.rightBorder }}; background: {{ c.bg }}">
+              <div style="font-family: 'Bebas Neue', sans-serif; font-size: 26px; color: {{ c.color }}; flex: none; width: 30px">{{ c.num }}</div>
+              <div>
+                <div style="font-family: 'Bebas Neue', sans-serif; font-size: 22px; letter-spacing: 0.02em; color: #EAF3F8">{{ c.title }}</div>
+                <div style="font-size: 15px; line-height: 1.5; color: rgba(255,255,255,0.85); margin-top: 6px">{{ c.body }}</div>
+              </div>
+            </div>
+          </sc-for>
+        </div>
+
+        <video src="assets/plugins/windfield/customization.mp4" autoplay loop muted playsinline disablepictureinpicture disableremoteplayback controlslist="nodownload nofullscreen noremoteplayback" style="width: 100%; height: 340px; object-fit: cover; border-radius: 4px; margin-top: 28px; border: 1px solid rgba(255,255,255,0.14); pointer-events: none"></video>
+      </div>
+
+      <!-- ===== PERFORMANCE ===== -->
+      <div style="margin-top: 84px">
+        <div style="font-family: 'JetBrains Mono', monospace; font-size: 12px; letter-spacing: 0.35em; color: rgba(234,243,248,0.45); text-align: center">05. PERFORMANCE</div>
+        <div style="font-family: 'Bebas Neue', sans-serif; font-size: 36px; letter-spacing: 0.03em; text-align: center; margin-top: 8px">REALISTIC WIND, WITHOUT THE COST</div>
+
+        <div class="rt-grid4" style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; margin-top: 36px">
+          <sc-for list="{{ project.stats }}" as="s" hint-placeholder-count="4">
+            <div style="border: 1px solid {{ s.borderColor }}; background: {{ s.bg }}; border-radius: 3px; padding: 22px 16px; text-align: center">
+              <div style="font-family: 'Bebas Neue', sans-serif; font-size: 34px; color: {{ s.color }}">{{ s.value }}</div>
+              <div style="font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.15em; color: #EAF3F8; margin-top: 6px">{{ s.label }}</div>
+              <div style="font-size: 12.5px; line-height: 1.5; color: rgba(255,255,255,0.85); margin-top: 8px">{{ s.body }}</div>
+            </div>
+          </sc-for>
+        </div>
+
+      </div>
+
+      <!-- ===== HOW IT WORKS ===== -->
+      <div style="margin-top: 84px">
+        <div style="font-family: 'JetBrains Mono', monospace; font-size: 12px; letter-spacing: 0.35em; color: rgba(234,243,248,0.45); text-align: center">06. HOW IT WORKS</div>
+        <div style="font-family: 'Bebas Neue', sans-serif; font-size: 36px; letter-spacing: 0.03em; text-align: center; margin-top: 8px">TURNING MATH INTO WIND</div>
+
+        <div style="display: flex; flex-direction: column; gap: 22px; margin-top: 36px">
+          <sc-for list="{{ project.steps }}" as="st" hint-placeholder-count="5">
+            <div style="border: 1px solid {{ st.borderColor }}; background: {{ st.bg }}; border-radius: 3px; padding: 22px">
+              <div style="display: flex; gap: 18px; align-items: flex-start">
+                <div style="flex: none; width: 34px; height: 34px; border-radius: 50%; background: {{ st.color }}; color: #001018; display: flex; align-items: center; justify-content: center; font-family: 'Bebas Neue', sans-serif; font-size: 16px">{{ st.num }}</div>
+                <div>
+                  <div style="font-family: 'Bebas Neue', sans-serif; font-size: 19px; letter-spacing: 0.02em; color: {{ st.color }}">{{ st.title }}</div>
+                  <div style="font-size: 14px; line-height: 1.6; color: rgba(255,255,255,0.88); margin-top: 6px">{{ st.body }}</div>
+                </div>
+              </div>
+              <div class="rt-media-grid" style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; margin-top: 18px">
+                <sc-for list="{{ st.media }}" as="m" hint-placeholder-count="4">
+                  <img src="{{ m.src }}" alt="{{ m.placeholder }}" onError="this.style.display='none'" loading="lazy" style="width: 100%; height: {{ m.height }}px; object-fit: cover; border-radius: 4px; grid-column: span {{ m.span }}; border: 1px solid rgba(255,255,255,0.14)">
+                </sc-for>
+              </div>
+            </div>
+          </sc-for>
+        </div>
+      </div>
+
+    </div>
+  </sc-if>
+
+  <!-- ===== footer strip ===== -->
+  <div style="position: relative; z-index: 2; margin-top: 40px; border-top: 1px solid rgba(255,255,255,0.15); padding: 20px 40px; display: flex; justify-content: space-between; align-items: center; font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.15em; color: rgba(234,243,248,0.5)">
+    <span>© ANANTHA PRASANTH</span>
+    <a href="#" onClick="{{ scrollToTop }}" style="color: #6EE7C8" style-hover="color: #FFDE59">◂ BACK TO TOP</a>
+  </div>
+</div>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+
+const PALETTE = ['#6EE7C8', '#FFC857', '#5EC8E8', '#B98BFF', '#4DC3FF', '#FF6EC7'];
+
+function hexToRgba(hex, alpha) {
+  const h = hex.replace('#', '');
+  const r = parseInt(h.substring(0, 2), 16);
+  const g = parseInt(h.substring(2, 4), 16);
+  const b = parseInt(h.substring(4, 6), 16);
+  return `rgba(${r},${g},${b},${alpha})`;
+}
+
+function mixWithDark(hex, ratio, dark) {
+  const h = hex.replace('#', '');
+  const r = parseInt(h.substring(0, 2), 16);
+  const g = parseInt(h.substring(2, 4), 16);
+  const b = parseInt(h.substring(4, 6), 16);
+  const [dr, dg, db] = dark;
+  const mr = Math.round(r * ratio + dr * (1 - ratio));
+  const mg = Math.round(g * ratio + dg * (1 - ratio));
+  const mb = Math.round(b * ratio + db * (1 - ratio));
+  return `rgb(${mr},${mg},${mb})`;
+}
+
+const STEP1_MEDIA = [
+  'assets/plugins/windfield/grid-build-code.png',
+  'assets/plugins/windfield/grid-build-viewport.gif',
+  'assets/plugins/windfield/grid-setup-code.png',
+  'assets/plugins/windfield/grid-build-result.png'
+];
+const STEP2_MEDIA = [
+  'assets/plugins/windfield/cache-code-1.png',
+  'assets/plugins/windfield/cache-struct.png',
+  'assets/plugins/windfield/cache-viewport.png',
+  'assets/plugins/windfield/cache-viewport-2.png'
+];
+const STEP3_MEDIA = [
+  'assets/plugins/windfield/march-code-1.png',
+  'assets/plugins/windfield/march-code-2.png',
+  'assets/plugins/windfield/grid-march.gif',
+  'assets/plugins/windfield/march-forward.gif'
+];
+const STEP4_MEDIA = [
+  'assets/plugins/windfield/compare-code-1.png',
+  'assets/plugins/windfield/compare-code-2.png',
+  'assets/plugins/windfield/compare-detection.gif'
+];
+const STEP5_MEDIA = [
+  'assets/plugins/windfield/react-retire-code-1.png',
+  'assets/plugins/windfield/react-retire-code-2.png',
+  'assets/plugins/windfield/react-retire-force.gif'
+];
+
+function card(color, bodyMore) {
+  return { color, borderColor: hexToRgba(color, 0.4), bg: mixWithDark(color, 0.22, [8, 8, 9]), ...bodyMore };
+}
+
+const RAW_TOOLS = [
+  {
+    title: 'WIND FIELD',
+    eyebrow: 'WINDFIELD',
+    tags: 'UNREAL ENGINE 5 · C++ · PLUGIN',
+    accent: '#FF7A4D',
+    banner: 'assets/plugins/windfield/hero.gif',
+    tagline: 'A drag-and-drop, physically reactive wind plugin for Unreal Engine 5, built from procedural grid math and cached detection, not a single line trace.',
+    overviewIntro: "WindField is an Unreal Engine 5 plugin that adds real-time, physically reactive wind to a scene in minutes, no Blueprint graphs or C++ required. Wind is generated procedurally and interacts directly with static meshes, breaking on obstacles instead of passing through them.",
+    overviewTriad: [
+      card(PALETTE[0], { label: 'THE PROBLEM', title: 'Realistic wind that respects geometry', body: 'Without the usual performance cost.' }),
+      card(PALETTE[1], { label: 'THE APPROACH', title: 'Procedural grid math, vector-based detection & Perlin noise', body: 'Zero line traces, anywhere.' }),
+      card(PALETTE[2], { label: 'THE RESULT', title: 'Sub-3ms on 200+ simulating objects', body: 'And drag-and-drop simple to place.' })
+    ],
+    builtWith: [
+      'Unreal Engine 5 (C++)', 'Overlap-cached object detection', 'Procedural grid & vector math',
+      'UE Physics API, mass, force, sleep state', 'Perlin noise, turbulence', 'In-editor live preview tooling'
+    ].map((label, i) => ({ label, color: PALETTE[i % PALETTE.length], bg: hexToRgba(PALETTE[i % PALETTE.length], 0.08) })),
+    comparison: [
+      { ...card(PALETTE[4]), title: 'No Wind Out of the Box', body: 'Unreal has no wind system for mesh objects out of the box, only manual, hand-built setups per project.', highlight: false, titleMarginTop: '0' },
+      { ...card(PALETTE[2]), title: 'Obstacle-Aware, By Design', body: 'Wind that actually detects what stands in its path, rather than passing through it.', highlight: false, titleMarginTop: '0' },
+      { ...card(PALETTE[0]), title: 'WindField', body: 'A lightweight, obstacle-aware wind system built for static mesh objects.', highlight: true, titleMarginTop: '14px' }
+    ],
+    deepDives: [
+      {
+        color: PALETTE[1], title: 'Drag & Drop Wind Field',
+        intro: "The wind field's own box volume is the single source of truth for its shape, resize it in the viewport like any trigger volume, and everything else follows automatically.",
+        bullets: [
+          'Field Width, Field Height and Max Airflow Distance define the reach, width and height of the volume',
+          'Presets let you customize behavior at a glance, without digging into individual settings',
+          'A live, in-editor preview shows the grid, cell layout and direction before you ever press Play'
+        ],
+        slotId: 'wf-shot-feature-1', mediaSrc: 'assets/plugins/windfield/feature-1-dragdrop.gif', mediaPlaceholder: 'Drop a screenshot: wind volume resized in-viewport with live grid preview',
+        mediaCaption: 'SUGGESTED: SCREENSHOT: the box volume being resized, with the live grid/direction preview visible'
+      },
+      {
+        color: PALETTE[3], title: 'Realistic Wind Generation',
+        intro: 'Wind is generated through grid-based cells that are capable of interacting with static mesh objects.',
+        bullets: [
+          "Wind isn't generated linearly, it's wave-based, flowing from the start to the end",
+          "It's fully obstacle-aware, dynamically breaking on impact rather than passing through geometry unaffected",
+          'Walls, static meshes and movable objects are all detected in real time'
+        ],
+        slotId: 'wf-shot-feature-2', mediaSrc: 'assets/plugins/windfield/feature-2-generation.gif', mediaPlaceholder: 'Drop a GIF: light vs heavy objects reacting differently to a gust',
+        mediaCaption: 'SUGGESTED: GIF: a light prop and a heavy prop side by side, reacting differently to the same gust'
+      },
+      {
+        color: PALETTE[0], title: 'Realistic Wind Interaction',
+        intro: 'Interactions are based on static meshes\' mass, and parameters such as Lift Force and Wind Intensity.',
+        bullets: [
+          'Mass-aware force application, lighter objects sway further, heavier objects resist, automatically',
+          'Designers can override any object\'s mass in kg for full creative control over how "blowable" it feels',
+          'A realistic gust-based push model, not a linear force, obstacle-aware wind detects walls and breaks on impact'
+        ],
+        slotId: 'wf-shot-feature-3', mediaSrc: 'assets/plugins/windfield/feature-3-interaction.gif', mediaPlaceholder: 'Drop a screenshot: debug view of wind detecting a wall vs a movable prop',
+        mediaCaption: 'SUGGESTED: SCREENSHOT: debug visualization showing detected static geometry vs movable props'
+      }
+    ],
+    customization: [
+      card(PALETTE[0], { num: '01', title: 'Customizable Volume', body: 'Shape and resize the wind field box freely to match any gameplay space.' }),
+      card(PALETTE[1], { num: '02', title: 'Intensity Presets', body: 'Breeze through Storm, one dropdown bundles speed, strength and timing together.' }),
+      card(PALETTE[2], { num: '03', title: 'Lift Force Presets', body: 'Dial lift from subtle to powerful, letting wind pick objects clean off the ground.' }),
+      card(PALETTE[3], { num: '04', title: 'Wind Turbulence', body: 'Preset turbulence patterns shape how wide and wild the wind spreads.' }),
+      card(PALETTE[4], { num: '05', title: 'Precision', body: 'Scale detection accuracy from low to high, the higher the precision, the fewer interactions slip through.' }),
+      card(PALETTE[5], { num: '06', title: 'Exclusion', body: 'Tag any object once to keep it completely untouched by wind inside the volume.' })
+    ].map((c, i) => ({ ...c, rightBorder: i % 2 === 0 ? '1px solid rgba(255,255,255,0.12)' : 'none', bg: mixWithDark(c.color, 0.3, [8, 8, 8]) })),
+    customizationNote: 'Every property above updates live in the editor through a built-in preview, no Play button required to see the result.',
+    stats: [
+      card(PALETTE[0], { value: '< 3 ms', label: 'GAME THREAD COST', body: 'Full grid + caching, no physics activation' }),
+      card(PALETTE[4], { value: '200+', label: 'SIMULATING OBJECTS', body: 'Cached and reacting simultaneously' }),
+      card(PALETTE[1], { value: 'ANY SIZE', label: 'FLEXIBLE GRID', body: 'Can occupy a large space with cheap cost' }),
+      card(PALETTE[2], { value: '0', label: 'SCENE QUERIES / TICK', body: 'Detection is pure cached-data math' })
+    ],
+    performanceExplanation: 'Cost is reframed from Grid Cells × Line Traces (unbounded, physics-query-driven) to Grid Cells × Cached Objects (bounded, pure vector math). Objects are cached once via overlap events, never queried per tick, and detection against them is closest-point-on-box math, not a scene query.',
+    steps: [
+      card(PALETTE[0], { num: '1', title: 'Build the Grid', body: 'A cross-section of cells is laid out across the field volume, spacing set entirely by Wind Pressure.' }),
+      card(PALETTE[1], { num: '2', title: 'Cache Nearby Objects', body: 'Actors overlapping the volume are cached once via overlap events, never queried again per tick.' }),
+      card(PALETTE[3], { num: '3', title: 'Cells March Forward', body: "Each cell's position is spawn point + (direction × distance traveled), vector addition, not a trace." }),
+      card(PALETTE[4], { num: '4', title: "Compare, Don't Query", body: "Every tick, a cell's position is checked against cached objects using closest-point-on-box math, comparing numbers already in memory, never asking the physics engine anything." }),
+      card(PALETTE[5], { num: '5', title: 'React & Retire', body: 'On detection, the cell stops evaluating immediately, and if the object is eligible, a mass-aware force is applied.' })
+    ].map((s, i) => ({
+      ...s,
+      media: ((i === 2 || i === 3 || i === 4) ? [1, 2, 3] : [1, 2, 3, 4]).map((n) => ({
+        slotId: `wf-step${i + 1}-${n}`,
+        placeholder: `Drop image/GIF/code screenshot ${n} for this step`,
+        src: i === 0 ? STEP1_MEDIA[n - 1] : (i === 1 ? STEP2_MEDIA[n - 1] : (i === 2 ? STEP3_MEDIA[n - 1] : (i === 3 ? STEP4_MEDIA[n - 1] : (i === 4 ? STEP5_MEDIA[n - 1] : undefined)))),
+        span: ((i === 2 || i === 3 || i === 4) && n === 3) ? 2 : 1,
+        height: ((i === 2 || i === 3 || i === 4) && n === 3) ? 320 : 220
+      }))
+    })),
+    forceIntro: "Every wind hit resolves through Unreal's native AddForce, the engine's own mass-aware physics integration, not a hand-rolled substitute.",
+    forceBullets: [
+      "Force divides by the object's real mass internally, heavier objects resist automatically, no custom formula needed",
+      'Mass is either auto-computed from the mesh, or manually overridden by the designer for precise, deliberate control',
+      'Objects under roughly 25kg (with mass overridden) respond noticeably; heavier objects increasingly resist, a smooth curve, not a hard cutoff'
+    ],
+    forceFormulaBody: "Applied natively, not simulated. Wind hands Unreal's physics engine a force vector and lets it do what it already does best, integrate it against real mass, real velocity, real collision state. No parallel physics model to keep in sync."
+  }
+];
+
+class Component extends DCLogic {
+  getSlug() {
+    return new URLSearchParams(window.location.search).get('slug') || '';
+  }
+
+  renderVals() {
+    const slug = this.getSlug();
+    const withSlug = RAW_TOOLS.map((p) => ({ ...p, slug: p.title.toLowerCase().replace(/\s+/g, '-') }));
+    const p = withSlug.find((x) => x.slug === slug) || withSlug[0];
+
+    if (!p) {
+      return {
+        notFound: true,
+        found: false,
+        backdropBg: 'radial-gradient(ellipse 1600px 1300px at 50% 50%, rgb(20,20,20) 0%, #000000 100%)'
+      };
+    }
+
+    const index = String(withSlug.indexOf(p) + 1).padStart(2, '0');
+    const project = {
+      ...p,
+      index,
+      bannerBg: p.banner ? `center / cover no-repeat url(${p.banner}), linear-gradient(160deg, #0C1418, #050809)` : `linear-gradient(160deg, #0C1418, #050809)`,
+      noBanner: !p.banner,
+      borderMid: hexToRgba(p.accent, 0.35),
+      borderLight: hexToRgba(p.accent, 0.25)
+    };
+
+    const backdropBg = `linear-gradient(180deg, ${mixWithDark(p.accent, 0.19, [10, 14, 16])} 0%, ${mixWithDark(p.accent, 0.14, [10, 14, 16])} 100%)`;
+    const navBg = mixWithDark(p.accent, 0.19, [0, 0, 0]);
+
+    return { notFound: false, found: true, project, backdropBg, navBg, scrollToTop: (e) => { e.preventDefault(); window.scrollTo({ top: 0, behavior: 'smooth' }); } };
+  }
+}
+
+</script>
+</body>
+</html>
