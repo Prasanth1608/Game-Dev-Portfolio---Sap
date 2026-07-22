@@ -94,12 +94,6 @@
       <!-- technical breakdown, right below the preview -->
       <div style="box-sizing: border-box; display: flex; flex-direction: column; align-items: center; padding: 40px 20px 60px 20px">
         <div style="width: 100%; max-width: 760px; text-align: left">
-          <div style="font-family: 'JetBrains Mono', monospace; font-weight: 700; font-size: 34px; letter-spacing: 0.02em; color: {{ project.accent }}; margin-bottom: 12px">TECHNICAL BREAKDOWN</div>
-          <div style="margin-bottom: 28px">
-            <sc-for list="{{ project.technicalMetaList }}" as="metaLine" hint-placeholder-count="3">
-              <div style="font-family: 'JetBrains Mono', monospace; font-size: 13px; line-height: 1.9; color: #FFFFFF">{{ metaLine }}</div>
-            </sc-for>
-          </div>
           <sc-for list="{{ project.technicalSections }}" as="section" hint-placeholder-count="3">
             <div style="margin-bottom: 26px">
               <div style="font-family: 'Bebas Neue', sans-serif; font-size: 26px; letter-spacing: 0.04em; color: {{ project.accent }}; margin-bottom: 10px">{{ section.heading }}</div>
@@ -169,11 +163,6 @@ const RAW_ROLES = [
       'assets/professional/interactive-walkthrough/gallery-2-material-select.png',
       'assets/professional/interactive-walkthrough/gallery-3-exterior.png',
       'assets/professional/interactive-walkthrough/gallery-4-analytics.png'
-    ],
-    technicalMetaList: [
-      'ROLE: Sole Developer',
-      'ENGINE: Unreal Engine 5',
-      'PLATFORM: Windows'
     ],
     technicalSections: [
       {
