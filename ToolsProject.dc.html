@@ -76,10 +76,6 @@
   </sc-if>
 
   <sc-if value="{{ found }}" hint-placeholder-val="{{ true }}">
-    <div style="position: relative; z-index: 2; padding: 30px 40px 0 40px">
-      <a href="Home.dc.html#tools" style="display: inline-flex; align-items: center; gap: 8px; font-family: 'JetBrains Mono', monospace; font-size: 12px; letter-spacing: 0.15em; color: {{ project.accent }}">◂ ALL TOOLS</a>
-    </div>
-
     <!-- big preview, wide banner -->
     <div style="width: 100vw; position: relative; left: 50%; margin-left: -50vw; height: min(52vh, 40vw); border-bottom: 1px solid {{ project.borderMid }}; background: {{ project.bannerBg }}; display: flex; align-items: center; justify-content: center; box-sizing: border-box; overflow: hidden">
       <sc-if value="{{ project.bannerVideoId }}" hint-placeholder-val="{{ false }}">
@@ -91,7 +87,8 @@
         <div style="font-family: 'JetBrains Mono', monospace; font-size: 12px; letter-spacing: 0.2em; color: #FFFFFF">TOOL_STILL / KEY ART</div>
       </sc-if>
       <div style="position: absolute; inset: 0; background: linear-gradient(0deg, rgba(0,0,0,0.85) 0%, transparent 45%); pointer-events: none"></div>
-      <div style="position: absolute; top: 18px; left: 62px; font-family: 'Bebas Neue', sans-serif; font-size: 26px; letter-spacing: 0.1em; color: {{ project.accent }}; text-shadow: 0 2px 12px rgba(0,0,0,0.8)">{{ project.index }}</div>
+      <a href="Home.dc.html#tools" style="position: absolute; top: 18px; left: 62px; display: inline-flex; align-items: center; gap: 8px; font-family: 'JetBrains Mono', monospace; font-size: 12px; letter-spacing: 0.15em; color: #FFFFFF; text-shadow: 0 2px 10px rgba(0,0,0,0.8)">◂ ALL TOOLS</a>
+      <div style="position: absolute; top: 18px; left: 22px; font-family: 'Bebas Neue', sans-serif; font-size: 26px; letter-spacing: 0.1em; color: {{ project.accent }}; text-shadow: 0 2px 12px rgba(0,0,0,0.8)">{{ project.index }}</div>
       <div style="position: absolute; left: 70px; bottom: 30px; right: 70px; display: flex; justify-content: space-between; align-items: flex-end; gap: 20px">
         <div>
           <div style="font-family: 'JetBrains Mono', monospace; font-size: 12px; letter-spacing: 0.4em; color: {{ project.accent }}; margin-bottom: 10px">{{ project.eyebrow }}</div>
