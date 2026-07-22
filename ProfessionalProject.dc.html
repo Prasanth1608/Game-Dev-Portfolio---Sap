@@ -246,7 +246,7 @@ class Component extends DCLogic {
       ...p,
       index,
       bannerBg: p.banner ? `center / cover no-repeat url(${p.banner}), linear-gradient(160deg, #0C1418, #050809)` : `linear-gradient(160deg, #0C1418, #050809)`,
-      bannerVideoSrc: p.bannerVideoId ? `https://www.youtube.com/embed/${p.bannerVideoId}?autoplay=1&mute=1&loop=1&controls=0&showinfo=0&modestbranding=1&playlist=${p.bannerVideoId}` : '',
+      bannerVideoSrc: p.bannerVideoId ? `https://www.youtube.com/embed/${p.bannerVideoId}?autoplay=1&mute=1&loop=1&controls=0&showinfo=0&modestbranding=1&rel=0&playsinline=1&iv_load_policy=3&disablekb=1&fs=0&playlist=${p.bannerVideoId}` : '',
       noBanner: !p.banner && !p.bannerVideoId,
       borderMid: hexToRgba(p.accent, 0.35),
       borderLight: hexToRgba(p.accent, 0.25),
