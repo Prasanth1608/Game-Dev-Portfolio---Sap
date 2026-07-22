@@ -45,7 +45,7 @@
   </template>
 </helmet>
 
-<div data-screen-label="Project detail" style="position: relative; min-height: 100vh; background: #000000; font-family: 'Space Grotesk', sans-serif; color: #EAF3F8; padding-bottom: 60px; box-sizing: border-box">
+<div data-screen-label="Project detail" style="position: relative; min-height: 100vh; background: #000000; font-family: 'Space Grotesk', sans-serif; color: #FFFFFF; padding-bottom: 60px; box-sizing: border-box">
 
   <!-- ===== backdrop glow ===== -->
   <div style="position: fixed; inset: 0; pointer-events: none; z-index: 0; background: {{ backdropBg }}"></div>
@@ -54,20 +54,20 @@
 
   <!-- ===== nav (sticky, full navigation) ===== -->
   <div style="position: sticky; top: 0; display: flex; justify-content: space-between; align-items: center; padding: 18px 40px; z-index: 20; background: #000000; -webkit-backdrop-filter: blur(10px); border-bottom: 1px solid rgba(255,255,255,0.06)">
-    <a href="Home.dc.html#home" style="font-family: 'Bebas Neue', sans-serif; font-size: 24px; letter-spacing: 0.08em; color: #EAF3F8">AP<span style="color: #FFC857">®</span></a>
+    <a href="Home.dc.html#home" style="font-family: 'Bebas Neue', sans-serif; font-size: 24px; letter-spacing: 0.08em; color: #FFFFFF">AP<span style="color: #FFC857">®</span></a>
     <div class="rt-nav-links" style="display: flex; align-items: center; gap: 24px; font-family: 'JetBrains Mono', monospace; font-size: 12px; letter-spacing: 0.2em">
-      <a href="Home.dc.html#home" style="color: rgba(234,243,248,0.75)" style-hover="color: #FFDE59">HOME</a>
-      <a href="Home.dc.html#expertise" style="color: rgba(234,243,248,0.75)" style-hover="color: #FFDE59">EXPERTISE</a>
+      <a href="Home.dc.html#home" style="color: #FFFFFF" style-hover="color: #FFDE59">HOME</a>
+      <a href="Home.dc.html#expertise" style="color: #FFFFFF" style-hover="color: #FFDE59">EXPERTISE</a>
       <a href="Home.dc.html#games" style="color: #FFC857">GAMES</a>
-      <a href="Home.dc.html#professional" style="color: rgba(234,243,248,0.75)" style-hover="color: #FFDE59">PROFESSIONAL</a>
-      <a href="Home.dc.html#tools" style="color: rgba(234,243,248,0.75)" style-hover="color: #FFDE59">TOOLS</a>
-      <a href="Home.dc.html#journey" style="color: rgba(234,243,248,0.75)" style-hover="color: #FFDE59">JOURNEY</a>
+      <a href="Home.dc.html#professional" style="color: #FFFFFF" style-hover="color: #FFDE59">PROFESSIONAL</a>
+      <a href="Home.dc.html#tools" style="color: #FFFFFF" style-hover="color: #FFDE59">TOOLS</a>
+      <a href="Home.dc.html#journey" style="color: #FFFFFF" style-hover="color: #FFDE59">JOURNEY</a>
     </div>
   </div>
 
   <!-- ===== not found ===== -->
   <sc-if value="{{ notFound }}" hint-placeholder-val="{{ false }}">
-    <div style="position: relative; z-index: 2; padding: 100px 40px; text-align: center; font-family: 'JetBrains Mono', monospace; color: rgba(234,243,248,0.6)">
+    <div style="position: relative; z-index: 2; padding: 100px 40px; text-align: center; font-family: 'JetBrains Mono', monospace; color: #FFFFFF">
       Project not found. <a href="Home.dc.html#games" style="color: #4DC3FF">◂ back to games</a>
     </div>
   </sc-if>
@@ -78,13 +78,13 @@
       <!-- big preview, wide banner -->
       <div style="width: 100vw; position: relative; left: 50%; margin-left: -50vw; height: min(52vh, 40vw); border-bottom: 1px solid {{ project.borderMid }}; background: {{ project.bannerBg }}; display: flex; align-items: center; justify-content: center; box-sizing: border-box">
         <sc-if value="{{ project.noBanner }}" hint-placeholder-val="{{ false }}">
-          <div style="font-family: 'JetBrains Mono', monospace; font-size: 12px; letter-spacing: 0.2em; color: rgba(234,243,248,0.35)">PROJECT_STILL / KEY ART</div>
+          <div style="font-family: 'JetBrains Mono', monospace; font-size: 12px; letter-spacing: 0.2em; color: #FFFFFF">PROJECT_STILL / KEY ART</div>
         </sc-if>
         <div style="position: absolute; inset: 0; background: linear-gradient(0deg, rgba(0,0,0,0.85) 0%, transparent 45%); pointer-events: none"></div>
-        <a href="Home.dc.html#games" style="position: absolute; top: 18px; left: 62px; display: inline-flex; align-items: center; gap: 8px; font-family: 'JetBrains Mono', monospace; font-size: 12px; letter-spacing: 0.15em; color: #EAF3F8; text-shadow: 0 2px 10px rgba(0,0,0,0.8)">◂ ALL PROJECTS</a>
+        <a href="Home.dc.html#games" style="position: absolute; top: 18px; left: 62px; display: inline-flex; align-items: center; gap: 8px; font-family: 'JetBrains Mono', monospace; font-size: 12px; letter-spacing: 0.15em; color: #FFFFFF; text-shadow: 0 2px 10px rgba(0,0,0,0.8)">◂ ALL PROJECTS</a>
         <div style="position: absolute; left: 70px; bottom: 30px; right: 70px; display: flex; justify-content: space-between; align-items: flex-end; gap: 20px">
           <div>
-            <div style="font-family: 'Bebas Neue', sans-serif; font-size: 60px; letter-spacing: 0.02em; color: #EAF3F8; line-height: 1; text-shadow: 0 2px 20px rgba(0,0,0,0.8)">{{ project.title }}</div>
+            <div style="font-family: 'Bebas Neue', sans-serif; font-size: 60px; letter-spacing: 0.02em; color: #FFFFFF; line-height: 1; text-shadow: 0 2px 20px rgba(0,0,0,0.8)">{{ project.title }}</div>
             <div style="font-family: 'JetBrains Mono', monospace; font-weight: 700; font-size: 13px; letter-spacing: 0.12em; color: {{ project.accent }}; margin-top: 10px">{{ project.tags }}</div>
           </div>
           <a href="{{ project.itchUrl }}" target="_blank" rel="noopener" style="{{ project.playButtonStyle }}">▶ PLAY</a>
@@ -101,11 +101,11 @@
               <sc-if value="{{ section.mediaBeforeAfter }}" hint-placeholder-val="{{ false }}">
                 <div class="rt-media-grid" style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 18px; align-items: start">
                   <div>
-                    <div style="font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.15em; color: rgba(255,255,255,0.6); margin-bottom: 8px">BEFORE</div>
+                    <div style="font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.15em; color: #FFFFFF; margin-bottom: 8px">BEFORE</div>
                     <img src="{{ section.mediaBefore }}" onError="this.style.display='none'" loading="lazy" style="width: 100%; height: 440px; object-fit: contain; background: rgba(255,255,255,0.02); border: 1px solid {{ project.borderMid }}; border-radius: 2px; display: block" />
                   </div>
                   <div>
-                    <div style="font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.15em; color: rgba(255,255,255,0.6); margin-bottom: 8px">AFTER</div>
+                    <div style="font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.15em; color: #FFFFFF; margin-bottom: 8px">AFTER</div>
                     <img src="{{ section.mediaAfter }}" onError="this.style.display='none'" loading="lazy" style="width: 100%; height: 440px; object-fit: contain; background: rgba(255,255,255,0.02); border: 1px solid {{ project.borderMid }}; border-radius: 2px; display: block" />
                   </div>
                 </div>
@@ -220,7 +220,7 @@
 
           <sc-if value="{{ project.itchUrl }}" hint-placeholder-val="{{ false }}">
             <div style="margin-top: 20px; padding-top: 40px; border-top: 1px solid {{ project.borderLight }}; text-align: center">
-              <div style="font-family: 'Bebas Neue', sans-serif; font-size: 30px; letter-spacing: 0.03em; color: #EAF3F8; margin-bottom: 20px">{{ project.ctaText }}</div>
+              <div style="font-family: 'Bebas Neue', sans-serif; font-size: 30px; letter-spacing: 0.03em; color: #FFFFFF; margin-bottom: 20px">{{ project.ctaText }}</div>
               <a href="{{ project.itchUrl }}" target="_blank" rel="noopener" style="{{ project.playButtonStyle }}">▶ PLAY</a>
             </div>
           </sc-if>
@@ -230,7 +230,7 @@
   </sc-if>
 
   <!-- ===== footer strip ===== -->
-  <div style="position: relative; z-index: 2; margin-top: 40px; border-top: 1px solid rgba(255,255,255,0.15); padding: 20px 40px; display: flex; justify-content: space-between; align-items: center; font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.15em; color: rgba(234,243,248,0.5)">
+  <div style="position: relative; z-index: 2; margin-top: 40px; border-top: 1px solid rgba(255,255,255,0.15); padding: 20px 40px; display: flex; justify-content: space-between; align-items: center; font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.15em; color: #FFFFFF">
     <span>© ANANTHA PRASANTH</span>
     <a href="#" onClick="{{ scrollToTop }}" style="color: #6EE7C8" style-hover="color: #FFDE59">◂ BACK TO TOP</a>
   </div>

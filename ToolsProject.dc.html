@@ -48,7 +48,7 @@
   </template>
 </helmet>
 
-<div data-screen-label="Tools Project detail" style="position: relative; min-height: 100vh; background: #000000; font-family: 'Space Grotesk', sans-serif; color: #EAF3F8; padding-bottom: 60px; box-sizing: border-box">
+<div data-screen-label="Tools Project detail" style="position: relative; min-height: 100vh; background: #000000; font-family: 'Space Grotesk', sans-serif; color: #FFFFFF; padding-bottom: 60px; box-sizing: border-box">
 
   <!-- ===== backdrop glow ===== -->
   <div style="position: fixed; inset: 0; pointer-events: none; z-index: 0; background: {{ backdropBg }}"></div>
@@ -57,20 +57,20 @@
 
   <!-- ===== nav (sticky, full navigation) ===== -->
   <div style="position: sticky; top: 0; display: flex; justify-content: space-between; align-items: center; padding: 18px 40px; z-index: 20; background: #000000; -webkit-backdrop-filter: blur(10px); border-bottom: 1px solid rgba(255,255,255,0.06)">
-    <a href="Home.dc.html#home" style="font-family: 'Bebas Neue', sans-serif; font-size: 24px; letter-spacing: 0.08em; color: #EAF3F8">AP<span style="color: #FFC857">®</span></a>
+    <a href="Home.dc.html#home" style="font-family: 'Bebas Neue', sans-serif; font-size: 24px; letter-spacing: 0.08em; color: #FFFFFF">AP<span style="color: #FFC857">®</span></a>
     <div class="rt-nav-links" style="display: flex; align-items: center; gap: 24px; font-family: 'JetBrains Mono', monospace; font-size: 12px; letter-spacing: 0.2em">
-      <a href="Home.dc.html#home" style="color: rgba(234,243,248,0.75)" style-hover="color: #FFDE59">HOME</a>
-      <a href="Home.dc.html#expertise" style="color: rgba(234,243,248,0.75)" style-hover="color: #FFDE59">EXPERTISE</a>
-      <a href="Home.dc.html#games" style="color: rgba(234,243,248,0.75)" style-hover="color: #FFDE59">GAMES</a>
-      <a href="Home.dc.html#professional" style="color: rgba(234,243,248,0.75)" style-hover="color: #FFDE59">PROFESSIONAL</a>
+      <a href="Home.dc.html#home" style="color: #FFFFFF" style-hover="color: #FFDE59">HOME</a>
+      <a href="Home.dc.html#expertise" style="color: #FFFFFF" style-hover="color: #FFDE59">EXPERTISE</a>
+      <a href="Home.dc.html#games" style="color: #FFFFFF" style-hover="color: #FFDE59">GAMES</a>
+      <a href="Home.dc.html#professional" style="color: #FFFFFF" style-hover="color: #FFDE59">PROFESSIONAL</a>
       <a href="Home.dc.html#tools" style="color: #FFC857">TOOLS</a>
-      <a href="Home.dc.html#journey" style="color: rgba(234,243,248,0.75)" style-hover="color: #FFDE59">JOURNEY</a>
+      <a href="Home.dc.html#journey" style="color: #FFFFFF" style-hover="color: #FFDE59">JOURNEY</a>
     </div>
   </div>
 
   <!-- ===== not found ===== -->
   <sc-if value="{{ notFound }}" hint-placeholder-val="{{ false }}">
-    <div style="position: relative; z-index: 2; padding: 100px 40px; text-align: center; font-family: 'JetBrains Mono', monospace; color: rgba(234,243,248,0.6)">
+    <div style="position: relative; z-index: 2; padding: 100px 40px; text-align: center; font-family: 'JetBrains Mono', monospace; color: #FFFFFF">
       Tool not found. <a href="Home.dc.html#tools" style="color: #4DC3FF">◂ back to tools</a>
     </div>
   </sc-if>
@@ -83,14 +83,14 @@
     <!-- big preview, wide banner -->
     <div style="width: 100vw; position: relative; left: 50%; margin-left: -50vw; height: min(52vh, 40vw); border-bottom: 1px solid {{ project.borderMid }}; background: {{ project.bannerBg }}; display: flex; align-items: center; justify-content: center; box-sizing: border-box">
       <sc-if value="{{ project.noBanner }}" hint-placeholder-val="{{ false }}">
-        <div style="font-family: 'JetBrains Mono', monospace; font-size: 12px; letter-spacing: 0.2em; color: rgba(234,243,248,0.35)">TOOL_STILL / KEY ART</div>
+        <div style="font-family: 'JetBrains Mono', monospace; font-size: 12px; letter-spacing: 0.2em; color: #FFFFFF">TOOL_STILL / KEY ART</div>
       </sc-if>
       <div style="position: absolute; inset: 0; background: linear-gradient(0deg, rgba(0,0,0,0.85) 0%, transparent 45%); pointer-events: none"></div>
-      <div style="position: absolute; top: 18px; left: 62px; font-family: 'Bebas Neue', sans-serif; font-size: 16px; letter-spacing: 0.1em; color: {{ project.accent }}">{{ project.index }}</div>
+      <div style="position: absolute; top: 18px; left: 62px; font-family: 'Bebas Neue', sans-serif; font-size: 26px; letter-spacing: 0.1em; color: {{ project.accent }}; text-shadow: 0 2px 12px rgba(0,0,0,0.8)">{{ project.index }}</div>
       <div style="position: absolute; left: 70px; bottom: 30px; right: 70px; display: flex; justify-content: space-between; align-items: flex-end; gap: 20px">
         <div>
           <div style="font-family: 'JetBrains Mono', monospace; font-size: 12px; letter-spacing: 0.4em; color: {{ project.accent }}; margin-bottom: 10px">{{ project.eyebrow }}</div>
-          <div style="font-family: 'Bebas Neue', sans-serif; font-size: 60px; letter-spacing: 0.02em; color: #EAF3F8; line-height: 1; text-shadow: 0 2px 20px rgba(0,0,0,0.8)">{{ project.title }}</div>
+          <div style="font-family: 'Bebas Neue', sans-serif; font-size: 60px; letter-spacing: 0.02em; color: #FFFFFF; line-height: 1; text-shadow: 0 2px 20px rgba(0,0,0,0.8)">{{ project.title }}</div>
           <div style="font-family: 'JetBrains Mono', monospace; font-size: 13px; letter-spacing: 0.12em; color: {{ project.accent }}; margin-top: 10px">{{ project.tags }}</div>
         </div>
       </div>
@@ -99,16 +99,16 @@
     <div style="position: relative; z-index: 2; max-width: 1080px; margin: 0 auto; padding: 0 40px; box-sizing: border-box">
       <!-- ===== OVERVIEW ===== -->
       <div style="margin-top: 64px">
-        <div style="font-family: 'JetBrains Mono', monospace; font-size: 12px; letter-spacing: 0.35em; color: rgba(234,243,248,0.45); text-align: center">01. OVERVIEW</div>
+        <div style="font-family: 'JetBrains Mono', monospace; font-size: 12px; letter-spacing: 0.35em; color: #FFFFFF; text-align: center">01. OVERVIEW</div>
         <div style="font-family: 'Bebas Neue', sans-serif; font-size: 36px; letter-spacing: 0.03em; text-align: center; margin-top: 8px">WHAT IS WINDFIELD</div>
-        <div style="font-size: 16px; line-height: 1.8; color: rgba(234,243,248,0.8); max-width: 820px; margin: 22px auto 0 auto; text-align: center">{{ project.overviewIntro }}</div>
+        <div style="font-family: 'JetBrains Mono', monospace; font-size: 16px; line-height: 1.8; color: #FFFFFF; max-width: 820px; margin: 22px auto 0 auto; text-align: center">{{ project.overviewIntro }}</div>
 
         <div class="rt-grid3" style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; margin-top: 36px">
           <sc-for list="{{ project.overviewTriad }}" as="card" hint-placeholder-count="3">
             <div style="border: 1px solid {{ card.borderColor }}; background: {{ card.bg }}; border-radius: 3px; padding: 24px 22px">
               <div style="font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.25em; color: {{ card.color }}">{{ card.label }}</div>
-              <div style="font-family: 'Bebas Neue', sans-serif; font-size: 22px; letter-spacing: 0.02em; margin-top: 8px; color: #EAF3F8">{{ card.title }}</div>
-              <div style="font-size: 14px; line-height: 1.6; color: rgba(255,255,255,0.85); margin-top: 10px">{{ card.body }}</div>
+              <div style="font-family: 'Bebas Neue', sans-serif; font-size: 22px; letter-spacing: 0.02em; margin-top: 8px; color: #FFFFFF">{{ card.title }}</div>
+              <div style="font-family: 'JetBrains Mono', monospace; font-size: 14px; line-height: 1.6; color: #FFFFFF; margin-top: 10px">{{ card.body }}</div>
             </div>
           </sc-for>
         </div>
@@ -122,7 +122,7 @@
 
       <!-- ===== WHY IT'S DIFFERENT ===== -->
       <div style="margin-top: 84px">
-        <div style="font-family: 'JetBrains Mono', monospace; font-size: 12px; letter-spacing: 0.35em; color: rgba(234,243,248,0.45); text-align: center">02. WHAT MAKES IT UNIQUE?</div>
+        <div style="font-family: 'JetBrains Mono', monospace; font-size: 12px; letter-spacing: 0.35em; color: #FFFFFF; text-align: center">02. WHAT MAKES IT UNIQUE?</div>
         <div style="font-family: 'Bebas Neue', sans-serif; font-size: 36px; letter-spacing: 0.03em; text-align: center; margin-top: 8px">BUILT TO STAND ON ITS OWN</div>
 
         <div class="rt-grid3" style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; margin-top: 36px">
@@ -132,7 +132,7 @@
                 <div style="position: absolute; top: -11px; left: 20px; font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.2em; background: {{ c.color }}; color: #001018; padding: 4px 10px; border-radius: 2px">THIS PLUGIN</div>
               </sc-if>
               <div style="font-family: 'Bebas Neue', sans-serif; font-size: 21px; letter-spacing: 0.02em; color: {{ c.color }}; margin-top: {{ c.titleMarginTop }}">{{ c.title }}</div>
-              <div style="font-size: 14px; line-height: 1.65; color: rgba(255,255,255,0.88); margin-top: 12px">{{ c.body }}</div>
+              <div style="font-family: 'JetBrains Mono', monospace; font-size: 14px; line-height: 1.65; color: #FFFFFF; margin-top: 12px">{{ c.body }}</div>
             </div>
           </sc-for>
         </div>
@@ -141,15 +141,15 @@
       <!-- ===== HEADLINE FEATURES ===== -->
       <!-- ===== FEATURE DEEP DIVES ===== -->
       <div style="margin-top: 84px">
-        <div style="font-family: 'JetBrains Mono', monospace; font-size: 12px; letter-spacing: 0.35em; color: rgba(234,243,248,0.45); text-align: center">03. FEATURE DEEP DIVE</div>
+        <div style="font-family: 'JetBrains Mono', monospace; font-size: 12px; letter-spacing: 0.35em; color: #FFFFFF; text-align: center">03. FEATURE DEEP DIVE</div>
 
         <sc-for list="{{ project.deepDives }}" as="d" hint-placeholder-count="3">
           <div style="margin-top: 44px; border-top: 1px solid rgba(255,255,255,0.1); padding-top: 34px">
             <div style="font-family: 'Bebas Neue', sans-serif; font-size: 30px; letter-spacing: 0.02em; color: {{ d.color }}">{{ d.title }}</div>
-            <div style="font-size: 15px; line-height: 1.75; color: rgba(255,255,255,0.9); margin-top: 12px; max-width: 760px">{{ d.intro }}</div>
+            <div style="font-family: 'JetBrains Mono', monospace; font-size: 15px; line-height: 1.75; color: #FFFFFF; margin-top: 12px; max-width: 760px">{{ d.intro }}</div>
             <div style="display: flex; flex-direction: column; gap: 10px; margin-top: 18px">
               <sc-for list="{{ d.bullets }}" as="b" hint-placeholder-count="3">
-                <div style="font-family: 'JetBrains Mono', monospace; font-size: 13.5px; line-height: 1.6; color: rgba(255,255,255,0.9); display: flex; gap: 10px">
+                <div style="font-family: 'JetBrains Mono', monospace; font-size: 13.5px; line-height: 1.6; color: #FFFFFF; display: flex; gap: 10px">
                   <span style="color: {{ d.color }}">▸</span>{{ b }}
                 </div>
               </sc-for>
@@ -161,7 +161,7 @@
 
       <!-- ===== CUSTOMIZATION ===== -->
       <div style="margin-top: 84px">
-        <div style="font-family: 'JetBrains Mono', monospace; font-size: 12px; letter-spacing: 0.35em; color: rgba(234,243,248,0.45); text-align: center">04. CUSTOMIZATION</div>
+        <div style="font-family: 'JetBrains Mono', monospace; font-size: 12px; letter-spacing: 0.35em; color: #FFFFFF; text-align: center">04. CUSTOMIZATION</div>
         <div style="font-family: 'Bebas Neue', sans-serif; font-size: 36px; letter-spacing: 0.03em; text-align: center; margin-top: 8px">DEEP CONTROL, ONE PROPERTY AT A TIME</div>
 
         <div class="rt-grid2" style="display: grid; grid-template-columns: 1fr 1fr; gap: 0; margin-top: 40px; border-top: 1px solid rgba(255,255,255,0.12)">
@@ -169,8 +169,8 @@
             <div style="display: flex; align-items: baseline; gap: 16px; padding: 22px 20px; border-bottom: 1px solid rgba(255,255,255,0.12); border-right: {{ c.rightBorder }}; background: {{ c.bg }}">
               <div style="font-family: 'Bebas Neue', sans-serif; font-size: 26px; color: {{ c.color }}; flex: none; width: 30px">{{ c.num }}</div>
               <div>
-                <div style="font-family: 'Bebas Neue', sans-serif; font-size: 22px; letter-spacing: 0.02em; color: #EAF3F8">{{ c.title }}</div>
-                <div style="font-size: 15px; line-height: 1.5; color: rgba(255,255,255,0.85); margin-top: 6px">{{ c.body }}</div>
+                <div style="font-family: 'Bebas Neue', sans-serif; font-size: 22px; letter-spacing: 0.02em; color: #FFFFFF">{{ c.title }}</div>
+                <div style="font-family: 'JetBrains Mono', monospace; font-size: 15px; line-height: 1.5; color: #FFFFFF; margin-top: 6px">{{ c.body }}</div>
               </div>
             </div>
           </sc-for>
@@ -181,15 +181,15 @@
 
       <!-- ===== PERFORMANCE ===== -->
       <div style="margin-top: 84px">
-        <div style="font-family: 'JetBrains Mono', monospace; font-size: 12px; letter-spacing: 0.35em; color: rgba(234,243,248,0.45); text-align: center">05. PERFORMANCE</div>
+        <div style="font-family: 'JetBrains Mono', monospace; font-size: 12px; letter-spacing: 0.35em; color: #FFFFFF; text-align: center">05. PERFORMANCE</div>
         <div style="font-family: 'Bebas Neue', sans-serif; font-size: 36px; letter-spacing: 0.03em; text-align: center; margin-top: 8px">REALISTIC WIND, WITHOUT THE COST</div>
 
         <div class="rt-grid4" style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; margin-top: 36px">
           <sc-for list="{{ project.stats }}" as="s" hint-placeholder-count="4">
             <div style="border: 1px solid {{ s.borderColor }}; background: {{ s.bg }}; border-radius: 3px; padding: 22px 16px; text-align: center">
               <div style="font-family: 'Bebas Neue', sans-serif; font-size: 34px; color: {{ s.color }}">{{ s.value }}</div>
-              <div style="font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.15em; color: #EAF3F8; margin-top: 6px">{{ s.label }}</div>
-              <div style="font-size: 12.5px; line-height: 1.5; color: rgba(255,255,255,0.85); margin-top: 8px">{{ s.body }}</div>
+              <div style="font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.15em; color: #FFFFFF; margin-top: 6px">{{ s.label }}</div>
+              <div style="font-family: 'JetBrains Mono', monospace; font-size: 12.5px; line-height: 1.5; color: #FFFFFF; margin-top: 8px">{{ s.body }}</div>
             </div>
           </sc-for>
         </div>
@@ -198,7 +198,7 @@
 
       <!-- ===== HOW IT WORKS ===== -->
       <div style="margin-top: 84px">
-        <div style="font-family: 'JetBrains Mono', monospace; font-size: 12px; letter-spacing: 0.35em; color: rgba(234,243,248,0.45); text-align: center">06. HOW IT WORKS</div>
+        <div style="font-family: 'JetBrains Mono', monospace; font-size: 12px; letter-spacing: 0.35em; color: #FFFFFF; text-align: center">06. HOW IT WORKS</div>
         <div style="font-family: 'Bebas Neue', sans-serif; font-size: 36px; letter-spacing: 0.03em; text-align: center; margin-top: 8px">TURNING MATH INTO WIND</div>
 
         <div style="display: flex; flex-direction: column; gap: 22px; margin-top: 36px">
@@ -208,7 +208,7 @@
                 <div style="flex: none; width: 34px; height: 34px; border-radius: 50%; background: {{ st.color }}; color: #001018; display: flex; align-items: center; justify-content: center; font-family: 'Bebas Neue', sans-serif; font-size: 16px">{{ st.num }}</div>
                 <div>
                   <div style="font-family: 'Bebas Neue', sans-serif; font-size: 19px; letter-spacing: 0.02em; color: {{ st.color }}">{{ st.title }}</div>
-                  <div style="font-size: 14px; line-height: 1.6; color: rgba(255,255,255,0.88); margin-top: 6px">{{ st.body }}</div>
+                  <div style="font-family: 'JetBrains Mono', monospace; font-size: 14px; line-height: 1.6; color: #FFFFFF; margin-top: 6px">{{ st.body }}</div>
                 </div>
               </div>
               <div class="rt-media-grid" style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; margin-top: 18px">
@@ -225,7 +225,7 @@
   </sc-if>
 
   <!-- ===== footer strip ===== -->
-  <div style="position: relative; z-index: 2; margin-top: 40px; border-top: 1px solid rgba(255,255,255,0.15); padding: 20px 40px; display: flex; justify-content: space-between; align-items: center; font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.15em; color: rgba(234,243,248,0.5)">
+  <div style="position: relative; z-index: 2; margin-top: 40px; border-top: 1px solid rgba(255,255,255,0.15); padding: 20px 40px; display: flex; justify-content: space-between; align-items: center; font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.15em; color: #FFFFFF">
     <span>© ANANTHA PRASANTH</span>
     <a href="#" onClick="{{ scrollToTop }}" style="color: #6EE7C8" style-hover="color: #FFDE59">◂ BACK TO TOP</a>
   </div>

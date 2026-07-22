@@ -41,7 +41,7 @@
   </template>
 </helmet>
 
-<div data-screen-label="Professional Project detail" style="position: relative; min-height: 100vh; background: #000000; font-family: 'Space Grotesk', sans-serif; color: #EAF3F8; padding-bottom: 60px; box-sizing: border-box">
+<div data-screen-label="Professional Project detail" style="position: relative; min-height: 100vh; background: #000000; font-family: 'Space Grotesk', sans-serif; color: #FFFFFF; padding-bottom: 60px; box-sizing: border-box">
 
   <!-- ===== backdrop glow ===== -->
   <div style="position: fixed; inset: 0; pointer-events: none; z-index: 0; background: {{ backdropBg }}"></div>
@@ -50,20 +50,20 @@
 
   <!-- ===== nav (sticky, full navigation) ===== -->
   <div style="position: sticky; top: 0; display: flex; justify-content: space-between; align-items: center; padding: 18px 40px; z-index: 20; background: #000000; -webkit-backdrop-filter: blur(10px); border-bottom: 1px solid rgba(255,255,255,0.06)">
-    <a href="Home.dc.html#home" style="font-family: 'Bebas Neue', sans-serif; font-size: 24px; letter-spacing: 0.08em; color: #EAF3F8">AP<span style="color: #FFC857">®</span></a>
+    <a href="Home.dc.html#home" style="font-family: 'Bebas Neue', sans-serif; font-size: 24px; letter-spacing: 0.08em; color: #FFFFFF">AP<span style="color: #FFC857">®</span></a>
     <div class="rt-nav-links" style="display: flex; align-items: center; gap: 24px; font-family: 'JetBrains Mono', monospace; font-size: 12px; letter-spacing: 0.2em">
-      <a href="Home.dc.html#home" style="color: rgba(234,243,248,0.75)" style-hover="color: #FFDE59">HOME</a>
-      <a href="Home.dc.html#expertise" style="color: rgba(234,243,248,0.75)" style-hover="color: #FFDE59">EXPERTISE</a>
-      <a href="Home.dc.html#games" style="color: rgba(234,243,248,0.75)" style-hover="color: #FFDE59">GAMES</a>
+      <a href="Home.dc.html#home" style="color: #FFFFFF" style-hover="color: #FFDE59">HOME</a>
+      <a href="Home.dc.html#expertise" style="color: #FFFFFF" style-hover="color: #FFDE59">EXPERTISE</a>
+      <a href="Home.dc.html#games" style="color: #FFFFFF" style-hover="color: #FFDE59">GAMES</a>
       <a href="Home.dc.html#professional" style="color: #FFC857">PROFESSIONAL</a>
-      <a href="Home.dc.html#tools" style="color: rgba(234,243,248,0.75)" style-hover="color: #FFDE59">TOOLS</a>
-      <a href="Home.dc.html#journey" style="color: rgba(234,243,248,0.75)" style-hover="color: #FFDE59">JOURNEY</a>
+      <a href="Home.dc.html#tools" style="color: #FFFFFF" style-hover="color: #FFDE59">TOOLS</a>
+      <a href="Home.dc.html#journey" style="color: #FFFFFF" style-hover="color: #FFDE59">JOURNEY</a>
     </div>
   </div>
 
   <!-- ===== not found ===== -->
   <sc-if value="{{ notFound }}" hint-placeholder-val="{{ false }}">
-    <div style="position: relative; z-index: 2; padding: 100px 40px; text-align: center; font-family: 'JetBrains Mono', monospace; color: rgba(234,243,248,0.6)">
+    <div style="position: relative; z-index: 2; padding: 100px 40px; text-align: center; font-family: 'JetBrains Mono', monospace; color: #FFFFFF">
       Role not found. <a href="Home.dc.html#professional" style="color: #4DC3FF">◂ back to professional</a>
     </div>
   </sc-if>
@@ -79,13 +79,13 @@
           </div>
         </sc-if>
         <sc-if value="{{ project.noBanner }}" hint-placeholder-val="{{ false }}">
-          <div style="font-family: 'JetBrains Mono', monospace; font-size: 12px; letter-spacing: 0.2em; color: rgba(234,243,248,0.35)">PROJECT_STILL / KEY ART</div>
+          <div style="font-family: 'JetBrains Mono', monospace; font-size: 12px; letter-spacing: 0.2em; color: #FFFFFF">PROJECT_STILL / KEY ART</div>
         </sc-if>
         <div style="position: absolute; inset: 0; background: linear-gradient(0deg, rgba(0,0,0,0.85) 0%, transparent 45%); pointer-events: none"></div>
         <a href="Home.dc.html#professional" style="position: absolute; top: 18px; left: 62px; display: inline-flex; align-items: center; gap: 8px; font-family: 'JetBrains Mono', monospace; font-size: 12px; letter-spacing: 0.15em; color: {{ project.accent }}">◂ ALL PROFESSIONAL WORK</a>
         <div style="position: absolute; left: 70px; bottom: 30px; right: 70px; display: flex; justify-content: space-between; align-items: flex-end; gap: 20px">
           <div>
-            <div style="font-family: 'Bebas Neue', sans-serif; font-size: 60px; letter-spacing: 0.02em; color: #EAF3F8; line-height: 1; text-shadow: 0 2px 20px rgba(0,0,0,0.8)">{{ project.title }}</div>
+            <div style="font-family: 'Bebas Neue', sans-serif; font-size: 60px; letter-spacing: 0.02em; color: #FFFFFF; line-height: 1; text-shadow: 0 2px 20px rgba(0,0,0,0.8)">{{ project.title }}</div>
             <div style="font-family: 'JetBrains Mono', monospace; font-size: 13px; letter-spacing: 0.12em; color: {{ project.accent }}; margin-top: 10px">{{ project.tags }}</div>
           </div>
         </div>
@@ -97,7 +97,7 @@
           <div style="font-family: 'JetBrains Mono', monospace; font-weight: 700; font-size: 34px; letter-spacing: 0.02em; color: {{ project.accent }}; margin-bottom: 12px">TECHNICAL BREAKDOWN</div>
           <div style="margin-bottom: 28px">
             <sc-for list="{{ project.technicalMetaList }}" as="metaLine" hint-placeholder-count="3">
-              <div style="font-family: 'JetBrains Mono', monospace; font-size: 13px; line-height: 1.9; color: rgba(255,255,255,0.75)">{{ metaLine }}</div>
+              <div style="font-family: 'JetBrains Mono', monospace; font-size: 13px; line-height: 1.9; color: #FFFFFF">{{ metaLine }}</div>
             </sc-for>
           </div>
           <sc-for list="{{ project.technicalSections }}" as="section" hint-placeholder-count="3">
@@ -113,14 +113,14 @@
               <sc-if value="{{ section.isList }}" hint-placeholder-val="{{ false }}">
                 <div style="display: flex; flex-direction: column; gap: 8px">
                   <sc-for list="{{ section.items }}" as="item" hint-placeholder-count="4">
-                    <div style="font-family: 'JetBrains Mono', monospace; font-size: 14px; line-height: 1.6; color: rgba(255,255,255,0.92); display: flex; gap: 10px">
+                    <div style="font-family: 'JetBrains Mono', monospace; font-size: 14px; line-height: 1.6; color: #FFFFFF; display: flex; gap: 10px">
                       <span style="color: {{ project.accent }}">▸</span>{{ item }}
                     </div>
                   </sc-for>
                 </div>
               </sc-if>
               <sc-if value="{{ section.isText }}" hint-placeholder-val="{{ true }}">
-                <div style="font-family: 'JetBrains Mono', monospace; font-size: 14px; line-height: 1.8; color: rgba(255,255,255,0.92)">{{ section.body }}</div>
+                <div style="font-family: 'JetBrains Mono', monospace; font-size: 14px; line-height: 1.8; color: #FFFFFF">{{ section.body }}</div>
               </sc-if>
             </div>
           </sc-for>
@@ -133,8 +133,8 @@
                 <sc-for list="{{ project.gallerySlides }}" as="slide" hint-placeholder-count="4">
                   <img src="{{ slide.src }}" onError="this.style.display='none'" loading="lazy" style="{{ slide.style }}" />
                 </sc-for>
-                <div onClick="{{ project.galleryPrev }}" style="position: absolute; top: 50%; left: 14px; transform: translateY(-50%); width: 40px; height: 40px; border-radius: 50%; background: rgba(0,0,0,0.55); border: 1px solid rgba(255,255,255,0.25); color: #EAF3F8; display: flex; align-items: center; justify-content: center; font-size: 18px">‹</div>
-                <div onClick="{{ project.galleryNext }}" style="position: absolute; top: 50%; right: 14px; transform: translateY(-50%); width: 40px; height: 40px; border-radius: 50%; background: rgba(0,0,0,0.55); border: 1px solid rgba(255,255,255,0.25); color: #EAF3F8; display: flex; align-items: center; justify-content: center; font-size: 18px">›</div>
+                <div onClick="{{ project.galleryPrev }}" style="position: absolute; top: 50%; left: 14px; transform: translateY(-50%); width: 40px; height: 40px; border-radius: 50%; background: rgba(0,0,0,0.55); border: 1px solid rgba(255,255,255,0.25); color: #FFFFFF; display: flex; align-items: center; justify-content: center; font-size: 18px">‹</div>
+                <div onClick="{{ project.galleryNext }}" style="position: absolute; top: 50%; right: 14px; transform: translateY(-50%); width: 40px; height: 40px; border-radius: 50%; background: rgba(0,0,0,0.55); border: 1px solid rgba(255,255,255,0.25); color: #FFFFFF; display: flex; align-items: center; justify-content: center; font-size: 18px">›</div>
                 <div style="position: absolute; bottom: 16px; left: 0; right: 0; display: flex; justify-content: center; gap: 8px">
                   <sc-for list="{{ project.galleryDots }}" as="dot" hint-placeholder-count="4">
                     <div onClick="{{ dot.select }}" style="width: 8px; height: 8px; border-radius: 50%; background: {{ dot.bg }}; cursor: pointer"></div>
@@ -149,7 +149,7 @@
   </sc-if>
 
   <!-- ===== footer strip ===== -->
-  <div style="position: relative; z-index: 2; margin-top: 40px; border-top: 1px solid rgba(255,255,255,0.15); padding: 20px 40px; display: flex; justify-content: space-between; align-items: center; font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.15em; color: rgba(234,243,248,0.5)">
+  <div style="position: relative; z-index: 2; margin-top: 40px; border-top: 1px solid rgba(255,255,255,0.15); padding: 20px 40px; display: flex; justify-content: space-between; align-items: center; font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.15em; color: #FFFFFF">
     <span>© ANANTHA PRASANTH</span>
     <a href="#" onClick="{{ scrollToTop }}" style="color: #6EE7C8" style-hover="color: #FFDE59">◂ BACK TO TOP</a>
   </div>
