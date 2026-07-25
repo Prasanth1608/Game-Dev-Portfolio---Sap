@@ -223,6 +223,9 @@
             <div onClick="{{ project.selectOverview }}" style="{{ project.overviewTabStyle }}">OVERVIEW</div>
             <div onClick="{{ project.selectTrailer }}" style="{{ project.trailerTabStyle }}">TRAILER</div>
             <div onClick="{{ project.selectGit }}" style="{{ project.gitTabStyle }}">GIT</div>
+            <sc-if value="{{ project.itchUrl }}" hint-placeholder-val="{{ false }}">
+              <a href="{{ project.itchUrl }}" target="_blank" rel="noopener" style="display: inline-flex; align-items: center; gap: 6px; font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.15em; padding: 10px 18px; color: #001018; background: {{ project.accent }}; border: 1px solid {{ project.accent }}; border-bottom: none">▶ PLAY</a>
+            </sc-if>
             <a href="{{ project.detailHref }}" style="display: inline-flex; align-items: center; gap: 8px; font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.15em; padding: 10px 18px; color: #FFFFFF; border: 1px solid {{ project.borderLight }}; border-bottom: none">TECHNICAL BREAKDOWN <span>▸</span></a>
           </div>
           <div style="padding: 26px 30px 30px 30px; min-height: {{ project.tabMinHeight }}; display: flex; justify-content: {{ project.tabJustify }}; align-items: {{ project.tabAlignItems }}; gap: 20px; flex-wrap: wrap">
@@ -328,6 +331,9 @@
             <div onClick="{{ project.selectOverview }}" style="{{ project.overviewTabStyle }}">OVERVIEW</div>
             <div onClick="{{ project.selectTrailer }}" style="{{ project.trailerTabStyle }}">TRAILER</div>
             <div onClick="{{ project.selectGit }}" style="{{ project.gitTabStyle }}">GIT</div>
+            <sc-if value="{{ project.itchUrl }}" hint-placeholder-val="{{ false }}">
+              <a href="{{ project.itchUrl }}" target="_blank" rel="noopener" style="display: inline-flex; align-items: center; gap: 6px; font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.15em; padding: 10px 18px; color: #001018; background: {{ project.accent }}; border: 1px solid {{ project.accent }}; border-bottom: none">▶ PLAY</a>
+            </sc-if>
             <a href="{{ project.detailHref }}" style="display: inline-flex; align-items: center; gap: 8px; font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.15em; padding: 10px 18px; color: #FFFFFF; border: 1px solid {{ project.borderLight }}; border-bottom: none">TECHNICAL BREAKDOWN <span>▸</span></a>
           </div>
           <div style="padding: 26px 30px 30px 30px; min-height: {{ project.tabMinHeight }}; display: flex; justify-content: {{ project.tabJustify }}; align-items: {{ project.tabAlignItems }}; gap: 20px; flex-wrap: wrap">
@@ -423,12 +429,12 @@ const EXP_ACCENTS = ['#4DC3FF', '#FFC857', '#FF6F91', '#6EE7C8', '#B98BFF', '#FF
 const RAW_PROJECTS = [
   {
     title: 'CLUCKMARE', tags: 'UNREAL ENGINE 5 · C++ · SHOOTER', accent: '#1C6FC2',
-    banner: 'assets/games/cluckmare/banner.jpg', trailerId: 'AKqoDcYymbk', gitUrl: 'https://gitlab.com/prasanth1608/cluckmare',
+    banner: 'assets/games/cluckmare/banner.jpg', trailerId: 'AKqoDcYymbk', gitUrl: 'https://gitlab.com/prasanth1608/cluckmare', itchUrl: 'https://prasanth1608.itch.io/cluckmare',
     overview: 'A first-person shooter where you fight your way through a nightmare chicken factory. Built solo as the sole programmer on a 5-person team, driving character movement, dual weapon types, combat/damage resolution, and AI enemies that chase, attack, and visibly grow with every hit. Hacking terminals gate checkpoint progress, escalating from a tutorial encounter to a 25-enemy final wave.'
   },
   {
     title: 'AIM GL', tags: 'OPENGL · C++ · GAME ENGINE', accent: '#FFC857',
-    banner: 'assets/games/aimgl/banner.png', gitUrl: 'https://gitlab.com/prasanth1608/aimgl', trailerId: '9u1FXztli2k',
+    banner: 'assets/games/aimgl/banner.png', gitUrl: 'https://gitlab.com/prasanth1608/aimgl', trailerId: '9u1FXztli2k', itchUrl: 'https://gitlab.com/prasanth1608/aimgl',
     overview: 'AimGL is a retro-style demake of a game called "Aimlabs", available on the Steam platform. Designed as an aim training tool, AimGL helps players enhance their accuracy and precision in competitive shooter games. AimGL was demade using OpenGL and C++ in a cartoon-ish theme.\n\nUpon entering the training arena, players are ready to begin their practice session. Each session lasts 60 seconds, during which players aim to achieve their highest possible score. The HUD (Heads-Up Display) provides real-time information, including a timer and score tracker. The game features two distinct modes: Hitscan bullet mode and Projectile bullet mode.'
   }
 ];
