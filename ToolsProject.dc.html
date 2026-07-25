@@ -369,8 +369,8 @@ const RAW_TOOLS = [
       card(PALETTE[0], { num: '1', title: 'Build the Grid', body: 'A cross-section of cells is laid out across the field volume, spacing set entirely by Wind Pressure.' }),
       card(PALETTE[1], { num: '2', title: 'Cache Nearby Objects', body: 'Actors overlapping the volume are cached once via overlap events, never queried again per tick.' }),
       card(PALETTE[3], { num: '3', title: 'Cells March Forward', body: "Each cell's position is spawn point + (direction × distance traveled), vector addition, not a trace." }),
-      card(PALETTE[4], { num: '4', title: "Compare, Don't Query", body: "Every tick, a cell's position is checked against cached objects using closest-point-on-box math, comparing numbers already in memory, never asking the physics engine anything." }),
-      card(PALETTE[5], { num: '5', title: 'React & Retire', body: 'On detection, the cell stops evaluating immediately, and if the object is eligible, a mass-aware force is applied.' })
+      card(PALETTE[4], { num: '4', title: "Compare, Don't Query", body: "Every tick, a cell's position is checked against cached objects using closest-point-on-box math, comparing numbers already in memory, never asking the Collision or Physics engine anything." }),
+      card(PALETTE[5], { num: '5', title: 'React & Retire', body: 'On detection, the cell stops evaluating immediately, and if the object is eligible, a mass-aware force is applied, or the wind cell dies on hitting an obstacle.' })
     ].map((s, i) => ({
       ...s,
       media: ((i === 2 || i === 3 || i === 4) ? [1, 2, 3] : [1, 2, 3, 4]).map((n) => ({
