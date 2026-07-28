@@ -25,14 +25,6 @@
     @keyframes ap-blink { 0%, 49% { opacity: 1; } 50%, 100% { opacity: 0; } }
     @keyframes ap-marquee { from { transform: translateX(0); } to { transform: translateX(-50%); } }
     @keyframes ap-marquee-rev { from { transform: translateX(-50%); } to { transform: translateX(0); } }
-    @keyframes circuitDrift { from { background-position: 0 0, 0 0; } to { background-position: 240px 240px, -240px 240px; } }
-    .circuit-bg {
-      background-image:
-        linear-gradient(rgba(234,243,248,0.05) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(234,243,248,0.05) 1px, transparent 1px);
-      background-size: 60px 60px, 60px 60px;
-      animation: circuitDrift 30s linear infinite;
-    }
     .exp-card { transition: transform 0.2s ease, box-shadow 0.2s ease; }
     .exp-card:hover { transform: translateY(-4px); box-shadow: 0 20px 50px -18px rgba(0,0,0,0.6); }
     @keyframes ap-teleport-in { 0% { opacity: 0; transform: translate(-50%, -55%) scale(0.3); filter: brightness(3) saturate(2); } 55% { opacity: 1; transform: translate(-50%, -65%) scale(1.15); filter: brightness(1.6); } 100% { opacity: 1; transform: translate(-50%, -60%) scale(1); filter: brightness(1); } }
@@ -61,7 +53,6 @@
   <!-- ===== ONE shared fixed backdrop (pattern + colour) for the whole page ===== -->
   <div ref="{{ sharedBackdropRef }}" style="position: fixed; inset: 0; pointer-events: none; z-index: 0; background: {{ sharedBackdropBg }}"></div>
   <div style="position: fixed; inset: 0; pointer-events: none; z-index: 0; opacity: 0.035; mix-blend-mode: overlay; background-image: url(&quot;data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E&quot;)"></div>
-  <div class="circuit-bg" style="position: fixed; inset: 0; pointer-events: none; z-index: 0"></div>
 
   <!-- ===== ONE persistent header, fixed on top of everything ===== -->
   <div style="position: fixed; top: 0; left: 0; right: 0; display: flex; justify-content: space-between; align-items: center; padding: 18px 40px; z-index: 100; background: #000000; border-bottom: 1px solid rgba(255,255,255,0.06)">
@@ -82,7 +73,6 @@
       <iframe src="https://www.youtube-nocookie.com/embed/AKqoDcYymbk?autoplay=1&mute=1&loop=1&controls=0&showinfo=0&modestbranding=1&rel=0&playsinline=1&iv_load_policy=3&disablekb=1&fs=0&start=2&playlist=AKqoDcYymbk" title="Background video" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen="true" style="position: absolute; top: 50%; left: 50%; width: 177.78vh; min-width: 100%; height: 100vh; min-height: 56.25vw; transform: translate(-50%, -50%); border: 0; pointer-events: none" allow="autoplay; encrypted-media; picture-in-picture"></iframe>
       <div style="position: absolute; inset: 0; background: #000000; animation: heroVideoReveal 2.6s ease forwards; pointer-events: none"></div>
       <div style="position: absolute; inset: 0; background: radial-gradient(ellipse at center, rgba(0,0,0,0.3) 30%, rgba(0,0,0,0.88) 100%), linear-gradient(180deg, rgba(0,0,0,0.88) 0%, rgba(0,0,0,0.48) 22%, rgba(0,0,0,0.32) 40%, rgba(0,0,0,0.32) 60%, rgba(0,0,0,0.88) 100%); pointer-events: none"></div>
-      <div class="circuit-bg" style="position: absolute; inset: 0; pointer-events: none; opacity: 0.5; mix-blend-mode: screen"></div>
     </div>
 
     <div style="position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; z-index: 7; pointer-events: none; padding-bottom: 110px">
@@ -216,14 +206,18 @@
                 <div style="font-family: 'Bebas Neue', sans-serif; font-size: 44px; letter-spacing: 0.02em; color: #FFFFFF; line-height: 1; text-shadow: 0 2px 20px rgba(0,0,0,0.8)">{{ project.title }}</div>
                 <div style="font-family: 'JetBrains Mono', monospace; font-size: 12px; letter-spacing: 0.12em; color: {{ project.accent }}; margin-top: 8px">{{ project.tags }}</div>
               </div>
-              <a href="{{ project.detailHref }}" style="{{ project.playButtonStyle }}">VIEW PROJECT →</a>
+              <sc-if value="{{ project.showDetailLinks }}" hint-placeholder-val="{{ true }}">
+                <a href="{{ project.detailHref }}" style="{{ project.playButtonStyle }}">VIEW PROJECT →</a>
+              </sc-if>
             </div>
           </div>
           <div style="display: flex; align-items: center; gap: 6px; padding: 20px 30px 0 30px; border-bottom: 1px solid {{ project.borderLight }}">
             <div onClick="{{ project.selectOverview }}" style="{{ project.overviewTabStyle }}">OVERVIEW</div>
             <div onClick="{{ project.selectTrailer }}" style="{{ project.trailerTabStyle }}">TRAILER</div>
             <div onClick="{{ project.selectGit }}" style="{{ project.gitTabStyle }}">GIT</div>
-            <a href="{{ project.detailHref }}" style="display: inline-flex; align-items: center; gap: 8px; font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.15em; padding: 10px 18px; color: #FFFFFF; border: 1px solid {{ project.borderLight }}; border-bottom: none">TECHNICAL BREAKDOWN <span>▸</span></a>
+            <sc-if value="{{ project.showDetailLinks }}" hint-placeholder-val="{{ true }}">
+              <a href="{{ project.detailHref }}" style="display: inline-flex; align-items: center; gap: 8px; font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.15em; padding: 10px 18px; color: #FFFFFF; border: 1px solid {{ project.borderLight }}; border-bottom: none">TECHNICAL BREAKDOWN <span>▸</span></a>
+            </sc-if>
             <sc-if value="{{ project.itchUrl }}" hint-placeholder-val="{{ false }}">
               <a href="{{ project.itchUrl }}" target="_blank" rel="noopener" style="display: inline-flex; align-items: center; gap: 6px; font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.15em; padding: 10px 18px; margin-left: auto; color: #001018; background: {{ project.accent }}; border: 1px solid {{ project.accent }}; border-bottom: none">▶ PLAY</a>
             </sc-if>
@@ -275,13 +269,17 @@
                 <div style="font-family: 'Bebas Neue', sans-serif; font-size: 44px; letter-spacing: 0.02em; color: #FFFFFF; line-height: 1; text-shadow: 0 2px 20px rgba(0,0,0,0.8)">{{ project.title }}</div>
                 <div style="font-family: 'JetBrains Mono', monospace; font-size: 12px; letter-spacing: 0.12em; color: {{ project.accent }}; margin-top: 8px">{{ project.tags }}</div>
               </div>
-              <a href="{{ project.detailHref }}" style="{{ project.playButtonStyle }}">VIEW PROJECT →</a>
+              <sc-if value="{{ project.showDetailLinks }}" hint-placeholder-val="{{ true }}">
+                <a href="{{ project.detailHref }}" style="{{ project.playButtonStyle }}">VIEW PROJECT →</a>
+              </sc-if>
             </div>
           </div>
           <div style="display: flex; align-items: center; gap: 6px; padding: 20px 30px 0 30px; border-bottom: 1px solid {{ project.borderLight }}">
             <div onClick="{{ project.selectOverview }}" style="{{ project.overviewTabStyle }}">OVERVIEW</div>
             <div onClick="{{ project.selectTrailer }}" style="{{ project.trailerTabStyle }}">TRAILER</div>
-            <a href="{{ project.detailHref }}" style="display: inline-flex; align-items: center; gap: 8px; font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.15em; padding: 10px 18px; color: #FFFFFF; border: 1px solid {{ project.borderLight }}; border-bottom: none">TECHNICAL BREAKDOWN <span>▸</span></a>
+            <sc-if value="{{ project.showDetailLinks }}" hint-placeholder-val="{{ true }}">
+              <a href="{{ project.detailHref }}" style="display: inline-flex; align-items: center; gap: 8px; font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.15em; padding: 10px 18px; color: #FFFFFF; border: 1px solid {{ project.borderLight }}; border-bottom: none">TECHNICAL BREAKDOWN <span>▸</span></a>
+            </sc-if>
           </div>
           <div style="padding: 26px 30px 30px 30px; min-height: {{ project.tabMinHeight }}; display: flex; justify-content: {{ project.tabJustify }}; align-items: {{ project.tabAlignItems }}; gap: 20px; flex-wrap: wrap">
             <div style="flex: 1; min-width: 260px; text-align: {{ project.tabTextAlign }}">
@@ -324,7 +322,9 @@
                 <div style="font-family: 'Bebas Neue', sans-serif; font-size: 44px; letter-spacing: 0.02em; color: #FFFFFF; line-height: 1; text-shadow: 0 2px 20px rgba(0,0,0,0.8)">{{ project.title }}</div>
                 <div style="font-family: 'JetBrains Mono', monospace; font-size: 12px; letter-spacing: 0.12em; color: {{ project.accent }}; margin-top: 8px">{{ project.tags }}</div>
               </div>
-              <a href="{{ project.detailHref }}" style="{{ project.playButtonStyle }}">VIEW PROJECT →</a>
+              <sc-if value="{{ project.showDetailLinks }}" hint-placeholder-val="{{ true }}">
+                <a href="{{ project.detailHref }}" style="{{ project.playButtonStyle }}">VIEW PROJECT →</a>
+              </sc-if>
             </div>
           </div>
           <div style="display: flex; align-items: center; gap: 6px; padding: 20px 30px 0 30px; border-bottom: 1px solid {{ project.borderLight }}">
@@ -333,7 +333,9 @@
             <sc-if value="{{ project.hasGitUrl }}" hint-placeholder-val="{{ true }}">
               <div onClick="{{ project.selectGit }}" style="{{ project.gitTabStyle }}">GIT</div>
             </sc-if>
-            <a href="{{ project.detailHref }}" style="display: inline-flex; align-items: center; gap: 8px; font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.15em; padding: 10px 18px; color: #FFFFFF; border: 1px solid {{ project.borderLight }}; border-bottom: none">TECHNICAL BREAKDOWN <span>▸</span></a>
+            <sc-if value="{{ project.showDetailLinks }}" hint-placeholder-val="{{ true }}">
+              <a href="{{ project.detailHref }}" style="display: inline-flex; align-items: center; gap: 8px; font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.15em; padding: 10px 18px; color: #FFFFFF; border: 1px solid {{ project.borderLight }}; border-bottom: none">TECHNICAL BREAKDOWN <span>▸</span></a>
+            </sc-if>
             <sc-if value="{{ project.itchUrl }}" hint-placeholder-val="{{ false }}">
               <a href="{{ project.itchUrl }}" target="_blank" rel="noopener" style="display: inline-flex; align-items: center; gap: 6px; font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.15em; padding: 10px 18px; margin-left: auto; color: #001018; background: {{ project.accent }}; border: 1px solid {{ project.accent }}; border-bottom: none">▶ PLAY</a>
             </sc-if>
@@ -424,7 +426,7 @@ const RAW_CATEGORIES = [
   { title: 'GAMEPLAY SYSTEMS', points: ['Character movement systems', 'Abilities & combat systems', 'Weapon systems & stats', 'Vehicle systems (spaceship)', 'Interaction systems', 'Enhanced Input systems', 'Inventory systems', 'Save / load systems'] },
   { title: 'TOOLS & PLUGINS', points: ['Interactive visualization', 'Custom editor tooling', 'Marketplace plugins', 'UMG / Slate / Common UI'] },
   { title: 'DEVELOPMENT PRACTICES', points: ['Agile Development', 'Version control with Git', 'Visual planning with Miro board', 'Team comms on Slack', 'Documentation', 'Sprint planning in Notion'] },
-  { title: 'ENGINEERING PRACTICES', points: ['Object Oriented Programming & SOLID principles', 'Problem solving', 'Debugging & error handling', 'Optimisation & multi-threading', 'Vector & quaternion math', 'Algorithms & data structures', 'STL', 'CMake'] }
+  { title: 'ENGINEERING PRACTICES', points: ['Object Oriented Programming & SOLID principles', 'Problem solving', 'Debugging & error handling', 'Optimisation & multi-threading', 'Vector & quaternion math', 'Algorithms & data structures', 'STL', 'CMake', 'C++', 'C#'] }
 ];
 const EXP_ACCENTS = ['#4DC3FF', '#FFC857', '#FF6F91', '#6EE7C8', '#B98BFF', '#FFDE59'];
 
@@ -452,7 +454,7 @@ const RAW_TOOLS = [
     gitUrl: 'https://gitlab.com/prasanth1608/wind-field'
   },
   {
-    title: 'SYSTEM DIRECTORY SCANNER', tags: 'CMAKE · C++ · CLI TOOL', accent: '#B98BFF', detailPage: 'Project.dc.html',
+    title: 'SYSTEM DIRECTORY SCANNER', tags: 'CMAKE · C++ · CLI TOOL', accent: '#B98BFF', detailPage: 'Project.dc.html', hideDetailPage: true,
     banner: 'assets/software/directory-scanner/banner.png', trailerId: 'Qr3DdsiQHF0',
     overview: 'System Directory Scanner is a C++17 command-line tool, built solo in 5 days, that scans any directory and reports each file\'s name, size, extension, type, and count, straight to the console or exported to CSV.\n\nWhat makes it different: zero external dependencies, built entirely on std::filesystem and the C++ standard library, with a data-driven extension-to-type lookup table instead of scattered if-chains, so a new file type is one map entry away, not a rewrite.\n\nEngineering Quality: The tool uses struct-based data encapsulation to separate scanning, processing, and presentation logic, enum class types to eliminate magic values and improve type safety, and defensive error handling to gracefully handle invalid paths, inaccessible files, and other runtime errors without crashing.',
     gitUrl: 'https://gitlab.com/prasanth1608/system-directory-scanner'
@@ -669,6 +671,7 @@ class Component extends DCLogic {
       const slug = p.title.toLowerCase().replace(/\s+/g, '-');
       const tab = this.state.projectTabs[i];
       return {
+        showDetailLinks: p.hideDetailPage !== true,
         ...p, overview: overviewWithLeads(p.overview, p.accent), setCardRef: (el) => { this.projectCardEls[i] = el; },
         borderStrong: hexToRgba(p.accent, 0.45), borderMid: hexToRgba(p.accent, 0.35), borderLight: hexToRgba(p.accent, 0.25),
         cardBg: `linear-gradient(160deg, ${mixWithDark(p.accent, 0.32, [5, 8, 9])} 0%, ${mixWithDark(p.accent, 0.12, [5, 8, 9])} 45%, #050809 100%)`,
@@ -697,6 +700,7 @@ class Component extends DCLogic {
       const slug = p.title.toLowerCase().replace(/\s+/g, '-');
       const tab = this.state.roleTabs[i];
       return {
+        showDetailLinks: p.hideDetailPage !== true,
         ...p, overview: overviewWithLeads(p.overview, p.accent), detailHref: `ProfessionalProject.dc.html?slug=${slug}`,
         setCardRef: (el) => { this.roleCardEls[i] = el; },
         borderStrong: hexToRgba(p.accent, 0.45), borderMid: hexToRgba(p.accent, 0.35), borderLight: hexToRgba(p.accent, 0.25),
@@ -720,6 +724,7 @@ class Component extends DCLogic {
     const tools = RAW_TOOLS.map((p, i) => {
       const tab = this.state.toolTabs[i];
       return {
+        showDetailLinks: p.hideDetailPage !== true,
         ...p, overview: overviewWithLeads(p.overview, p.accent), setCardRef: (el) => { this.toolCardEls[i] = el; },
         borderStrong: hexToRgba(p.accent, 0.45), borderMid: hexToRgba(p.accent, 0.35), borderLight: hexToRgba(p.accent, 0.25),
         cardBg: `linear-gradient(160deg, ${mixWithDark(p.accent, 0.32, [5, 8, 9])} 0%, ${mixWithDark(p.accent, 0.12, [5, 8, 9])} 45%, #050809 100%)`,
