@@ -453,7 +453,7 @@ const RAW_TOOLS = [
   {
     title: 'WIND FIELD', tags: 'UNREAL ENGINE · C++ · PLUGIN', accent: '#FF7A4D',
     banner: 'assets/plugins/windfield/card-thumbnail.png', trailerId: 'nAI2--ftOKQ',
-    overview: 'WindField is an Unreal Engine 5 plugin that brings physically reactive wind to any level in minutes, drag, drop, and the environment starts moving. Built for game developers and archviz artists who need believable environmental motion without hand-rolling a wind system from scratch.\n\nWhat makes it different: WindField is fully obstacle-aware, detecting geometry and breaking around it, without a single raytrace or collision query. Every interaction runs on pure math-based grid and vector calculations instead, keeping it highly optimised enough to simulate 200+ objects at under 3ms on the game thread.\n\nEngineered on solid OOP architecture with dedicated error handling and debugging tooling built in for long-term maintainability, and developed end-to-end following Agile practices, from first prototype through iterative polish.',
+    overview: 'WindField is an Unreal Engine 5 plugin that brings physically reactive wind to any level in minutes, drag, drop, and the environment starts moving. Built for game developers and archviz artists who need believable environmental motion without hand-rolling a wind system from scratch.\n\nWhat makes it different: WindField is fully obstacle-aware, detecting geometry and breaking around it, without a single raytrace or per-tick collision query. Every interaction runs on pure math-based grid and vector calculations instead, keeping it highly optimised enough to simulate 200+ objects at under 3ms on the game thread.\n\nEngineering Quality: built on solid OOP architecture with dedicated error handling and debugging strategies for long-term maintainability, developed end-to-end following Agile practices, from first prototype through iterative polish.',
     gitUrl: ''
   },
   {
@@ -492,6 +492,22 @@ function hexToRgbObj(hex) {
   return { r: parseInt(h.substring(0, 2), 16), g: parseInt(h.substring(2, 4), 16), b: parseInt(h.substring(4, 6), 16) };
 }
 function lerp(a, b, t) { return a + (b - a) * t; }
+
+function overviewWithLeads(text, accent) {
+  const paragraphs = (text || '').split('\n\n');
+  const nodes = [];
+  paragraphs.forEach((para, i) => {
+    if (i > 0) nodes.push('\n\n');
+    const m = para.match(/^([A-Za-z][A-Za-z\s]{2,40}:)\s*/);
+    if (m) {
+      nodes.push(React.createElement('span', { key: `lead-${i}`, style: { color: accent } }, m[1]));
+      nodes.push(para.slice(m[0].length - 1));
+    } else {
+      nodes.push(para);
+    }
+  });
+  return nodes;
+}
 function bgFromRgbFlat(r, g, b, alpha, dark) {
   const rr = Math.round(r), rg = Math.round(g), rb = Math.round(b);
   const mix = (ratio) => `rgb(${Math.round(rr * ratio + dark[0] * (1 - ratio))},${Math.round(rg * ratio + dark[1] * (1 - ratio))},${Math.round(rb * ratio + dark[2] * (1 - ratio))})`;
@@ -652,7 +668,7 @@ class Component extends DCLogic {
       const slug = p.title.toLowerCase().replace(/\s+/g, '-');
       const tab = this.state.projectTabs[i];
       return {
-        ...p, setCardRef: (el) => { this.projectCardEls[i] = el; },
+        ...p, overview: overviewWithLeads(p.overview, p.accent), setCardRef: (el) => { this.projectCardEls[i] = el; },
         borderStrong: hexToRgba(p.accent, 0.45), borderMid: hexToRgba(p.accent, 0.35), borderLight: hexToRgba(p.accent, 0.25),
         cardBg: `linear-gradient(160deg, ${mixWithDark(p.accent, 0.32, [5, 8, 9])} 0%, ${mixWithDark(p.accent, 0.12, [5, 8, 9])} 45%, #050809 100%)`,
         borderImage: 'none',
@@ -680,7 +696,7 @@ class Component extends DCLogic {
       const slug = p.title.toLowerCase().replace(/\s+/g, '-');
       const tab = this.state.roleTabs[i];
       return {
-        ...p, detailHref: `ProfessionalProject.dc.html?slug=${slug}`,
+        ...p, overview: overviewWithLeads(p.overview, p.accent), detailHref: `ProfessionalProject.dc.html?slug=${slug}`,
         setCardRef: (el) => { this.roleCardEls[i] = el; },
         borderStrong: hexToRgba(p.accent, 0.45), borderMid: hexToRgba(p.accent, 0.35), borderLight: hexToRgba(p.accent, 0.25),
         cardBg: `linear-gradient(160deg, ${mixWithDark(p.accent, 0.32, [5, 8, 9])} 0%, ${mixWithDark(p.accent, 0.12, [5, 8, 9])} 45%, #050809 100%)`,
@@ -703,7 +719,7 @@ class Component extends DCLogic {
     const tools = RAW_TOOLS.map((p, i) => {
       const tab = this.state.toolTabs[i];
       return {
-        ...p, setCardRef: (el) => { this.toolCardEls[i] = el; },
+        ...p, overview: overviewWithLeads(p.overview, p.accent), setCardRef: (el) => { this.toolCardEls[i] = el; },
         borderStrong: hexToRgba(p.accent, 0.45), borderMid: hexToRgba(p.accent, 0.35), borderLight: hexToRgba(p.accent, 0.25),
         cardBg: `linear-gradient(160deg, ${mixWithDark(p.accent, 0.32, [5, 8, 9])} 0%, ${mixWithDark(p.accent, 0.12, [5, 8, 9])} 45%, #050809 100%)`,
         borderImage: 'none',
