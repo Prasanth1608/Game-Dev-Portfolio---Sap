@@ -71,7 +71,7 @@
       <a href="#expertise" onClick="{{ goTo }}" data-target="expertise" style="{{ navStyles.expertise }}">EXPERTISE</a>
       <a href="#games" onClick="{{ goTo }}" data-target="games" style="{{ navStyles.games }}">GAMES</a>
       <a href="#professional" onClick="{{ goTo }}" data-target="professional" style="{{ navStyles.professional }}">PROFESSIONAL</a>
-      <a href="#tools" onClick="{{ goTo }}" data-target="tools" style="{{ navStyles.tools }}">TOOLS</a>
+      <a href="#tools" onClick="{{ goTo }}" data-target="tools" style="{{ navStyles.tools }}">SOFTWARE</a>
       <a href="#journey" onClick="{{ goTo }}" data-target="journey" style="{{ navStyles.journey }}">JOURNEY</a>
     </div>
   </div>
@@ -308,14 +308,14 @@
   <!-- ================= TOOLS ================= -->
   <section id="tools" ref="{{ sectionRefs.tools }}" style="position: relative; min-height: 100vh; padding-bottom: 40px; box-sizing: border-box; overflow: hidden">
 
-    <div style="position: relative; z-index: 2; text-align: center; padding: 60px 40px 0 40px; font-family: 'Bebas Neue', sans-serif; font-size: 40px; letter-spacing: 0.06em; color: #FFFFFF">TOOLS</div>
+    <div style="position: relative; z-index: 2; text-align: center; padding: 60px 40px 0 40px; font-family: 'Bebas Neue', sans-serif; font-size: 40px; letter-spacing: 0.06em; color: #FFFFFF">SOFTWARE</div>
 
     <div style="position: relative; z-index: 2; display: flex; flex-direction: column; gap: 40px; padding: 40px 40px 0 40px; max-width: 1240px; margin: 0 auto">
       <sc-for list="{{ tools }}" as="project" hint-placeholder-count="1">
         <div ref="{{ project.setCardRef }}" style="border: 1px solid {{ project.borderStrong }}; border-image: {{ project.borderImage }}; background: {{ project.cardBg }}; border-radius: 2px; box-shadow: 0 24px 60px -20px rgba(0,0,0,0.65), 0 4px 24px rgba(0,0,0,0.4), inset 0 1px 0 rgba(255,255,255,0.05)">
           <div style="height: 380px; background: {{ project.bannerBg }}; display: flex; align-items: center; justify-content: center; border-bottom: 1px solid {{ project.borderMid }}; position: relative">
             <sc-if value="{{ project.noBanner }}" hint-placeholder-val="{{ false }}">
-              <div style="font-family: 'JetBrains Mono', monospace; font-size: 12px; letter-spacing: 0.2em; color: #FFFFFF">TOOL_STILL / KEY ART</div>
+              <div style="font-family: 'JetBrains Mono', monospace; font-size: 12px; letter-spacing: 0.2em; color: #FFFFFF">SOFTWARE_STILL / KEY ART</div>
             </sc-if>
             <div style="position: absolute; inset: 0; background: linear-gradient(0deg, rgba(0,0,0,0.85) 0%, transparent 45%); pointer-events: none"></div>
             <div style="position: absolute; top: 18px; left: 22px; font-family: 'Bebas Neue', sans-serif; font-size: 26px; letter-spacing: 0.1em; color: {{ project.accent }}; text-shadow: 0 2px 12px rgba(0,0,0,0.8)">{{ project.index }}</div>
