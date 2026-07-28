@@ -223,10 +223,10 @@
         </div>
       </div>
 
-      <!-- ===== RELEASE STATUS ===== -->
+      <!-- ===== DOWNLOAD CTA ===== -->
       <div style="margin-top: 84px; padding-top: 40px; border-top: 1px solid rgba(255,255,255,0.12); text-align: center">
-        <div style="font-family: 'Bebas Neue', sans-serif; font-size: 34px; letter-spacing: 0.03em; color: {{ project.accent }}">THE PLUGIN IS RELEASING SOON</div>
-        <div style="font-family: 'JetBrains Mono', monospace; font-size: 13px; letter-spacing: 0.3em; color: #FFFFFF; margin-top: 10px">STAY TUNED</div>
+        <div style="font-family: 'Bebas Neue', sans-serif; font-size: 34px; letter-spacing: 0.03em; color: #FFFFFF; margin-bottom: 24px">WANNA TRY MY PLUGIN AND CREATE YOUR OWN WIND MECHANIC?</div>
+        <a href="{{ project.gitUrl }}" target="_blank" rel="noopener" style="display: inline-flex; align-items: center; gap: 10px; font-family: 'Bebas Neue', sans-serif; font-size: 18px; letter-spacing: 0.12em; color: #001018; background: {{ project.accent }}; padding: 12px 28px; box-shadow: 0 8px 24px -8px {{ project.borderMid }}">⬇ DOWNLOAD</a>
       </div>
 
     </div>
@@ -303,6 +303,7 @@ const RAW_TOOLS = [
     eyebrow: 'WINDFIELD',
     tags: 'UNREAL ENGINE 5 · C++ · PLUGIN',
     accent: '#FF7A4D',
+    gitUrl: 'https://gitlab.com/prasanth1608/wind-field',
     banner: 'assets/plugins/windfield/hero.gif', bannerVideoId: 'nAI2--ftOKQ',
     tagline: 'A drag-and-drop, physically reactive wind plugin for Unreal Engine 5, built from procedural grid math and cached detection, not a single line trace.',
     overviewIntro: "WindField is an Unreal Engine 5 plugin that adds real-time, physically reactive wind to a scene in minutes, no Blueprint graphs or C++ required. Wind is generated procedurally and interacts directly with static meshes, breaking on obstacles instead of passing through them.",
