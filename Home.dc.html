@@ -457,7 +457,7 @@ const RAW_TOOLS = [
     gitUrl: ''
   },
   {
-    title: 'SYSTEM DIRECTORY SCANNER', tags: 'CMAKE · C++ · CLI TOOL', accent: '#6EE7C8',
+    title: 'SYSTEM DIRECTORY SCANNER', tags: 'CMAKE · C++ · CLI TOOL', accent: '#6EE7C8', detailPage: 'Project.dc.html',
     overview: 'System Directory Scanner is a C++ and CMake-built CLI tool for quickly auditing any folder on disk, surfacing file counts, type breakdowns, and total space usage in seconds. It turns a cluttered project directory into a clear, organized workflow for designers and developers alike, no manual digging required.\n\nBuilt entirely on the C++ standard library with a cross-platform CMake setup, it showcases efficient recursive filesystem traversal and clean, dependency-free systems programming, a small tool solving a real workflow problem.',
     gitUrl: ''
   }
@@ -710,7 +710,7 @@ class Component extends DCLogic {
         bannerBg: p.banner ? `center / cover no-repeat url(${p.banner}), linear-gradient(160deg, #0C1418, #050809)` : `linear-gradient(160deg, #0C1418, #050809)`,
         noBanner: !p.banner, trailerEmbedSrc: p.trailerId ? `https://www.youtube.com/embed/${p.trailerId}` : '', noTrailer: !p.trailerId,
         index: String(i + 1).padStart(2, '0'),
-        detailHref: `ToolsProject.dc.html?slug=${p.title.toLowerCase().replace(/\s+/g, '-')}`,
+        detailHref: `${p.detailPage || 'ToolsProject.dc.html'}?slug=${p.title.toLowerCase().replace(/\s+/g, '-')}`,
         gitUrl: p.gitUrl || '#', hasGitUrl: !!p.gitUrl, gitLabel: p.gitUrl ? p.gitUrl.replace(/^https?:\/\//, '') : `link your repo here`,
         tabMinHeight: tab === 'git' ? '0' : tab === 'trailer' ? '0' : '140px',
         tabJustify: tab === 'trailer' ? 'center' : 'space-between',
