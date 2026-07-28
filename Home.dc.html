@@ -432,7 +432,7 @@ const RAW_PROJECTS = [
   {
     title: 'CLUCKMARE', tags: 'UNREAL ENGINE 5 · C++ · SHOOTER', accent: '#1C6FC2',
     banner: 'assets/games/cluckmare/banner.jpg', trailerId: 'AKqoDcYymbk', gitUrl: 'https://gitlab.com/prasanth1608/cluckmare', itchUrl: 'https://prasanth1608.itch.io/cluckmare',
-    overview: 'A first-person shooter where you fight your way through a nightmare chicken factory. Built solo as the sole programmer on a 5-person team, driving character movement, dual weapon types, combat/damage resolution, and AI enemies that chase, attack, and visibly grow with every hit. Hacking terminals gate checkpoint progress, escalating from a tutorial encounter to a 25-enemy final wave.'
+    overview: 'CLUCKMARE is a first-person shooter built in Unreal Engine 5.4, fighting through a nightmare chicken factory with dual weapon types and escalating AI waves. Built solo as the sole programmer on a 5-person team.\n\nWhat makes it different: enemies that visibly grow with every hit, a hacking mini-game with a guaranteed non-repeating key sequence, and combat damage routed through shared delegates so player and enemy run through one extensible pipeline instead of duplicated logic.\n\nEngineering Quality: built on component-composition architecture with the Enhanced Input System, AIController + Behavior Trees, and TSubclassOf data-driven spawning, then optimised down by 1.92GB via Blueprint Interfaces to hold a steady 120fps.'
   }
 ];
 
@@ -440,7 +440,7 @@ const RAW_ROLES = [
   {
     title: 'INTERACTIVE WALKTHROUGH APPLICATION', tags: 'UNREAL ENGINE 5 · BLUEPRINTS · ARCHITECTURAL VISUALIZATION', accent: '#EAF3F8',
     banner: 'assets/professional/cavalli-couture/banner-2.png', trailerId: 'StRz906EKm8',
-    overview: 'At PropVR, I built interactive real-time walkthrough applications in Unreal Engine 5 for major real-estate developers including DAMAC, LODHA, KAFD, and Prestige Group, letting clients and prospective buyers explore developments before they existed.\n\nI implemented a data-driven UI system so screens and layouts could be reconfigured per-project without touching code, built a day/night cycle slider using Ultra Dynamic Sky, and debugged and fixed the save/load quest system used to track walkthrough progress.\n\nI also implemented an analytics pipeline in Unreal Engine 5 using JSON parsing, designed so new events could be added entirely through data with no code or editor changes required. After reading through Game Analytics\' documentation and scoping the client\'s requirements, I deployed the system to their dashboard within two months.'
+    overview: 'Interactive Walkthrough Application is a real-time architectural visualization tool built in Unreal Engine 5 for major real-estate developers, DAMAC, LODHA, KAFD, and Prestige Group, letting buyers explore developments before they\'re built. Built solo at PropVR.\n\nWhat makes it different: a fully data-driven UI system that reconfigures per-project without touching code, plus an analytics pipeline where new tracked events are added entirely through JSON, no code or editor changes required.\n\nEngineering Quality: built on OOP and data-driven design principles, debugged and fixed a broken save/load quest system, and shipped the analytics integration to the client\'s dashboard within two months of scoping.'
   }
 ];
 
@@ -454,13 +454,13 @@ const RAW_TOOLS = [
   {
     title: 'SYSTEM DIRECTORY SCANNER', tags: 'CMAKE · C++ · CLI TOOL', accent: '#B98BFF', detailPage: 'Project.dc.html',
     banner: 'assets/software/directory-scanner/banner.png',
-    overview: 'System Directory Scanner is a C++ and CMake-built CLI tool for quickly auditing any folder on disk, surfacing file counts, type breakdowns, and total space usage in seconds. It turns a cluttered project directory into a clear, organized workflow for designers and developers alike, no manual digging required.\n\nBuilt entirely on the C++ standard library with a cross-platform CMake setup, it showcases efficient recursive filesystem traversal and clean, dependency-free systems programming, a small tool solving a real workflow problem.',
+    overview: 'System Directory Scanner is a C++17 command-line tool, built solo in 5 days, that scans any directory and reports each file\'s name, size, extension, type, and count, straight to the console or exported to CSV.\n\nWhat makes it different: zero external dependencies, built entirely on std::filesystem and the C++ standard library, with a data-driven extension-to-type lookup table instead of scattered if-chains, so a new file type is one map entry away, not a rewrite.\n\nEngineering Quality: struct-based data encapsulation keeps scan results decoupled from the console/export logic, strongly-typed enum classes replace magic strings for every flag, and defensive error handling means an invalid path never crashes the tool.',
     gitUrl: ''
   },
   {
     title: 'OPENGL GAME', tags: 'OPENGL · C++ · GRAPHICS APIS', accent: '#FFC857', detailPage: 'Project.dc.html',
     banner: 'assets/games/aimgl/banner.png', gitUrl: 'https://gitlab.com/prasanth1608/aimgl', trailerId: '9u1FXztli2k', itchUrl: 'https://gitlab.com/prasanth1608/aimgl',
-    overview: 'OpenGL Game is a retro-style demake of a game called "Aimlabs", available on the Steam platform. Designed as an aim training tool, it helps players enhance their accuracy and precision in competitive shooter games, built with OpenGL and C++ in a cartoon-ish theme.\n\nUpon entering the training arena, players are ready to begin their practice session. Each session lasts 60 seconds, during which players aim to achieve their highest possible score. The HUD (Heads-Up Display) provides real-time information, including a timer and score tracker. The game features two distinct modes: Hitscan bullet mode and Projectile bullet mode.'
+    overview: 'OpenGL Game is a retro-style aim-trainer demake of "Aimlabs", built entirely on a custom C++ engine, roughly 3,700 hand-written lines, with no external game engine, just OpenGL, GLFW, and GLM.\n\nWhat makes it different: every system, rendering, physics, and collision, is built from scratch. A Phong lighting model, a custom rigidbody class handling force/impulse/acceleration independently, and AABB collision detection, all hand-rolled rather than borrowed from an engine.\n\nEngineering Quality: clean OOP encapsulation keeps GPU handles private behind dedicated Shader and Texture classes, with a single reusable shader-compilation pipeline instead of duplicated boilerplate per shader, real low-level engine architecture, not just gameplay scripting.'
   }
 ];
 
