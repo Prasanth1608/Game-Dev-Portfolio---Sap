@@ -10,7 +10,7 @@
 <helmet>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=JetBrains+Mono:wght@400;500;700&family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=JetBrains+Mono:wght@400;500;700&family=Space+Grotesk:wght@400;500;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
   <style>
     html, body { margin: 0; padding: 0; background: #000000; }
     :root {
@@ -95,14 +95,14 @@
               <sc-if value="{{ section.isList }}" hint-placeholder-val="{{ false }}">
                 <div style="display: flex; flex-direction: column; gap: 8px">
                   <sc-for list="{{ section.items }}" as="item" hint-placeholder-count="4">
-                    <div style="font-family: 'JetBrains Mono', monospace; font-size: 14px; line-height: 1.6; color: #FFFFFF; display: flex; gap: 10px">
+                    <div style="font-family: 'Inter', sans-serif; font-size: 14px; line-height: 1.6; color: #FFFFFF; display: flex; gap: 10px">
                       <span style="color: {{ project.accent }}">▸</span>{{ item }}
                     </div>
                   </sc-for>
                 </div>
               </sc-if>
               <sc-if value="{{ section.isText }}" hint-placeholder-val="{{ true }}">
-                <div style="font-family: 'JetBrains Mono', monospace; font-size: 14px; line-height: 1.8; color: #FFFFFF">{{ section.body }}</div>
+                <div style="font-family: 'Inter', sans-serif; font-size: 14px; line-height: 1.8; color: #FFFFFF">{{ section.body }}</div>
               </sc-if>
             </div>
           </sc-for>

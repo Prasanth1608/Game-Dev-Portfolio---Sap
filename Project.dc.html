@@ -10,7 +10,7 @@
 <helmet>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=JetBrains+Mono:wght@400;500;700&family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=JetBrains+Mono:wght@400;500;700&family=Space+Grotesk:wght@400;500;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
   <style>
     html, body { margin: 0; padding: 0; background: #000000; }
     :root {
@@ -85,7 +85,7 @@
           <sc-for list="{{ project.technicalSections }}" as="section" hint-placeholder-count="3">
             <div style="margin-bottom: 26px">
               <div style="font-family: 'Bebas Neue', sans-serif; font-size: 30px; letter-spacing: 0.04em; color: {{ project.accent }}; margin-bottom: 10px">{{ section.heading }}</div>
-              <div style="font-family: 'JetBrains Mono', monospace; font-size: 14px; line-height: 1.8; color: #FFFFFF; white-space: pre-line">{{ section.body }}</div>
+              <div style="font-family: 'Inter', sans-serif; font-size: 14px; line-height: 1.8; color: #FFFFFF; white-space: pre-line">{{ section.body }}</div>
               <sc-if value="{{ section.mediaBeforeAfter }}" hint-placeholder-val="{{ false }}">
                 <div class="rt-media-grid" style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 18px; align-items: start">
                   <div>
@@ -103,7 +103,7 @@
               </sc-if>
               <sc-if value="{{ section.rSubheading }}" hint-placeholder-val="{{ false }}">
                 <div style="font-family: 'Bebas Neue', sans-serif; font-size: 22px; letter-spacing: 0.04em; color: {{ project.accent }}; margin-top: 20px; margin-bottom: 8px">{{ section.rSubheading }}</div>
-                <div style="font-family: 'JetBrains Mono', monospace; font-size: 14px; line-height: 1.8; color: #FFFFFF; white-space: pre-line">{{ section.rSubBody }}</div>
+                <div style="font-family: 'Inter', sans-serif; font-size: 14px; line-height: 1.8; color: #FFFFFF; white-space: pre-line">{{ section.rSubBody }}</div>
                 <div class="rt-media-grid" style="margin-top: 18px; display: grid; grid-template-columns: 1fr 1fr; gap: 16px">
                   <img src="{{ section.rWideImage }}" onError="this.style.display='none'" loading="lazy" style="width: 100%; height: 320px; object-fit: contain; background: rgba(255,255,255,0.02); border: 1px solid {{ project.borderMid }}; border-radius: 2px; display: block" />
                   <sc-if value="{{ section.rMain }}" hint-placeholder-val="{{ false }}">
@@ -124,7 +124,7 @@
               </sc-if>
               <sc-if value="{{ section.lSubheading }}" hint-placeholder-val="{{ false }}">
                 <div style="font-family: 'Bebas Neue', sans-serif; font-size: 22px; letter-spacing: 0.04em; color: {{ project.accent }}; margin-top: 20px; margin-bottom: 8px">{{ section.lSubheading }}</div>
-                <div style="font-family: 'JetBrains Mono', monospace; font-size: 14px; line-height: 1.8; color: #FFFFFF; white-space: pre-line">{{ section.lSubBody }}</div>
+                <div style="font-family: 'Inter', sans-serif; font-size: 14px; line-height: 1.8; color: #FFFFFF; white-space: pre-line">{{ section.lSubBody }}</div>
                 <div class="rt-media-grid" style="margin-top: 18px; display: grid; grid-template-columns: 1fr 1fr; gap: 16px">
                   <img src="{{ section.lWideImage }}" onError="this.style.display='none'" loading="lazy" style="width: 100%; height: 320px; object-fit: contain; background: rgba(255,255,255,0.02); border: 1px solid {{ project.borderMid }}; border-radius: 2px; display: block" />
                   <img src="{{ section.lMain }}" onError="this.style.display='none'" loading="lazy" style="width: 100%; height: 320px; object-fit: contain; background: rgba(255,255,255,0.02); border: 1px solid {{ project.borderMid }}; border-radius: 2px; display: block" />
@@ -161,7 +161,7 @@
               <sc-if value="{{ section.mediaWideImage }}" hint-placeholder-val="{{ false }}">
                 <sc-if value="{{ section.subheading }}" hint-placeholder-val="{{ false }}">
                   <div style="font-family: 'Bebas Neue', sans-serif; font-size: 22px; letter-spacing: 0.04em; color: {{ project.accent }}; margin-top: 26px; margin-bottom: 8px">{{ section.subheading }}</div>
-                  <div style="font-family: 'JetBrains Mono', monospace; font-size: 14px; line-height: 1.8; color: #FFFFFF">{{ section.subBody }}</div>
+                  <div style="font-family: 'Inter', sans-serif; font-size: 14px; line-height: 1.8; color: #FFFFFF">{{ section.subBody }}</div>
                 </sc-if>
                 <div style="margin-top: 18px">
                   <img src="{{ section.mediaWideImage }}" onError="this.style.display='none'" loading="lazy" style="width: 100%; border: 1px solid {{ project.borderMid }}; border-radius: 2px; display: block" />
