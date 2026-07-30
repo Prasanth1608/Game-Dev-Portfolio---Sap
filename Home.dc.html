@@ -30,7 +30,6 @@
     @keyframes ap-teleport-in { 0% { opacity: 0; transform: translate(-50%, -55%) scale(0.3); filter: brightness(3) saturate(2); } 55% { opacity: 1; transform: translate(-50%, -65%) scale(1.15); filter: brightness(1.6); } 100% { opacity: 1; transform: translate(-50%, -60%) scale(1); filter: brightness(1); } }
     @keyframes ap-idle-sway { 0%, 100% { transform: rotate(-2deg); } 50% { transform: rotate(2deg); } }
     @keyframes ap-scroll-bounce { 0%, 100% { transform: translateY(0); opacity: 0.6; } 50% { transform: translateY(8px); opacity: 1; } }
-    @keyframes heroVideoReveal { 0%, 65% { opacity: 1; } 100% { opacity: 0; } }
     @media (max-width: 900px) {
       .rt-nav-links { gap: 12px !important; font-size: 10.5px !important; flex-wrap: wrap !important; justify-content: flex-end !important; }
       .rt-grid3 { grid-template-columns: 1fr !important; }
@@ -69,9 +68,7 @@
 
   <!-- ================= HOME ================= -->
   <section id="home" ref="{{ sectionRefs.home }}" style="position: relative; width: 100%; height: 100vh; min-height: 700px; overflow: hidden">
-    <div style="position: absolute; inset: 0; z-index: 0; overflow: hidden">
-      <iframe src="https://www.youtube-nocookie.com/embed/AKqoDcYymbk?autoplay=1&mute=1&loop=1&controls=0&showinfo=0&modestbranding=1&rel=0&playsinline=1&iv_load_policy=3&disablekb=1&fs=0&start=2&playlist=AKqoDcYymbk" title="Background video" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen="true" style="position: absolute; top: 50%; left: 50%; width: 177.78vh; min-width: 100%; height: 100vh; min-height: 56.25vw; transform: translate(-50%, -50%); border: 0; pointer-events: none" allow="autoplay; encrypted-media; picture-in-picture"></iframe>
-      <div style="position: absolute; inset: 0; background: #000000; animation: heroVideoReveal 2.6s ease forwards; pointer-events: none"></div>
+    <div style="position: absolute; inset: 0; z-index: 0; overflow: hidden; background: #000000">
       <div style="position: absolute; inset: 0; background: radial-gradient(ellipse at center, rgba(0,0,0,0.3) 30%, rgba(0,0,0,0.88) 100%), linear-gradient(180deg, rgba(0,0,0,0.88) 0%, rgba(0,0,0,0.48) 22%, rgba(0,0,0,0.32) 40%, rgba(0,0,0,0.32) 60%, rgba(0,0,0,0.88) 100%); pointer-events: none"></div>
     </div>
 
@@ -422,7 +419,7 @@
 <script type="text/x-dc" data-dc-script>
 const RAW_CATEGORIES = [
   { title: 'UNREAL ARCHITECTURE', points: ['Gameplay framework (Actors, Components, Interfaces)', 'Replication & networked actors', 'Delegates & data-driven design', 'Profilers & memory size maps', 'Build & packaging strategies', 'Behavior Trees', 'UMG / Slate / Common UI'] },
-  { title: 'SOFTWARE ARCHITECTURE & DESIGN', points: ['Object-Oriented Programming & SOLID principles', 'RAII & smart pointers', 'Templates & design patterns', 'Scalable, maintainable architecture', 'API & SDK design', 'Algorithms, data structures & STL', 'C++ & C#'] },
+  { title: 'SOFTWARE ARCHITECTURE & DESIGN', points: ['Object-Oriented Programming & SOLID principles', 'RAII & smart pointers', 'Templates & design patterns', 'Scalable, maintainable architecture', 'API & SDK design', 'Algorithms, data structures & STL'] },
   { title: 'GAMEPLAY SYSTEMS', points: ['Character movement systems', 'Abilities & combat systems', 'Weapon systems & stats', 'Vehicle systems (spaceship)', 'Interaction systems', 'Enhanced Input systems', 'Inventory systems', 'Save / load systems'] },
   { title: 'TOOLS & WORKFLOW', points: ['Git (GitHub, GitLab)', 'Visual Studio', 'CMake', 'REST APIs, JSON and Postman', 'Command line (CMD, PowerShell)', 'Firebase'] },
   { title: 'DEVELOPMENT PRACTICES', points: ['Agile Development', 'Version control with Git', 'Visual planning with Miro board', 'Team comms on Slack', 'Documentation', 'Sprint planning in Notion', 'Code reviews & refactoring', 'Dependency & memory analysis'] },
