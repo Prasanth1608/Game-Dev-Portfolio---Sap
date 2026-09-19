@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=JetBrains+Mono:wght@400;500;700&family=Space+Grotesk:wght@400;500;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    html, body { margin: 0; padding: 0; background: #000000; }
+    :root {
+      --cur-default: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='26' height='26' viewBox='0 0 26 26'%3E%3Cdefs%3E%3ClinearGradient id='g1' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop offset='0%25' stop-color='%234DC3FF'/%3E%3Cstop offset='50%25' stop-color='%23FF6F91'/%3E%3Cstop offset='100%25' stop-color='%23FFC857'/%3E%3C/linearGradient%3E%3C/defs%3E%3Cpath d='M2 1 L2 20 L7 15.5 L10.5 22.5 L13.5 21 L10 14 L16.5 14 Z' fill='url(%23g1)' stroke='%23000000' stroke-width='1.1' stroke-linejoin='round'/%3E%3C/svg%3E") 2 1, auto;
+      --cur-hover: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='26' height='26' viewBox='0 0 26 26'%3E%3Cdefs%3E%3ClinearGradient id='g2' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop offset='0%25' stop-color='%23FF6F91'/%3E%3Cstop offset='50%25' stop-color='%23B98BFF'/%3E%3Cstop offset='100%25' stop-color='%234DC3FF'/%3E%3C/linearGradient%3E%3C/defs%3E%3Cpath d='M9 4.5c0-.9.7-1.6 1.6-1.6s1.6.7 1.6 1.6v5.3l1-.2c0-1 .7-1.8 1.7-1.8s1.7.8 1.7 1.8v.3l.7-.1c.9 0 1.7.8 1.7 1.7v3.4c0 3.3-2.5 6-5.8 6h-1.8c-2 0-3.3-.7-4.4-2.3l-2.8-4c-.5-.7-.3-1.7.4-2.2.7-.4 1.6-.3 2.1.3l1.1 1.3V4.5Z' fill='url(%23g2)' stroke='%23000000' stroke-width='1' stroke-linejoin='round'/%3E%3C/svg%3E") 11 4, pointer;
+    }
+    body { cursor: var(--cur-default); }
+    a, button { cursor: var(--cur-hover); }
+    a { color: #FFC857; text-decoration: none; }
+    a:hover { filter: brightness(1.15); }
+    @media (max-width: 900px) {
+      .rt-nav-links { gap: 12px !important; font-size: 10.5px !important; flex-wrap: wrap !important; justify-content: flex-end !important; }
+    }
+    @media (max-width: 600px) {
+      .rt-pad { padding-left: 20px !important; padding-right: 20px !important; }
+    }
+  </style>
+  <template id="__bundler_thumbnail">
+    <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"><rect width="100" height="100" fill="#000000"/><text x="50" y="58" font-family="sans-serif" font-weight="bold" font-size="14" fill="#6EE7C8" text-anchor="middle">PROTOTYPE</text></svg>
+  </template>
+</helmet>
+
+<div data-screen-label="Prototype detail" style="position: relative; min-height: 100vh; background: #000000; font-family: 'Space Grotesk', sans-serif; color: #FFFFFF; padding-bottom: 60px; box-sizing: border-box">
+
+  <!-- ===== backdrop glow ===== -->
+  <div style="position: fixed; inset: 0; pointer-events: none; z-index: 0; background: {{ backdropBg }}"></div>
+  <div style="position: fixed; inset: 0; pointer-events: none; z-index: 0; opacity: 0.035; mix-blend-mode: overlay; background-image: url(&quot;data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E&quot;)"></div>
+
+  <!-- ===== nav ===== -->
+  <div style="position: sticky; top: 0; display: flex; justify-content: space-between; align-items: center; padding: 18px 40px; z-index: 20; background: #000000; border-bottom: 1px solid rgba(255,255,255,0.06)">
+    <a href="Home.dc.html#home" style="font-family: 'Bebas Neue', sans-serif; font-size: 24px; letter-spacing: 0.08em; color: #FFFFFF">AP<span style="color: #FFC857">®</span></a>
+    <div class="rt-nav-links" style="display: flex; align-items: center; gap: 24px; font-family: 'JetBrains Mono', monospace; font-size: 12px; letter-spacing: 0.2em">
+      <a href="Home.dc.html#home" style="color: #FFFFFF" style-hover="color: #FFDE59">HOME</a>
+      <a href="Home.dc.html#expertise" style="color: #FFFFFF" style-hover="color: #FFDE59">EXPERTISE</a>
+      <a href="Home.dc.html#games" style="color: #FFFFFF" style-hover="color: #FFDE59">GAMES</a>
+      <a href="Home.dc.html#prototypes" style="color: #FFC857">PROTOTYPES</a>
+      <a href="Home.dc.html#professional" style="color: #FFFFFF" style-hover="color: #FFDE59">PROFESSIONAL</a>
+      <a href="Home.dc.html#tools" style="color: #FFFFFF" style-hover="color: #FFDE59">SOFTWARE</a>
+      <a href="Home.dc.html#journey" style="color: #FFFFFF" style-hover="color: #FFDE59">JOURNEY</a>
+    </div>
+  </div>
+
+  <!-- ===== not found ===== -->
+  <sc-if value="{{ notFound }}" hint-placeholder-val="{{ false }}">
+    <div style="position: relative; z-index: 2; padding: 100px 40px; text-align: center; font-family: 'JetBrains Mono', monospace; color: #FFFFFF">
+      Prototype not found. <a href="Home.dc.html#prototypes" style="color: #4DC3FF">◂ back to prototypes</a>
+    </div>
+  </sc-if>
+
+  <sc-if value="{{ found }}" hint-placeholder-val="{{ true }}">
+    <div style="position: relative; z-index: 2">
+
+      <!-- wide banner -->
+      <div style="width: 100%; height: min(52vh, 40vw); min-height: 260px; border-bottom: 1px solid {{ project.borderMid }}; background: {{ project.bannerBg }}; position: relative; box-sizing: border-box; display: flex; align-items: center; justify-content: center">
+        <sc-if value="{{ project.noBanner }}" hint-placeholder-val="{{ false }}">
+          <div style="font-family: 'JetBrains Mono', monospace; font-size: 12px; letter-spacing: 0.2em; color: #FFFFFF">PROTOTYPE_STILL / KEY ART</div>
+        </sc-if>
+        <div style="position: absolute; inset: 0; background: linear-gradient(0deg, rgba(0,0,0,0.85) 0%, transparent 45%); pointer-events: none"></div>
+        <a href="Home.dc.html#prototypes" style="position: absolute; top: 18px; left: 40px; font-family: 'JetBrains Mono', monospace; font-size: 12px; letter-spacing: 0.15em; color: #FFFFFF; text-shadow: 0 2px 10px rgba(0,0,0,0.8)">◂ ALL PROTOTYPES</a>
+        <div class="rt-pad" style="position: absolute; left: 0; right: 0; bottom: 30px; padding: 0 40px; box-sizing: border-box">
+          <div style="font-family: 'Bebas Neue', sans-serif; font-size: 60px; letter-spacing: 0.02em; color: #FFFFFF; line-height: 1; text-shadow: 0 2px 20px rgba(0,0,0,0.8)">{{ project.title }}</div>
+          <div style="font-family: 'JetBrains Mono', monospace; font-weight: 700; font-size: 13px; letter-spacing: 0.12em; color: {{ project.accent }}; margin-top: 10px">{{ project.tags }}</div>
+        </div>
+      </div>
+
+      <!-- technical breakdown -->
+      <div class="rt-pad" style="max-width: 1160px; margin: 0 auto; padding: 40px 40px 20px 40px; box-sizing: border-box">
+        <sc-for list="{{ project.sections }}" as="section" hint-placeholder-count="2">
+          <div style="margin-bottom: 40px">
+            <div style="font-family: 'Bebas Neue', sans-serif; font-size: 32px; letter-spacing: 0.04em; color: {{ project.accent }}; margin-bottom: 12px">{{ section.heading }}</div>
+
+            <sc-if value="{{ section.intro }}" hint-placeholder-val="{{ false }}">
+              <div style="font-family: 'Inter', sans-serif; font-size: 15px; line-height: 1.8; color: #FFFFFF; margin-bottom: 18px">{{ section.intro }}</div>
+            </sc-if>
+
+            <sc-if value="{{ section.hasBullets }}" hint-placeholder-val="{{ false }}">
+              <div style="display: flex; flex-direction: column; gap: 10px">
+                <sc-for list="{{ section.bullets }}" as="bullet" hint-placeholder-count="4">
+                  <div style="display: flex; align-items: flex-start; gap: 14px; font-family: 'Inter', sans-serif; font-size: 15px; line-height: 1.6; color: #FFFFFF">
+                    <span style="flex: none; width: 7px; height: 7px; margin-top: 9px; background: {{ project.accent }}"></span>
+                    <span>{{ bullet }}</span>
+                  </div>
+                </sc-for>
+              </div>
+            </sc-if>
+
+            <sc-if value="{{ section.hasGoals }}" hint-placeholder-val="{{ false }}">
+              <div style="display: flex; flex-direction: column; gap: 16px">
+                <sc-for list="{{ section.goals }}" as="goal" hint-placeholder-count="6">
+                  <div style="border: 1px solid {{ project.borderMid }}; background: rgba(0,0,0,0.3); padding: 18px 22px; border-radius: 2px">
+                    <div style="font-family: 'Bebas Neue', sans-serif; font-size: 24px; letter-spacing: 0.04em; color: #FFFFFF; margin-bottom: 8px">{{ goal.heading }}</div>
+                    <div style="font-family: 'Inter', sans-serif; font-size: 14px; line-height: 1.8; color: #FFFFFF">{{ goal.body }}</div>
+                  </div>
+                </sc-for>
+              </div>
+            </sc-if>
+          </div>
+        </sc-for>
+      </div>
+    </div>
+  </sc-if>
+
+  <!-- ===== footer strip ===== -->
+  <div style="position: relative; z-index: 2; margin-top: 40px; border-top: 1px solid rgba(255,255,255,0.15); padding: 20px 40px; display: flex; justify-content: space-between; align-items: center; font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.15em; color: #FFFFFF">
+    <span>© ANANTHA PRASANTH</span>
+    <a href="#" onClick="{{ scrollToTop }}" style="color: #6EE7C8" style-hover="color: #FFDE59">◂ BACK TO TOP</a>
+  </div>
+</div>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+const RAW_PROTOTYPES = [
+  {
+    title: 'COLLECTIONS', tags: 'UNREAL ENGINE 5 · C++ · GAMEPLAY SYSTEMS', accent: '#6EE7C8',
+    banner: 'assets/prototypes/collections/banner.png',
+    sections: [
+      {
+        heading: 'PROTOTYPE FEATURES',
+        bullets: [
+          'Randomized collection objectives and item counts',
+          'Multiple collectible item types',
+          'Randomized spawning across predefined areas',
+          'Interaction-based item collection',
+          'Countdown timer with win/loss conditions',
+          'Doors with randomized locked/unlocked states',
+          'Teleporters',
+          'Dynamic HUD updates for collection progress and remaining time',
+          'Automatic restart after the match ends'
+        ]
+      },
+      {
+        heading: 'MY ENGINEERING GOALS',
+        intro: 'Rather than just completing the gameplay requirements, I wanted to use the challenge to practice building a system that is reusable, data-driven, and maintainable.',
+        goals: [
+          { heading: 'AVOID CASTING FOR INTERACTIONS', body: 'I implemented interfaces for interaction, allowing objects such as collectibles, doors, and teleporters to expose interaction behaviour without requiring the player to know their concrete class.' },
+          { heading: 'CLEAN ARCHITECTURE & REUSABLE COMPONENTS', body: 'Gameplay responsibilities are separated into reusable components and systems instead of being tightly coupled to individual actors.' },
+          { heading: 'ELIMINATE UNNECESSARY HARD REFERENCES', body: 'I replaced hard asset references where appropriate and use asynchronous loading when assets need to be loaded at runtime.' },
+          { heading: 'DATA-DRIVEN DESIGN', body: 'I wanted designers to be able to iterate on gameplay data without modifying the underlying systems.' },
+          { heading: 'OBJECT CACHING & REUSE', body: 'I introduced object caching where appropriate so existing references can be reused instead of repeatedly resolving objects or performing unnecessary casts during gameplay.' },
+          { heading: 'DYNAMIC UI SYSTEMS', body: 'The HUD is updated dynamically based on gameplay state, including collection progress and remaining time.' }
+        ]
+      }
+    ]
+  }
+];
+
+function hexToRgba(hex, alpha) {
+  const h = hex.replace('#', '');
+  const r = parseInt(h.substring(0, 2), 16);
+  const g = parseInt(h.substring(2, 4), 16);
+  const b = parseInt(h.substring(4, 6), 16);
+  return `rgba(${r},${g},${b},${alpha})`;
+}
+
+function mixWithDark(hex, ratio, dark) {
+  const h = hex.replace('#', '');
+  const r = parseInt(h.substring(0, 2), 16);
+  const g = parseInt(h.substring(2, 4), 16);
+  const b = parseInt(h.substring(4, 6), 16);
+  const [dr, dg, db] = dark;
+  return `rgb(${Math.round(r * ratio + dr * (1 - ratio))},${Math.round(g * ratio + dg * (1 - ratio))},${Math.round(b * ratio + db * (1 - ratio))})`;
+}
+
+class Component extends DCLogic {
+  getSlug() {
+    return new URLSearchParams(window.location.search).get('slug') || '';
+  }
+
+  renderVals() {
+    const slugOf = (p) => p.title.toLowerCase().replace(/\s+/g, '-');
+    const slug = this.getSlug() || slugOf(RAW_PROTOTYPES[0]);
+    const p = RAW_PROTOTYPES.find((x) => slugOf(x) === slug);
+
+    if (!p) {
+      return {
+        notFound: true,
+        found: false,
+        backdropBg: 'radial-gradient(ellipse 1600px 1300px at 50% 50%, rgb(20,20,20) 0%, #000000 100%)'
+      };
+    }
+
+    const project = {
+      ...p,
+      bannerBg: p.banner ? `center / cover no-repeat url(${p.banner}), linear-gradient(160deg, #0C1418, #050809)` : `linear-gradient(160deg, #0C1418, #050809)`,
+      noBanner: !p.banner,
+      borderMid: hexToRgba(p.accent, 0.35),
+      sections: p.sections.map((s) => ({
+        ...s,
+        hasBullets: !!(s.bullets && s.bullets.length),
+        hasGoals: !!(s.goals && s.goals.length)
+      }))
+    };
+
+    const backdropBg = `linear-gradient(180deg, ${mixWithDark(p.accent, 0.19, [10, 14, 16])} 0%, ${mixWithDark(p.accent, 0.14, [10, 14, 16])} 100%)`;
+
+    return { notFound: false, found: true, project, backdropBg, scrollToTop: (e) => { e.preventDefault(); window.scrollTo({ top: 0, behavior: 'smooth' }); } };
+  }
+}
+</script>
+</body>
+</html>

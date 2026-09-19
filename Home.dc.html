@@ -279,8 +279,8 @@
             <sc-if value="{{ project.hasGitUrl }}" hint-placeholder-val="{{ true }}">
               <div onClick="{{ project.selectGit }}" style="{{ project.gitTabStyle }}">GIT</div>
             </sc-if>
-            <sc-if value="{{ project.hasFeatures }}" hint-placeholder-val="{{ true }}">
-              <div onClick="{{ project.selectBreakdown }}" style="{{ project.breakdownTabStyle }}">TECHNICAL BREAKDOWN</div>
+            <sc-if value="{{ project.showDetailLinks }}" hint-placeholder-val="{{ true }}">
+              <a href="{{ project.detailHref }}" style="display: inline-flex; align-items: center; gap: 8px; font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.15em; padding: 10px 18px; color: #FFFFFF; border: 1px solid {{ project.borderLight }}; border-bottom: none">TECHNICAL BREAKDOWN <span>▸</span></a>
             </sc-if>
             <sc-if value="{{ project.itchUrl }}" hint-placeholder-val="{{ false }}">
               <a href="{{ project.itchUrl }}" target="_blank" rel="noopener" style="display: inline-flex; align-items: center; gap: 6px; font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.15em; padding: 10px 18px; margin-left: auto; color: #001018; background: {{ project.accent }}; border: 1px solid {{ project.accent }}; border-bottom: none">▶ PLAY</a>
@@ -306,14 +306,6 @@
                   <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="6" cy="5" r="2.4"></circle><circle cx="6" cy="19" r="2.4"></circle><circle cx="18" cy="9" r="2.4"></circle><path d="M6 7.4v9.2M18 11.4c0 3-3 4-7 4"></path></svg>
                   {{ project.gitLabel }}
                 </a>
-              </sc-if>
-              <sc-if value="{{ project.isBreakdown }}" hint-placeholder-val="{{ false }}">
-                <div style="font-family: 'Bebas Neue', sans-serif; font-size: 26px; letter-spacing: 0.04em; color: {{ project.accent }}; margin-bottom: 14px">FEATURES</div>
-                <div style="display: flex; flex-wrap: wrap; gap: 10px">
-                  <sc-for list="{{ project.features }}" as="feature" hint-placeholder-count="6">
-                    <div style="font-family: 'JetBrains Mono', monospace; font-size: 13px; line-height: 1.3; color: #FFFFFF; border: 1px solid {{ project.borderMid }}; background: rgba(0,0,0,0.25); padding: 8px 14px; border-radius: 3px">{{ feature }}</div>
-                  </sc-for>
-                </div>
               </sc-if>
             </div>
           </div>
@@ -518,17 +510,6 @@ const RAW_PROTOTYPES = [
   {
     title: 'COLLECTIONS', tags: 'UNREAL ENGINE 5 · C++ · GAMEPLAY SYSTEMS', accent: '#6EE7C8',
     banner: 'assets/prototypes/collections/banner.png',
-    features: [
-      'Randomized collection objectives and item counts',
-      'Multiple collectible item types',
-      'Randomized spawning across predefined areas',
-      'Interaction-based item collection',
-      'Countdown timer with win/loss conditions',
-      'Doors with randomized locked/unlocked states',
-      'Teleporters',
-      'Dynamic HUD for collection progress and remaining time',
-      'Automatic restart after the match ends'
-    ],
     overview: 'COLLECTIONS is a third-person gameplay prototype built in Unreal Engine as a coding challenge, completed within a week to sharpen my problem-solving and system-design skills. Race a countdown to gather randomized collectibles across the level, using locked and unlocked doors and teleporters, with a live HUD tracking progress and time, and an automatic restart when the match ends.\n\nWhat makes it different: the goal was as much architecture as gameplay. Every interactable, whether a collectible, door or teleporter, is driven through a shared interaction interface, so the player never needs to know a concrete class and never casts. No hard references anywhere, with assets loaded asynchronously instead. Objectives and item counts are data-driven through Data Assets, so designers can tune and test the prototype without ever opening a Blueprint.\n\nEngineering Quality: built from reusable components rather than logic tied to individual actors, with cached object references reused instead of repeatedly resolved.'
   }
 ];
@@ -805,7 +786,8 @@ class Component extends DCLogic {
       const tab = this.state.protoTabs[i];
       return {
         ...p, overview: overviewWithLeads(p.overview, p.accent), setCardRef: (el) => { this.protoCardEls[i] = el; },
-        hasFeatures: !!(p.features && p.features.length), features: p.features || [],
+        showDetailLinks: p.hideDetailPage !== true,
+        detailHref: `PrototypeProject.dc.html?slug=${p.title.toLowerCase().replace(/\s+/g, '-')}`,
         borderStrong: hexToRgba(p.accent, 0.45), borderMid: hexToRgba(p.accent, 0.35), borderLight: hexToRgba(p.accent, 0.25),
         cardBg: `linear-gradient(160deg, ${mixWithDark(p.accent, 0.32, [5, 8, 9])} 0%, ${mixWithDark(p.accent, 0.12, [5, 8, 9])} 45%, #050809 100%)`,
         borderImage: 'none',
@@ -815,17 +797,15 @@ class Component extends DCLogic {
         gitUrl: p.gitUrl || '#', hasGitUrl: !!p.gitUrl, gitLabel: p.gitUrl ? p.gitUrl.replace(/^https?:\/\//, '') : `link your repo here`,
         tabMinHeight: tab === 'git' ? '0' : tab === 'trailer' ? '0' : '140px',
         tabJustify: tab === 'trailer' ? 'center' : 'space-between',
-        tabAlignItems: tab === 'git' ? 'center' : (tab === 'overview' || tab === 'breakdown') ? 'flex-start' : 'flex-end',
+        tabAlignItems: tab === 'git' ? 'center' : tab === 'overview' ? 'flex-start' : 'flex-end',
         tabTextAlign: tab === 'trailer' ? 'center' : 'left',
-        isOverview: tab === 'overview', isTrailer: tab === 'trailer', isGit: tab === 'git', isBreakdown: tab === 'breakdown',
+        isOverview: tab === 'overview', isTrailer: tab === 'trailer', isGit: tab === 'git',
         overviewTabStyle: tabStyle(tab === 'overview', p.accent, hexToRgba(p.accent, 0.35)),
         trailerTabStyle: tabStyle(tab === 'trailer', '#EAF3F8', hexToRgba(p.accent, 0.35)),
         gitTabStyle: tabStyle(tab === 'git', '#4DC3FF', hexToRgba(p.accent, 0.35)),
-        breakdownTabStyle: tabStyle(tab === 'breakdown', '#FFFFFF', hexToRgba(p.accent, 0.35)),
         selectOverview: () => this.setProtoTab(i, 'overview'),
         selectTrailer: () => this.setProtoTab(i, 'trailer'),
-        selectGit: () => this.setProtoTab(i, 'git'),
-        selectBreakdown: () => this.setProtoTab(i, 'breakdown')
+        selectGit: () => this.setProtoTab(i, 'git')
       };
     });
 
