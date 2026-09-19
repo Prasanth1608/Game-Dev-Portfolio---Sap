@@ -505,7 +505,8 @@ const RAW_PROJECTS = [
 //   trailerId: '<youtube id>', gitUrl: 'https://gitlab.com/...', itchUrl: 'https://...', overview: '...\n\nWhat makes it different: ...' }
 const RAW_PROTOTYPES = [
   {
-    title: 'COLLECTIONS', tags: 'UNREAL ENGINE · THIRD-PERSON · GAMEPLAY PROTOTYPE', accent: '#6EE7C8',
+    title: 'COLLECTIONS', tags: 'UNREAL ENGINE 5 · C++ · GAMEPLAY SYSTEMS', accent: '#6EE7C8',
+    banner: 'assets/prototypes/collections/banner.png',
     overview: 'COLLECTIONS is a third-person gameplay prototype built in Unreal Engine in one week. Race a countdown to gather randomized collectibles across the level, using locked and unlocked doors and teleporters, with a live HUD tracking progress and time, and an automatic restart when the match ends.\n\nWhat makes it different: the goal was as much architecture as gameplay. Every interactable, whether a collectible, door or teleporter, is driven through a shared interaction interface, so the player never needs to know a concrete class and never casts.\n\nEngineering Quality: built from reusable components with data-driven objectives and item counts that designers can tune without touching systems. Hard asset references are replaced with asynchronous loading, and cached object references are reused instead of repeatedly resolved.'
   }
 ];
