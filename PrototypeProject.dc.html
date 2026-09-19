@@ -103,6 +103,16 @@
                   <div style="border: 1px solid {{ project.borderMid }}; background: rgba(0,0,0,0.3); padding: 18px 22px; border-radius: 2px">
                     <div style="font-family: 'Bebas Neue', sans-serif; font-size: 24px; letter-spacing: 0.04em; color: #FFFFFF; margin-bottom: 8px">{{ goal.heading }}</div>
                     <div style="font-family: 'Inter', sans-serif; font-size: 14px; line-height: 1.8; color: #FFFFFF">{{ goal.body }}</div>
+                    <sc-if value="{{ goal.hasPoints }}" hint-placeholder-val="{{ false }}">
+                      <div style="display: flex; flex-direction: column; gap: 8px; margin-top: 12px">
+                        <sc-for list="{{ goal.points }}" as="point" hint-placeholder-count="3">
+                          <div style="display: flex; align-items: flex-start; gap: 12px; font-family: 'Inter', sans-serif; font-size: 14px; line-height: 1.7; color: #FFFFFF">
+                            <span style="flex: none; width: 6px; height: 6px; margin-top: 9px; background: {{ project.accent }}"></span>
+                            <span>{{ point }}</span>
+                          </div>
+                        </sc-for>
+                      </div>
+                    </sc-if>
                   </div>
                 </sc-for>
               </div>
@@ -150,6 +160,45 @@ const RAW_PROTOTYPES = [
           { heading: 'DATA-DRIVEN DESIGN', body: 'I wanted designers to be able to iterate on gameplay data without modifying the underlying systems.' },
           { heading: 'OBJECT CACHING & REUSE', body: 'I introduced object caching where appropriate so existing references can be reused instead of repeatedly resolving objects or performing unnecessary casts during gameplay.' },
           { heading: 'DYNAMIC UI SYSTEMS', body: 'The HUD is updated dynamically based on gameplay state, including collection progress and remaining time.' }
+        ]
+      },
+      {
+        heading: 'ITERATION PROCESS',
+        intro: 'Collections was not built in a single pass. I delivered a working version against the brief, took a structured code review, and then iterated on the same prototype until it met the architecture bar I set for it.',
+        goals: [
+          {
+            heading: 'ITERATION 1: THE CHALLENGE BUILD',
+            body: 'I built the full brief in about a week, prioritising clean, flexible architecture over visuals, primarily in C++ with Blueprints where they fit.',
+            points: [
+              'Interaction interface so the player never casts to a concrete class',
+              'Randomized objectives, item counts, timer and spawn areas, with enough items always spawned to make the match winnable',
+              'Locked and unlocked doors, teleporters, and a HUD showing collection progress and remaining time'
+            ]
+          },
+          {
+            heading: 'THE REVIEW: WHERE THE DESIGN WOULD NOT SCALE',
+            body: 'The review confirmed that the interface approach was right, and flagged where the design would break down as the game grew:',
+            points: [
+              'Each collectable knew every variant it could become, which is not a sensible responsibility for one object',
+              'Every mesh and material was a hard reference, so all of them loaded into memory up front. Fine for three items, but not once designers want themed sessions (Halloween, Christmas and more) with many more item sets',
+              'Cached player pointers needed UPROPERTY or TWeakObjectPtr to stay safe if the player is destroyed',
+              'Readability: consistent naming and spacing between functions'
+            ]
+          },
+          {
+            heading: 'ITERATION 2: REWORKING TO THE FEEDBACK',
+            body: 'I turned the review into three goals for the next iteration and completed all three:',
+            points: [
+              'Avoid hard references: meshes inside the Data Asset are soft references, so assets load only when needed at spawn time',
+              'A convenient workflow for designers: a SpawnConfig Data Asset for spawn settings and the list of spawnable objects, plus a Spawnable Object Data Asset holding per-item data such as mesh, name and ID',
+              'Configure on spawn: items are given all their parameters (visuals, enums, name, description and other metadata) when they spawn, instead of knowing every variant themselves',
+              'Runtime safety: stored object pointers now use UPROPERTY() or TWeakObjectPtr<>, and I tightened error-handling edge cases and readability through refactoring'
+            ]
+          },
+          {
+            heading: 'THE OUTCOME',
+            body: 'Adding a new item, or a whole themed set, is now a matter of creating Data Assets rather than changing code. The same prototype went from a working solution to a design I can explain end to end.'
+          }
         ]
       }
     ]
@@ -199,7 +248,8 @@ class Component extends DCLogic {
       sections: p.sections.map((s) => ({
         ...s,
         hasBullets: !!(s.bullets && s.bullets.length),
-        hasGoals: !!(s.goals && s.goals.length)
+        hasGoals: !!(s.goals && s.goals.length),
+        goals: (s.goals || []).map((g) => ({ ...g, hasPoints: !!(g.points && g.points.length) }))
       }))
     };
 
