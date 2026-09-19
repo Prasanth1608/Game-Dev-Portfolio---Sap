@@ -30,7 +30,9 @@
     @keyframes ap-teleport-in { 0% { opacity: 0; transform: translate(-50%, -55%) scale(0.3); filter: brightness(3) saturate(2); } 55% { opacity: 1; transform: translate(-50%, -65%) scale(1.15); filter: brightness(1.6); } 100% { opacity: 1; transform: translate(-50%, -60%) scale(1); filter: brightness(1); } }
     @keyframes ap-idle-sway { 0%, 100% { transform: rotate(-2deg); } 50% { transform: rotate(2deg); } }
     @keyframes ap-scroll-bounce { 0%, 100% { transform: translateY(0); opacity: 0.6; } 50% { transform: translateY(8px); opacity: 1; } }
+    .rt-role-grid > div:last-child:nth-child(odd) { grid-column: 1 / -1; justify-self: center; width: calc(50% - 16px); }
     @media (max-width: 900px) {
+      .rt-role-grid > div:last-child:nth-child(odd) { width: auto; justify-self: stretch; }
       .rt-nav-links { gap: 12px !important; font-size: 10.5px !important; flex-wrap: wrap !important; justify-content: flex-end !important; }
       .rt-grid3 { grid-template-columns: 1fr !important; }
       .rt-role-grid { grid-template-columns: 1fr !important; }
@@ -544,15 +546,6 @@ const RAW_ROLES = [
       'Touch-based controls for rotating 3D building models on the host',
       'Rotation state synchronised across multiple client displays',
       'Delivered under tight deadlines'
-    ]
-  },
-  {
-    title: 'ARCHVIZ SANDBOX ENGINE', tags: 'UNREAL ENGINE · C++ · BLUEPRINT', accent: '#6EE7C8',
-    summary: 'Extensions to an existing ArchViz sandbox engine, so non-technical users can build and configure architectural visualisation applications themselves. I implemented reusable features in Blueprint and C++.',
-    highlights: [
-      'Editor-based presets for quick configuration',
-      'Drag-and-drop workflows for non-technical users',
-      'Reusable features in both Blueprint and C++'
     ]
   }
 ];
