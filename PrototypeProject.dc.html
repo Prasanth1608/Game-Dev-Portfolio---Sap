@@ -151,19 +151,7 @@ const RAW_PROTOTYPES = [
         ]
       },
       {
-        heading: 'MY ENGINEERING GOALS',
-        intro: 'Rather than just completing the gameplay requirements, I wanted to use the challenge to practice building a system that is reusable, data-driven, and maintainable.',
-        goals: [
-          { heading: 'AVOID CASTING FOR INTERACTIONS', body: 'I implemented interfaces for interaction, allowing objects such as collectibles, doors, and teleporters to expose interaction behaviour without requiring the player to know their concrete class.' },
-          { heading: 'CLEAN ARCHITECTURE & REUSABLE COMPONENTS', body: 'Gameplay responsibilities are separated into reusable components and systems instead of being tightly coupled to individual actors.' },
-          { heading: 'ELIMINATE UNNECESSARY HARD REFERENCES', body: 'I replaced hard asset references where appropriate and use asynchronous loading when assets need to be loaded at runtime.' },
-          { heading: 'DATA-DRIVEN DESIGN', body: 'I wanted designers to be able to iterate on gameplay data without modifying the underlying systems.' },
-          { heading: 'OBJECT CACHING & REUSE', body: 'I introduced object caching where appropriate so existing references can be reused instead of repeatedly resolving objects or performing unnecessary casts during gameplay.' },
-          { heading: 'DYNAMIC UI SYSTEMS', body: 'The HUD is updated dynamically based on gameplay state, including collection progress and remaining time.' }
-        ]
-      },
-      {
-        heading: 'ITERATION PROCESS',
+        heading: 'ITERATIVE IMPLEMENTATIONS',
         intro: 'Collections was not built in a single pass. I delivered a working version against the brief, took a structured code review, and then iterated on the same prototype until it met the architecture bar I set for it.',
         goals: [
           {
@@ -199,6 +187,18 @@ const RAW_PROTOTYPES = [
             heading: 'THE OUTCOME',
             body: 'Adding a new item, or a whole themed set, is now a matter of creating Data Assets rather than changing code. The same prototype went from a working solution to a design I can explain end to end.'
           }
+        ]
+      },
+      {
+        heading: 'ENGINEERING LESSONS LEARNED',
+        intro: 'Rather than just completing the gameplay requirements, I wanted to use the challenge to practice building a system that is reusable, data-driven, and maintainable.',
+        goals: [
+          { heading: 'AVOID CASTING FOR INTERACTIONS', body: 'I implemented interfaces for interaction, allowing objects such as collectibles, doors, and teleporters to expose interaction behaviour without requiring the player to know their concrete class.' },
+          { heading: 'CLEAN ARCHITECTURE & REUSABLE COMPONENTS', body: 'Gameplay responsibilities are separated into reusable components and systems instead of being tightly coupled to individual actors.' },
+          { heading: 'ELIMINATE UNNECESSARY HARD REFERENCES', body: 'I replaced hard asset references where appropriate and use asynchronous loading when assets need to be loaded at runtime.' },
+          { heading: 'DATA-DRIVEN DESIGN', body: 'I wanted designers to be able to iterate on gameplay data without modifying the underlying systems.' },
+          { heading: 'OBJECT CACHING & REUSE', body: 'I introduced object caching where appropriate so existing references can be reused instead of repeatedly resolving objects or performing unnecessary casts during gameplay.' },
+          { heading: 'DYNAMIC UI SYSTEMS', body: 'The HUD is updated dynamically based on gameplay state, including collection progress and remaining time.' }
         ]
       }
     ]
