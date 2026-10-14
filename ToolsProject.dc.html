@@ -282,7 +282,7 @@ const STEP5_MEDIA = [
 ];
 
 function card(color, bodyMore) {
-  return { color, textColor: mixWithDark(color, 0.5, [10, 10, 14]), borderColor: hexToRgba(color, 0.35), bg: '#FFFFFF', ...bodyMore };
+  return { color, textColor: mixWithDark(color, 0.5, [10, 10, 14]), borderColor: hexToRgba(color, 0.35), bg: mixWithDark(color, 0.4, [255, 255, 255]), ...bodyMore };
 }
 
 const RAW_TOOLS = [
@@ -351,7 +351,7 @@ const RAW_TOOLS = [
       card(PALETTE[3], { num: '04', title: 'Wind Turbulence', body: 'Preset turbulence patterns shape how wide and wild the wind spreads.' }),
       card(PALETTE[4], { num: '05', title: 'Precision', body: 'Scale detection accuracy from low to high, the higher the precision, the fewer interactions slip through.' }),
       card(PALETTE[5], { num: '06', title: 'Exclusion', body: 'Tag any object once to keep it completely untouched by wind inside the volume.' })
-    ].map((c, i) => ({ ...c, rightBorder: i % 2 === 0 ? '1px solid rgba(20,22,26,0.12)' : 'none', bg: '#FFFFFF' })),
+    ].map((c, i) => ({ ...c, rightBorder: i % 2 === 0 ? '1px solid rgba(20,22,26,0.12)' : 'none' })),
     customizationNote: 'Every property above updates live in the editor through a built-in preview, no Play button required to see the result.',
     stats: [
       card(PALETTE[0], { value: '< 3 ms', label: 'GAME THREAD COST', body: 'Full grid + caching, no physics activation' }),

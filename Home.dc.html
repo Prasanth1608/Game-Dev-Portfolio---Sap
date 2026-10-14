@@ -114,7 +114,7 @@
             </div>
             <div style="display: flex; flex-wrap: wrap; gap: 6px">
               <sc-for list="{{ cat.points }}" as="point" hint-placeholder-count="4">
-                <div style="font-family: 'JetBrains Mono', monospace; font-size: 12.5px; line-height: 1.2; color: {{ cat.onAccent }}; background: {{ cat.accent }}; padding: 6px 10px; border-radius: 3px">{{ point }}</div>
+                <div style="font-family: 'JetBrains Mono', monospace; font-size: 12.5px; line-height: 1.2; color: #14161A; border: 1.5px solid {{ cat.accent }}; background: rgba(255,255,255,0.55); padding: 5.5px 10px; border-radius: 3px">{{ point }}</div>
               </sc-for>
             </div>
           </div>
@@ -758,7 +758,7 @@ class Component extends DCLogic {
         borderColor: hexToRgba(accent, 0.4),
         lightAccent: mixWithDark(accent, 0.5, [10, 10, 14]),
         onAccent: onColor(accent),
-        cardBg: `#FFFFFF`,
+        cardBg: mixWithDark(accent, 0.45, [255, 255, 255]),
         onEnter: () => this.setState({ expAccent: accent })
       };
     });
@@ -771,7 +771,7 @@ class Component extends DCLogic {
         ...p, overview: overviewWithLeads(p.overview, textAccent(p.accent)), setCardRef: (el) => { this.projectCardEls[i] = el; },
         borderStrong: hexToRgba(p.accent, 0.45), borderMid: hexToRgba(p.accent, 0.35), borderLight: hexToRgba(p.accent, 0.25),
         textAccent: textAccent(p.accent),
-        cardBg: `#FFFFFF`,
+        cardBg: mixWithDark(p.accent, 0.4, [255, 255, 255]),
         borderImage: 'none',
         bannerBg: p.banner ? `center / cover no-repeat url(${p.banner}), linear-gradient(160deg, #0C1418, #050809)` : `linear-gradient(160deg, #0C1418, #050809)`,
         noBanner: !p.banner, trailerEmbedSrc: p.trailerId ? `https://www.youtube.com/embed/${p.trailerId}` : '', noTrailer: !p.trailerId,
@@ -801,7 +801,7 @@ class Component extends DCLogic {
         detailHref: `PrototypeProject.dc.html?slug=${p.title.toLowerCase().replace(/\s+/g, '-')}`,
         borderStrong: hexToRgba(p.accent, 0.45), borderMid: hexToRgba(p.accent, 0.35), borderLight: hexToRgba(p.accent, 0.25),
         textAccent: textAccent(p.accent),
-        cardBg: `#FFFFFF`,
+        cardBg: mixWithDark(p.accent, 0.4, [255, 255, 255]),
         borderImage: 'none',
         bannerBg: p.banner ? `center / cover no-repeat url(${p.banner}), linear-gradient(160deg, #0C1418, #050809)` : `linear-gradient(160deg, #0C1418, #050809)`,
         noBanner: !p.banner, trailerEmbedSrc: p.trailerId ? `https://www.youtube.com/embed/${p.trailerId}` : '', hasVideo: !!p.trailerId,
@@ -829,7 +829,7 @@ class Component extends DCLogic {
         setCardRef: (el) => { this.roleCardEls[i] = el; },
         borderStrong: hexToRgba(p.accent, 0.45), borderMid: hexToRgba(p.accent, 0.35),
         textAccent: textAccent(p.accent),
-        cardBg: `#FFFFFF`,
+        cardBg: mixWithDark(p.accent, 0.4, [255, 255, 255]),
         bannerBg: p.banner
           ? `center / cover no-repeat url(${p.banner}), linear-gradient(160deg, #0C1418, #050809)`
           : `linear-gradient(160deg, ${mixWithDark(p.accent, 0.4, [5, 8, 9])} 0%, #050809 100%)`,
@@ -852,7 +852,7 @@ class Component extends DCLogic {
         ...p, overview: overviewWithLeads(p.overview, textAccent(p.accent)), setCardRef: (el) => { this.toolCardEls[i] = el; },
         borderStrong: hexToRgba(p.accent, 0.45), borderMid: hexToRgba(p.accent, 0.35), borderLight: hexToRgba(p.accent, 0.25),
         textAccent: textAccent(p.accent),
-        cardBg: `#FFFFFF`,
+        cardBg: mixWithDark(p.accent, 0.4, [255, 255, 255]),
         borderImage: 'none',
         bannerBg: p.banner ? `center / cover no-repeat url(${p.banner}), linear-gradient(160deg, #0C1418, #050809)` : `linear-gradient(160deg, #0C1418, #050809)`,
         noBanner: !p.banner, trailerEmbedSrc: p.trailerId ? `https://www.youtube.com/embed/${p.trailerId}` : '', noTrailer: !p.trailerId,
@@ -881,7 +881,7 @@ class Component extends DCLogic {
         ...m, showRunner: active, textAccent: textAccent(m.accent),
         setMilestoneRef: (el) => { this.milestoneEls[i] = el; },
         rowStyle: { position: 'relative', display: 'flex', justifyContent: left ? 'flex-start' : 'flex-end', padding: '50px 0', minHeight: '160px' },
-        cardStyle: { position: 'relative', width: 'calc(50% - 40px)', border: `2px solid ${m.accent}88`, background: '#FFFFFF', padding: '22px 24px', boxSizing: 'border-box', overflow: 'visible' },
+        cardStyle: { position: 'relative', width: 'calc(50% - 40px)', border: `2px solid ${m.accent}88`, background: mixWithDark(m.accent, 0.4, [255, 255, 255]), padding: '22px 24px', boxSizing: 'border-box', overflow: 'visible' },
         runnerStyle: { position: 'absolute', top: 0, left: '50%', transform: 'translate(-50%, -60%)', zIndex: 5, pointerEvents: 'none', animation: 'ap-teleport-in 0.5s cubic-bezier(0.2, 0.9, 0.3, 1) both' },
         dotStyle: { position: 'absolute', top: '58px', left: '50%', transform: 'translateX(-50%)', width: '14px', height: '14px', borderRadius: '50%', background: m.accent, boxShadow: `0 0 14px ${m.accent}` }
       };

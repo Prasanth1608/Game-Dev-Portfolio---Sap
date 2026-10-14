@@ -100,7 +100,7 @@
             <sc-if value="{{ section.hasGoals }}" hint-placeholder-val="{{ false }}">
               <div style="display: flex; flex-direction: column; gap: 16px">
                 <sc-for list="{{ section.goals }}" as="goal" hint-placeholder-count="6">
-                  <div style="border: 1px solid {{ project.borderMid }}; background: rgba(0,0,0,0.025); padding: 18px 22px; border-radius: 2px">
+                  <div style="border-left: 5px solid {{ project.accent }}; background: {{ project.fillBg }}; padding: 18px 22px; border-radius: 2px">
                     <div style="font-family: 'Bebas Neue', sans-serif; font-size: 24px; letter-spacing: 0.04em; color: #14161A; margin-bottom: 8px">{{ goal.heading }}</div>
                     <div style="font-family: 'Inter', sans-serif; font-size: 14px; line-height: 1.8; color: #14161A">{{ goal.body }}</div>
                     <sc-if value="{{ goal.hasPoints }}" hint-placeholder-val="{{ false }}">
@@ -246,6 +246,7 @@ class Component extends DCLogic {
       noBanner: !p.banner,
       borderMid: hexToRgba(p.accent, 0.35),
       textAccent: mixWithDark(p.accent, 0.5, [10, 10, 14]),
+      fillBg: mixWithDark(p.accent, 0.35, [255, 255, 255]),
       sections: p.sections.map((s) => ({
         ...s,
         hasBullets: !!(s.bullets && s.bullets.length),
