@@ -12,7 +12,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=JetBrains+Mono:wght@400;500;700&family=Space+Grotesk:wght@400;500;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
   <style>
-    html, body { margin: 0; padding: 0; background: #000000; }
+    html, body { margin: 0; padding: 0; background: #FFFFFF; }
     html { scroll-behavior: auto; }
     :root {
       --cur-default: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='26' height='26' viewBox='0 0 26 26'%3E%3Cdefs%3E%3ClinearGradient id='g1' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop offset='0%25' stop-color='%23FFC857'/%3E%3Cstop offset='50%25' stop-color='%23FF6F91'/%3E%3Cstop offset='100%25' stop-color='%234DC3FF'/%3E%3C/linearGradient%3E%3C/defs%3E%3Cpath d='M2 1 L2 20 L7 15.5 L10.5 22.5 L13.5 21 L10 14 L16.5 14 Z' fill='url(%23g1)' stroke='%23000000' stroke-width='1.1' stroke-linejoin='round'/%3E%3C/svg%3E") 2 1, auto;
@@ -20,13 +20,13 @@
     }
     body { cursor: var(--cur-default); }
     a, button { cursor: var(--cur-hover); }
-    a { color: #FFC857; text-decoration: none; }
+    a { color: #9C6B00; text-decoration: none; }
     a:hover { filter: brightness(1.15); }
     @keyframes ap-blink { 0%, 49% { opacity: 1; } 50%, 100% { opacity: 0; } }
     @keyframes ap-marquee { from { transform: translateX(0); } to { transform: translateX(-50%); } }
     @keyframes ap-marquee-rev { from { transform: translateX(-50%); } to { transform: translateX(0); } }
-    .exp-card { transition: transform 0.2s ease, box-shadow 0.2s ease; }
-    .exp-card:hover { transform: translateY(-4px); box-shadow: 0 20px 50px -18px rgba(0,0,0,0.6); }
+    .exp-card { transition: transform 0.2s ease, border-color 0.2s ease; }
+    .exp-card:hover { transform: translateY(-4px); }
     @keyframes ap-teleport-in { 0% { opacity: 0; transform: translate(-50%, -55%) scale(0.3); filter: brightness(3) saturate(2); } 55% { opacity: 1; transform: translate(-50%, -65%) scale(1.15); filter: brightness(1.6); } 100% { opacity: 1; transform: translate(-50%, -60%) scale(1); filter: brightness(1); } }
     @keyframes ap-idle-sway { 0%, 100% { transform: rotate(-2deg); } 50% { transform: rotate(2deg); } }
     @keyframes ap-scroll-bounce { 0%, 100% { transform: translateY(0); opacity: 0.6; } 50% { transform: translateY(8px); opacity: 1; } }
@@ -46,19 +46,19 @@
     }
   </style>
   <template id="__bundler_thumbnail">
-    <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"><rect width="100" height="100" fill="#000000"/><text x="50" y="58" font-family="sans-serif" font-weight="bold" font-size="30" fill="#FFC857" text-anchor="middle">AP</text></svg>
+    <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"><rect width="100" height="100" fill="#FFFFFF"/><text x="50" y="58" font-family="sans-serif" font-weight="bold" font-size="30" fill="#FFC857" text-anchor="middle">AP</text></svg>
   </template>
 </helmet>
 
-<div style="position: relative; background: #000000; font-family: 'Space Grotesk', sans-serif; color: #FFFFFF; padding-top: 68px">
+<div style="position: relative; background: #FFFFFF; font-family: 'Space Grotesk', sans-serif; color: #14161A; padding-top: 68px">
 
   <!-- ===== ONE shared fixed backdrop (pattern + colour) for the whole page ===== -->
   <div ref="{{ sharedBackdropRef }}" style="position: fixed; inset: 0; pointer-events: none; z-index: 0; background: {{ sharedBackdropBg }}"></div>
   <div style="position: fixed; inset: 0; pointer-events: none; z-index: 0; opacity: 0.035; mix-blend-mode: overlay; background-image: url(&quot;data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E&quot;)"></div>
 
   <!-- ===== ONE persistent header, fixed on top of everything ===== -->
-  <div style="position: fixed; top: 0; left: 0; right: 0; display: flex; justify-content: space-between; align-items: center; padding: 18px 40px; z-index: 100; background: #000000; border-bottom: 1px solid rgba(255,255,255,0.06)">
-    <a href="#home" onClick="{{ goTo }}" data-target="home" class="rt-nav-brand" style="font-family: 'Bebas Neue', sans-serif; font-size: 24px; letter-spacing: 0.08em; color: #FFFFFF">AP<span style="color: #FFC857">®</span></a>
+  <div style="position: fixed; top: 0; left: 0; right: 0; display: flex; justify-content: space-between; align-items: center; padding: 18px 40px; z-index: 100; background: #FFFFFF; border-bottom: 1px solid rgba(20,22,26,0.08)">
+    <a href="#home" onClick="{{ goTo }}" data-target="home" class="rt-nav-brand" style="font-family: 'Bebas Neue', sans-serif; font-size: 24px; letter-spacing: 0.08em; color: #14161A">AP<span style="color: #9C6B00">®</span></a>
     <div class="rt-nav-links" style="display: flex; align-items: center; gap: 24px; font-family: 'JetBrains Mono', monospace; font-size: 12px; letter-spacing: 0.2em">
       <a href="#home" onClick="{{ goTo }}" data-target="home" style="{{ navStyles.home }}">HOME</a>
       <a href="#expertise" onClick="{{ goTo }}" data-target="expertise" style="{{ navStyles.expertise }}">EXPERTISE</a>
@@ -74,24 +74,24 @@
 
   <!-- ================= HOME ================= -->
   <section id="home" ref="{{ sectionRefs.home }}" style="position: relative; width: 100%; height: 100vh; min-height: 700px; overflow: hidden">
-    <div style="position: absolute; inset: 0; z-index: 0; overflow: hidden; background: #000000">
-      <div style="position: absolute; inset: 0; opacity: 0.32; filter: blur(130px); background: radial-gradient(circle at 15% 20%, #4DC3FF 0%, transparent 55%), radial-gradient(circle at 85% 15%, #B98BFF 0%, transparent 55%), radial-gradient(circle at 20% 88%, #FF6F91 0%, transparent 55%), radial-gradient(circle at 82% 82%, #FFC857 0%, transparent 55%), radial-gradient(circle at 50% 50%, #6EE7C8 0%, transparent 60%); pointer-events: none"></div>
-      <div style="position: absolute; inset: 0; background: radial-gradient(ellipse at center, rgba(0,0,0,0.3) 30%, rgba(0,0,0,0.88) 100%), linear-gradient(180deg, rgba(0,0,0,0.88) 0%, rgba(0,0,0,0.48) 22%, rgba(0,0,0,0.32) 40%, rgba(0,0,0,0.32) 60%, rgba(0,0,0,0.88) 100%); pointer-events: none"></div>
+    <div style="position: absolute; inset: 0; z-index: 0; overflow: hidden; background: #FFFFFF">
+      <div style="position: absolute; inset: 0; opacity: 0.22; filter: blur(130px); background: radial-gradient(circle at 15% 20%, #4DC3FF 0%, transparent 55%), radial-gradient(circle at 85% 15%, #B98BFF 0%, transparent 55%), radial-gradient(circle at 20% 88%, #FF6F91 0%, transparent 55%), radial-gradient(circle at 82% 82%, #FFC857 0%, transparent 55%), radial-gradient(circle at 50% 50%, #6EE7C8 0%, transparent 60%); pointer-events: none"></div>
+      <div style="position: absolute; inset: 0; background: radial-gradient(ellipse at center, rgba(255,255,255,0.1) 30%, rgba(255,255,255,0.75) 100%), linear-gradient(180deg, rgba(255,255,255,0.75) 0%, rgba(255,255,255,0.3) 22%, rgba(255,255,255,0.12) 40%, rgba(255,255,255,0.12) 60%, rgba(255,255,255,0.75) 100%); pointer-events: none"></div>
     </div>
 
     <div style="position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; z-index: 7; pointer-events: none; padding-bottom: 110px">
-      <div style="font-family: 'JetBrains Mono', monospace; font-size: 13px; letter-spacing: 0.4em; color: #FFC857; margin-bottom: 18px">&gt; WELCOME, GUEST</div>
-      <h1 style="margin: 0; text-align: center; white-space: nowrap; font-family: 'Bebas Neue', sans-serif; font-weight: 400; font-size: clamp(32px, 5vw, 92px); line-height: 0.86; letter-spacing: 0.01em; color: #FFFFFF; text-shadow: 0 0 60px rgba(77,195,255,0.25)">ANANTHA <span style="color: #FFC857">PRASANTH</span></h1>
+      <div style="font-family: 'JetBrains Mono', monospace; font-size: 13px; letter-spacing: 0.4em; color: #9C6B00; margin-bottom: 18px">&gt; WELCOME, GUEST</div>
+      <h1 style="margin: 0; text-align: center; white-space: nowrap; font-family: 'Bebas Neue', sans-serif; font-weight: 400; font-size: clamp(32px, 5vw, 92px); line-height: 0.86; letter-spacing: 0.01em; color: #14161A">ANANTHA <span style="color: #9C6B00">PRASANTH</span></h1>
       <div style="display: flex; align-items: center; gap: 16px; margin-top: 26px">
         <div style="width: 46px; height: 1px; background: rgba(255,200,87,0.6)"></div>
-        <div style="font-family: 'JetBrains Mono', monospace; font-size: 15px; letter-spacing: 0.45em; color: #FFFFFF">GAMEPLAY ENGINEER<span style="display: inline-block; width: 9px; height: 16px; background: #FFC857; vertical-align: middle; margin-left: 8px; animation: ap-blink 1s steps(1) infinite"></span></div>
+        <div style="font-family: 'JetBrains Mono', monospace; font-size: 15px; letter-spacing: 0.45em; color: #14161A">GAMEPLAY ENGINEER<span style="display: inline-block; width: 9px; height: 16px; background: #FFC857; vertical-align: middle; margin-left: 8px; animation: ap-blink 1s steps(1) infinite"></span></div>
         <div style="width: 46px; height: 1px; background: rgba(255,200,87,0.6)"></div>
       </div>
-      <a href="#games" onClick="{{ goTo }}" data-target="games" style="margin-top: 34px; pointer-events: auto; font-family: 'Bebas Neue', sans-serif; font-size: 20px; letter-spacing: 0.12em; border: 1px solid #FF6F91; color: #FF6F91; padding: 11px 26px; cursor: pointer" style-hover="border-color: #FFFFFF; color: #FFFFFF">PRESS START ▸</a>
+      <a href="#games" onClick="{{ goTo }}" data-target="games" style="margin-top: 34px; pointer-events: auto; font-family: 'Bebas Neue', sans-serif; font-size: 20px; letter-spacing: 0.12em; border: 1px solid #C23A5E; color: #C23A5E; padding: 11px 26px; cursor: pointer" style-hover="border-color: #14161A; color: #14161A">PRESS START ▸</a>
     </div>
 
     <div style="position: absolute; left: 0; right: 0; bottom: 78px; z-index: 8; display: flex; flex-direction: column; align-items: center; gap: 8px; pointer-events: none">
-      <div style="font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.3em; color: #FFFFFF">SCROLL</div>
+      <div style="font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.3em; color: #14161A">SCROLL</div>
       <svg width="18" height="24" viewBox="0 0 18 24" fill="none" stroke="#FFC857" stroke-width="1.4" style="animation: ap-scroll-bounce 1.6s ease-in-out infinite"><rect x="1" y="1" width="16" height="22" rx="8"></rect><circle cx="9" cy="7" r="1.6" fill="#FFC857" stroke="none"></circle></svg>
     </div>
 
@@ -107,69 +107,69 @@
     <div style="position: relative; z-index: 2; max-width: 1500px; width: 100%; margin: 0 auto; padding: 24px 40px 0 40px; box-sizing: border-box">
       <div class="rt-grid3" style="display: grid; grid-template-columns: repeat(3, 1fr); grid-template-rows: repeat(2, minmax(0, 1fr)); gap: 22px; margin-top: 28px">
         <sc-for list="{{ categories }}" as="cat" hint-placeholder-count="6">
-          <div class="exp-card" onMouseEnter="{{ cat.onEnter }}" style="border: 1px solid {{ cat.borderColor }}; background: {{ cat.cardBg }}; padding: 14px 22px; border-radius: 2px; box-sizing: border-box; box-shadow: 0 24px 60px -20px rgba(0,0,0,0.65), 0 4px 24px rgba(0,0,0,0.4), inset 0 1px 0 rgba(255,255,255,0.05); display: flex; flex-direction: column; justify-content: flex-start; overflow: hidden; min-height: 0; min-width: 0" style-hover="border-color: {{ cat.accent }}">
+          <div class="exp-card" onMouseEnter="{{ cat.onEnter }}" style="border: 1px solid {{ cat.borderColor }}; background: {{ cat.cardBg }}; padding: 14px 22px; border-radius: 2px; box-sizing: border-box; display: flex; flex-direction: column; justify-content: flex-start; overflow: hidden; min-height: 0; min-width: 0" style-hover="border-color: {{ cat.accent }}">
             <div style="display: flex; align-items: baseline; gap: 9px; margin-bottom: 6px; flex-shrink: 0">
-              <div style="font-family: 'JetBrains Mono', monospace; font-weight: 700; font-size: 20px; letter-spacing: 0.15em; color: {{ cat.accent }}">{{ cat.index }}</div>
+              <div style="font-family: 'JetBrains Mono', monospace; font-weight: 700; font-size: 20px; letter-spacing: 0.15em; color: {{ cat.lightAccent }}">{{ cat.index }}</div>
               <div style="font-family: 'Bebas Neue', sans-serif; font-size: 21px; letter-spacing: 0.03em; color: {{ cat.lightAccent }}">{{ cat.title }}</div>
             </div>
             <div style="display: flex; flex-wrap: wrap; gap: 6px">
               <sc-for list="{{ cat.points }}" as="point" hint-placeholder-count="4">
-                <div style="font-family: 'JetBrains Mono', monospace; font-size: 12.5px; line-height: 1.2; color: #FFFFFF; border: 1px solid {{ cat.borderColor }}; background: rgba(0,0,0,0.25); padding: 6px 10px; border-radius: 3px">{{ point }}</div>
+                <div style="font-family: 'JetBrains Mono', monospace; font-size: 12.5px; line-height: 1.2; color: #14161A; border: 1px solid {{ cat.borderColor }}; background: rgba(255,255,255,0.6); padding: 6px 10px; border-radius: 3px">{{ point }}</div>
               </sc-for>
             </div>
           </div>
         </sc-for>
       </div>
 
-      <div style="margin-top: 34px; border-top: 1px solid rgba(255,255,255,0.12); padding-top: 22px">
-        <div style="font-family: 'JetBrains Mono', monospace; font-size: 12px; letter-spacing: 0.3em; color: #FFFFFF; text-align: center; margin-bottom: 20px">TOOLS &amp; TECH I RUN ON</div>
+      <div style="margin-top: 34px; border-top: 1px solid rgba(20,22,26,0.14); padding-top: 22px">
+        <div style="font-family: 'JetBrains Mono', monospace; font-size: 12px; letter-spacing: 0.3em; color: #14161A; text-align: center; margin-bottom: 20px">TOOLS &amp; TECH I RUN ON</div>
         <div style="display: flex; flex-direction: column; gap: 18px">
           <div style="overflow: hidden">
           <div style="display: flex; align-items: center; flex-wrap: nowrap; width: max-content; animation: ap-marquee 55s linear infinite">
-            <div style="display: flex; align-items: center; gap: 16px; flex: none; padding: 0 32px"><svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#EAF3F8" stroke-width="1.3"><circle cx="12" cy="12" r="10"></circle><path d="M8 7v6a4 4 0 0 0 8 0V7"></path></svg><span style="font-family: 'JetBrains Mono', monospace; font-size: 17px; letter-spacing: 0.15em; color: #FFFFFF">UNREAL</span></div>
-            <div style="display: flex; align-items: center; gap: 16px; flex: none; padding: 0 32px"><svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#FF8A5B" stroke-width="1.3"><path d="M9 6l-6 6 6 6"></path><path d="M15 6l6 6-6 6"></path></svg><span style="font-family: 'JetBrains Mono', monospace; font-size: 17px; letter-spacing: 0.15em; color: #FFFFFF">C++</span></div>
-            <div style="display: flex; align-items: center; gap: 16px; flex: none; padding: 0 32px"><svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#6EE7C8" stroke-width="1.3"><rect x="4" y="8" width="16" height="9" rx="1"></rect><path d="M8 12h1M8 15h4"></path></svg><span style="font-family: 'JetBrains Mono', monospace; font-size: 17px; letter-spacing: 0.15em; color: #FFFFFF">TERMINAL</span></div>
-            <div style="display: flex; align-items: center; gap: 16px; flex: none; padding: 0 32px"><svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#EAF3F8" stroke-width="1.3"><rect x="4" y="4" width="16" height="16" rx="2"></rect><path d="M8 8v8l8-8v8"></path></svg><span style="font-family: 'JetBrains Mono', monospace; font-size: 17px; letter-spacing: 0.15em; color: #FFFFFF">NOTION</span></div>
-            <div style="display: flex; align-items: center; gap: 16px; flex: none; padding: 0 32px"><svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#FFC857" stroke-width="1.3"><rect x="3" y="4" width="18" height="14" rx="1.5"></rect><rect x="6" y="7.5" width="4" height="4" fill="#FFC857" stroke="none"></rect><rect x="12" y="10.5" width="4" height="4" fill="none"></rect></svg><span style="font-family: 'JetBrains Mono', monospace; font-size: 17px; letter-spacing: 0.15em; color: #FFFFFF">MIRO BOARD</span></div>
-            <div style="display: flex; align-items: center; gap: 16px; flex: none; padding: 0 32px"><svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#F05032" stroke-width="1.3"><circle cx="6" cy="5" r="2.4"></circle><circle cx="6" cy="19" r="2.4"></circle><circle cx="18" cy="9" r="2.4"></circle><path d="M6 7.4v9.2M18 11.4c0 3-3 4-7 4"></path></svg><span style="font-family: 'JetBrains Mono', monospace; font-size: 17px; letter-spacing: 0.15em; color: #FFFFFF">GIT</span></div>
-            <div style="display: flex; align-items: center; gap: 16px; flex: none; padding: 0 32px"><svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#B98BFF" stroke-width="1.3"><rect x="3" y="3" width="7" height="7" rx="1"></rect><rect x="14" y="3" width="7" height="7" rx="1"></rect><rect x="3" y="14" width="7" height="7" rx="1"></rect><rect x="14" y="14" width="7" height="7" rx="1"></rect></svg><span style="font-family: 'JetBrains Mono', monospace; font-size: 17px; letter-spacing: 0.15em; color: #FFFFFF">VS CODE</span></div>
-            <div style="display: flex; align-items: center; gap: 16px; flex: none; padding: 0 32px"><svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#B98BFF" stroke-width="1.3"><rect x="3" y="4" width="18" height="16" rx="1.5"></rect><path d="M3 8h18M8 8v12"></path></svg><span style="font-family: 'JetBrains Mono', monospace; font-size: 17px; letter-spacing: 0.15em; color: #FFFFFF">CMAKE</span></div>
-            <div style="display: flex; align-items: center; gap: 16px; flex: none; padding: 0 32px"><svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#FF8A5B" stroke-width="1.3"><path d="M12 3v3M12 18v3M3 12h3M18 12h3"></path><circle cx="12" cy="12" r="5"></circle></svg><span style="font-family: 'JetBrains Mono', monospace; font-size: 17px; letter-spacing: 0.15em; color: #FFFFFF">AI</span></div>
-            <div style="display: flex; align-items: center; gap: 16px; flex: none; padding: 0 32px"><svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#6EE7C8" stroke-width="1.3"><path d="M8 12V9a4 4 0 0 1 8 0v3"></path><rect x="5" y="12" width="5" height="5" rx="1"></rect><rect x="14" y="12" width="5" height="5" rx="1"></rect></svg><span style="font-family: 'JetBrains Mono', monospace; font-size: 17px; letter-spacing: 0.15em; color: #FFFFFF">JSON</span></div>
-            <div aria-hidden="true" style="display: flex; align-items: center; gap: 16px; flex: none; padding: 0 32px"><svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#EAF3F8" stroke-width="1.3"><circle cx="12" cy="12" r="10"></circle><path d="M8 7v6a4 4 0 0 0 8 0V7"></path></svg><span style="font-family: 'JetBrains Mono', monospace; font-size: 17px; letter-spacing: 0.15em; color: #FFFFFF">UNREAL</span></div>
-            <div aria-hidden="true" style="display: flex; align-items: center; gap: 16px; flex: none; padding: 0 32px"><svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#FF8A5B" stroke-width="1.3"><path d="M9 6l-6 6 6 6"></path><path d="M15 6l6 6-6 6"></path></svg><span style="font-family: 'JetBrains Mono', monospace; font-size: 17px; letter-spacing: 0.15em; color: #FFFFFF">C++</span></div>
-            <div aria-hidden="true" style="display: flex; align-items: center; gap: 16px; flex: none; padding: 0 32px"><svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#6EE7C8" stroke-width="1.3"><rect x="4" y="8" width="16" height="9" rx="1"></rect><path d="M8 12h1M8 15h4"></path></svg><span style="font-family: 'JetBrains Mono', monospace; font-size: 17px; letter-spacing: 0.15em; color: #FFFFFF">TERMINAL</span></div>
-            <div aria-hidden="true" style="display: flex; align-items: center; gap: 16px; flex: none; padding: 0 32px"><svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#EAF3F8" stroke-width="1.3"><rect x="4" y="4" width="16" height="16" rx="2"></rect><path d="M8 8v8l8-8v8"></path></svg><span style="font-family: 'JetBrains Mono', monospace; font-size: 17px; letter-spacing: 0.15em; color: #FFFFFF">NOTION</span></div>
-            <div aria-hidden="true" style="display: flex; align-items: center; gap: 16px; flex: none; padding: 0 32px"><svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#FFC857" stroke-width="1.3"><rect x="3" y="4" width="18" height="14" rx="1.5"></rect><rect x="6" y="7.5" width="4" height="4" fill="#FFC857" stroke="none"></rect><rect x="12" y="10.5" width="4" height="4" fill="none"></rect></svg><span style="font-family: 'JetBrains Mono', monospace; font-size: 17px; letter-spacing: 0.15em; color: #FFFFFF">MIRO BOARD</span></div>
-            <div aria-hidden="true" style="display: flex; align-items: center; gap: 16px; flex: none; padding: 0 32px"><svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#F05032" stroke-width="1.3"><circle cx="6" cy="5" r="2.4"></circle><circle cx="6" cy="19" r="2.4"></circle><circle cx="18" cy="9" r="2.4"></circle><path d="M6 7.4v9.2M18 11.4c0 3-3 4-7 4"></path></svg><span style="font-family: 'JetBrains Mono', monospace; font-size: 17px; letter-spacing: 0.15em; color: #FFFFFF">GIT</span></div>
-            <div aria-hidden="true" style="display: flex; align-items: center; gap: 16px; flex: none; padding: 0 32px"><svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#B98BFF" stroke-width="1.3"><rect x="3" y="3" width="7" height="7" rx="1"></rect><rect x="14" y="3" width="7" height="7" rx="1"></rect><rect x="3" y="14" width="7" height="7" rx="1"></rect><rect x="14" y="14" width="7" height="7" rx="1"></rect></svg><span style="font-family: 'JetBrains Mono', monospace; font-size: 17px; letter-spacing: 0.15em; color: #FFFFFF">VS CODE</span></div>
-            <div aria-hidden="true" style="display: flex; align-items: center; gap: 16px; flex: none; padding: 0 32px"><svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#B98BFF" stroke-width="1.3"><rect x="3" y="4" width="18" height="16" rx="1.5"></rect><path d="M3 8h18M8 8v12"></path></svg><span style="font-family: 'JetBrains Mono', monospace; font-size: 17px; letter-spacing: 0.15em; color: #FFFFFF">CMAKE</span></div>
-            <div aria-hidden="true" style="display: flex; align-items: center; gap: 16px; flex: none; padding: 0 32px"><svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#FF8A5B" stroke-width="1.3"><path d="M12 3v3M12 18v3M3 12h3M18 12h3"></path><circle cx="12" cy="12" r="5"></circle></svg><span style="font-family: 'JetBrains Mono', monospace; font-size: 17px; letter-spacing: 0.15em; color: #FFFFFF">AI</span></div>
-            <div aria-hidden="true" style="display: flex; align-items: center; gap: 16px; flex: none; padding: 0 32px"><svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#6EE7C8" stroke-width="1.3"><path d="M8 12V9a4 4 0 0 1 8 0v3"></path><rect x="5" y="12" width="5" height="5" rx="1"></rect><rect x="14" y="12" width="5" height="5" rx="1"></rect></svg><span style="font-family: 'JetBrains Mono', monospace; font-size: 17px; letter-spacing: 0.15em; color: #FFFFFF">JSON</span></div>
+            <div style="display: flex; align-items: center; gap: 16px; flex: none; padding: 0 32px"><svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#2B2F36" stroke-width="1.3"><circle cx="12" cy="12" r="10"></circle><path d="M8 7v6a4 4 0 0 0 8 0V7"></path></svg><span style="font-family: 'JetBrains Mono', monospace; font-size: 17px; letter-spacing: 0.15em; color: #14161A">UNREAL</span></div>
+            <div style="display: flex; align-items: center; gap: 16px; flex: none; padding: 0 32px"><svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#FF8A5B" stroke-width="1.3"><path d="M9 6l-6 6 6 6"></path><path d="M15 6l6 6-6 6"></path></svg><span style="font-family: 'JetBrains Mono', monospace; font-size: 17px; letter-spacing: 0.15em; color: #14161A">C++</span></div>
+            <div style="display: flex; align-items: center; gap: 16px; flex: none; padding: 0 32px"><svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#6EE7C8" stroke-width="1.3"><rect x="4" y="8" width="16" height="9" rx="1"></rect><path d="M8 12h1M8 15h4"></path></svg><span style="font-family: 'JetBrains Mono', monospace; font-size: 17px; letter-spacing: 0.15em; color: #14161A">TERMINAL</span></div>
+            <div style="display: flex; align-items: center; gap: 16px; flex: none; padding: 0 32px"><svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#2B2F36" stroke-width="1.3"><rect x="4" y="4" width="16" height="16" rx="2"></rect><path d="M8 8v8l8-8v8"></path></svg><span style="font-family: 'JetBrains Mono', monospace; font-size: 17px; letter-spacing: 0.15em; color: #14161A">NOTION</span></div>
+            <div style="display: flex; align-items: center; gap: 16px; flex: none; padding: 0 32px"><svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#FFC857" stroke-width="1.3"><rect x="3" y="4" width="18" height="14" rx="1.5"></rect><rect x="6" y="7.5" width="4" height="4" fill="#FFC857" stroke="none"></rect><rect x="12" y="10.5" width="4" height="4" fill="none"></rect></svg><span style="font-family: 'JetBrains Mono', monospace; font-size: 17px; letter-spacing: 0.15em; color: #14161A">MIRO BOARD</span></div>
+            <div style="display: flex; align-items: center; gap: 16px; flex: none; padding: 0 32px"><svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#F05032" stroke-width="1.3"><circle cx="6" cy="5" r="2.4"></circle><circle cx="6" cy="19" r="2.4"></circle><circle cx="18" cy="9" r="2.4"></circle><path d="M6 7.4v9.2M18 11.4c0 3-3 4-7 4"></path></svg><span style="font-family: 'JetBrains Mono', monospace; font-size: 17px; letter-spacing: 0.15em; color: #14161A">GIT</span></div>
+            <div style="display: flex; align-items: center; gap: 16px; flex: none; padding: 0 32px"><svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#B98BFF" stroke-width="1.3"><rect x="3" y="3" width="7" height="7" rx="1"></rect><rect x="14" y="3" width="7" height="7" rx="1"></rect><rect x="3" y="14" width="7" height="7" rx="1"></rect><rect x="14" y="14" width="7" height="7" rx="1"></rect></svg><span style="font-family: 'JetBrains Mono', monospace; font-size: 17px; letter-spacing: 0.15em; color: #14161A">VS CODE</span></div>
+            <div style="display: flex; align-items: center; gap: 16px; flex: none; padding: 0 32px"><svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#B98BFF" stroke-width="1.3"><rect x="3" y="4" width="18" height="16" rx="1.5"></rect><path d="M3 8h18M8 8v12"></path></svg><span style="font-family: 'JetBrains Mono', monospace; font-size: 17px; letter-spacing: 0.15em; color: #14161A">CMAKE</span></div>
+            <div style="display: flex; align-items: center; gap: 16px; flex: none; padding: 0 32px"><svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#FF8A5B" stroke-width="1.3"><path d="M12 3v3M12 18v3M3 12h3M18 12h3"></path><circle cx="12" cy="12" r="5"></circle></svg><span style="font-family: 'JetBrains Mono', monospace; font-size: 17px; letter-spacing: 0.15em; color: #14161A">AI</span></div>
+            <div style="display: flex; align-items: center; gap: 16px; flex: none; padding: 0 32px"><svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#6EE7C8" stroke-width="1.3"><path d="M8 12V9a4 4 0 0 1 8 0v3"></path><rect x="5" y="12" width="5" height="5" rx="1"></rect><rect x="14" y="12" width="5" height="5" rx="1"></rect></svg><span style="font-family: 'JetBrains Mono', monospace; font-size: 17px; letter-spacing: 0.15em; color: #14161A">JSON</span></div>
+            <div aria-hidden="true" style="display: flex; align-items: center; gap: 16px; flex: none; padding: 0 32px"><svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#2B2F36" stroke-width="1.3"><circle cx="12" cy="12" r="10"></circle><path d="M8 7v6a4 4 0 0 0 8 0V7"></path></svg><span style="font-family: 'JetBrains Mono', monospace; font-size: 17px; letter-spacing: 0.15em; color: #14161A">UNREAL</span></div>
+            <div aria-hidden="true" style="display: flex; align-items: center; gap: 16px; flex: none; padding: 0 32px"><svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#FF8A5B" stroke-width="1.3"><path d="M9 6l-6 6 6 6"></path><path d="M15 6l6 6-6 6"></path></svg><span style="font-family: 'JetBrains Mono', monospace; font-size: 17px; letter-spacing: 0.15em; color: #14161A">C++</span></div>
+            <div aria-hidden="true" style="display: flex; align-items: center; gap: 16px; flex: none; padding: 0 32px"><svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#6EE7C8" stroke-width="1.3"><rect x="4" y="8" width="16" height="9" rx="1"></rect><path d="M8 12h1M8 15h4"></path></svg><span style="font-family: 'JetBrains Mono', monospace; font-size: 17px; letter-spacing: 0.15em; color: #14161A">TERMINAL</span></div>
+            <div aria-hidden="true" style="display: flex; align-items: center; gap: 16px; flex: none; padding: 0 32px"><svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#2B2F36" stroke-width="1.3"><rect x="4" y="4" width="16" height="16" rx="2"></rect><path d="M8 8v8l8-8v8"></path></svg><span style="font-family: 'JetBrains Mono', monospace; font-size: 17px; letter-spacing: 0.15em; color: #14161A">NOTION</span></div>
+            <div aria-hidden="true" style="display: flex; align-items: center; gap: 16px; flex: none; padding: 0 32px"><svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#FFC857" stroke-width="1.3"><rect x="3" y="4" width="18" height="14" rx="1.5"></rect><rect x="6" y="7.5" width="4" height="4" fill="#FFC857" stroke="none"></rect><rect x="12" y="10.5" width="4" height="4" fill="none"></rect></svg><span style="font-family: 'JetBrains Mono', monospace; font-size: 17px; letter-spacing: 0.15em; color: #14161A">MIRO BOARD</span></div>
+            <div aria-hidden="true" style="display: flex; align-items: center; gap: 16px; flex: none; padding: 0 32px"><svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#F05032" stroke-width="1.3"><circle cx="6" cy="5" r="2.4"></circle><circle cx="6" cy="19" r="2.4"></circle><circle cx="18" cy="9" r="2.4"></circle><path d="M6 7.4v9.2M18 11.4c0 3-3 4-7 4"></path></svg><span style="font-family: 'JetBrains Mono', monospace; font-size: 17px; letter-spacing: 0.15em; color: #14161A">GIT</span></div>
+            <div aria-hidden="true" style="display: flex; align-items: center; gap: 16px; flex: none; padding: 0 32px"><svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#B98BFF" stroke-width="1.3"><rect x="3" y="3" width="7" height="7" rx="1"></rect><rect x="14" y="3" width="7" height="7" rx="1"></rect><rect x="3" y="14" width="7" height="7" rx="1"></rect><rect x="14" y="14" width="7" height="7" rx="1"></rect></svg><span style="font-family: 'JetBrains Mono', monospace; font-size: 17px; letter-spacing: 0.15em; color: #14161A">VS CODE</span></div>
+            <div aria-hidden="true" style="display: flex; align-items: center; gap: 16px; flex: none; padding: 0 32px"><svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#B98BFF" stroke-width="1.3"><rect x="3" y="4" width="18" height="16" rx="1.5"></rect><path d="M3 8h18M8 8v12"></path></svg><span style="font-family: 'JetBrains Mono', monospace; font-size: 17px; letter-spacing: 0.15em; color: #14161A">CMAKE</span></div>
+            <div aria-hidden="true" style="display: flex; align-items: center; gap: 16px; flex: none; padding: 0 32px"><svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#FF8A5B" stroke-width="1.3"><path d="M12 3v3M12 18v3M3 12h3M18 12h3"></path><circle cx="12" cy="12" r="5"></circle></svg><span style="font-family: 'JetBrains Mono', monospace; font-size: 17px; letter-spacing: 0.15em; color: #14161A">AI</span></div>
+            <div aria-hidden="true" style="display: flex; align-items: center; gap: 16px; flex: none; padding: 0 32px"><svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#6EE7C8" stroke-width="1.3"><path d="M8 12V9a4 4 0 0 1 8 0v3"></path><rect x="5" y="12" width="5" height="5" rx="1"></rect><rect x="14" y="12" width="5" height="5" rx="1"></rect></svg><span style="font-family: 'JetBrains Mono', monospace; font-size: 17px; letter-spacing: 0.15em; color: #14161A">JSON</span></div>
           </div>
         </div>
           <div style="overflow: hidden">
           <div style="display: flex; align-items: center; flex-wrap: nowrap; width: max-content; animation: ap-marquee-rev 55s linear infinite">
-            <div style="display: flex; align-items: center; gap: 16px; flex: none; padding: 0 32px"><svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#F05032" stroke-width="1.3"><circle cx="6" cy="5" r="2.4"></circle><circle cx="6" cy="19" r="2.4"></circle><circle cx="18" cy="9" r="2.4"></circle><path d="M6 7.4v9.2M18 11.4c0 3-3 4-7 4"></path></svg><span style="font-family: 'JetBrains Mono', monospace; font-size: 17px; letter-spacing: 0.15em; color: #FFFFFF">GIT</span></div>
-            <div style="display: flex; align-items: center; gap: 16px; flex: none; padding: 0 32px"><svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#FF8A5B" stroke-width="1.3"><path d="M9 6l-6 6 6 6"></path><path d="M15 6l6 6-6 6"></path></svg><span style="font-family: 'JetBrains Mono', monospace; font-size: 17px; letter-spacing: 0.15em; color: #FFFFFF">C++</span></div>
-            <div style="display: flex; align-items: center; gap: 16px; flex: none; padding: 0 32px"><svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#B98BFF" stroke-width="1.3"><rect x="3" y="4" width="18" height="16" rx="1.5"></rect><path d="M3 8h18M8 8v12"></path></svg><span style="font-family: 'JetBrains Mono', monospace; font-size: 17px; letter-spacing: 0.15em; color: #FFFFFF">CMAKE</span></div>
-            <div style="display: flex; align-items: center; gap: 16px; flex: none; padding: 0 32px"><svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#FFC857" stroke-width="1.3"><rect x="3" y="4" width="18" height="14" rx="1.5"></rect><rect x="6" y="7.5" width="4" height="4" fill="#FFC857" stroke="none"></rect><rect x="12" y="10.5" width="4" height="4" fill="none"></rect></svg><span style="font-family: 'JetBrains Mono', monospace; font-size: 17px; letter-spacing: 0.15em; color: #FFFFFF">MIRO BOARD</span></div>
-            <div style="display: flex; align-items: center; gap: 16px; flex: none; padding: 0 32px"><svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#FF8A5B" stroke-width="1.3"><path d="M12 3v3M12 18v3M3 12h3M18 12h3"></path><circle cx="12" cy="12" r="5"></circle></svg><span style="font-family: 'JetBrains Mono', monospace; font-size: 17px; letter-spacing: 0.15em; color: #FFFFFF">AI</span></div>
-            <div style="display: flex; align-items: center; gap: 16px; flex: none; padding: 0 32px"><svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#EAF3F8" stroke-width="1.3"><circle cx="12" cy="12" r="10"></circle><path d="M8 7v6a4 4 0 0 0 8 0V7"></path></svg><span style="font-family: 'JetBrains Mono', monospace; font-size: 17px; letter-spacing: 0.15em; color: #FFFFFF">UNREAL</span></div>
-            <div style="display: flex; align-items: center; gap: 16px; flex: none; padding: 0 32px"><svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#6EE7C8" stroke-width="1.3"><rect x="4" y="8" width="16" height="9" rx="1"></rect><path d="M8 12h1M8 15h4"></path></svg><span style="font-family: 'JetBrains Mono', monospace; font-size: 17px; letter-spacing: 0.15em; color: #FFFFFF">TERMINAL</span></div>
-            <div style="display: flex; align-items: center; gap: 16px; flex: none; padding: 0 32px"><svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#6EE7C8" stroke-width="1.3"><path d="M8 12V9a4 4 0 0 1 8 0v3"></path><rect x="5" y="12" width="5" height="5" rx="1"></rect><rect x="14" y="12" width="5" height="5" rx="1"></rect></svg><span style="font-family: 'JetBrains Mono', monospace; font-size: 17px; letter-spacing: 0.15em; color: #FFFFFF">JSON</span></div>
-            <div style="display: flex; align-items: center; gap: 16px; flex: none; padding: 0 32px"><svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#EAF3F8" stroke-width="1.3"><rect x="4" y="4" width="16" height="16" rx="2"></rect><path d="M8 8v8l8-8v8"></path></svg><span style="font-family: 'JetBrains Mono', monospace; font-size: 17px; letter-spacing: 0.15em; color: #FFFFFF">NOTION</span></div>
-            <div style="display: flex; align-items: center; gap: 16px; flex: none; padding: 0 32px"><svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#B98BFF" stroke-width="1.3"><rect x="3" y="3" width="7" height="7" rx="1"></rect><rect x="14" y="3" width="7" height="7" rx="1"></rect><rect x="3" y="14" width="7" height="7" rx="1"></rect><rect x="14" y="14" width="7" height="7" rx="1"></rect></svg><span style="font-family: 'JetBrains Mono', monospace; font-size: 17px; letter-spacing: 0.15em; color: #FFFFFF">VS CODE</span></div>
-            <div aria-hidden="true" style="display: flex; align-items: center; gap: 16px; flex: none; padding: 0 32px"><svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#F05032" stroke-width="1.3"><circle cx="6" cy="5" r="2.4"></circle><circle cx="6" cy="19" r="2.4"></circle><circle cx="18" cy="9" r="2.4"></circle><path d="M6 7.4v9.2M18 11.4c0 3-3 4-7 4"></path></svg><span style="font-family: 'JetBrains Mono', monospace; font-size: 17px; letter-spacing: 0.15em; color: #FFFFFF">GIT</span></div>
-            <div aria-hidden="true" style="display: flex; align-items: center; gap: 16px; flex: none; padding: 0 32px"><svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#FF8A5B" stroke-width="1.3"><path d="M9 6l-6 6 6 6"></path><path d="M15 6l6 6-6 6"></path></svg><span style="font-family: 'JetBrains Mono', monospace; font-size: 17px; letter-spacing: 0.15em; color: #FFFFFF">C++</span></div>
-            <div aria-hidden="true" style="display: flex; align-items: center; gap: 16px; flex: none; padding: 0 32px"><svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#B98BFF" stroke-width="1.3"><rect x="3" y="4" width="18" height="16" rx="1.5"></rect><path d="M3 8h18M8 8v12"></path></svg><span style="font-family: 'JetBrains Mono', monospace; font-size: 17px; letter-spacing: 0.15em; color: #FFFFFF">CMAKE</span></div>
-            <div aria-hidden="true" style="display: flex; align-items: center; gap: 16px; flex: none; padding: 0 32px"><svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#FFC857" stroke-width="1.3"><rect x="3" y="4" width="18" height="14" rx="1.5"></rect><rect x="6" y="7.5" width="4" height="4" fill="#FFC857" stroke="none"></rect><rect x="12" y="10.5" width="4" height="4" fill="none"></rect></svg><span style="font-family: 'JetBrains Mono', monospace; font-size: 17px; letter-spacing: 0.15em; color: #FFFFFF">MIRO BOARD</span></div>
-            <div aria-hidden="true" style="display: flex; align-items: center; gap: 16px; flex: none; padding: 0 32px"><svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#FF8A5B" stroke-width="1.3"><path d="M12 3v3M12 18v3M3 12h3M18 12h3"></path><circle cx="12" cy="12" r="5"></circle></svg><span style="font-family: 'JetBrains Mono', monospace; font-size: 17px; letter-spacing: 0.15em; color: #FFFFFF">AI</span></div>
-            <div aria-hidden="true" style="display: flex; align-items: center; gap: 16px; flex: none; padding: 0 32px"><svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#EAF3F8" stroke-width="1.3"><circle cx="12" cy="12" r="10"></circle><path d="M8 7v6a4 4 0 0 0 8 0V7"></path></svg><span style="font-family: 'JetBrains Mono', monospace; font-size: 17px; letter-spacing: 0.15em; color: #FFFFFF">UNREAL</span></div>
-            <div aria-hidden="true" style="display: flex; align-items: center; gap: 16px; flex: none; padding: 0 32px"><svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#6EE7C8" stroke-width="1.3"><rect x="4" y="8" width="16" height="9" rx="1"></rect><path d="M8 12h1M8 15h4"></path></svg><span style="font-family: 'JetBrains Mono', monospace; font-size: 17px; letter-spacing: 0.15em; color: #FFFFFF">TERMINAL</span></div>
-            <div aria-hidden="true" style="display: flex; align-items: center; gap: 16px; flex: none; padding: 0 32px"><svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#6EE7C8" stroke-width="1.3"><path d="M8 12V9a4 4 0 0 1 8 0v3"></path><rect x="5" y="12" width="5" height="5" rx="1"></rect><rect x="14" y="12" width="5" height="5" rx="1"></rect></svg><span style="font-family: 'JetBrains Mono', monospace; font-size: 17px; letter-spacing: 0.15em; color: #FFFFFF">JSON</span></div>
-            <div aria-hidden="true" style="display: flex; align-items: center; gap: 16px; flex: none; padding: 0 32px"><svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#EAF3F8" stroke-width="1.3"><rect x="4" y="4" width="16" height="16" rx="2"></rect><path d="M8 8v8l8-8v8"></path></svg><span style="font-family: 'JetBrains Mono', monospace; font-size: 17px; letter-spacing: 0.15em; color: #FFFFFF">NOTION</span></div>
-            <div aria-hidden="true" style="display: flex; align-items: center; gap: 16px; flex: none; padding: 0 32px"><svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#B98BFF" stroke-width="1.3"><rect x="3" y="3" width="7" height="7" rx="1"></rect><rect x="14" y="3" width="7" height="7" rx="1"></rect><rect x="3" y="14" width="7" height="7" rx="1"></rect><rect x="14" y="14" width="7" height="7" rx="1"></rect></svg><span style="font-family: 'JetBrains Mono', monospace; font-size: 17px; letter-spacing: 0.15em; color: #FFFFFF">VS CODE</span></div>
+            <div style="display: flex; align-items: center; gap: 16px; flex: none; padding: 0 32px"><svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#F05032" stroke-width="1.3"><circle cx="6" cy="5" r="2.4"></circle><circle cx="6" cy="19" r="2.4"></circle><circle cx="18" cy="9" r="2.4"></circle><path d="M6 7.4v9.2M18 11.4c0 3-3 4-7 4"></path></svg><span style="font-family: 'JetBrains Mono', monospace; font-size: 17px; letter-spacing: 0.15em; color: #14161A">GIT</span></div>
+            <div style="display: flex; align-items: center; gap: 16px; flex: none; padding: 0 32px"><svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#FF8A5B" stroke-width="1.3"><path d="M9 6l-6 6 6 6"></path><path d="M15 6l6 6-6 6"></path></svg><span style="font-family: 'JetBrains Mono', monospace; font-size: 17px; letter-spacing: 0.15em; color: #14161A">C++</span></div>
+            <div style="display: flex; align-items: center; gap: 16px; flex: none; padding: 0 32px"><svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#B98BFF" stroke-width="1.3"><rect x="3" y="4" width="18" height="16" rx="1.5"></rect><path d="M3 8h18M8 8v12"></path></svg><span style="font-family: 'JetBrains Mono', monospace; font-size: 17px; letter-spacing: 0.15em; color: #14161A">CMAKE</span></div>
+            <div style="display: flex; align-items: center; gap: 16px; flex: none; padding: 0 32px"><svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#FFC857" stroke-width="1.3"><rect x="3" y="4" width="18" height="14" rx="1.5"></rect><rect x="6" y="7.5" width="4" height="4" fill="#FFC857" stroke="none"></rect><rect x="12" y="10.5" width="4" height="4" fill="none"></rect></svg><span style="font-family: 'JetBrains Mono', monospace; font-size: 17px; letter-spacing: 0.15em; color: #14161A">MIRO BOARD</span></div>
+            <div style="display: flex; align-items: center; gap: 16px; flex: none; padding: 0 32px"><svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#FF8A5B" stroke-width="1.3"><path d="M12 3v3M12 18v3M3 12h3M18 12h3"></path><circle cx="12" cy="12" r="5"></circle></svg><span style="font-family: 'JetBrains Mono', monospace; font-size: 17px; letter-spacing: 0.15em; color: #14161A">AI</span></div>
+            <div style="display: flex; align-items: center; gap: 16px; flex: none; padding: 0 32px"><svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#2B2F36" stroke-width="1.3"><circle cx="12" cy="12" r="10"></circle><path d="M8 7v6a4 4 0 0 0 8 0V7"></path></svg><span style="font-family: 'JetBrains Mono', monospace; font-size: 17px; letter-spacing: 0.15em; color: #14161A">UNREAL</span></div>
+            <div style="display: flex; align-items: center; gap: 16px; flex: none; padding: 0 32px"><svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#6EE7C8" stroke-width="1.3"><rect x="4" y="8" width="16" height="9" rx="1"></rect><path d="M8 12h1M8 15h4"></path></svg><span style="font-family: 'JetBrains Mono', monospace; font-size: 17px; letter-spacing: 0.15em; color: #14161A">TERMINAL</span></div>
+            <div style="display: flex; align-items: center; gap: 16px; flex: none; padding: 0 32px"><svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#6EE7C8" stroke-width="1.3"><path d="M8 12V9a4 4 0 0 1 8 0v3"></path><rect x="5" y="12" width="5" height="5" rx="1"></rect><rect x="14" y="12" width="5" height="5" rx="1"></rect></svg><span style="font-family: 'JetBrains Mono', monospace; font-size: 17px; letter-spacing: 0.15em; color: #14161A">JSON</span></div>
+            <div style="display: flex; align-items: center; gap: 16px; flex: none; padding: 0 32px"><svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#2B2F36" stroke-width="1.3"><rect x="4" y="4" width="16" height="16" rx="2"></rect><path d="M8 8v8l8-8v8"></path></svg><span style="font-family: 'JetBrains Mono', monospace; font-size: 17px; letter-spacing: 0.15em; color: #14161A">NOTION</span></div>
+            <div style="display: flex; align-items: center; gap: 16px; flex: none; padding: 0 32px"><svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#B98BFF" stroke-width="1.3"><rect x="3" y="3" width="7" height="7" rx="1"></rect><rect x="14" y="3" width="7" height="7" rx="1"></rect><rect x="3" y="14" width="7" height="7" rx="1"></rect><rect x="14" y="14" width="7" height="7" rx="1"></rect></svg><span style="font-family: 'JetBrains Mono', monospace; font-size: 17px; letter-spacing: 0.15em; color: #14161A">VS CODE</span></div>
+            <div aria-hidden="true" style="display: flex; align-items: center; gap: 16px; flex: none; padding: 0 32px"><svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#F05032" stroke-width="1.3"><circle cx="6" cy="5" r="2.4"></circle><circle cx="6" cy="19" r="2.4"></circle><circle cx="18" cy="9" r="2.4"></circle><path d="M6 7.4v9.2M18 11.4c0 3-3 4-7 4"></path></svg><span style="font-family: 'JetBrains Mono', monospace; font-size: 17px; letter-spacing: 0.15em; color: #14161A">GIT</span></div>
+            <div aria-hidden="true" style="display: flex; align-items: center; gap: 16px; flex: none; padding: 0 32px"><svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#FF8A5B" stroke-width="1.3"><path d="M9 6l-6 6 6 6"></path><path d="M15 6l6 6-6 6"></path></svg><span style="font-family: 'JetBrains Mono', monospace; font-size: 17px; letter-spacing: 0.15em; color: #14161A">C++</span></div>
+            <div aria-hidden="true" style="display: flex; align-items: center; gap: 16px; flex: none; padding: 0 32px"><svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#B98BFF" stroke-width="1.3"><rect x="3" y="4" width="18" height="16" rx="1.5"></rect><path d="M3 8h18M8 8v12"></path></svg><span style="font-family: 'JetBrains Mono', monospace; font-size: 17px; letter-spacing: 0.15em; color: #14161A">CMAKE</span></div>
+            <div aria-hidden="true" style="display: flex; align-items: center; gap: 16px; flex: none; padding: 0 32px"><svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#FFC857" stroke-width="1.3"><rect x="3" y="4" width="18" height="14" rx="1.5"></rect><rect x="6" y="7.5" width="4" height="4" fill="#FFC857" stroke="none"></rect><rect x="12" y="10.5" width="4" height="4" fill="none"></rect></svg><span style="font-family: 'JetBrains Mono', monospace; font-size: 17px; letter-spacing: 0.15em; color: #14161A">MIRO BOARD</span></div>
+            <div aria-hidden="true" style="display: flex; align-items: center; gap: 16px; flex: none; padding: 0 32px"><svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#FF8A5B" stroke-width="1.3"><path d="M12 3v3M12 18v3M3 12h3M18 12h3"></path><circle cx="12" cy="12" r="5"></circle></svg><span style="font-family: 'JetBrains Mono', monospace; font-size: 17px; letter-spacing: 0.15em; color: #14161A">AI</span></div>
+            <div aria-hidden="true" style="display: flex; align-items: center; gap: 16px; flex: none; padding: 0 32px"><svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#2B2F36" stroke-width="1.3"><circle cx="12" cy="12" r="10"></circle><path d="M8 7v6a4 4 0 0 0 8 0V7"></path></svg><span style="font-family: 'JetBrains Mono', monospace; font-size: 17px; letter-spacing: 0.15em; color: #14161A">UNREAL</span></div>
+            <div aria-hidden="true" style="display: flex; align-items: center; gap: 16px; flex: none; padding: 0 32px"><svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#6EE7C8" stroke-width="1.3"><rect x="4" y="8" width="16" height="9" rx="1"></rect><path d="M8 12h1M8 15h4"></path></svg><span style="font-family: 'JetBrains Mono', monospace; font-size: 17px; letter-spacing: 0.15em; color: #14161A">TERMINAL</span></div>
+            <div aria-hidden="true" style="display: flex; align-items: center; gap: 16px; flex: none; padding: 0 32px"><svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#6EE7C8" stroke-width="1.3"><path d="M8 12V9a4 4 0 0 1 8 0v3"></path><rect x="5" y="12" width="5" height="5" rx="1"></rect><rect x="14" y="12" width="5" height="5" rx="1"></rect></svg><span style="font-family: 'JetBrains Mono', monospace; font-size: 17px; letter-spacing: 0.15em; color: #14161A">JSON</span></div>
+            <div aria-hidden="true" style="display: flex; align-items: center; gap: 16px; flex: none; padding: 0 32px"><svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#2B2F36" stroke-width="1.3"><rect x="4" y="4" width="16" height="16" rx="2"></rect><path d="M8 8v8l8-8v8"></path></svg><span style="font-family: 'JetBrains Mono', monospace; font-size: 17px; letter-spacing: 0.15em; color: #14161A">NOTION</span></div>
+            <div aria-hidden="true" style="display: flex; align-items: center; gap: 16px; flex: none; padding: 0 32px"><svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#B98BFF" stroke-width="1.3"><rect x="3" y="3" width="7" height="7" rx="1"></rect><rect x="14" y="3" width="7" height="7" rx="1"></rect><rect x="3" y="14" width="7" height="7" rx="1"></rect><rect x="14" y="14" width="7" height="7" rx="1"></rect></svg><span style="font-family: 'JetBrains Mono', monospace; font-size: 17px; letter-spacing: 0.15em; color: #14161A">VS CODE</span></div>
           </div>
         </div>
           </div>
@@ -182,11 +182,11 @@
   <!-- ================= GAMES ================= -->
   <section id="games" ref="{{ sectionRefs.games }}" style="position: relative; padding-bottom: 40px; box-sizing: border-box; overflow: hidden">
 
-    <div style="position: relative; z-index: 2; text-align: center; padding: 60px 40px 0 40px; font-family: 'Bebas Neue', sans-serif; font-size: 40px; letter-spacing: 0.06em; color: #FFFFFF">GAMES</div>
+    <div style="position: relative; z-index: 2; text-align: center; padding: 60px 40px 0 40px; font-family: 'Bebas Neue', sans-serif; font-size: 40px; letter-spacing: 0.06em; color: #14161A">GAMES</div>
 
     <div style="position: relative; z-index: 2; display: flex; flex-direction: column; gap: 40px; padding: 40px 40px 0 40px; max-width: 1240px; margin: 0 auto">
       <sc-for list="{{ projects }}" as="project" hint-placeholder-count="3">
-        <div ref="{{ project.setCardRef }}" style="border: 1px solid {{ project.borderStrong }}; border-image: {{ project.borderImage }}; background: {{ project.cardBg }}; border-radius: 2px; box-shadow: 0 24px 60px -20px rgba(0,0,0,0.65), 0 4px 24px rgba(0,0,0,0.4), inset 0 1px 0 rgba(255,255,255,0.05)">
+        <div ref="{{ project.setCardRef }}" style="border: 1px solid {{ project.borderStrong }}; border-image: {{ project.borderImage }}; background: {{ project.cardBg }}; border-radius: 2px">
           <div style="height: 380px; background: {{ project.bannerBg }}; display: flex; align-items: center; justify-content: center; border-bottom: 1px solid {{ project.borderMid }}; position: relative">
             <sc-if value="{{ project.noBanner }}" hint-placeholder-val="{{ false }}">
               <div style="font-family: 'JetBrains Mono', monospace; font-size: 12px; letter-spacing: 0.2em; color: #FFFFFF">PROJECT_STILL / KEY ART</div>
@@ -208,7 +208,7 @@
             <div onClick="{{ project.selectTrailer }}" style="{{ project.trailerTabStyle }}">TRAILER</div>
             <div onClick="{{ project.selectGit }}" style="{{ project.gitTabStyle }}">REPOSITORY</div>
             <sc-if value="{{ project.showDetailLinks }}" hint-placeholder-val="{{ true }}">
-              <a href="{{ project.detailHref }}" style="display: inline-flex; align-items: center; gap: 8px; font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.15em; padding: 10px 18px; color: #FFFFFF; border: 1px solid {{ project.borderLight }}; border-bottom: none">TECHNICAL BREAKDOWN <span>▸</span></a>
+              <a href="{{ project.detailHref }}" style="display: inline-flex; align-items: center; gap: 8px; font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.15em; padding: 10px 18px; color: #14161A; border: 1px solid {{ project.borderLight }}; border-bottom: none">TECHNICAL BREAKDOWN <span>▸</span></a>
             </sc-if>
             <sc-if value="{{ project.itchUrl }}" hint-placeholder-val="{{ false }}">
               <a href="{{ project.itchUrl }}" target="_blank" rel="noopener" style="display: inline-flex; align-items: center; gap: 6px; font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.15em; padding: 10px 18px; margin-left: auto; color: #001018; background: {{ project.accent }}; border: 1px solid {{ project.accent }}; border-bottom: none">▶ PLAY</a>
@@ -217,7 +217,7 @@
           <div style="padding: 26px 30px 30px 30px; min-height: {{ project.tabMinHeight }}; display: flex; justify-content: {{ project.tabJustify }}; align-items: {{ project.tabAlignItems }}; gap: 20px; flex-wrap: wrap">
             <div style="flex: 1; min-width: 260px; text-align: {{ project.tabTextAlign }}">
               <sc-if value="{{ project.isOverview }}" hint-placeholder-val="{{ true }}">
-                <div style="font-family: 'Inter', sans-serif; font-size: 15px; line-height: 1.7; color: #FFFFFF; white-space: pre-line">{{ project.overview }}</div>
+                <div style="font-family: 'Inter', sans-serif; font-size: 15px; line-height: 1.7; color: #14161A; white-space: pre-line">{{ project.overview }}</div>
               </sc-if>
               <sc-if value="{{ project.isTrailer }}" hint-placeholder-val="{{ false }}">
                 <sc-if value="{{ project.trailerId }}" hint-placeholder-val="{{ false }}">
@@ -226,11 +226,11 @@
                   </div>
                 </sc-if>
                 <sc-if value="{{ project.noTrailer }}" hint-placeholder-val="{{ true }}">
-                  <div style="height: 260px; max-width: 720px; margin: 0 auto; border: 1px dashed {{ project.borderMid }}; display: flex; align-items: center; justify-content: center; font-family: 'JetBrains Mono', monospace; font-size: 12px; letter-spacing: 0.15em; color: #FFFFFF">TRAILER VIDEO — drop file here</div>
+                  <div style="height: 260px; max-width: 720px; margin: 0 auto; border: 1px dashed {{ project.borderMid }}; display: flex; align-items: center; justify-content: center; font-family: 'JetBrains Mono', monospace; font-size: 12px; letter-spacing: 0.15em; color: #14161A">TRAILER VIDEO — drop file here</div>
                 </sc-if>
               </sc-if>
               <sc-if value="{{ project.isGit }}" hint-placeholder-val="{{ false }}">
-                <a href="{{ project.gitUrl }}" style="display: inline-flex; align-items: center; gap: 10px; font-family: 'JetBrains Mono', monospace; font-size: 13px; letter-spacing: 0.08em; color: {{ project.accent }}">
+                <a href="{{ project.gitUrl }}" style="display: inline-flex; align-items: center; gap: 10px; font-family: 'JetBrains Mono', monospace; font-size: 13px; letter-spacing: 0.08em; color: {{ project.textAccent }}">
                   <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="6" cy="5" r="2.4"></circle><circle cx="6" cy="19" r="2.4"></circle><circle cx="18" cy="9" r="2.4"></circle><path d="M6 7.4v9.2M18 11.4c0 3-3 4-7 4"></path></svg>
                   {{ project.gitLabel }}
                 </a>
@@ -246,11 +246,11 @@
   <sc-if value="{{ hasPrototypes }}" hint-placeholder-val="{{ false }}">
   <section id="prototypes" ref="{{ sectionRefs.prototypes }}" style="position: relative; padding-bottom: 40px; box-sizing: border-box; overflow: hidden">
 
-    <div style="position: relative; z-index: 2; text-align: center; padding: 60px 40px 0 40px; font-family: 'Bebas Neue', sans-serif; font-size: 40px; letter-spacing: 0.06em; color: #FFFFFF">PROTOTYPES</div>
+    <div style="position: relative; z-index: 2; text-align: center; padding: 60px 40px 0 40px; font-family: 'Bebas Neue', sans-serif; font-size: 40px; letter-spacing: 0.06em; color: #14161A">PROTOTYPES</div>
 
     <div style="position: relative; z-index: 2; display: flex; flex-direction: column; gap: 40px; padding: 40px 40px 0 40px; max-width: 1240px; margin: 0 auto">
       <sc-for list="{{ prototypes }}" as="project" hint-placeholder-count="1">
-        <div ref="{{ project.setCardRef }}" style="border: 1px solid {{ project.borderStrong }}; border-image: {{ project.borderImage }}; background: {{ project.cardBg }}; border-radius: 2px; box-shadow: 0 24px 60px -20px rgba(0,0,0,0.65), 0 4px 24px rgba(0,0,0,0.4), inset 0 1px 0 rgba(255,255,255,0.05)">
+        <div ref="{{ project.setCardRef }}" style="border: 1px solid {{ project.borderStrong }}; border-image: {{ project.borderImage }}; background: {{ project.cardBg }}; border-radius: 2px">
           <div style="height: 380px; background: {{ project.bannerBg }}; display: flex; align-items: center; justify-content: center; border-bottom: 1px solid {{ project.borderMid }}; position: relative">
             <sc-if value="{{ project.noBanner }}" hint-placeholder-val="{{ false }}">
               <div style="font-family: 'JetBrains Mono', monospace; font-size: 12px; letter-spacing: 0.2em; color: #FFFFFF">PROTOTYPE_STILL / KEY ART</div>
@@ -273,7 +273,7 @@
               <div onClick="{{ project.selectGit }}" style="{{ project.gitTabStyle }}">REPOSITORY</div>
             </sc-if>
             <sc-if value="{{ project.showDetailLinks }}" hint-placeholder-val="{{ true }}">
-              <a href="{{ project.detailHref }}" style="display: inline-flex; align-items: center; gap: 8px; font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.15em; padding: 10px 18px; color: #FFFFFF; border: 1px solid {{ project.borderLight }}; border-bottom: none">TECHNICAL BREAKDOWN <span>▸</span></a>
+              <a href="{{ project.detailHref }}" style="display: inline-flex; align-items: center; gap: 8px; font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.15em; padding: 10px 18px; color: #14161A; border: 1px solid {{ project.borderLight }}; border-bottom: none">TECHNICAL BREAKDOWN <span>▸</span></a>
             </sc-if>
             <sc-if value="{{ project.itchUrl }}" hint-placeholder-val="{{ false }}">
               <a href="{{ project.itchUrl }}" target="_blank" rel="noopener" style="display: inline-flex; align-items: center; gap: 6px; font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.15em; padding: 10px 18px; margin-left: auto; color: #001018; background: {{ project.accent }}; border: 1px solid {{ project.accent }}; border-bottom: none">▶ PLAY</a>
@@ -282,7 +282,7 @@
           <div style="padding: 26px 30px 30px 30px; min-height: {{ project.tabMinHeight }}; display: flex; justify-content: {{ project.tabJustify }}; align-items: {{ project.tabAlignItems }}; gap: 20px; flex-wrap: wrap">
             <div style="flex: 1; min-width: 260px; text-align: {{ project.tabTextAlign }}">
               <sc-if value="{{ project.isOverview }}" hint-placeholder-val="{{ true }}">
-                <div style="font-family: 'Inter', sans-serif; font-size: 15px; line-height: 1.7; color: #FFFFFF; white-space: pre-line">{{ project.overview }}</div>
+                <div style="font-family: 'Inter', sans-serif; font-size: 15px; line-height: 1.7; color: #14161A; white-space: pre-line">{{ project.overview }}</div>
               </sc-if>
               <sc-if value="{{ project.isTrailer }}" hint-placeholder-val="{{ false }}">
                 <div style="max-width: 720px; margin: 0 auto; aspect-ratio: 16/9; border: 1px solid {{ project.borderMid }}">
@@ -290,7 +290,7 @@
                 </div>
               </sc-if>
               <sc-if value="{{ project.isGit }}" hint-placeholder-val="{{ false }}">
-                <a href="{{ project.gitUrl }}" style="display: inline-flex; align-items: center; gap: 10px; font-family: 'JetBrains Mono', monospace; font-size: 13px; letter-spacing: 0.08em; color: {{ project.accent }}">
+                <a href="{{ project.gitUrl }}" style="display: inline-flex; align-items: center; gap: 10px; font-family: 'JetBrains Mono', monospace; font-size: 13px; letter-spacing: 0.08em; color: {{ project.textAccent }}">
                   <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="6" cy="5" r="2.4"></circle><circle cx="6" cy="19" r="2.4"></circle><circle cx="18" cy="9" r="2.4"></circle><path d="M6 7.4v9.2M18 11.4c0 3-3 4-7 4"></path></svg>
                   {{ project.gitLabel }}
                 </a>
@@ -306,11 +306,11 @@
   <!-- ================= REAL-TIME 3D APPLICATIONS (id kept as "professional") ================= -->
   <section id="professional" ref="{{ sectionRefs.professional }}" style="position: relative; padding-bottom: 40px; box-sizing: border-box; overflow: hidden">
 
-    <div style="position: relative; z-index: 2; text-align: center; padding: 60px 40px 0 40px; font-family: 'Bebas Neue', sans-serif; font-size: 40px; letter-spacing: 0.06em; color: #FFFFFF">REAL-TIME 3D APPLICATIONS</div>
+    <div style="position: relative; z-index: 2; text-align: center; padding: 60px 40px 0 40px; font-family: 'Bebas Neue', sans-serif; font-size: 40px; letter-spacing: 0.06em; color: #14161A">REAL-TIME 3D APPLICATIONS</div>
 
     <div class="rt-role-grid" style="position: relative; z-index: 2; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 32px; padding: 40px 40px 0 40px; max-width: 1240px; margin: 0 auto; box-sizing: border-box">
       <sc-for list="{{ roles }}" as="role" hint-placeholder-count="4">
-        <div ref="{{ role.setCardRef }}" style="display: flex; flex-direction: column; min-width: 0; border: 1px solid {{ role.borderStrong }}; background: {{ role.cardBg }}; border-radius: 2px; overflow: hidden; box-shadow: 0 24px 60px -20px rgba(0,0,0,0.65), 0 4px 24px rgba(0,0,0,0.4), inset 0 1px 0 rgba(255,255,255,0.05)">
+        <div ref="{{ role.setCardRef }}" style="display: flex; flex-direction: column; min-width: 0; border: 1px solid {{ role.borderStrong }}; background: {{ role.cardBg }}; border-radius: 2px; overflow: hidden">
 
           <!-- media: still image (or accent panel) that swaps to the walkthrough video on click -->
           <div style="position: relative; aspect-ratio: 16 / 9; background: {{ role.bannerBg }}; border-bottom: 1px solid {{ role.borderMid }}">
@@ -329,13 +329,13 @@
           </div>
 
           <div style="display: flex; flex-direction: column; flex: 1; padding: 22px 26px 26px 26px">
-            <div style="font-family: 'Bebas Neue', sans-serif; font-size: 32px; letter-spacing: 0.02em; line-height: 1.05; color: #FFFFFF">{{ role.title }}</div>
-            <div style="font-family: 'JetBrains Mono', monospace; font-size: 11.5px; letter-spacing: 0.12em; color: {{ role.accent }}; margin: 8px 0 14px 0">{{ role.tags }}</div>
-            <div style="font-family: 'Inter', sans-serif; font-size: 14.5px; line-height: 1.7; color: #FFFFFF">{{ role.summary }}</div>
+            <div style="font-family: 'Bebas Neue', sans-serif; font-size: 32px; letter-spacing: 0.02em; line-height: 1.05; color: #14161A">{{ role.title }}</div>
+            <div style="font-family: 'JetBrains Mono', monospace; font-size: 11.5px; letter-spacing: 0.12em; color: {{ role.textAccent }}; margin: 8px 0 14px 0">{{ role.tags }}</div>
+            <div style="font-family: 'Inter', sans-serif; font-size: 14.5px; line-height: 1.7; color: #14161A">{{ role.summary }}</div>
 
             <div style="display: flex; flex-direction: column; gap: 8px; margin-top: 16px">
               <sc-for list="{{ role.highlights }}" as="point" hint-placeholder-count="3">
-                <div style="display: flex; align-items: flex-start; gap: 12px; font-family: 'Inter', sans-serif; font-size: 13.5px; line-height: 1.6; color: #FFFFFF">
+                <div style="display: flex; align-items: flex-start; gap: 12px; font-family: 'Inter', sans-serif; font-size: 13.5px; line-height: 1.6; color: #14161A">
                   <span style="flex: none; width: 6px; height: 6px; margin-top: 8px; background: {{ role.accent }}"></span>
                   <span>{{ point }}</span>
                 </div>
@@ -356,11 +356,11 @@
 <!-- ================= TOOLS ================= -->
   <section id="tools" ref="{{ sectionRefs.tools }}" style="position: relative; padding-bottom: 40px; box-sizing: border-box; overflow: hidden">
 
-    <div style="position: relative; z-index: 2; text-align: center; padding: 60px 40px 0 40px; font-family: 'Bebas Neue', sans-serif; font-size: 40px; letter-spacing: 0.06em; color: #FFFFFF">TOOLS</div>
+    <div style="position: relative; z-index: 2; text-align: center; padding: 60px 40px 0 40px; font-family: 'Bebas Neue', sans-serif; font-size: 40px; letter-spacing: 0.06em; color: #14161A">TOOLS</div>
 
     <div style="position: relative; z-index: 2; display: flex; flex-direction: column; gap: 40px; padding: 40px 40px 0 40px; max-width: 1240px; margin: 0 auto">
       <sc-for list="{{ tools }}" as="project" hint-placeholder-count="1">
-        <div ref="{{ project.setCardRef }}" style="border: 1px solid {{ project.borderStrong }}; border-image: {{ project.borderImage }}; background: {{ project.cardBg }}; border-radius: 2px; box-shadow: 0 24px 60px -20px rgba(0,0,0,0.65), 0 4px 24px rgba(0,0,0,0.4), inset 0 1px 0 rgba(255,255,255,0.05)">
+        <div ref="{{ project.setCardRef }}" style="border: 1px solid {{ project.borderStrong }}; border-image: {{ project.borderImage }}; background: {{ project.cardBg }}; border-radius: 2px">
           <div style="height: 380px; background: {{ project.bannerBg }}; display: flex; align-items: center; justify-content: center; border-bottom: 1px solid {{ project.borderMid }}; position: relative">
             <sc-if value="{{ project.noBanner }}" hint-placeholder-val="{{ false }}">
               <div style="font-family: 'JetBrains Mono', monospace; font-size: 12px; letter-spacing: 0.2em; color: #FFFFFF">TOOL_STILL / KEY ART</div>
@@ -384,7 +384,7 @@
               <div onClick="{{ project.selectGit }}" style="{{ project.gitTabStyle }}">REPOSITORY</div>
             </sc-if>
             <sc-if value="{{ project.showDetailLinks }}" hint-placeholder-val="{{ true }}">
-              <a href="{{ project.detailHref }}" style="display: inline-flex; align-items: center; gap: 8px; font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.15em; padding: 10px 18px; color: #FFFFFF; border: 1px solid {{ project.borderLight }}; border-bottom: none">TECHNICAL BREAKDOWN <span>▸</span></a>
+              <a href="{{ project.detailHref }}" style="display: inline-flex; align-items: center; gap: 8px; font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.15em; padding: 10px 18px; color: #14161A; border: 1px solid {{ project.borderLight }}; border-bottom: none">TECHNICAL BREAKDOWN <span>▸</span></a>
             </sc-if>
             <sc-if value="{{ project.itchUrl }}" hint-placeholder-val="{{ false }}">
               <a href="{{ project.itchUrl }}" target="_blank" rel="noopener" style="display: inline-flex; align-items: center; gap: 6px; font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.15em; padding: 10px 18px; margin-left: auto; color: #001018; background: {{ project.accent }}; border: 1px solid {{ project.accent }}; border-bottom: none">▶ PLAY</a>
@@ -393,7 +393,7 @@
           <div style="padding: 26px 30px 30px 30px; min-height: {{ project.tabMinHeight }}; display: flex; justify-content: {{ project.tabJustify }}; align-items: {{ project.tabAlignItems }}; gap: 20px; flex-wrap: wrap">
             <div style="flex: 1; min-width: 260px; text-align: {{ project.tabTextAlign }}">
               <sc-if value="{{ project.isOverview }}" hint-placeholder-val="{{ true }}">
-                <div style="font-family: 'Inter', sans-serif; font-size: 15px; line-height: 1.7; color: #FFFFFF; white-space: pre-line">{{ project.overview }}</div>
+                <div style="font-family: 'Inter', sans-serif; font-size: 15px; line-height: 1.7; color: #14161A; white-space: pre-line">{{ project.overview }}</div>
               </sc-if>
               <sc-if value="{{ project.isTrailer }}" hint-placeholder-val="{{ false }}">
                 <sc-if value="{{ project.trailerId }}" hint-placeholder-val="{{ false }}">
@@ -402,11 +402,11 @@
                   </div>
                 </sc-if>
                 <sc-if value="{{ project.noTrailer }}" hint-placeholder-val="{{ true }}">
-                  <div style="height: 260px; max-width: 720px; margin: 0 auto; border: 1px dashed {{ project.borderMid }}; display: flex; align-items: center; justify-content: center; font-family: 'JetBrains Mono', monospace; font-size: 12px; letter-spacing: 0.15em; color: #FFFFFF">TRAILER VIDEO — drop file here</div>
+                  <div style="height: 260px; max-width: 720px; margin: 0 auto; border: 1px dashed {{ project.borderMid }}; display: flex; align-items: center; justify-content: center; font-family: 'JetBrains Mono', monospace; font-size: 12px; letter-spacing: 0.15em; color: #14161A">TRAILER VIDEO — drop file here</div>
                 </sc-if>
               </sc-if>
               <sc-if value="{{ project.isGit }}" hint-placeholder-val="{{ false }}">
-                <a href="{{ project.gitUrl }}" style="display: inline-flex; align-items: center; gap: 10px; font-family: 'JetBrains Mono', monospace; font-size: 13px; letter-spacing: 0.08em; color: {{ project.accent }}">
+                <a href="{{ project.gitUrl }}" style="display: inline-flex; align-items: center; gap: 10px; font-family: 'JetBrains Mono', monospace; font-size: 13px; letter-spacing: 0.08em; color: {{ project.textAccent }}">
                   <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="6" cy="5" r="2.4"></circle><circle cx="6" cy="19" r="2.4"></circle><circle cx="18" cy="9" r="2.4"></circle><path d="M6 7.4v9.2M18 11.4c0 3-3 4-7 4"></path></svg>
                   {{ project.gitLabel }}
                 </a>
@@ -422,20 +422,20 @@
   <section id="journey" ref="{{ sectionRefs.journey }}" style="position: relative; min-height: 100vh; padding-bottom: 60px; box-sizing: border-box; overflow: hidden">
 
     <div style="position: relative; z-index: 2; text-align: center; padding: 60px 40px 10px 40px">
-      <div style="font-family: 'JetBrains Mono', monospace; font-size: 12px; letter-spacing: 0.4em; color: #6EE7C8">&gt; LEVEL PROGRESSION</div>
-      <h1 style="margin: 12px 0 0 0; font-family: 'Bebas Neue', sans-serif; font-weight: 400; font-size: clamp(46px, 7vw, 96px); line-height: 0.9; color: #FFFFFF">MY JOURNEY</h1>
-      <div style="font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.15em; color: #FFFFFF; margin-top: 10px">scroll and teleport with me through my timeline — no flux capacitor required ↓</div>
+      <div style="font-family: 'JetBrains Mono', monospace; font-size: 12px; letter-spacing: 0.4em; color: #0E7A63">&gt; LEVEL PROGRESSION</div>
+      <h1 style="margin: 12px 0 0 0; font-family: 'Bebas Neue', sans-serif; font-weight: 400; font-size: clamp(46px, 7vw, 96px); line-height: 0.9; color: #14161A">MY JOURNEY</h1>
+      <div style="font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.15em; color: #14161A; margin-top: 10px">scroll and teleport with me through my timeline — no flux capacitor required ↓</div>
     </div>
 
     <div style="position: relative; z-index: 2; max-width: 900px; margin: 40px auto 0 auto; padding: 0 40px">
-      <div style="position: absolute; top: 0; bottom: 0; left: 50%; width: 2px; background: repeating-linear-gradient(0deg, rgba(234,243,248,0.25) 0px, rgba(234,243,248,0.25) 10px, transparent 10px, transparent 20px); transform: translateX(-50%)"></div>
+      <div style="position: absolute; top: 0; bottom: 0; left: 50%; width: 2px; background: repeating-linear-gradient(0deg, rgba(20,22,26,0.16) 0px, rgba(20,22,26,0.16) 10px, transparent 10px, transparent 20px); transform: translateX(-50%)"></div>
 
       <sc-for list="{{ milestones }}" as="stop" hint-placeholder-count="6">
         <div class="rt-journey-row" style="{{ stop.rowStyle }}">
           <div ref="{{ stop.setMilestoneRef }}" class="rt-journey-card" style="{{ stop.cardStyle }}">
-            <div style="font-family: 'Bebas Neue', sans-serif; font-size: 46px; letter-spacing: 0.05em; color: {{ stop.accent }}; line-height: 1">{{ stop.year }}</div>
-            <div style="font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.12em; color: {{ stop.accent }}; margin: 8px 0 10px 0">{{ stop.tag }}</div>
-            <div style="font-family: 'Inter', sans-serif; font-size: 14px; line-height: 1.6; color: #FFFFFF">{{ stop.text }}</div>
+            <div style="font-family: 'Bebas Neue', sans-serif; font-size: 46px; letter-spacing: 0.05em; color: {{ stop.textAccent }}; line-height: 1">{{ stop.year }}</div>
+            <div style="font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.12em; color: {{ stop.textAccent }}; margin: 8px 0 10px 0">{{ stop.tag }}</div>
+            <div style="font-family: 'Inter', sans-serif; font-size: 14px; line-height: 1.6; color: #14161A">{{ stop.text }}</div>
             <sc-if value="{{ stop.showRunner }}" hint-placeholder-val="{{ false }}">
               <div key="{{ stop.year }}" style="{{ stop.runnerStyle }}">
                 <div style="animation: ap-idle-sway 2.2s ease-in-out infinite">
@@ -451,7 +451,7 @@
   </section>
 
   <!-- ===== single footer ===== -->
-  <div style="position: relative; z-index: 2; border-top: 1px solid rgba(255,255,255,0.15); padding: 20px 40px; display: flex; justify-content: space-between; align-items: center; font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.15em; color: #FFFFFF">
+  <div style="position: relative; z-index: 2; border-top: 1px solid rgba(20,22,26,0.14); padding: 20px 40px; display: flex; justify-content: space-between; align-items: center; font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.15em; color: #14161A">
     <span>© ANANTHA PRASANTH</span>
     <div style="display: flex; align-items: center; gap: 22px">
       <a href="https://www.linkedin.com/in/anantha-prasanth" target="_blank" rel="noopener" aria-label="LinkedIn" style="color: #0A66C2; display: flex" style-hover="color: #4DC3FF">
@@ -464,7 +464,7 @@
         <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M3 8c1-2.5 2.5-4 4-4h10c1.5 0 3 1.5 4 4-0.5 2-2 3-3.5 3-1.2 0-2.2-.7-2.7-1.7-.5 1-1.5 1.7-2.8 1.7s-2.3-.7-2.8-1.7c-.5 1-1.5 1.7-2.7 1.7C5 11 3.5 10 3 8z"></path><path d="M4 10.5L4.6 18c.15 1.2 1.1 2 2.3 2h10.2c1.2 0 2.15-.8 2.3-2l.6-7.5"></path><path d="M9.5 14.5a2.2 2.2 0 0 1 4.5 0v2"></path></svg>
       </a>
     </div>
-    <a href="#home" onClick="{{ goTo }}" data-target="home" style="color: #6EE7C8" style-hover="color: #FFDE59">◂ BACK TO TITLE</a>
+    <a href="#home" onClick="{{ goTo }}" data-target="home" style="color: #0E7A63" style-hover="color: #9C6B00">◂ BACK TO TITLE</a>
   </div>
 </div>
 
@@ -566,6 +566,9 @@ function mixWithDark(hex, ratio, dark) {
   const [dr, dg, db] = dark;
   return `rgb(${Math.round(r * ratio + dr * (1 - ratio))},${Math.round(g * ratio + dg * (1 - ratio))},${Math.round(b * ratio + db * (1 - ratio))})`;
 }
+function textAccent(hex) {
+  return mixWithDark(hex, 0.5, [10, 10, 14]);
+}
 function hexToRgbObj(hex) {
   const h = hex.replace('#', '');
   return { r: parseInt(h.substring(0, 2), 16), g: parseInt(h.substring(2, 4), 16), b: parseInt(h.substring(4, 6), 16) };
@@ -609,9 +612,9 @@ function nearestToCenter(refsArr) {
 
 class Component extends DCLogic {
   state = {
-    expAccent: '#000000',
+    expAccent: '#FFFFFF',
     worksAccent: RAW_PROJECTS[0].accent,
-    protoAccent: RAW_PROTOTYPES.length ? RAW_PROTOTYPES[0].accent : '#000000',
+    protoAccent: RAW_PROTOTYPES.length ? RAW_PROTOTYPES[0].accent : '#FFFFFF',
     proAccent: RAW_ROLES[0].accent,
     toolsAccent: RAW_TOOLS[0].accent,
     journeyIndex: 0,
@@ -701,13 +704,13 @@ class Component extends DCLogic {
 
     const currentAccent = () => {
       switch (this.state.activeSection) {
-        case 'expertise': return '#000000';
+        case 'expertise': return '#FFFFFF';
         case 'games': return this.state.worksAccent;
         case 'prototypes': return this.state.protoAccent;
         case 'professional': return this.state.proAccent;
         case 'tools': return this.state.toolsAccent;
         case 'journey': return MILESTONES[this.state.journeyIndex].accent;
-        default: return '#000000';
+        default: return '#FFFFFF';
       }
     };
 
@@ -715,7 +718,7 @@ class Component extends DCLogic {
       const target = hexToRgbObj(currentAccent());
       this.sharedRGB = { r: lerp(this.sharedRGB.r, target.r, 0.08), g: lerp(this.sharedRGB.g, target.g, 0.08), b: lerp(this.sharedRGB.b, target.b, 0.08) };
       if (this.sharedBackdropRef.current) {
-        this.sharedBackdropRef.current.style.background = bgFromRgbFlat(this.sharedRGB.r, this.sharedRGB.g, this.sharedRGB.b, 0.19, [0, 0, 0]);
+        this.sharedBackdropRef.current.style.background = bgFromRgbFlat(this.sharedRGB.r, this.sharedRGB.g, this.sharedRGB.b, 0.12, [255, 255, 255]);
       }
       this.lerpRaf = requestAnimationFrame(tick);
     };
@@ -731,14 +734,14 @@ class Component extends DCLogic {
   renderVals() {
     const tabStyle = (active, color, inactiveBorder) => ({
       fontFamily: "'JetBrains Mono', monospace", fontSize: '11px', letterSpacing: '0.15em', padding: '10px 18px', cursor: 'var(--cur-hover)',
-      color: active ? '#001018' : 'rgba(234,243,248,0.65)', background: active ? color : 'transparent',
+      color: active ? '#001018' : 'rgba(20,22,26,0.55)', background: active ? color : 'transparent',
       border: `1px solid ${active ? color : inactiveBorder}`, borderBottom: 'none'
     });
 
     const navOrder = ['home', 'expertise', 'games', 'prototypes', 'professional', 'tools', 'journey'];
     const navStyles = {};
     navOrder.forEach((id) => {
-      navStyles[id] = this.state.activeSection === id ? { color: '#FFC857' } : { color: 'rgba(234,243,248,0.75)' };
+      navStyles[id] = this.state.activeSection === id ? { color: '#9C6B00' } : { color: 'rgba(20,22,26,0.55)' };
     });
 
     const categories = RAW_CATEGORIES.map((c, i) => {
@@ -747,8 +750,8 @@ class Component extends DCLogic {
       return {
         ...c, index: String(i + 1).padStart(2, '0'), accent,
         borderColor: hexToRgba(accent, 0.4),
-        lightAccent: mixWithDark(accent, 0.55, [255, 255, 255]),
-        cardBg: `linear-gradient(160deg, ${mixWithDark(accent, 0.4, [10, 10, 11])} 0%, ${mixWithDark(accent, 0.22, [10, 10, 11])} 50%, ${mixWithDark(accent, 0.1, [10, 10, 11])} 100%)`,
+        lightAccent: mixWithDark(accent, 0.5, [10, 10, 14]),
+        cardBg: `linear-gradient(160deg, ${mixWithDark(accent, 0.16, [255, 255, 255])} 0%, ${mixWithDark(accent, 0.08, [255, 255, 255])} 50%, #FFFFFF 100%)`,
         onEnter: () => this.setState({ expAccent: accent })
       };
     });
@@ -758,9 +761,10 @@ class Component extends DCLogic {
       const tab = this.state.projectTabs[i];
       return {
         showDetailLinks: p.hideDetailPage !== true,
-        ...p, overview: overviewWithLeads(p.overview, p.accent), setCardRef: (el) => { this.projectCardEls[i] = el; },
+        ...p, overview: overviewWithLeads(p.overview, textAccent(p.accent)), setCardRef: (el) => { this.projectCardEls[i] = el; },
         borderStrong: hexToRgba(p.accent, 0.45), borderMid: hexToRgba(p.accent, 0.35), borderLight: hexToRgba(p.accent, 0.25),
-        cardBg: `linear-gradient(160deg, ${mixWithDark(p.accent, 0.32, [5, 8, 9])} 0%, ${mixWithDark(p.accent, 0.12, [5, 8, 9])} 45%, #050809 100%)`,
+        textAccent: textAccent(p.accent),
+        cardBg: `linear-gradient(160deg, ${mixWithDark(p.accent, 0.1, [255, 255, 255])} 0%, ${mixWithDark(p.accent, 0.04, [255, 255, 255])} 45%, #FFFFFF 100%)`,
         borderImage: 'none',
         bannerBg: p.banner ? `center / cover no-repeat url(${p.banner}), linear-gradient(160deg, #0C1418, #050809)` : `linear-gradient(160deg, #0C1418, #050809)`,
         noBanner: !p.banner, trailerEmbedSrc: p.trailerId ? `https://www.youtube.com/embed/${p.trailerId}` : '', noTrailer: !p.trailerId,
@@ -773,7 +777,7 @@ class Component extends DCLogic {
         detailHref: `Project.dc.html?slug=${slug}`,
         isOverview: tab === 'overview', isTrailer: tab === 'trailer', isGit: tab === 'git',
         overviewTabStyle: tabStyle(tab === 'overview', p.accent, hexToRgba(p.accent, 0.35)),
-        trailerTabStyle: tabStyle(tab === 'trailer', '#EAF3F8', hexToRgba(p.accent, 0.35)),
+        trailerTabStyle: tabStyle(tab === 'trailer', '#E7E9EC', hexToRgba(p.accent, 0.35)),
         gitTabStyle: tabStyle(tab === 'git', '#4DC3FF', hexToRgba(p.accent, 0.35)),
         playButtonStyle: { fontFamily: "'Bebas Neue', sans-serif", fontSize: '18px', letterSpacing: '0.12em', color: '#001018', background: p.accent, padding: '11px 26px', flex: 'none', boxShadow: `0 0 18px ${hexToRgba(p.accent, 0.45)}` },
         selectOverview: () => this.setProjectTab(i, 'overview'),
@@ -785,11 +789,12 @@ class Component extends DCLogic {
     const prototypes = RAW_PROTOTYPES.map((p, i) => {
       const tab = this.state.protoTabs[i];
       return {
-        ...p, overview: overviewWithLeads(p.overview, p.accent), setCardRef: (el) => { this.protoCardEls[i] = el; },
+        ...p, overview: overviewWithLeads(p.overview, textAccent(p.accent)), setCardRef: (el) => { this.protoCardEls[i] = el; },
         showDetailLinks: p.hideDetailPage !== true,
         detailHref: `PrototypeProject.dc.html?slug=${p.title.toLowerCase().replace(/\s+/g, '-')}`,
         borderStrong: hexToRgba(p.accent, 0.45), borderMid: hexToRgba(p.accent, 0.35), borderLight: hexToRgba(p.accent, 0.25),
-        cardBg: `linear-gradient(160deg, ${mixWithDark(p.accent, 0.32, [5, 8, 9])} 0%, ${mixWithDark(p.accent, 0.12, [5, 8, 9])} 45%, #050809 100%)`,
+        textAccent: textAccent(p.accent),
+        cardBg: `linear-gradient(160deg, ${mixWithDark(p.accent, 0.1, [255, 255, 255])} 0%, ${mixWithDark(p.accent, 0.04, [255, 255, 255])} 45%, #FFFFFF 100%)`,
         borderImage: 'none',
         bannerBg: p.banner ? `center / cover no-repeat url(${p.banner}), linear-gradient(160deg, #0C1418, #050809)` : `linear-gradient(160deg, #0C1418, #050809)`,
         noBanner: !p.banner, trailerEmbedSrc: p.trailerId ? `https://www.youtube.com/embed/${p.trailerId}` : '', hasVideo: !!p.trailerId,
@@ -801,7 +806,7 @@ class Component extends DCLogic {
         tabTextAlign: tab === 'trailer' ? 'center' : 'left',
         isOverview: tab === 'overview' || (tab === 'trailer' && !p.trailerId), isTrailer: tab === 'trailer' && !!p.trailerId, isGit: tab === 'git',
         overviewTabStyle: tabStyle(tab === 'overview', p.accent, hexToRgba(p.accent, 0.35)),
-        trailerTabStyle: tabStyle(tab === 'trailer', '#EAF3F8', hexToRgba(p.accent, 0.35)),
+        trailerTabStyle: tabStyle(tab === 'trailer', '#E7E9EC', hexToRgba(p.accent, 0.35)),
         gitTabStyle: tabStyle(tab === 'git', '#4DC3FF', hexToRgba(p.accent, 0.35)),
         selectOverview: () => this.setProtoTab(i, 'overview'),
         selectTrailer: () => this.setProtoTab(i, 'trailer'),
@@ -816,7 +821,8 @@ class Component extends DCLogic {
         index: String(i + 1).padStart(2, '0'),
         setCardRef: (el) => { this.roleCardEls[i] = el; },
         borderStrong: hexToRgba(p.accent, 0.45), borderMid: hexToRgba(p.accent, 0.35),
-        cardBg: `linear-gradient(160deg, ${mixWithDark(p.accent, 0.32, [5, 8, 9])} 0%, ${mixWithDark(p.accent, 0.12, [5, 8, 9])} 45%, #050809 100%)`,
+        textAccent: textAccent(p.accent),
+        cardBg: `linear-gradient(160deg, ${mixWithDark(p.accent, 0.1, [255, 255, 255])} 0%, ${mixWithDark(p.accent, 0.04, [255, 255, 255])} 45%, #FFFFFF 100%)`,
         bannerBg: p.banner
           ? `center / cover no-repeat url(${p.banner}), linear-gradient(160deg, #0C1418, #050809)`
           : `linear-gradient(160deg, ${mixWithDark(p.accent, 0.4, [5, 8, 9])} 0%, #050809 100%)`,
@@ -836,9 +842,10 @@ class Component extends DCLogic {
       const tab = this.state.toolTabs[i];
       return {
         showDetailLinks: p.hideDetailPage !== true,
-        ...p, overview: overviewWithLeads(p.overview, p.accent), setCardRef: (el) => { this.toolCardEls[i] = el; },
+        ...p, overview: overviewWithLeads(p.overview, textAccent(p.accent)), setCardRef: (el) => { this.toolCardEls[i] = el; },
         borderStrong: hexToRgba(p.accent, 0.45), borderMid: hexToRgba(p.accent, 0.35), borderLight: hexToRgba(p.accent, 0.25),
-        cardBg: `linear-gradient(160deg, ${mixWithDark(p.accent, 0.32, [5, 8, 9])} 0%, ${mixWithDark(p.accent, 0.12, [5, 8, 9])} 45%, #050809 100%)`,
+        textAccent: textAccent(p.accent),
+        cardBg: `linear-gradient(160deg, ${mixWithDark(p.accent, 0.1, [255, 255, 255])} 0%, ${mixWithDark(p.accent, 0.04, [255, 255, 255])} 45%, #FFFFFF 100%)`,
         borderImage: 'none',
         bannerBg: p.banner ? `center / cover no-repeat url(${p.banner}), linear-gradient(160deg, #0C1418, #050809)` : `linear-gradient(160deg, #0C1418, #050809)`,
         noBanner: !p.banner, trailerEmbedSrc: p.trailerId ? `https://www.youtube.com/embed/${p.trailerId}` : '', noTrailer: !p.trailerId,
@@ -851,7 +858,7 @@ class Component extends DCLogic {
         tabTextAlign: tab === 'trailer' ? 'center' : 'left',
         isOverview: tab === 'overview', isTrailer: tab === 'trailer', isGit: tab === 'git',
         overviewTabStyle: tabStyle(tab === 'overview', p.accent, hexToRgba(p.accent, 0.35)),
-        trailerTabStyle: tabStyle(tab === 'trailer', '#EAF3F8', hexToRgba(p.accent, 0.35)),
+        trailerTabStyle: tabStyle(tab === 'trailer', '#E7E9EC', hexToRgba(p.accent, 0.35)),
         gitTabStyle: tabStyle(tab === 'git', '#4DC3FF', hexToRgba(p.accent, 0.35)),
         playButtonStyle: { fontFamily: "'Bebas Neue', sans-serif", fontSize: '18px', letterSpacing: '0.12em', color: '#001018', background: p.accent, padding: '11px 26px', flex: 'none', boxShadow: `0 8px 24px -8px ${hexToRgba(p.accent, 0.6)}` },
         selectOverview: () => this.setToolTab(i, 'overview'),
@@ -864,10 +871,10 @@ class Component extends DCLogic {
       const left = i % 2 === 0;
       const active = i === this.state.journeyIndex;
       return {
-        ...m, showRunner: active,
+        ...m, showRunner: active, textAccent: textAccent(m.accent),
         setMilestoneRef: (el) => { this.milestoneEls[i] = el; },
         rowStyle: { position: 'relative', display: 'flex', justifyContent: left ? 'flex-start' : 'flex-end', padding: '50px 0', minHeight: '160px' },
-        cardStyle: { position: 'relative', width: 'calc(50% - 40px)', border: `2px solid ${m.accent}55`, background: '#050809', padding: '22px 24px', boxSizing: 'border-box', overflow: 'visible' },
+        cardStyle: { position: 'relative', width: 'calc(50% - 40px)', border: `2px solid ${m.accent}88`, background: '#FFFFFF', padding: '22px 24px', boxSizing: 'border-box', overflow: 'visible' },
         runnerStyle: { position: 'absolute', top: 0, left: '50%', transform: 'translate(-50%, -60%)', zIndex: 5, pointerEvents: 'none', animation: 'ap-teleport-in 0.5s cubic-bezier(0.2, 0.9, 0.3, 1) both' },
         dotStyle: { position: 'absolute', top: '58px', left: '50%', transform: 'translateX(-50%)', width: '14px', height: '14px', borderRadius: '50%', background: m.accent, boxShadow: `0 0 14px ${m.accent}` }
       };
@@ -878,7 +885,7 @@ class Component extends DCLogic {
       navStyles,
       goTo: (e) => { e.preventDefault(); this.goToId(e.currentTarget.getAttribute('data-target')); },
       sharedBackdropRef: this.sharedBackdropRef,
-      sharedBackdropBg: bgFromRgbFlat(this.sharedRGB.r, this.sharedRGB.g, this.sharedRGB.b, 0.19, [0, 0, 0]),
+      sharedBackdropBg: bgFromRgbFlat(this.sharedRGB.r, this.sharedRGB.g, this.sharedRGB.b, 0.12, [255, 255, 255]),
       categories,
       projects,
       prototypes,

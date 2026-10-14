@@ -12,7 +12,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=JetBrains+Mono:wght@400;500;700&family=Space+Grotesk:wght@400;500;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
   <style>
-    html, body { margin: 0; padding: 0; background: #000000; }
+    html, body { margin: 0; padding: 0; background: #FFFFFF; }
     :root {
       --cur-default: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='26' height='26' viewBox='0 0 26 26'%3E%3Cdefs%3E%3ClinearGradient id='g1' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop offset='0%25' stop-color='%234DC3FF'/%3E%3Cstop offset='50%25' stop-color='%23FF6F91'/%3E%3Cstop offset='100%25' stop-color='%23FFC857'/%3E%3C/linearGradient%3E%3C/defs%3E%3Cpath d='M2 1 L2 20 L7 15.5 L10.5 22.5 L13.5 21 L10 14 L16.5 14 Z' fill='url(%23g1)' stroke='%23000000' stroke-width='1.1' stroke-linejoin='round'/%3E%3C/svg%3E") 2 1, auto;
       --cur-hover: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='26' height='26' viewBox='0 0 26 26'%3E%3Cdefs%3E%3ClinearGradient id='g2' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop offset='0%25' stop-color='%23FF6F91'/%3E%3Cstop offset='50%25' stop-color='%23B98BFF'/%3E%3Cstop offset='100%25' stop-color='%234DC3FF'/%3E%3C/linearGradient%3E%3C/defs%3E%3Cpath d='M9 4.5c0-.9.7-1.6 1.6-1.6s1.6.7 1.6 1.6v5.3l1-.2c0-1 .7-1.8 1.7-1.8s1.7.8 1.7 1.8v.3l.7-.1c.9 0 1.7.8 1.7 1.7v3.4c0 3.3-2.5 6-5.8 6h-1.8c-2 0-3.3-.7-4.4-2.3l-2.8-4c-.5-.7-.3-1.7.4-2.2.7-.4 1.6-.3 2.1.3l1.1 1.3V4.5Z' fill='url(%23g2)' stroke='%23000000' stroke-width='1' stroke-linejoin='round'/%3E%3C/svg%3E") 11 4, pointer;
@@ -30,32 +30,32 @@
     }
   </style>
   <template id="__bundler_thumbnail">
-    <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"><rect width="100" height="100" fill="#000000"/><text x="50" y="58" font-family="sans-serif" font-weight="bold" font-size="16" fill="#B98BFF" text-anchor="middle">PROJECT</text></svg>
+    <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"><rect width="100" height="100" fill="#FFFFFF"/><text x="50" y="58" font-family="sans-serif" font-weight="bold" font-size="16" fill="#B98BFF" text-anchor="middle">PROJECT</text></svg>
   </template>
 </helmet>
 
-<div data-screen-label="Project detail" style="position: relative; min-height: 100vh; background: #000000; font-family: 'Space Grotesk', sans-serif; color: #FFFFFF; padding-bottom: 60px; box-sizing: border-box">
+<div data-screen-label="Project detail" style="position: relative; min-height: 100vh; background: #FFFFFF; font-family: 'Space Grotesk', sans-serif; color: #14161A; padding-bottom: 60px; box-sizing: border-box">
 
   <!-- ===== backdrop glow ===== -->
   <div style="position: fixed; inset: 0; pointer-events: none; z-index: 0; background: {{ backdropBg }}"></div>
   <div style="position: fixed; inset: 0; pointer-events: none; z-index: 0; opacity: 0.035; mix-blend-mode: overlay; background-image: url(&quot;data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E&quot;)"></div>
 
   <!-- ===== nav (sticky, full navigation) ===== -->
-  <div style="position: sticky; top: 0; display: flex; justify-content: space-between; align-items: center; padding: 18px 40px; z-index: 20; background: #000000; -webkit-backdrop-filter: blur(10px); border-bottom: 1px solid rgba(255,255,255,0.06)">
-    <a href="Home.dc.html#home" style="font-family: 'Bebas Neue', sans-serif; font-size: 24px; letter-spacing: 0.08em; color: #FFFFFF">AP<span style="color: #FFC857">®</span></a>
+  <div style="position: sticky; top: 0; display: flex; justify-content: space-between; align-items: center; padding: 18px 40px; z-index: 20; background: #FFFFFF; -webkit-backdrop-filter: blur(10px); border-bottom: 1px solid rgba(20,22,26,0.08)">
+    <a href="Home.dc.html#home" style="font-family: 'Bebas Neue', sans-serif; font-size: 24px; letter-spacing: 0.08em; color: #14161A">AP<span style="color: #9C6B00">®</span></a>
     <div class="rt-nav-links" style="display: flex; align-items: center; gap: 24px; font-family: 'JetBrains Mono', monospace; font-size: 12px; letter-spacing: 0.2em">
-      <a href="Home.dc.html#home" style="color: #FFFFFF" style-hover="color: #FFDE59">HOME</a>
-      <a href="Home.dc.html#expertise" style="color: #FFFFFF" style-hover="color: #FFDE59">EXPERTISE</a>
+      <a href="Home.dc.html#home" style="color: #14161A" style-hover="color: #9C6B00">HOME</a>
+      <a href="Home.dc.html#expertise" style="color: #14161A" style-hover="color: #9C6B00">EXPERTISE</a>
       <a href="Home.dc.html#games" style="color: #FFC857">GAMES</a>
-      <a href="Home.dc.html#professional" style="color: #FFFFFF" style-hover="color: #FFDE59">APPS</a>
-      <a href="Home.dc.html#tools" style="color: #FFFFFF" style-hover="color: #FFDE59">TOOLS</a>
-      <a href="Home.dc.html#journey" style="color: #FFFFFF" style-hover="color: #FFDE59">JOURNEY</a>
+      <a href="Home.dc.html#professional" style="color: #14161A" style-hover="color: #9C6B00">APPS</a>
+      <a href="Home.dc.html#tools" style="color: #14161A" style-hover="color: #9C6B00">TOOLS</a>
+      <a href="Home.dc.html#journey" style="color: #14161A" style-hover="color: #9C6B00">JOURNEY</a>
     </div>
   </div>
 
   <!-- ===== not found ===== -->
   <sc-if value="{{ notFound }}" hint-placeholder-val="{{ false }}">
-    <div style="position: relative; z-index: 2; padding: 100px 40px; text-align: center; font-family: 'JetBrains Mono', monospace; color: #FFFFFF">
+    <div style="position: relative; z-index: 2; padding: 100px 40px; text-align: center; font-family: 'JetBrains Mono', monospace; color: #14161A">
       Project not found. <a href="Home.dc.html#games" style="color: #4DC3FF">◂ back to games</a>
     </div>
   </sc-if>
@@ -84,16 +84,16 @@
         <div style="width: 100%; max-width: 1160px; text-align: left">
           <sc-for list="{{ project.technicalSections }}" as="section" hint-placeholder-count="3">
             <div style="margin-bottom: 26px">
-              <div style="font-family: 'Bebas Neue', sans-serif; font-size: 30px; letter-spacing: 0.04em; color: {{ project.accent }}; margin-bottom: 10px">{{ section.heading }}</div>
-              <div style="font-family: 'Inter', sans-serif; font-size: 14px; line-height: 1.8; color: #FFFFFF; white-space: pre-line">{{ section.body }}</div>
+              <div style="font-family: 'Bebas Neue', sans-serif; font-size: 30px; letter-spacing: 0.04em; color: {{ project.textAccent }}; margin-bottom: 10px">{{ section.heading }}</div>
+              <div style="font-family: 'Inter', sans-serif; font-size: 14px; line-height: 1.8; color: #14161A; white-space: pre-line">{{ section.body }}</div>
               <sc-if value="{{ section.mediaBeforeAfter }}" hint-placeholder-val="{{ false }}">
                 <div class="rt-media-grid" style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 18px; align-items: start">
                   <div>
-                    <div style="font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.15em; color: #FFFFFF; margin-bottom: 8px">BEFORE</div>
+                    <div style="font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.15em; color: #14161A; margin-bottom: 8px">BEFORE</div>
                     <img src="{{ section.mediaBefore }}" onError="this.style.display='none'" loading="lazy" style="width: 100%; height: 440px; object-fit: contain; background: rgba(255,255,255,0.02); border: 1px solid {{ project.borderMid }}; border-radius: 2px; display: block" />
                   </div>
                   <div>
-                    <div style="font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.15em; color: #FFFFFF; margin-bottom: 8px">AFTER</div>
+                    <div style="font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.15em; color: #14161A; margin-bottom: 8px">AFTER</div>
                     <img src="{{ section.mediaAfter }}" onError="this.style.display='none'" loading="lazy" style="width: 100%; height: 440px; object-fit: contain; background: rgba(255,255,255,0.02); border: 1px solid {{ project.borderMid }}; border-radius: 2px; display: block" />
                   </div>
                 </div>
@@ -102,8 +102,8 @@
                 </div>
               </sc-if>
               <sc-if value="{{ section.rSubheading }}" hint-placeholder-val="{{ false }}">
-                <div style="font-family: 'Bebas Neue', sans-serif; font-size: 22px; letter-spacing: 0.04em; color: {{ project.accent }}; margin-top: 20px; margin-bottom: 8px">{{ section.rSubheading }}</div>
-                <div style="font-family: 'Inter', sans-serif; font-size: 14px; line-height: 1.8; color: #FFFFFF; white-space: pre-line">{{ section.rSubBody }}</div>
+                <div style="font-family: 'Bebas Neue', sans-serif; font-size: 22px; letter-spacing: 0.04em; color: {{ project.textAccent }}; margin-top: 20px; margin-bottom: 8px">{{ section.rSubheading }}</div>
+                <div style="font-family: 'Inter', sans-serif; font-size: 14px; line-height: 1.8; color: #14161A; white-space: pre-line">{{ section.rSubBody }}</div>
                 <div class="rt-media-grid" style="margin-top: 18px; display: grid; grid-template-columns: 1fr 1fr; gap: 16px">
                   <img src="{{ section.rWideImage }}" onError="this.style.display='none'" loading="lazy" style="width: 100%; height: 320px; object-fit: contain; background: rgba(255,255,255,0.02); border: 1px solid {{ project.borderMid }}; border-radius: 2px; display: block" />
                   <sc-if value="{{ section.rMain }}" hint-placeholder-val="{{ false }}">
@@ -123,8 +123,8 @@
                 </sc-if>
               </sc-if>
               <sc-if value="{{ section.lSubheading }}" hint-placeholder-val="{{ false }}">
-                <div style="font-family: 'Bebas Neue', sans-serif; font-size: 22px; letter-spacing: 0.04em; color: {{ project.accent }}; margin-top: 20px; margin-bottom: 8px">{{ section.lSubheading }}</div>
-                <div style="font-family: 'Inter', sans-serif; font-size: 14px; line-height: 1.8; color: #FFFFFF; white-space: pre-line">{{ section.lSubBody }}</div>
+                <div style="font-family: 'Bebas Neue', sans-serif; font-size: 22px; letter-spacing: 0.04em; color: {{ project.textAccent }}; margin-top: 20px; margin-bottom: 8px">{{ section.lSubheading }}</div>
+                <div style="font-family: 'Inter', sans-serif; font-size: 14px; line-height: 1.8; color: #14161A; white-space: pre-line">{{ section.lSubBody }}</div>
                 <div class="rt-media-grid" style="margin-top: 18px; display: grid; grid-template-columns: 1fr 1fr; gap: 16px">
                   <img src="{{ section.lWideImage }}" onError="this.style.display='none'" loading="lazy" style="width: 100%; height: 320px; object-fit: contain; background: rgba(255,255,255,0.02); border: 1px solid {{ project.borderMid }}; border-radius: 2px; display: block" />
                   <img src="{{ section.lMain }}" onError="this.style.display='none'" loading="lazy" style="width: 100%; height: 320px; object-fit: contain; background: rgba(255,255,255,0.02); border: 1px solid {{ project.borderMid }}; border-radius: 2px; display: block" />
@@ -138,7 +138,7 @@
               <sc-if value="{{ section.hasChips }}" hint-placeholder-val="{{ false }}">
                 <div style="display: flex; flex-wrap: wrap; gap: 10px; margin-top: 4px">
                   <sc-for list="{{ section.chips }}" as="chip" hint-placeholder-count="6">
-                    <div style="font-family: 'JetBrains Mono', monospace; font-size: 13px; color: #FFFFFF; border: 1px solid {{ project.borderMid }}; padding: 8px 14px; border-radius: 2px">{{ chip }}</div>
+                    <div style="font-family: 'JetBrains Mono', monospace; font-size: 13px; color: #14161A; border: 1px solid {{ project.borderMid }}; padding: 8px 14px; border-radius: 2px">{{ chip }}</div>
                   </sc-for>
                 </div>
               </sc-if>
@@ -160,8 +160,8 @@
               </sc-if>
               <sc-if value="{{ section.mediaWideImage }}" hint-placeholder-val="{{ false }}">
                 <sc-if value="{{ section.subheading }}" hint-placeholder-val="{{ false }}">
-                  <div style="font-family: 'Bebas Neue', sans-serif; font-size: 22px; letter-spacing: 0.04em; color: {{ project.accent }}; margin-top: 26px; margin-bottom: 8px">{{ section.subheading }}</div>
-                  <div style="font-family: 'Inter', sans-serif; font-size: 14px; line-height: 1.8; color: #FFFFFF">{{ section.subBody }}</div>
+                  <div style="font-family: 'Bebas Neue', sans-serif; font-size: 22px; letter-spacing: 0.04em; color: {{ project.textAccent }}; margin-top: 26px; margin-bottom: 8px">{{ section.subheading }}</div>
+                  <div style="font-family: 'Inter', sans-serif; font-size: 14px; line-height: 1.8; color: #14161A">{{ section.subBody }}</div>
                 </sc-if>
                 <div style="margin-top: 18px">
                   <img src="{{ section.mediaWideImage }}" onError="this.style.display='none'" loading="lazy" style="width: 100%; border: 1px solid {{ project.borderMid }}; border-radius: 2px; display: block" />
@@ -208,7 +208,7 @@
 
           <sc-if value="{{ project.itchUrl }}" hint-placeholder-val="{{ false }}">
             <div style="margin-top: 20px; padding-top: 40px; border-top: 1px solid {{ project.borderLight }}; text-align: center">
-              <div style="font-family: 'Bebas Neue', sans-serif; font-size: 30px; letter-spacing: 0.03em; color: #FFFFFF; margin-bottom: 20px">{{ project.ctaText }}</div>
+              <div style="font-family: 'Bebas Neue', sans-serif; font-size: 30px; letter-spacing: 0.03em; color: #14161A; margin-bottom: 20px">{{ project.ctaText }}</div>
               <a href="{{ project.itchUrl }}" target="_blank" rel="noopener" style="{{ project.playButtonStyle }}">▶ PLAY</a>
             </div>
           </sc-if>
@@ -218,9 +218,9 @@
   </sc-if>
 
   <!-- ===== footer strip ===== -->
-  <div style="position: relative; z-index: 2; margin-top: 40px; border-top: 1px solid rgba(255,255,255,0.15); padding: 20px 40px; display: flex; justify-content: space-between; align-items: center; font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.15em; color: #FFFFFF">
+  <div style="position: relative; z-index: 2; margin-top: 40px; border-top: 1px solid rgba(20,22,26,0.14); padding: 20px 40px; display: flex; justify-content: space-between; align-items: center; font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.15em; color: #14161A">
     <span>© ANANTHA PRASANTH</span>
-    <a href="#" onClick="{{ scrollToTop }}" style="color: #6EE7C8" style-hover="color: #FFDE59">◂ BACK TO TOP</a>
+    <a href="#" onClick="{{ scrollToTop }}" style="color: #0E7A63" style-hover="color: #9C6B00">◂ BACK TO TOP</a>
   </div>
 </div>
 </x-dc>
@@ -315,7 +315,7 @@ class Component extends DCLogic {
       return {
         notFound: true,
         found: false,
-        backdropBg: 'radial-gradient(ellipse 1600px 1300px at 50% 50%, rgb(20,20,20) 0%, #000000 100%)'
+        backdropBg: 'radial-gradient(ellipse 1600px 1300px at 50% 50%, rgb(248,249,251) 0%, #FFFFFF 100%)'
       };
     }
 
@@ -327,6 +327,7 @@ class Component extends DCLogic {
       noBanner: !p.banner,
       borderMid: hexToRgba(p.accent, 0.35),
       borderLight: hexToRgba(p.accent, 0.25),
+      textAccent: mixWithDark(p.accent, 0.5, [10, 10, 14]),
       technicalSections: p.technicalSections.map((s) => ({ ...s, hasImagesNoGif: !!(s.images && s.images.length), hasChips: !!(s.chips && s.chips.length), rTwoCol: s.rCompanion ? 'grid' : 'block' })),
       playButtonStyle: {
         fontFamily: "'Bebas Neue', sans-serif",
@@ -340,10 +341,7 @@ class Component extends DCLogic {
       }
     };
 
-    const backdropRatio = p.slug === 'cluckmare' ? 0.32 : 0.19;
-    const backdropRatio2 = p.slug === 'cluckmare' ? 0.12 : 0.14;
-    const backdropDark = p.slug === 'cluckmare' ? [5, 8, 9] : [10, 14, 16];
-    const backdropBg = `linear-gradient(180deg, ${mixWithDark(p.accent, backdropRatio, backdropDark)} 0%, ${mixWithDark(p.accent, backdropRatio2, backdropDark)} 100%)`;
+    const backdropBg = `linear-gradient(180deg, ${mixWithDark(p.accent, 0.1, [255, 255, 255])} 0%, ${mixWithDark(p.accent, 0.05, [255, 255, 255])} 100%)`;
 
     return { notFound: false, found: true, project, backdropBg, scrollToTop: (e) => { e.preventDefault(); window.scrollTo({ top: 0, behavior: 'smooth' }); } };
   }
