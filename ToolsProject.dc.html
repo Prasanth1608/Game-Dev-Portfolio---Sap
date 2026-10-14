@@ -95,7 +95,7 @@
 
         <div class="rt-grid3" style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; margin-top: 36px">
           <sc-for list="{{ project.overviewTriad }}" as="card" hint-placeholder-count="3">
-            <div style="border: 1px solid {{ card.borderColor }}; background: {{ card.bg }}; border-radius: 3px; padding: 24px 22px">
+            <div style="border-top: 5px solid {{ card.color }}; border-left: 1px solid {{ card.borderColor }}; border-right: 1px solid {{ card.borderColor }}; border-bottom: 1px solid {{ card.borderColor }}; background: {{ card.bg }}; border-radius: 3px; padding: 24px 22px">
               <div style="font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.25em; color: {{ card.textColor }}">{{ card.label }}</div>
               <div style="font-family: 'Bebas Neue', sans-serif; font-size: 22px; letter-spacing: 0.02em; margin-top: 8px; color: #14161A">{{ card.title }}</div>
               <div style="font-family: 'Inter', sans-serif; font-size: 14px; line-height: 1.6; color: #14161A; margin-top: 10px">{{ card.body }}</div>
@@ -117,7 +117,7 @@
 
         <div class="rt-grid3" style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; margin-top: 36px">
           <sc-for list="{{ project.comparison }}" as="c" hint-placeholder-count="3">
-            <div style="border: 1px solid {{ c.borderColor }}; background: {{ c.bg }}; border-radius: 3px; padding: 26px 22px; position: relative">
+            <div style="border-top: 5px solid {{ c.color }}; border-left: 1px solid {{ c.borderColor }}; border-right: 1px solid {{ c.borderColor }}; border-bottom: 1px solid {{ c.borderColor }}; background: {{ c.bg }}; border-radius: 3px; padding: 26px 22px; position: relative">
               <sc-if value="{{ c.highlight }}" hint-placeholder-val="{{ false }}">
                 <div style="position: absolute; top: -11px; left: 20px; font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.2em; background: {{ c.color }}; color: #001018; padding: 4px 10px; border-radius: 2px">THIS PLUGIN</div>
               </sc-if>
@@ -176,7 +176,7 @@
 
         <div class="rt-grid4" style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; margin-top: 36px">
           <sc-for list="{{ project.stats }}" as="s" hint-placeholder-count="4">
-            <div style="border: 1px solid {{ s.borderColor }}; background: {{ s.bg }}; border-radius: 3px; padding: 22px 16px; text-align: center">
+            <div style="border-top: 5px solid {{ s.color }}; border-left: 1px solid {{ s.borderColor }}; border-right: 1px solid {{ s.borderColor }}; border-bottom: 1px solid {{ s.borderColor }}; background: {{ s.bg }}; border-radius: 3px; padding: 22px 16px; text-align: center">
               <div style="font-family: 'Bebas Neue', sans-serif; font-size: 34px; color: {{ s.textColor }}">{{ s.value }}</div>
               <div style="font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.15em; color: #14161A; margin-top: 6px">{{ s.label }}</div>
               <div style="font-family: 'Inter', sans-serif; font-size: 12.5px; line-height: 1.5; color: #14161A; margin-top: 8px">{{ s.body }}</div>
@@ -193,7 +193,7 @@
 
         <div style="display: flex; flex-direction: column; gap: 22px; margin-top: 36px">
           <sc-for list="{{ project.steps }}" as="st" hint-placeholder-count="5">
-            <div style="border: 1px solid {{ st.borderColor }}; background: {{ st.bg }}; border-radius: 3px; padding: 22px">
+            <div style="border-top: 5px solid {{ st.color }}; border-left: 1px solid {{ st.borderColor }}; border-right: 1px solid {{ st.borderColor }}; border-bottom: 1px solid {{ st.borderColor }}; background: {{ st.bg }}; border-radius: 3px; padding: 22px">
               <div style="display: flex; gap: 18px; align-items: flex-start">
                 <div style="flex: none; width: 34px; height: 34px; border-radius: 50%; background: {{ st.color }}; color: #001018; display: flex; align-items: center; justify-content: center; font-family: 'Bebas Neue', sans-serif; font-size: 16px">{{ st.num }}</div>
                 <div>
@@ -282,7 +282,7 @@ const STEP5_MEDIA = [
 ];
 
 function card(color, bodyMore) {
-  return { color, textColor: mixWithDark(color, 0.5, [10, 10, 14]), borderColor: hexToRgba(color, 0.4), bg: mixWithDark(color, 0.1, [255, 255, 255]), ...bodyMore };
+  return { color, textColor: mixWithDark(color, 0.5, [10, 10, 14]), borderColor: hexToRgba(color, 0.35), bg: '#FFFFFF', ...bodyMore };
 }
 
 const RAW_TOOLS = [
@@ -351,7 +351,7 @@ const RAW_TOOLS = [
       card(PALETTE[3], { num: '04', title: 'Wind Turbulence', body: 'Preset turbulence patterns shape how wide and wild the wind spreads.' }),
       card(PALETTE[4], { num: '05', title: 'Precision', body: 'Scale detection accuracy from low to high, the higher the precision, the fewer interactions slip through.' }),
       card(PALETTE[5], { num: '06', title: 'Exclusion', body: 'Tag any object once to keep it completely untouched by wind inside the volume.' })
-    ].map((c, i) => ({ ...c, rightBorder: i % 2 === 0 ? '1px solid rgba(20,22,26,0.12)' : 'none', bg: mixWithDark(c.color, 0.08, [255, 255, 255]) })),
+    ].map((c, i) => ({ ...c, rightBorder: i % 2 === 0 ? '1px solid rgba(20,22,26,0.12)' : 'none', bg: '#FFFFFF' })),
     customizationNote: 'Every property above updates live in the editor through a built-in preview, no Play button required to see the result.',
     stats: [
       card(PALETTE[0], { value: '< 3 ms', label: 'GAME THREAD COST', body: 'Full grid + caching, no physics activation' }),
@@ -416,7 +416,7 @@ class Component extends DCLogic {
       deepDives: (p.deepDives || []).map((d) => ({ ...d, textColor: mixWithDark(d.color, 0.5, [10, 10, 14]) }))
     };
 
-    const backdropBg = `linear-gradient(180deg, ${mixWithDark(p.accent, 0.1, [255, 255, 255])} 0%, ${mixWithDark(p.accent, 0.05, [255, 255, 255])} 100%)`;
+    const backdropBg = `#FFFFFF`;
     const navBg = mixWithDark(p.accent, 0.19, [0, 0, 0]);
 
     return { notFound: false, found: true, project, backdropBg, navBg, scrollToTop: (e) => { e.preventDefault(); window.scrollTo({ top: 0, behavior: 'smooth' }); } };

@@ -88,7 +88,7 @@
               <sc-if value="{{ section.isChips }}" hint-placeholder-val="{{ false }}">
                 <div style="display: flex; flex-wrap: wrap; gap: 10px">
                   <sc-for list="{{ section.items }}" as="item" hint-placeholder-count="6">
-                    <div style="font-family: 'JetBrains Mono', monospace; font-size: 13px; color: #14161A; border: 1px solid {{ project.borderMid }}; padding: 8px 14px; border-radius: 2px">{{ item }}</div>
+                    <div style="font-family: 'JetBrains Mono', monospace; font-size: 13px; color: {{ project.onAccent }}; background: {{ project.accent }}; padding: 8px 14px; border-radius: 2px">{{ item }}</div>
                   </sc-for>
                 </div>
               </sc-if>
@@ -143,7 +143,7 @@ const RAW_ROLES = [
   {
     title: 'INTERACTIVE WALKTHROUGH APPLICATION',
     tags: 'UNREAL ENGINE 5 · C++ · ARCHITECTURAL VISUALIZATION',
-    accent: '#EAF3F8',
+    accent: '#4DC3FF',
     banner: 'assets/professional/cavalli-couture/banner-2.png',
     bannerVideoId: 'inn45_r87qM',
     gallery: [
@@ -204,6 +204,12 @@ function mixWithDark(hex, ratio, dark) {
   const mb = Math.round(b * ratio + db * (1 - ratio));
   return `rgb(${mr},${mg},${mb})`;
 }
+function onColor(hex) {
+  const h = hex.replace('#', '');
+  const r = parseInt(h.substring(0, 2), 16), g = parseInt(h.substring(2, 4), 16), b = parseInt(h.substring(4, 6), 16);
+  const yiq = (r * 299 + g * 587 + b * 114) / 1000;
+  return yiq >= 150 ? '#14161A' : '#FFFFFF';
+}
 
 class Component extends DCLogic {
   state = { tab: 'overview', galleryIndex: 0 };
@@ -238,6 +244,7 @@ class Component extends DCLogic {
       noBanner: !p.banner && !p.bannerVideoId,
       borderMid: hexToRgba(p.accent, 0.35),
       textAccent: mixWithDark(p.accent, 0.5, [10, 10, 14]),
+      onAccent: onColor(p.accent),
       borderLight: hexToRgba(p.accent, 0.25),
       technicalSections: p.technicalSections.map((s) => ({ ...s, isText: !s.isList && !s.isChips })),
       gallery: p.gallery,
@@ -259,7 +266,7 @@ class Component extends DCLogic {
       galleryNext: () => this.setGalleryIndex(this.state.galleryIndex + 1, (p.gallery || []).length)
     };
 
-    const backdropBg = `linear-gradient(180deg, ${mixWithDark(p.accent, 0.1, [255, 255, 255])} 0%, ${mixWithDark(p.accent, 0.05, [255, 255, 255])} 100%)`;
+    const backdropBg = `#FFFFFF`;
 
     return { notFound: false, found: true, project, backdropBg, scrollToTop: (e) => { e.preventDefault(); window.scrollTo({ top: 0, behavior: 'smooth' }); } };
   }

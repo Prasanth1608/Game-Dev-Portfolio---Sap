@@ -254,7 +254,7 @@ class Component extends DCLogic {
       }))
     };
 
-    const backdropBg = `linear-gradient(180deg, ${mixWithDark(p.accent, 0.1, [255, 255, 255])} 0%, ${mixWithDark(p.accent, 0.05, [255, 255, 255])} 100%)`;
+    const backdropBg = `#FFFFFF`;
 
     return { notFound: false, found: true, project, backdropBg, scrollToTop: (e) => { e.preventDefault(); window.scrollTo({ top: 0, behavior: 'smooth' }); } };
   }
