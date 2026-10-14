@@ -206,7 +206,7 @@
           <div style="display: flex; align-items: center; gap: 6px; padding: 20px 30px 0 30px; border-bottom: 1px solid {{ project.borderLight }}">
             <div onClick="{{ project.selectOverview }}" style="{{ project.overviewTabStyle }}">OVERVIEW</div>
             <div onClick="{{ project.selectTrailer }}" style="{{ project.trailerTabStyle }}">TRAILER</div>
-            <div onClick="{{ project.selectGit }}" style="{{ project.gitTabStyle }}">GIT</div>
+            <div onClick="{{ project.selectGit }}" style="{{ project.gitTabStyle }}">REPOSITORY</div>
             <sc-if value="{{ project.showDetailLinks }}" hint-placeholder-val="{{ true }}">
               <a href="{{ project.detailHref }}" style="display: inline-flex; align-items: center; gap: 8px; font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.15em; padding: 10px 18px; color: #FFFFFF; border: 1px solid {{ project.borderLight }}; border-bottom: none">TECHNICAL BREAKDOWN <span>▸</span></a>
             </sc-if>
@@ -270,7 +270,7 @@
               <div onClick="{{ project.selectTrailer }}" style="{{ project.trailerTabStyle }}">TRAILER</div>
             </sc-if>
             <sc-if value="{{ project.hasGitUrl }}" hint-placeholder-val="{{ true }}">
-              <div onClick="{{ project.selectGit }}" style="{{ project.gitTabStyle }}">GIT</div>
+              <div onClick="{{ project.selectGit }}" style="{{ project.gitTabStyle }}">REPOSITORY</div>
             </sc-if>
             <sc-if value="{{ project.showDetailLinks }}" hint-placeholder-val="{{ true }}">
               <a href="{{ project.detailHref }}" style="display: inline-flex; align-items: center; gap: 8px; font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.15em; padding: 10px 18px; color: #FFFFFF; border: 1px solid {{ project.borderLight }}; border-bottom: none">TECHNICAL BREAKDOWN <span>▸</span></a>
@@ -381,7 +381,7 @@
             <div onClick="{{ project.selectOverview }}" style="{{ project.overviewTabStyle }}">OVERVIEW</div>
             <div onClick="{{ project.selectTrailer }}" style="{{ project.trailerTabStyle }}">TRAILER</div>
             <sc-if value="{{ project.hasGitUrl }}" hint-placeholder-val="{{ true }}">
-              <div onClick="{{ project.selectGit }}" style="{{ project.gitTabStyle }}">GIT</div>
+              <div onClick="{{ project.selectGit }}" style="{{ project.gitTabStyle }}">REPOSITORY</div>
             </sc-if>
             <sc-if value="{{ project.showDetailLinks }}" hint-placeholder-val="{{ true }}">
               <a href="{{ project.detailHref }}" style="display: inline-flex; align-items: center; gap: 8px; font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.15em; padding: 10px 18px; color: #FFFFFF; border: 1px solid {{ project.borderLight }}; border-bottom: none">TECHNICAL BREAKDOWN <span>▸</span></a>
