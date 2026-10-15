@@ -57,8 +57,8 @@
   <div style="position: fixed; inset: 0; pointer-events: none; z-index: 0; opacity: 0.035; mix-blend-mode: overlay; background-image: url(&quot;data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E&quot;)"></div>
 
   <!-- ===== ONE persistent header, fixed on top of everything ===== -->
-  <div style="position: fixed; top: 0; left: 0; right: 0; display: flex; justify-content: space-between; align-items: center; padding: 18px 40px; z-index: 100; background: #FFFFFF; border-bottom: 1px solid rgba(20,22,26,0.08)">
-    <a href="#home" onClick="{{ goTo }}" data-target="home" class="rt-nav-brand" style="font-family: 'Bebas Neue', sans-serif; font-size: 24px; letter-spacing: 0.08em; color: #14161A">AP<span style="color: #9C6B00">®</span></a>
+  <div style="position: fixed; top: 0; left: 0; right: 0; display: flex; justify-content: space-between; align-items: center; padding: 18px 40px; z-index: 100; background: #14161A; border-bottom: 3px solid #FFC857">
+    <a href="#home" onClick="{{ goTo }}" data-target="home" class="rt-nav-brand" style="font-family: 'Bebas Neue', sans-serif; font-size: 24px; letter-spacing: 0.08em; color: #FFFFFF">AP<span style="color: #FFC857">®</span></a>
     <div class="rt-nav-links" style="display: flex; align-items: center; gap: 24px; font-family: 'JetBrains Mono', monospace; font-size: 12px; letter-spacing: 0.2em">
       <a href="#home" onClick="{{ goTo }}" data-target="home" style="{{ navStyles.home }}">HOME</a>
       <a href="#expertise" onClick="{{ goTo }}" data-target="expertise" style="{{ navStyles.expertise }}">EXPERTISE</a>
@@ -75,8 +75,8 @@
   <!-- ================= HOME ================= -->
   <section id="home" ref="{{ sectionRefs.home }}" style="position: relative; width: 100%; height: 100vh; min-height: 700px; overflow: hidden">
     <div style="position: absolute; inset: 0; z-index: 0; overflow: hidden; background: #FFFFFF">
-      <div style="position: absolute; inset: 0; opacity: 0.08; filter: blur(130px); background: radial-gradient(circle at 15% 20%, #4DC3FF 0%, transparent 55%), radial-gradient(circle at 85% 15%, #B98BFF 0%, transparent 55%), radial-gradient(circle at 20% 88%, #FF6F91 0%, transparent 55%), radial-gradient(circle at 82% 82%, #FFC857 0%, transparent 55%), radial-gradient(circle at 50% 50%, #6EE7C8 0%, transparent 60%); pointer-events: none"></div>
-      <div style="position: absolute; inset: 0; background: radial-gradient(ellipse at center, rgba(255,255,255,0.1) 30%, rgba(255,255,255,0.75) 100%), linear-gradient(180deg, rgba(255,255,255,0.75) 0%, rgba(255,255,255,0.3) 22%, rgba(255,255,255,0.12) 40%, rgba(255,255,255,0.12) 60%, rgba(255,255,255,0.75) 100%); pointer-events: none"></div>
+      <div style="position: absolute; inset: 0; opacity: 0.55; filter: blur(110px); background: radial-gradient(circle at 15% 20%, #4DC3FF 0%, transparent 55%), radial-gradient(circle at 85% 15%, #B98BFF 0%, transparent 55%), radial-gradient(circle at 20% 88%, #FF6F91 0%, transparent 55%), radial-gradient(circle at 82% 82%, #FFC857 0%, transparent 55%), radial-gradient(circle at 50% 50%, #6EE7C8 0%, transparent 60%); pointer-events: none"></div>
+      <div style="position: absolute; inset: 0; background: radial-gradient(ellipse at center, rgba(255,255,255,0.05) 30%, rgba(255,255,255,0.35) 100%), linear-gradient(180deg, rgba(255,255,255,0.4) 0%, rgba(255,255,255,0.05) 22%, transparent 40%, transparent 60%, rgba(255,255,255,0.45) 100%); pointer-events: none"></div>
     </div>
 
     <div style="position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; z-index: 7; pointer-events: none; padding-bottom: 110px">
@@ -451,20 +451,20 @@
   </section>
 
   <!-- ===== single footer ===== -->
-  <div style="position: relative; z-index: 2; border-top: 1px solid rgba(20,22,26,0.14); padding: 20px 40px; display: flex; justify-content: space-between; align-items: center; font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.15em; color: #14161A">
+  <div style="position: relative; z-index: 2; border-top: 3px solid #FFC857; background: #14161A; padding: 24px 40px; display: flex; justify-content: space-between; align-items: center; font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.15em; color: #FFFFFF">
     <span>© ANANTHA PRASANTH</span>
     <div style="display: flex; align-items: center; gap: 22px">
-      <a href="https://www.linkedin.com/in/anantha-prasanth" target="_blank" rel="noopener" aria-label="LinkedIn" style="color: #0A66C2; display: flex" style-hover="color: #4DC3FF">
+      <a href="https://www.linkedin.com/in/anantha-prasanth" target="_blank" rel="noopener" aria-label="LinkedIn" style="color: #4DC3FF; display: flex" style-hover="color: #FFC857">
         <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M20.45 20.45h-3.55v-5.57c0-1.33-.02-3.03-1.85-3.03-1.85 0-2.14 1.45-2.14 2.94v5.66H9.36V9h3.41v1.56h.05c.48-.9 1.64-1.85 3.38-1.85 3.61 0 4.28 2.38 4.28 5.47v6.27zM5.34 7.43a2.06 2.06 0 1 1 0-4.12 2.06 2.06 0 0 1 0 4.12zM7.12 20.45H3.56V9h3.56v11.45z"></path></svg>
       </a>
-      <a href="https://gitlab.com/prasanth1608" target="_blank" rel="noopener" aria-label="GitLab" style="color: #FC6D26; display: flex" style-hover="color: #F05032">
+      <a href="https://gitlab.com/prasanth1608" target="_blank" rel="noopener" aria-label="GitLab" style="color: #FF8A5B; display: flex" style-hover="color: #FFC857">
         <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="6" cy="5" r="2.4"></circle><circle cx="6" cy="19" r="2.4"></circle><circle cx="18" cy="9" r="2.4"></circle><path d="M6 7.4v9.2M18 11.4c0 3-3 4-7 4"></path></svg>
       </a>
-      <a href="https://prasanth1608.itch.io" target="_blank" rel="noopener" aria-label="itch.io" style="color: #FA5C5C; display: flex" style-hover="color: #FF6F91">
+      <a href="https://prasanth1608.itch.io" target="_blank" rel="noopener" aria-label="itch.io" style="color: #FF6F91; display: flex" style-hover="color: #FFC857">
         <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M3 8c1-2.5 2.5-4 4-4h10c1.5 0 3 1.5 4 4-0.5 2-2 3-3.5 3-1.2 0-2.2-.7-2.7-1.7-.5 1-1.5 1.7-2.8 1.7s-2.3-.7-2.8-1.7c-.5 1-1.5 1.7-2.7 1.7C5 11 3.5 10 3 8z"></path><path d="M4 10.5L4.6 18c.15 1.2 1.1 2 2.3 2h10.2c1.2 0 2.15-.8 2.3-2l.6-7.5"></path><path d="M9.5 14.5a2.2 2.2 0 0 1 4.5 0v2"></path></svg>
       </a>
     </div>
-    <a href="#home" onClick="{{ goTo }}" data-target="home" style="color: #0E7A63" style-hover="color: #9C6B00">◂ BACK TO TITLE</a>
+    <a href="#home" onClick="{{ goTo }}" data-target="home" style="color: #6EE7C8" style-hover="color: #FFC857">◂ BACK TO TITLE</a>
   </div>
 </div>
 
@@ -747,7 +747,7 @@ class Component extends DCLogic {
     const navOrder = ['home', 'expertise', 'games', 'prototypes', 'professional', 'tools', 'journey'];
     const navStyles = {};
     navOrder.forEach((id) => {
-      navStyles[id] = this.state.activeSection === id ? { color: '#9C6B00' } : { color: 'rgba(20,22,26,0.55)' };
+      navStyles[id] = this.state.activeSection === id ? { color: '#FFC857' } : { color: 'rgba(255,255,255,0.65)' };
     });
 
     const categories = RAW_CATEGORIES.map((c, i) => {
