@@ -12,7 +12,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=JetBrains+Mono:wght@400;500;700&family=Space+Grotesk:wght@400;500;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
   <style>
-    html, body { margin: 0; padding: 0; background: #FFFFFF; }
+    html, body { margin: 0; padding: 0; background: #ECEBEA; }
     html { scroll-behavior: auto; }
     :root {
       --cur-default: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='26' height='26' viewBox='0 0 26 26'%3E%3Cdefs%3E%3ClinearGradient id='g1' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop offset='0%25' stop-color='%23FFC857'/%3E%3Cstop offset='50%25' stop-color='%23FF6F91'/%3E%3Cstop offset='100%25' stop-color='%234DC3FF'/%3E%3C/linearGradient%3E%3C/defs%3E%3Cpath d='M2 1 L2 20 L7 15.5 L10.5 22.5 L13.5 21 L10 14 L16.5 14 Z' fill='url(%23g1)' stroke='%23000000' stroke-width='1.1' stroke-linejoin='round'/%3E%3C/svg%3E") 2 1, auto;
@@ -50,7 +50,7 @@
   </template>
 </helmet>
 
-<div style="position: relative; background: #FFFFFF; font-family: 'Space Grotesk', sans-serif; color: #14161A; padding-top: 68px">
+<div style="position: relative; background: #ECEBEA; font-family: 'Space Grotesk', sans-serif; color: #14161A; padding-top: 68px">
 
   <!-- ===== ONE shared fixed backdrop (pattern + colour) for the whole page ===== -->
   <div ref="{{ sharedBackdropRef }}" style="position: fixed; inset: 0; pointer-events: none; z-index: 0; background: {{ sharedBackdropBg }}"></div>
@@ -109,12 +109,12 @@
         <sc-for list="{{ categories }}" as="cat" hint-placeholder-count="6">
           <div class="exp-card" onMouseEnter="{{ cat.onEnter }}" style="background: {{ cat.cardBg }}; padding: 14px 22px; border-radius: 2px; box-sizing: border-box; display: flex; flex-direction: column; justify-content: flex-start; overflow: hidden; min-height: 0; min-width: 0">
             <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 6px; flex-shrink: 0">
-              <div style="font-family: 'JetBrains Mono', monospace; font-weight: 700; font-size: 12px; letter-spacing: 0.1em; color: {{ cat.onCard }}; background: {{ cat.chipBg }}; border: 1px solid {{ cat.chipBorder }}; padding: 3px 8px; border-radius: 3px; flex: none">{{ cat.index }}</div>
-              <div style="font-family: 'Bebas Neue', sans-serif; font-size: 21px; letter-spacing: 0.03em; color: {{ cat.onCard }}; text-shadow: 0 1px 3px rgba(0,0,0,0.18)">{{ cat.title }}</div>
+              <div style="font-family: 'JetBrains Mono', monospace; font-weight: 700; font-size: 12px; letter-spacing: 0.1em; color: {{ cat.onAccent }}; background: {{ cat.accent }}; padding: 3px 8px; border-radius: 3px; flex: none">{{ cat.index }}</div>
+              <div style="font-family: 'Bebas Neue', sans-serif; font-size: 21px; letter-spacing: 0.03em; color: {{ cat.onCard }}">{{ cat.title }}</div>
             </div>
             <div style="display: flex; flex-wrap: wrap; gap: 6px">
               <sc-for list="{{ cat.points }}" as="point" hint-placeholder-count="4">
-                <div style="font-family: 'JetBrains Mono', monospace; font-size: 12.5px; line-height: 1.2; color: #14161A; background: #FFFFFF; padding: 6px 10px; border-radius: 3px">{{ point }}</div>
+                <div style="font-family: 'JetBrains Mono', monospace; font-size: 12.5px; line-height: 1.2; color: #14161A; background: #F2F1EF; padding: 6px 10px; border-radius: 3px">{{ point }}</div>
               </sc-for>
             </div>
           </div>
@@ -208,10 +208,10 @@
             <div onClick="{{ project.selectTrailer }}" style="{{ project.trailerTabStyle }}">TRAILER</div>
             <div onClick="{{ project.selectGit }}" style="{{ project.gitTabStyle }}">REPOSITORY</div>
             <sc-if value="{{ project.showDetailLinks }}" hint-placeholder-val="{{ true }}">
-              <a href="{{ project.detailHref }}" style="display: inline-flex; align-items: center; gap: 8px; font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.15em; padding: 10px 18px; color: {{ project.onCard }}; background: rgba(255,255,255,0.18)">TECHNICAL BREAKDOWN <span>▸</span></a>
+              <a href="{{ project.detailHref }}" style="display: inline-flex; align-items: center; gap: 8px; font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.15em; padding: 10px 18px; color: {{ project.onCard }}; background: #F2F1EF">TECHNICAL BREAKDOWN <span>▸</span></a>
             </sc-if>
             <sc-if value="{{ project.itchUrl }}" hint-placeholder-val="{{ false }}">
-              <a href="{{ project.itchUrl }}" target="_blank" rel="noopener" style="display: inline-flex; align-items: center; gap: 6px; font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.15em; padding: 10px 18px; margin-left: auto; color: #001018; background: {{ project.accent }}; border: 1px solid {{ project.accent }}; border-bottom: none">▶ PLAY</a>
+              <a href="{{ project.itchUrl }}" target="_blank" rel="noopener" style="display: inline-flex; align-items: center; gap: 6px; font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.15em; padding: 10px 18px; margin-left: auto; color: #FFFFFF; background: #14161A">▶ PLAY</a>
             </sc-if>
           </div>
           <div style="padding: 26px 30px 30px 30px; min-height: {{ project.tabMinHeight }}; display: flex; justify-content: {{ project.tabJustify }}; align-items: {{ project.tabAlignItems }}; gap: 20px; flex-wrap: wrap">
@@ -226,7 +226,7 @@
                   </div>
                 </sc-if>
                 <sc-if value="{{ project.noTrailer }}" hint-placeholder-val="{{ true }}">
-                  <div style="height: 260px; max-width: 720px; margin: 0 auto; background: rgba(255,255,255,0.18); display: flex; align-items: center; justify-content: center; font-family: 'JetBrains Mono', monospace; font-size: 12px; letter-spacing: 0.15em; color: {{ project.onCard }}">TRAILER VIDEO — drop file here</div>
+                  <div style="height: 260px; max-width: 720px; margin: 0 auto; background: #F2F1EF; display: flex; align-items: center; justify-content: center; font-family: 'JetBrains Mono', monospace; font-size: 12px; letter-spacing: 0.15em; color: {{ project.onCard }}">TRAILER VIDEO — drop file here</div>
                 </sc-if>
               </sc-if>
               <sc-if value="{{ project.isGit }}" hint-placeholder-val="{{ false }}">
@@ -273,10 +273,10 @@
               <div onClick="{{ project.selectGit }}" style="{{ project.gitTabStyle }}">REPOSITORY</div>
             </sc-if>
             <sc-if value="{{ project.showDetailLinks }}" hint-placeholder-val="{{ true }}">
-              <a href="{{ project.detailHref }}" style="display: inline-flex; align-items: center; gap: 8px; font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.15em; padding: 10px 18px; color: {{ project.onCard }}; background: rgba(255,255,255,0.18)">TECHNICAL BREAKDOWN <span>▸</span></a>
+              <a href="{{ project.detailHref }}" style="display: inline-flex; align-items: center; gap: 8px; font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.15em; padding: 10px 18px; color: {{ project.onCard }}; background: #F2F1EF">TECHNICAL BREAKDOWN <span>▸</span></a>
             </sc-if>
             <sc-if value="{{ project.itchUrl }}" hint-placeholder-val="{{ false }}">
-              <a href="{{ project.itchUrl }}" target="_blank" rel="noopener" style="display: inline-flex; align-items: center; gap: 6px; font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.15em; padding: 10px 18px; margin-left: auto; color: #001018; background: {{ project.accent }}; border: 1px solid {{ project.accent }}; border-bottom: none">▶ PLAY</a>
+              <a href="{{ project.itchUrl }}" target="_blank" rel="noopener" style="display: inline-flex; align-items: center; gap: 6px; font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.15em; padding: 10px 18px; margin-left: auto; color: #FFFFFF; background: #14161A">▶ PLAY</a>
             </sc-if>
           </div>
           <div style="padding: 26px 30px 30px 30px; min-height: {{ project.tabMinHeight }}; display: flex; justify-content: {{ project.tabJustify }}; align-items: {{ project.tabAlignItems }}; gap: 20px; flex-wrap: wrap">
@@ -384,10 +384,10 @@
               <div onClick="{{ project.selectGit }}" style="{{ project.gitTabStyle }}">REPOSITORY</div>
             </sc-if>
             <sc-if value="{{ project.showDetailLinks }}" hint-placeholder-val="{{ true }}">
-              <a href="{{ project.detailHref }}" style="display: inline-flex; align-items: center; gap: 8px; font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.15em; padding: 10px 18px; color: {{ project.onCard }}; background: rgba(255,255,255,0.18)">TECHNICAL BREAKDOWN <span>▸</span></a>
+              <a href="{{ project.detailHref }}" style="display: inline-flex; align-items: center; gap: 8px; font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.15em; padding: 10px 18px; color: {{ project.onCard }}; background: #F2F1EF">TECHNICAL BREAKDOWN <span>▸</span></a>
             </sc-if>
             <sc-if value="{{ project.itchUrl }}" hint-placeholder-val="{{ false }}">
-              <a href="{{ project.itchUrl }}" target="_blank" rel="noopener" style="display: inline-flex; align-items: center; gap: 6px; font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.15em; padding: 10px 18px; margin-left: auto; color: #001018; background: {{ project.accent }}; border: 1px solid {{ project.accent }}; border-bottom: none">▶ PLAY</a>
+              <a href="{{ project.itchUrl }}" target="_blank" rel="noopener" style="display: inline-flex; align-items: center; gap: 6px; font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.15em; padding: 10px 18px; margin-left: auto; color: #FFFFFF; background: #14161A">▶ PLAY</a>
             </sc-if>
           </div>
           <div style="padding: 26px 30px 30px 30px; min-height: {{ project.tabMinHeight }}; display: flex; justify-content: {{ project.tabJustify }}; align-items: {{ project.tabAlignItems }}; gap: 20px; flex-wrap: wrap">
@@ -402,7 +402,7 @@
                   </div>
                 </sc-if>
                 <sc-if value="{{ project.noTrailer }}" hint-placeholder-val="{{ true }}">
-                  <div style="height: 260px; max-width: 720px; margin: 0 auto; background: rgba(255,255,255,0.18); display: flex; align-items: center; justify-content: center; font-family: 'JetBrains Mono', monospace; font-size: 12px; letter-spacing: 0.15em; color: {{ project.onCard }}">TRAILER VIDEO — drop file here</div>
+                  <div style="height: 260px; max-width: 720px; margin: 0 auto; background: #F2F1EF; display: flex; align-items: center; justify-content: center; font-family: 'JetBrains Mono', monospace; font-size: 12px; letter-spacing: 0.15em; color: {{ project.onCard }}">TRAILER VIDEO — drop file here</div>
                 </sc-if>
               </sc-if>
               <sc-if value="{{ project.isGit }}" hint-placeholder-val="{{ false }}">
@@ -769,7 +769,7 @@ class Component extends DCLogic {
       const target = hexToRgbObj(currentAccent());
       this.sharedRGB = { r: lerp(this.sharedRGB.r, target.r, 0.08), g: lerp(this.sharedRGB.g, target.g, 0.08), b: lerp(this.sharedRGB.b, target.b, 0.08) };
       if (this.sharedBackdropRef.current) {
-        this.sharedBackdropRef.current.style.background = '#FFFFFF';
+        this.sharedBackdropRef.current.style.background = '#ECEBEA';
       }
       this.lerpRaf = requestAnimationFrame(tick);
     };
@@ -783,10 +783,10 @@ class Component extends DCLogic {
   }
 
   renderVals() {
-    const tabStyle = (active, color, inactiveBorder, onCard) => ({
+    const tabStyle = (active, color) => ({
       fontFamily: "'JetBrains Mono', monospace", fontSize: '11px', letterSpacing: '0.15em', padding: '10px 18px', cursor: 'var(--cur-hover)',
-      color: active ? '#001018' : (onCard === '#FFFFFF' ? '#FFFFFF' : '#14161A'),
-      background: active ? color : (onCard === '#FFFFFF' ? 'rgba(255,255,255,0.18)' : 'rgba(255,255,255,0.55)')
+      color: active ? '#FFFFFF' : '#14161A',
+      background: active ? color : '#F2F1EF'
     });
 
     const navOrder = ['home', 'expertise', 'games', 'prototypes', 'professional', 'tools', 'journey'];
@@ -798,15 +798,12 @@ class Component extends DCLogic {
     const categories = RAW_CATEGORIES.map((c, i) => {
       const isLast = i === RAW_CATEGORIES.length - 1;
       const accent = isLast ? PALETTE.slate : EXP_ACCENTS[i % EXP_ACCENTS.length];
-      const grad = duoGradient(accent, 34);
       return {
         ...c, index: String(i + 1).padStart(2, '0'), accent,
         borderColor: hexToRgba(accent, 0.4),
         onAccent: onColor(accent),
-        onCard: grad.onCard,
-        chipBorder: grad.onCard === '#FFFFFF' ? 'rgba(255,255,255,0.55)' : 'rgba(20,22,26,0.3)',
-        chipBg: grad.onCard === '#FFFFFF' ? 'rgba(255,255,255,0.16)' : 'rgba(255,255,255,0.4)',
-        cardBg: grad.bg,
+        onCard: '#14161A',
+        cardBg: '#FFFFFF',
         onEnter: () => this.setState({ expAccent: accent })
       };
     });
@@ -814,14 +811,13 @@ class Component extends DCLogic {
     const projects = RAW_PROJECTS.map((p, i) => {
       const slug = p.title.toLowerCase().replace(/\s+/g, '-');
       const tab = this.state.projectTabs[i];
-      const cardGrad = duoGradient(p.accent, 32);
-      const cardBorder = cardGrad.onCard === '#FFFFFF' ? 'rgba(255,255,255,0.4)' : 'rgba(20,22,26,0.3)';
+      const cardBorder = 'rgba(20,22,26,0.1)';
       return {
         showDetailLinks: p.hideDetailPage !== true,
         ...p, overview: overviewWithLeads(p.overview, textAccent(p.accent)), setCardRef: (el) => { this.projectCardEls[i] = el; },
         borderStrong: hexToRgba(p.accent, 0.45), borderMid: cardBorder, borderLight: cardBorder,
         textAccent: textAccent(p.accent),
-        cardBg: cardGrad.bg, onCard: cardGrad.onCard,
+        cardBg: '#FFFFFF', onCard: '#14161A',
         borderImage: 'none',
         bannerBg: p.banner ? `center / cover no-repeat url(${p.banner}), linear-gradient(160deg, #0C1418, #050809)` : `linear-gradient(160deg, #0C1418, #050809)`,
         noBanner: !p.banner, trailerEmbedSrc: p.trailerId ? `https://www.youtube.com/embed/${p.trailerId}` : '', noTrailer: !p.trailerId,
@@ -833,10 +829,10 @@ class Component extends DCLogic {
         tabTextAlign: tab === 'trailer' ? 'center' : 'left',
         detailHref: `Project.dc.html?slug=${slug}`,
         isOverview: tab === 'overview', isTrailer: tab === 'trailer', isGit: tab === 'git',
-        overviewTabStyle: tabStyle(tab === 'overview', p.accent, cardBorder, cardGrad.onCard),
-        trailerTabStyle: tabStyle(tab === 'trailer', '#E7E9EC', cardBorder, cardGrad.onCard),
-        gitTabStyle: tabStyle(tab === 'git', '#4DC3FF', cardBorder, cardGrad.onCard),
-        playButtonStyle: { fontFamily: "'Bebas Neue', sans-serif", fontSize: '18px', letterSpacing: '0.12em', color: '#001018', background: p.accent, padding: '11px 26px', flex: 'none', boxShadow: `0 0 18px ${hexToRgba(p.accent, 0.45)}` },
+        overviewTabStyle: tabStyle(tab === 'overview', '#14161A', cardBorder, '#14161A'),
+        trailerTabStyle: tabStyle(tab === 'trailer', '#14161A', cardBorder, '#14161A'),
+        gitTabStyle: tabStyle(tab === 'git', '#14161A', cardBorder, '#14161A'),
+        playButtonStyle: { fontFamily: "'Bebas Neue', sans-serif", fontSize: '18px', letterSpacing: '0.12em', color: '#FFFFFF', background: '#14161A', padding: '11px 26px', flex: 'none' },
         selectOverview: () => this.setProjectTab(i, 'overview'),
         selectTrailer: () => this.setProjectTab(i, 'trailer'),
         selectGit: () => this.setProjectTab(i, 'git')
@@ -845,15 +841,14 @@ class Component extends DCLogic {
 
     const prototypes = RAW_PROTOTYPES.map((p, i) => {
       const tab = this.state.protoTabs[i];
-      const cardGrad = duoGradient(p.accent, 32);
-      const cardBorder = cardGrad.onCard === '#FFFFFF' ? 'rgba(255,255,255,0.4)' : 'rgba(20,22,26,0.3)';
+      const cardBorder = 'rgba(20,22,26,0.1)';
       return {
         ...p, overview: overviewWithLeads(p.overview, textAccent(p.accent)), setCardRef: (el) => { this.protoCardEls[i] = el; },
         showDetailLinks: p.hideDetailPage !== true,
         detailHref: `PrototypeProject.dc.html?slug=${p.title.toLowerCase().replace(/\s+/g, '-')}`,
         borderStrong: hexToRgba(p.accent, 0.45), borderMid: cardBorder, borderLight: cardBorder,
         textAccent: textAccent(p.accent),
-        cardBg: cardGrad.bg, onCard: cardGrad.onCard,
+        cardBg: '#FFFFFF', onCard: '#14161A',
         borderImage: 'none',
         bannerBg: p.banner ? `center / cover no-repeat url(${p.banner}), linear-gradient(160deg, #0C1418, #050809)` : `linear-gradient(160deg, #0C1418, #050809)`,
         noBanner: !p.banner, trailerEmbedSrc: p.trailerId ? `https://www.youtube.com/embed/${p.trailerId}` : '', hasVideo: !!p.trailerId,
@@ -864,9 +859,9 @@ class Component extends DCLogic {
         tabAlignItems: tab === 'git' ? 'center' : tab === 'overview' ? 'flex-start' : 'flex-end',
         tabTextAlign: tab === 'trailer' ? 'center' : 'left',
         isOverview: tab === 'overview' || (tab === 'trailer' && !p.trailerId), isTrailer: tab === 'trailer' && !!p.trailerId, isGit: tab === 'git',
-        overviewTabStyle: tabStyle(tab === 'overview', p.accent, cardBorder, cardGrad.onCard),
-        trailerTabStyle: tabStyle(tab === 'trailer', '#E7E9EC', cardBorder, cardGrad.onCard),
-        gitTabStyle: tabStyle(tab === 'git', '#4DC3FF', cardBorder, cardGrad.onCard),
+        overviewTabStyle: tabStyle(tab === 'overview', '#14161A', cardBorder, '#14161A'),
+        trailerTabStyle: tabStyle(tab === 'trailer', '#14161A', cardBorder, '#14161A'),
+        gitTabStyle: tabStyle(tab === 'git', '#14161A', cardBorder, '#14161A'),
         selectOverview: () => this.setProtoTab(i, 'overview'),
         selectTrailer: () => this.setProtoTab(i, 'trailer'),
         selectGit: () => this.setProtoTab(i, 'git')
@@ -875,15 +870,14 @@ class Component extends DCLogic {
 
     const roles = RAW_ROLES.map((p, i) => {
       const playing = this.state.playingRole === i;
-      const cardGrad = duoGradient(p.accent, 32);
-      const cardBorder = cardGrad.onCard === '#FFFFFF' ? 'rgba(255,255,255,0.4)' : 'rgba(20,22,26,0.3)';
+      const cardBorder = 'rgba(20,22,26,0.1)';
       return {
         ...p,
         index: String(i + 1).padStart(2, '0'),
         setCardRef: (el) => { this.roleCardEls[i] = el; },
         borderStrong: hexToRgba(p.accent, 0.45), borderMid: cardBorder,
         textAccent: textAccent(p.accent),
-        cardBg: cardGrad.bg, onCard: cardGrad.onCard,
+        cardBg: '#FFFFFF', onCard: '#14161A',
         bannerBg: p.banner
           ? `center / cover no-repeat url(${p.banner}), linear-gradient(160deg, #0C1418, #050809)`
           : `linear-gradient(160deg, ${mixWithDark(p.accent, 0.4, [5, 8, 9])} 0%, #050809 100%)`,
@@ -893,7 +887,7 @@ class Component extends DCLogic {
         videoButtonLabel: playing ? '■ CLOSE VIDEO' : '▶ WATCH WALKTHROUGH',
         videoButtonStyle: {
           display: 'inline-flex', alignItems: 'center', fontFamily: "'JetBrains Mono', monospace", fontSize: '11px', letterSpacing: '0.15em', padding: '11px 20px', cursor: 'var(--cur-hover)',
-          color: playing ? '#FFFFFF' : '#001018', background: playing ? 'transparent' : p.accent, border: `1px solid ${p.accent}`
+          color: '#FFFFFF', background: '#14161A'
         },
         toggleVideo: () => this.toggleRoleVideo(i)
       };
@@ -901,14 +895,13 @@ class Component extends DCLogic {
 
     const tools = RAW_TOOLS.map((p, i) => {
       const tab = this.state.toolTabs[i];
-      const cardGrad = duoGradient(p.accent, 32);
-      const cardBorder = cardGrad.onCard === '#FFFFFF' ? 'rgba(255,255,255,0.4)' : 'rgba(20,22,26,0.3)';
+      const cardBorder = 'rgba(20,22,26,0.1)';
       return {
         showDetailLinks: p.hideDetailPage !== true,
         ...p, overview: overviewWithLeads(p.overview, textAccent(p.accent)), setCardRef: (el) => { this.toolCardEls[i] = el; },
         borderStrong: hexToRgba(p.accent, 0.45), borderMid: cardBorder, borderLight: cardBorder,
         textAccent: textAccent(p.accent),
-        cardBg: cardGrad.bg, onCard: cardGrad.onCard,
+        cardBg: '#FFFFFF', onCard: '#14161A',
         borderImage: 'none',
         bannerBg: p.banner ? `center / cover no-repeat url(${p.banner}), linear-gradient(160deg, #0C1418, #050809)` : `linear-gradient(160deg, #0C1418, #050809)`,
         noBanner: !p.banner, trailerEmbedSrc: p.trailerId ? `https://www.youtube.com/embed/${p.trailerId}` : '', noTrailer: !p.trailerId,
@@ -920,10 +913,10 @@ class Component extends DCLogic {
         tabAlignItems: tab === 'git' ? 'center' : tab === 'overview' ? 'flex-start' : 'flex-end',
         tabTextAlign: tab === 'trailer' ? 'center' : 'left',
         isOverview: tab === 'overview', isTrailer: tab === 'trailer', isGit: tab === 'git',
-        overviewTabStyle: tabStyle(tab === 'overview', p.accent, cardBorder, cardGrad.onCard),
-        trailerTabStyle: tabStyle(tab === 'trailer', '#E7E9EC', cardBorder, cardGrad.onCard),
-        gitTabStyle: tabStyle(tab === 'git', '#4DC3FF', cardBorder, cardGrad.onCard),
-        playButtonStyle: { fontFamily: "'Bebas Neue', sans-serif", fontSize: '18px', letterSpacing: '0.12em', color: '#001018', background: p.accent, padding: '11px 26px', flex: 'none', boxShadow: `0 8px 24px -8px ${hexToRgba(p.accent, 0.6)}` },
+        overviewTabStyle: tabStyle(tab === 'overview', '#14161A', cardBorder, '#14161A'),
+        trailerTabStyle: tabStyle(tab === 'trailer', '#14161A', cardBorder, '#14161A'),
+        gitTabStyle: tabStyle(tab === 'git', '#14161A', cardBorder, '#14161A'),
+        playButtonStyle: { fontFamily: "'Bebas Neue', sans-serif", fontSize: '18px', letterSpacing: '0.12em', color: '#FFFFFF', background: '#14161A', padding: '11px 26px', flex: 'none' },
         selectOverview: () => this.setToolTab(i, 'overview'),
         selectTrailer: () => this.setToolTab(i, 'trailer'),
         selectGit: () => this.setToolTab(i, 'git')
@@ -933,12 +926,11 @@ class Component extends DCLogic {
     const milestones = MILESTONES.map((m, i) => {
       const left = i % 2 === 0;
       const active = i === this.state.journeyIndex;
-      const cardGrad = duoGradient(m.accent, 30);
       return {
-        ...m, showRunner: active, textAccent: textAccent(m.accent), onCard: cardGrad.onCard,
+        ...m, showRunner: active, textAccent: textAccent(m.accent), onCard: '#14161A',
         setMilestoneRef: (el) => { this.milestoneEls[i] = el; },
         rowStyle: { position: 'relative', display: 'flex', justifyContent: left ? 'flex-start' : 'flex-end', padding: '50px 0', minHeight: '160px' },
-        cardStyle: { position: 'relative', width: 'calc(50% - 40px)', background: cardGrad.bg, padding: '22px 24px', boxSizing: 'border-box', overflow: 'visible' },
+        cardStyle: { position: 'relative', width: 'calc(50% - 40px)', background: '#FFFFFF', padding: '22px 24px', boxSizing: 'border-box', overflow: 'visible' },
         runnerStyle: { position: 'absolute', top: 0, left: '50%', transform: 'translate(-50%, -60%)', zIndex: 5, pointerEvents: 'none', animation: 'ap-teleport-in 0.5s cubic-bezier(0.2, 0.9, 0.3, 1) both' },
         dotStyle: { position: 'absolute', top: '58px', left: '50%', transform: 'translateX(-50%)', width: '14px', height: '14px', borderRadius: '50%', background: m.accent, boxShadow: `0 0 14px ${m.accent}` }
       };
@@ -949,7 +941,7 @@ class Component extends DCLogic {
       navStyles,
       goTo: (e) => { e.preventDefault(); this.goToId(e.currentTarget.getAttribute('data-target')); },
       sharedBackdropRef: this.sharedBackdropRef,
-      sharedBackdropBg: '#FFFFFF',
+      sharedBackdropBg: '#ECEBEA',
       categories,
       projects,
       prototypes,
