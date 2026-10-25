@@ -206,9 +206,12 @@ function mixWithDark(hex, ratio, dark) {
 }
 function onColor(hex) {
   const h = hex.replace('#', '');
-  const r = parseInt(h.substring(0, 2), 16), g = parseInt(h.substring(2, 4), 16), b = parseInt(h.substring(4, 6), 16);
-  const yiq = (r * 299 + g * 587 + b * 114) / 1000;
-  return yiq >= 150 ? '#14161A' : '#FFFFFF';
+  const r = parseInt(h.substring(0, 2), 16) / 255, g = parseInt(h.substring(2, 4), 16) / 255, b = parseInt(h.substring(4, 6), 16) / 255;
+  const lin = (c) => c <= 0.03928 ? c / 12.92 : Math.pow((c + 0.055) / 1.055, 2.4);
+  const L = 0.2126 * lin(r) + 0.7152 * lin(g) + 0.0722 * lin(b);
+  const contrastWhite = 1.05 / (L + 0.05);
+  const contrastDark = (L + 0.05) / 0.0573;
+  return contrastWhite >= contrastDark ? '#FFFFFF' : '#14161A';
 }
 
 class Component extends DCLogic {

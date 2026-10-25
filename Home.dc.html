@@ -81,13 +81,13 @@
 
     <div style="position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; z-index: 7; pointer-events: none; padding-bottom: 110px">
       <div style="font-family: 'JetBrains Mono', monospace; font-size: 13px; letter-spacing: 0.4em; color: #D6336C; margin-bottom: 18px">&gt; WELCOME, GUEST</div>
-      <h1 style="margin: 0; text-align: center; white-space: nowrap; font-family: 'Bebas Neue', sans-serif; font-weight: 400; font-size: clamp(32px, 5vw, 92px); line-height: 0.86; letter-spacing: 0.01em; color: #14161A">ANANTHA <span style="background: linear-gradient(90deg, #2A8FD8 0%, #9B5FE0 50%, #E0477D 100%); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; color: transparent">PRASANTH</span></h1>
+      <h1 style="margin: 0; text-align: center; white-space: nowrap; font-family: 'Bebas Neue', sans-serif; font-weight: 400; font-size: clamp(32px, 5vw, 92px); line-height: 0.86; letter-spacing: 0.01em; color: #B8860B; text-shadow: 0 2px 10px rgba(0,0,0,0.12)">ANANTHA PRASANTH</h1>
       <div style="display: flex; align-items: center; gap: 16px; margin-top: 26px">
         <div style="width: 46px; height: 1px; background: rgba(255,200,87,0.6)"></div>
-        <div style="font-family: 'JetBrains Mono', monospace; font-size: 15px; letter-spacing: 0.45em; color: #14161A">GAMEPLAY ENGINEER<span style="display: inline-block; width: 9px; height: 16px; background: #FFC857; vertical-align: middle; margin-left: 8px; animation: ap-blink 1s steps(1) infinite"></span></div>
+        <div style="font-family: 'JetBrains Mono', monospace; font-size: 15px; letter-spacing: 0.45em; color: #7B2FD6">GAMEPLAY ENGINEER<span style="display: inline-block; width: 9px; height: 16px; background: #FFC857; vertical-align: middle; margin-left: 8px; animation: ap-blink 1s steps(1) infinite"></span></div>
         <div style="width: 46px; height: 1px; background: rgba(255,200,87,0.6)"></div>
       </div>
-      <a href="#games" onClick="{{ goTo }}" data-target="games" style="margin-top: 34px; pointer-events: auto; font-family: 'Bebas Neue', sans-serif; font-size: 20px; letter-spacing: 0.12em; border: 1px solid #6B3FD6; color: #6B3FD6; padding: 11px 26px; cursor: pointer" style-hover="border-color: #14161A; color: #14161A">PRESS START ▸</a>
+      <a href="#games" onClick="{{ goTo }}" data-target="games" style="margin-top: 34px; pointer-events: auto; font-family: 'Bebas Neue', sans-serif; font-size: 20px; letter-spacing: 0.12em; background: #7858C9; color: #FFFFFF; padding: 11px 26px; cursor: pointer" style-hover="background: #14161A; color: #FFFFFF">PRESS START ▸</a>
     </div>
 
     <div style="position: absolute; left: 0; right: 0; bottom: 78px; z-index: 8; display: flex; flex-direction: column; align-items: center; gap: 8px; pointer-events: none">
@@ -107,14 +107,14 @@
     <div style="position: relative; z-index: 2; max-width: 1500px; width: 100%; margin: 0 auto; padding: 24px 40px 0 40px; box-sizing: border-box">
       <div class="rt-grid3" style="display: grid; grid-template-columns: repeat(3, 1fr); grid-template-rows: repeat(2, minmax(0, 1fr)); gap: 22px; margin-top: 28px">
         <sc-for list="{{ categories }}" as="cat" hint-placeholder-count="6">
-          <div class="exp-card" onMouseEnter="{{ cat.onEnter }}" style="border: 1px solid {{ cat.borderColor }}; background: {{ cat.cardBg }}; padding: 14px 22px; border-radius: 2px; box-sizing: border-box; display: flex; flex-direction: column; justify-content: flex-start; overflow: hidden; min-height: 0; min-width: 0" style-hover="border-color: {{ cat.accent }}">
+          <div class="exp-card" onMouseEnter="{{ cat.onEnter }}" style="background: {{ cat.cardBg }}; padding: 14px 22px; border-radius: 2px; box-sizing: border-box; display: flex; flex-direction: column; justify-content: flex-start; overflow: hidden; min-height: 0; min-width: 0">
             <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 6px; flex-shrink: 0">
               <div style="font-family: 'JetBrains Mono', monospace; font-weight: 700; font-size: 12px; letter-spacing: 0.1em; color: {{ cat.onCard }}; background: {{ cat.chipBg }}; border: 1px solid {{ cat.chipBorder }}; padding: 3px 8px; border-radius: 3px; flex: none">{{ cat.index }}</div>
               <div style="font-family: 'Bebas Neue', sans-serif; font-size: 21px; letter-spacing: 0.03em; color: {{ cat.onCard }}; text-shadow: 0 1px 3px rgba(0,0,0,0.18)">{{ cat.title }}</div>
             </div>
             <div style="display: flex; flex-wrap: wrap; gap: 6px">
               <sc-for list="{{ cat.points }}" as="point" hint-placeholder-count="4">
-                <div style="font-family: 'JetBrains Mono', monospace; font-size: 12.5px; line-height: 1.2; color: {{ cat.onCard }}; border: 1.5px solid {{ cat.chipBorder }}; background: {{ cat.chipBg }}; padding: 5.5px 10px; border-radius: 3px">{{ point }}</div>
+                <div style="font-family: 'JetBrains Mono', monospace; font-size: 12.5px; line-height: 1.2; color: #14161A; background: #FFFFFF; padding: 6px 10px; border-radius: 3px">{{ point }}</div>
               </sc-for>
             </div>
           </div>
@@ -186,7 +186,7 @@
 
     <div style="position: relative; z-index: 2; display: flex; flex-direction: column; gap: 40px; padding: 40px 40px 0 40px; max-width: 1240px; margin: 0 auto">
       <sc-for list="{{ projects }}" as="project" hint-placeholder-count="3">
-        <div ref="{{ project.setCardRef }}" style="border-top: 6px solid {{ project.accent }}; border-left: 1px solid {{ project.borderLight }}; border-right: 1px solid {{ project.borderLight }}; border-bottom: 1px solid {{ project.borderLight }}; background: {{ project.cardBg }}; border-radius: 2px">
+        <div ref="{{ project.setCardRef }}" style="background: {{ project.cardBg }}; border-radius: 2px">
           <div style="height: 380px; background: {{ project.bannerBg }}; display: flex; align-items: center; justify-content: center; border-bottom: 1px solid {{ project.borderMid }}; position: relative">
             <sc-if value="{{ project.noBanner }}" hint-placeholder-val="{{ false }}">
               <div style="font-family: 'JetBrains Mono', monospace; font-size: 12px; letter-spacing: 0.2em; color: #FFFFFF">PROJECT_STILL / KEY ART</div>
@@ -208,7 +208,7 @@
             <div onClick="{{ project.selectTrailer }}" style="{{ project.trailerTabStyle }}">TRAILER</div>
             <div onClick="{{ project.selectGit }}" style="{{ project.gitTabStyle }}">REPOSITORY</div>
             <sc-if value="{{ project.showDetailLinks }}" hint-placeholder-val="{{ true }}">
-              <a href="{{ project.detailHref }}" style="display: inline-flex; align-items: center; gap: 8px; font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.15em; padding: 10px 18px; color: {{ project.onCard }}; border: 1px solid {{ project.borderLight }}; border-bottom: none">TECHNICAL BREAKDOWN <span>▸</span></a>
+              <a href="{{ project.detailHref }}" style="display: inline-flex; align-items: center; gap: 8px; font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.15em; padding: 10px 18px; color: {{ project.onCard }}; background: rgba(255,255,255,0.18)">TECHNICAL BREAKDOWN <span>▸</span></a>
             </sc-if>
             <sc-if value="{{ project.itchUrl }}" hint-placeholder-val="{{ false }}">
               <a href="{{ project.itchUrl }}" target="_blank" rel="noopener" style="display: inline-flex; align-items: center; gap: 6px; font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.15em; padding: 10px 18px; margin-left: auto; color: #001018; background: {{ project.accent }}; border: 1px solid {{ project.accent }}; border-bottom: none">▶ PLAY</a>
@@ -226,7 +226,7 @@
                   </div>
                 </sc-if>
                 <sc-if value="{{ project.noTrailer }}" hint-placeholder-val="{{ true }}">
-                  <div style="height: 260px; max-width: 720px; margin: 0 auto; border: 1px dashed {{ project.borderMid }}; display: flex; align-items: center; justify-content: center; font-family: 'JetBrains Mono', monospace; font-size: 12px; letter-spacing: 0.15em; color: {{ project.onCard }}">TRAILER VIDEO — drop file here</div>
+                  <div style="height: 260px; max-width: 720px; margin: 0 auto; background: rgba(255,255,255,0.18); display: flex; align-items: center; justify-content: center; font-family: 'JetBrains Mono', monospace; font-size: 12px; letter-spacing: 0.15em; color: {{ project.onCard }}">TRAILER VIDEO — drop file here</div>
                 </sc-if>
               </sc-if>
               <sc-if value="{{ project.isGit }}" hint-placeholder-val="{{ false }}">
@@ -250,7 +250,7 @@
 
     <div style="position: relative; z-index: 2; display: flex; flex-direction: column; gap: 40px; padding: 40px 40px 0 40px; max-width: 1240px; margin: 0 auto">
       <sc-for list="{{ prototypes }}" as="project" hint-placeholder-count="1">
-        <div ref="{{ project.setCardRef }}" style="border-top: 6px solid {{ project.accent }}; border-left: 1px solid {{ project.borderLight }}; border-right: 1px solid {{ project.borderLight }}; border-bottom: 1px solid {{ project.borderLight }}; background: {{ project.cardBg }}; border-radius: 2px">
+        <div ref="{{ project.setCardRef }}" style="background: {{ project.cardBg }}; border-radius: 2px">
           <div style="height: 380px; background: {{ project.bannerBg }}; display: flex; align-items: center; justify-content: center; border-bottom: 1px solid {{ project.borderMid }}; position: relative">
             <sc-if value="{{ project.noBanner }}" hint-placeholder-val="{{ false }}">
               <div style="font-family: 'JetBrains Mono', monospace; font-size: 12px; letter-spacing: 0.2em; color: #FFFFFF">PROTOTYPE_STILL / KEY ART</div>
@@ -273,7 +273,7 @@
               <div onClick="{{ project.selectGit }}" style="{{ project.gitTabStyle }}">REPOSITORY</div>
             </sc-if>
             <sc-if value="{{ project.showDetailLinks }}" hint-placeholder-val="{{ true }}">
-              <a href="{{ project.detailHref }}" style="display: inline-flex; align-items: center; gap: 8px; font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.15em; padding: 10px 18px; color: {{ project.onCard }}; border: 1px solid {{ project.borderLight }}; border-bottom: none">TECHNICAL BREAKDOWN <span>▸</span></a>
+              <a href="{{ project.detailHref }}" style="display: inline-flex; align-items: center; gap: 8px; font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.15em; padding: 10px 18px; color: {{ project.onCard }}; background: rgba(255,255,255,0.18)">TECHNICAL BREAKDOWN <span>▸</span></a>
             </sc-if>
             <sc-if value="{{ project.itchUrl }}" hint-placeholder-val="{{ false }}">
               <a href="{{ project.itchUrl }}" target="_blank" rel="noopener" style="display: inline-flex; align-items: center; gap: 6px; font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.15em; padding: 10px 18px; margin-left: auto; color: #001018; background: {{ project.accent }}; border: 1px solid {{ project.accent }}; border-bottom: none">▶ PLAY</a>
@@ -310,7 +310,7 @@
 
     <div class="rt-role-grid" style="position: relative; z-index: 2; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 32px; padding: 40px 40px 0 40px; max-width: 1240px; margin: 0 auto; box-sizing: border-box">
       <sc-for list="{{ roles }}" as="role" hint-placeholder-count="4">
-        <div ref="{{ role.setCardRef }}" style="display: flex; flex-direction: column; min-width: 0; border-top: 6px solid {{ role.accent }}; border-left: 1px solid {{ role.borderMid }}; border-right: 1px solid {{ role.borderMid }}; border-bottom: 1px solid {{ role.borderMid }}; background: {{ role.cardBg }}; border-radius: 2px; overflow: hidden">
+        <div ref="{{ role.setCardRef }}" style="display: flex; flex-direction: column; min-width: 0; background: {{ role.cardBg }}; border-radius: 2px; overflow: hidden">
 
           <!-- media: still image (or accent panel) that swaps to the walkthrough video on click -->
           <div style="position: relative; aspect-ratio: 16 / 9; background: {{ role.bannerBg }}; border-bottom: 1px solid {{ role.borderMid }}">
@@ -360,7 +360,7 @@
 
     <div style="position: relative; z-index: 2; display: flex; flex-direction: column; gap: 40px; padding: 40px 40px 0 40px; max-width: 1240px; margin: 0 auto">
       <sc-for list="{{ tools }}" as="project" hint-placeholder-count="1">
-        <div ref="{{ project.setCardRef }}" style="border-top: 6px solid {{ project.accent }}; border-left: 1px solid {{ project.borderLight }}; border-right: 1px solid {{ project.borderLight }}; border-bottom: 1px solid {{ project.borderLight }}; background: {{ project.cardBg }}; border-radius: 2px">
+        <div ref="{{ project.setCardRef }}" style="background: {{ project.cardBg }}; border-radius: 2px">
           <div style="height: 380px; background: {{ project.bannerBg }}; display: flex; align-items: center; justify-content: center; border-bottom: 1px solid {{ project.borderMid }}; position: relative">
             <sc-if value="{{ project.noBanner }}" hint-placeholder-val="{{ false }}">
               <div style="font-family: 'JetBrains Mono', monospace; font-size: 12px; letter-spacing: 0.2em; color: #FFFFFF">TOOL_STILL / KEY ART</div>
@@ -384,7 +384,7 @@
               <div onClick="{{ project.selectGit }}" style="{{ project.gitTabStyle }}">REPOSITORY</div>
             </sc-if>
             <sc-if value="{{ project.showDetailLinks }}" hint-placeholder-val="{{ true }}">
-              <a href="{{ project.detailHref }}" style="display: inline-flex; align-items: center; gap: 8px; font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.15em; padding: 10px 18px; color: {{ project.onCard }}; border: 1px solid {{ project.borderLight }}; border-bottom: none">TECHNICAL BREAKDOWN <span>▸</span></a>
+              <a href="{{ project.detailHref }}" style="display: inline-flex; align-items: center; gap: 8px; font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.15em; padding: 10px 18px; color: {{ project.onCard }}; background: rgba(255,255,255,0.18)">TECHNICAL BREAKDOWN <span>▸</span></a>
             </sc-if>
             <sc-if value="{{ project.itchUrl }}" hint-placeholder-val="{{ false }}">
               <a href="{{ project.itchUrl }}" target="_blank" rel="noopener" style="display: inline-flex; align-items: center; gap: 6px; font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.15em; padding: 10px 18px; margin-left: auto; color: #001018; background: {{ project.accent }}; border: 1px solid {{ project.accent }}; border-bottom: none">▶ PLAY</a>
@@ -402,7 +402,7 @@
                   </div>
                 </sc-if>
                 <sc-if value="{{ project.noTrailer }}" hint-placeholder-val="{{ true }}">
-                  <div style="height: 260px; max-width: 720px; margin: 0 auto; border: 1px dashed {{ project.borderMid }}; display: flex; align-items: center; justify-content: center; font-family: 'JetBrains Mono', monospace; font-size: 12px; letter-spacing: 0.15em; color: {{ project.onCard }}">TRAILER VIDEO — drop file here</div>
+                  <div style="height: 260px; max-width: 720px; margin: 0 auto; background: rgba(255,255,255,0.18); display: flex; align-items: center; justify-content: center; font-family: 'JetBrains Mono', monospace; font-size: 12px; letter-spacing: 0.15em; color: {{ project.onCard }}">TRAILER VIDEO — drop file here</div>
                 </sc-if>
               </sc-if>
               <sc-if value="{{ project.isGit }}" hint-placeholder-val="{{ false }}">
@@ -478,22 +478,34 @@ const RAW_CATEGORIES = [
   { title: 'DEVELOPMENT PRACTICES', points: ['Agile Development', 'Version control with Git', 'Documentation', 'Task boards', 'Code reviews'] },
   { title: 'ENGINEERING PRACTICES', points: ['Profilers & optimisation', 'Debugging', 'Error Handling', 'Problem solving', 'Vector & quaternion math'] }
 ];
-const EXP_ACCENTS = ['#4DC3FF', '#FFC857', '#FF6F91', '#6EE7C8', '#B98BFF', '#FFDE59'];
+// Single shared colour palette for the whole site: solid, moderately saturated, not neon.
+// Everything below picks its colour from here, by name, instead of one-off hexes.
+const PALETTE = {
+  blue: '#3178C6',
+  amber: '#C98A1F',
+  rose: '#C94C72',
+  teal: '#239E86',
+  violet: '#7858C9',
+  orange: '#CC6A30',
+  slate: '#6B7785',
+  mauve: '#A76B87'
+};
+const EXP_ACCENTS = [PALETTE.blue, PALETTE.amber, PALETTE.rose, PALETTE.teal, PALETTE.violet];
 
 const RAW_PROJECTS = [
   {
-    title: 'CLUCKMARE', tags: 'UNREAL ENGINE 5 · C++ · SHOOTER', accent: '#A76B87',
+    title: 'CLUCKMARE', tags: 'UNREAL ENGINE 5 · C++ · SHOOTER', accent: PALETTE.mauve,
     banner: 'assets/games/cluckmare/banner.jpg', trailerId: 'AKqoDcYymbk', gitUrl: 'https://gitlab.com/prasanth1608/cluckmare', itchUrl: 'https://prasanth1608.itch.io/cluckmare',
     overview: 'CLUCKMARE is a first-person shooter built in Unreal Engine 5.4, fighting through a nightmare chicken factory with dual weapon types and escalating AI waves. Built solo as the sole programmer on a 5-person team.\n\nWhat makes it different: enemies that visibly grow with every hit, a hacking mini-game with a guaranteed non-repeating key sequence, and a single shared component driving damage, health, and weapons for both enemies and the player, instead of duplicated logic across each.\n\nEngineering Quality: built on component-composition architecture with the Enhanced Input System, AIController + Behavior Trees, and TSubclassOf data-driven spawning. Optimised memory by avoiding hard references, cutting 1.92GB off the map size. Held a steady 60+ fps throughout the game.'
   }
 ];
 
 // The PROTOTYPES nav link and section stay hidden while this list is empty. Add entries to show them, e.g.:
-// { title: 'MY PROTOTYPE', tags: 'UNREAL ENGINE · C++ · PROTOTYPE', accent: '#6EE7C8', banner: 'assets/prototypes/<slug>/banner.png',
+// { title: 'MY PROTOTYPE', tags: 'UNREAL ENGINE · C++ · PROTOTYPE', accent: PALETTE.teal, banner: 'assets/prototypes/<slug>/banner.png',
 //   trailerId: '<youtube id>', gitUrl: 'https://gitlab.com/...', itchUrl: 'https://...', overview: '...\n\nWhat makes it different: ...' }
 const RAW_PROTOTYPES = [
   {
-    title: 'COLLECTIONS', tags: 'UNREAL ENGINE 5 · C++ · GAMEPLAY SYSTEMS', accent: '#6EE7C8',
+    title: 'COLLECTIONS', tags: 'UNREAL ENGINE 5 · C++ · GAMEPLAY SYSTEMS', accent: PALETTE.teal,
     banner: 'assets/prototypes/collections/banner.png', gitUrl: 'https://gitlab.com/prasanth1608/Collections',
     overview: 'COLLECTIONS is a third-person gameplay prototype built in Unreal Engine as a coding challenge, completed within a week to sharpen my problem-solving and system-design skills. Race a countdown to gather randomized collectibles across the level, using locked and unlocked doors and teleporters, with a live HUD tracking progress and time.\n\nWhat makes it different: the goal was as much architecture as gameplay. Every interactable, whether a collectible, door or teleporter, is driven through a shared interaction interface, so the player never needs to know a concrete class and never casts. No hard references anywhere, with assets loaded asynchronously instead. Objectives and item counts are data-driven through Data Assets, so designers can tune and test the prototype without ever opening a Blueprint.\n\nEngineering Quality: built from reusable components rather than logic tied to individual actors, with cached object references reused instead of repeatedly resolved.'
   }
@@ -502,7 +514,7 @@ const RAW_PROTOTYPES = [
 // Real-time 3D applications (Prop VR). Optional per entry: banner (image path), trailerId (YouTube video id).
 const RAW_ROLES = [
   {
-    title: 'INTERACTIVE WALKTHROUGHS', tags: 'UNREAL ENGINE · BLUEPRINT · ARCHVIZ', accent: '#4DC3FF',
+    title: 'INTERACTIVE WALKTHROUGHS', tags: 'UNREAL ENGINE · BLUEPRINT · ARCHVIZ', accent: PALETTE.blue,
     banner: 'assets/professional/cavalli-couture/banner-2.png', trailerId: 'StRz906EKm8',
     summary: 'Production interactive walkthrough applications that let buyers explore real-estate developments in real time before they are built, for developers including DAMAC, LODHA, KAFD and Prestige Group. I developed and integrated new Blueprint features on a proprietary framework, working inside a large existing codebase and maintaining its documentation.',
     highlights: [
@@ -512,7 +524,7 @@ const RAW_ROLES = [
     ]
   },
   {
-    title: 'ANALYTICS INTEGRATION', tags: 'UNREAL ENGINE · JSON · GAME ANALYTICS', accent: '#FFC857',
+    title: 'ANALYTICS INTEGRATION', tags: 'UNREAL ENGINE · JSON · GAME ANALYTICS', accent: PALETTE.amber,
     banner: 'assets/professional/interactive-walkthrough/gallery-4-analytics.png',
     summary: 'A reusable analytics feature added to an existing production application. It feeds user retention, interest and engagement metrics into a game analytics dashboard, so clients can see how buyers behave and support data-driven sales and marketing.',
     highlights: [
@@ -522,7 +534,7 @@ const RAW_ROLES = [
     ]
   },
   {
-    title: 'NETWORKED HOLOGRAM APPLICATION', tags: 'UNREAL ENGINE · NETWORKING · REPLICATION', accent: '#FF6F91',
+    title: 'NETWORKED HOLOGRAM APPLICATION', tags: 'UNREAL ENGINE · NETWORKING · REPLICATION', accent: PALETTE.rose,
     banner: 'assets/professional/hologram/banner.png',
     summary: 'A networked hologram application delivered under tight deadlines. Touch controls on the host rotate a 3D building model, and the rotation state is synchronised across multiple client displays.',
     highlights: [
@@ -535,7 +547,7 @@ const RAW_ROLES = [
 
 const RAW_TOOLS = [
   {
-    title: 'WIND FIELD', tags: 'UNREAL ENGINE · C++ · PLUGIN', accent: '#FF7A4D',
+    title: 'WIND FIELD', tags: 'UNREAL ENGINE · C++ · PLUGIN', accent: PALETTE.orange,
     banner: 'assets/plugins/windfield/card-thumbnail.png', trailerId: 'nAI2--ftOKQ',
     overview: 'WindField is an Unreal Engine 5 plugin that brings physically reactive wind to any level in minutes, drag, drop, and the environment starts moving. Built for game developers and archviz artists who need believable environmental motion without hand-rolling a wind system from scratch.\n\nWhat makes it different: WindField is fully obstacle-aware, detecting geometry and breaking around it, without a single raytrace or per-tick collision query. Every interaction runs on pure math-based grid and vector calculations instead, keeping it highly optimised enough to simulate 200+ objects at under 3ms on the game thread.\n\nEngineering Quality: built on solid OOP architecture with dedicated error handling and debugging strategies for long-term maintainability, developed end-to-end following Agile practices, from first prototype through iterative polish.',
     gitUrl: 'https://gitlab.com/prasanth1608/wind-field'
@@ -543,12 +555,12 @@ const RAW_TOOLS = [
 ];
 
 const MILESTONES = [
-  { year: '2021', tag: 'THE BEGINNING', accent: '#6EE7C8', text: 'While studying for a Bachelor\'s in I.T., a sudden idea struck: make games, not just play them. Explored game dev routes, engines and starting steps, understood the basics of game development, and built my first ever game in Unity using C#.' },
-  { year: '2022', tag: 'FIRST JOB', accent: '#FFC857', text: 'Followed by my first game, I became more enthusiastic about building further prototypes and games to learn game dev concepts, built a portfolio within 6 months of learning, and landed my first job as a Unity developer, choosing among 3 offers from studios.' },
-  { year: '2023', tag: 'TURNING POINT', accent: '#FF6F91', text: "This was my career's next turning point, the time I explored Unreal Engine and was impressed by its quality and capabilities. I started to learn Unreal and C++, and landed an Unreal developer role at a studio." },
-  { year: '2024', tag: 'EDUCATION', accent: '#B98BFF', text: 'This was an education-focused period in my career. I started exploring game dev opportunities internationally, chose a UK university for a Master\'s in Game Programming, and started my course in September 2024.' },
-  { year: '2025', tag: 'SPECIALIZED', accent: '#00E5CC', text: 'I\'ve been learning core Unreal, programming principles, and building games, tools and projects, both personally and academically. I successfully finished my Master\'s in Game Programming and started seeking industry opportunities.' },
-  { year: '2026', tag: 'NOW', accent: '#FF8A5B', text: 'I am constantly learning new features in Unreal Engine, strengthening my programming principles, and actively building my portfolio to stay up to date.' }
+  { year: '2021', tag: 'THE BEGINNING', accent: PALETTE.teal, text: 'While studying for a Bachelor\'s in I.T., a sudden idea struck: make games, not just play them. Explored game dev routes, engines and starting steps, understood the basics of game development, and built my first ever game in Unity using C#.' },
+  { year: '2022', tag: 'FIRST JOB', accent: PALETTE.amber, text: 'Followed by my first game, I became more enthusiastic about building further prototypes and games to learn game dev concepts, built a portfolio within 6 months of learning, and landed my first job as a Unity developer, choosing among 3 offers from studios.' },
+  { year: '2023', tag: 'TURNING POINT', accent: PALETTE.rose, text: "This was my career's next turning point, the time I explored Unreal Engine and was impressed by its quality and capabilities. I started to learn Unreal and C++, and landed an Unreal developer role at a studio." },
+  { year: '2024', tag: 'EDUCATION', accent: PALETTE.violet, text: 'This was an education-focused period in my career. I started exploring game dev opportunities internationally, chose a UK university for a Master\'s in Game Programming, and started my course in September 2024.' },
+  { year: '2025', tag: 'SPECIALIZED', accent: PALETTE.blue, text: 'I\'ve been learning core Unreal, programming principles, and building games, tools and projects, both personally and academically. I successfully finished my Master\'s in Game Programming and started seeking industry opportunities.' },
+  { year: '2026', tag: 'NOW', accent: PALETTE.orange, text: 'I am constantly learning new features in Unreal Engine, strengthening my programming principles, and actively building my portfolio to stay up to date.' }
 ];
 
 function hexToRgba(hex, alpha) {
@@ -571,9 +583,12 @@ function textAccent(hex) {
 }
 function onColor(hex) {
   const h = hex.replace('#', '');
-  const r = parseInt(h.substring(0, 2), 16), g = parseInt(h.substring(2, 4), 16), b = parseInt(h.substring(4, 6), 16);
-  const yiq = (r * 299 + g * 587 + b * 114) / 1000;
-  return yiq >= 150 ? '#14161A' : '#FFFFFF';
+  const r = parseInt(h.substring(0, 2), 16) / 255, g = parseInt(h.substring(2, 4), 16) / 255, b = parseInt(h.substring(4, 6), 16) / 255;
+  const lin = (c) => c <= 0.03928 ? c / 12.92 : Math.pow((c + 0.055) / 1.055, 2.4);
+  const L = 0.2126 * lin(r) + 0.7152 * lin(g) + 0.0722 * lin(b);
+  const contrastWhite = 1.05 / (L + 0.05);
+  const contrastDark = (L + 0.05) / 0.0573;
+  return contrastWhite >= contrastDark ? '#FFFFFF' : '#14161A';
 }
 function hexToHsl(hex) {
   const h = hex.replace('#', '');
@@ -600,11 +615,10 @@ function hslToHex(h, s, l) {
   const toHex = (v) => Math.round((v + m) * 255).toString(16).padStart(2, '0');
   return `#${toHex(r)}${toHex(g)}${toHex(b)}`.toUpperCase();
 }
-function duoGradient(accent, deg) {
-  const [h, s, l] = hexToHsl(accent);
-  const second = hslToHex(h + deg, Math.min(1, s * 1.05), Math.min(0.72, l + 0.08));
-  const first = hslToHex(h, Math.min(1, s * 1.05), Math.max(0.46, l - 0.04));
-  return { bg: `linear-gradient(135deg, ${first} 0%, ${second} 100%)`, onCard: onColor(first) };
+// Solid fill for a card: the accent itself (already a moderate, non-neon palette colour),
+// with a readable text colour picked for it. No gradients, no random hues.
+function duoGradient(accent) {
+  return { bg: accent, onCard: onColor(accent) };
 }
 function hexToRgbObj(hex) {
   const h = hex.replace('#', '');
@@ -771,8 +785,8 @@ class Component extends DCLogic {
   renderVals() {
     const tabStyle = (active, color, inactiveBorder, onCard) => ({
       fontFamily: "'JetBrains Mono', monospace", fontSize: '11px', letterSpacing: '0.15em', padding: '10px 18px', cursor: 'var(--cur-hover)',
-      color: active ? '#001018' : (onCard === '#FFFFFF' ? 'rgba(255,255,255,0.75)' : 'rgba(20,22,26,0.6)'), background: active ? color : 'transparent',
-      border: `1px solid ${active ? color : inactiveBorder}`, borderBottom: 'none'
+      color: active ? '#001018' : (onCard === '#FFFFFF' ? '#FFFFFF' : '#14161A'),
+      background: active ? color : (onCard === '#FFFFFF' ? 'rgba(255,255,255,0.18)' : 'rgba(255,255,255,0.55)')
     });
 
     const navOrder = ['home', 'expertise', 'games', 'prototypes', 'professional', 'tools', 'journey'];
@@ -783,7 +797,7 @@ class Component extends DCLogic {
 
     const categories = RAW_CATEGORIES.map((c, i) => {
       const isLast = i === RAW_CATEGORIES.length - 1;
-      const accent = isLast ? '#9AA5AC' : EXP_ACCENTS[i % EXP_ACCENTS.length];
+      const accent = isLast ? PALETTE.slate : EXP_ACCENTS[i % EXP_ACCENTS.length];
       const grad = duoGradient(accent, 34);
       return {
         ...c, index: String(i + 1).padStart(2, '0'), accent,
@@ -924,7 +938,7 @@ class Component extends DCLogic {
         ...m, showRunner: active, textAccent: textAccent(m.accent), onCard: cardGrad.onCard,
         setMilestoneRef: (el) => { this.milestoneEls[i] = el; },
         rowStyle: { position: 'relative', display: 'flex', justifyContent: left ? 'flex-start' : 'flex-end', padding: '50px 0', minHeight: '160px' },
-        cardStyle: { position: 'relative', width: 'calc(50% - 40px)', border: `2px solid ${m.accent}88`, background: cardGrad.bg, padding: '22px 24px', boxSizing: 'border-box', overflow: 'visible' },
+        cardStyle: { position: 'relative', width: 'calc(50% - 40px)', background: cardGrad.bg, padding: '22px 24px', boxSizing: 'border-box', overflow: 'visible' },
         runnerStyle: { position: 'absolute', top: 0, left: '50%', transform: 'translate(-50%, -60%)', zIndex: 5, pointerEvents: 'none', animation: 'ap-teleport-in 0.5s cubic-bezier(0.2, 0.9, 0.3, 1) both' },
         dotStyle: { position: 'absolute', top: '58px', left: '50%', transform: 'translateX(-50%)', width: '14px', height: '14px', borderRadius: '50%', background: m.accent, boxShadow: `0 0 14px ${m.accent}` }
       };
