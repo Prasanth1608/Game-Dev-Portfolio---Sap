@@ -107,7 +107,7 @@
     <div style="position: relative; z-index: 2; max-width: 1500px; width: 100%; margin: 0 auto; padding: 24px 40px 0 40px; box-sizing: border-box">
       <div class="rt-grid3" style="display: grid; grid-template-columns: repeat(3, 1fr); grid-template-rows: repeat(2, minmax(0, 1fr)); gap: 22px; margin-top: 28px">
         <sc-for list="{{ categories }}" as="cat" hint-placeholder-count="6">
-          <div class="exp-card" onMouseEnter="{{ cat.onEnter }}" style="background: {{ cat.cardBg }}; border: 2px solid {{ cat.borderAccent }}; padding: 14px 22px; border-radius: 2px; box-sizing: border-box; display: flex; flex-direction: column; justify-content: flex-start; overflow: hidden; min-height: 0; min-width: 0">
+          <div class="exp-card" onMouseEnter="{{ cat.onEnter }}" style="background: {{ cat.cardBg }}; border: 10px solid {{ cat.borderAccent }}; padding: 14px 22px; border-radius: 2px; box-sizing: border-box; display: flex; flex-direction: column; justify-content: flex-start; overflow: hidden; min-height: 0; min-width: 0">
             <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 6px; flex-shrink: 0">
               <div style="font-family: 'JetBrains Mono', monospace; font-weight: 700; font-size: 12px; letter-spacing: 0.1em; color: {{ cat.onAccent }}; background: {{ cat.accent }}; padding: 3px 8px; border-radius: 3px; flex: none">{{ cat.index }}</div>
               <div style="font-family: 'Bebas Neue', sans-serif; font-size: 21px; letter-spacing: 0.03em; color: {{ cat.onCard }}">{{ cat.title }}</div>
@@ -186,7 +186,7 @@
 
     <div style="position: relative; z-index: 2; display: flex; flex-direction: column; gap: 40px; padding: 40px 40px 0 40px; max-width: 1240px; margin: 0 auto">
       <sc-for list="{{ projects }}" as="project" hint-placeholder-count="3">
-        <div ref="{{ project.setCardRef }}" style="background: {{ project.cardBg }}; border: 2px solid {{ project.borderAccent }}; border-radius: 2px">
+        <div ref="{{ project.setCardRef }}" style="background: {{ project.cardBg }}; border: 10px solid {{ project.borderAccent }}; border-radius: 2px">
           <div style="height: 380px; background: {{ project.bannerBg }}; display: flex; align-items: center; justify-content: center; border-bottom: 1px solid {{ project.borderMid }}; position: relative">
             <sc-if value="{{ project.noBanner }}" hint-placeholder-val="{{ false }}">
               <div style="font-family: 'JetBrains Mono', monospace; font-size: 12px; letter-spacing: 0.2em; color: #FFFFFF">PROJECT_STILL / KEY ART</div>
@@ -250,7 +250,7 @@
 
     <div style="position: relative; z-index: 2; display: flex; flex-direction: column; gap: 40px; padding: 40px 40px 0 40px; max-width: 1240px; margin: 0 auto">
       <sc-for list="{{ prototypes }}" as="project" hint-placeholder-count="1">
-        <div ref="{{ project.setCardRef }}" style="background: {{ project.cardBg }}; border: 2px solid {{ project.borderAccent }}; border-radius: 2px">
+        <div ref="{{ project.setCardRef }}" style="background: {{ project.cardBg }}; border: 10px solid {{ project.borderAccent }}; border-radius: 2px">
           <div style="height: 380px; background: {{ project.bannerBg }}; display: flex; align-items: center; justify-content: center; border-bottom: 1px solid {{ project.borderMid }}; position: relative">
             <sc-if value="{{ project.noBanner }}" hint-placeholder-val="{{ false }}">
               <div style="font-family: 'JetBrains Mono', monospace; font-size: 12px; letter-spacing: 0.2em; color: #FFFFFF">PROTOTYPE_STILL / KEY ART</div>
@@ -310,7 +310,7 @@
 
     <div class="rt-role-grid" style="position: relative; z-index: 2; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 32px; padding: 40px 40px 0 40px; max-width: 1240px; margin: 0 auto; box-sizing: border-box">
       <sc-for list="{{ roles }}" as="role" hint-placeholder-count="4">
-        <div ref="{{ role.setCardRef }}" style="display: flex; flex-direction: column; min-width: 0; background: {{ role.cardBg }}; border: 2px solid {{ role.borderAccent }}; border-radius: 2px; overflow: hidden">
+        <div ref="{{ role.setCardRef }}" style="display: flex; flex-direction: column; min-width: 0; background: {{ role.cardBg }}; border: 10px solid {{ role.borderAccent }}; border-radius: 2px; overflow: hidden">
 
           <!-- media: still image (or accent panel) that swaps to the walkthrough video on click -->
           <div style="position: relative; aspect-ratio: 16 / 9; background: {{ role.bannerBg }}; border-bottom: 1px solid {{ role.borderMid }}">
@@ -360,7 +360,7 @@
 
     <div style="position: relative; z-index: 2; display: flex; flex-direction: column; gap: 40px; padding: 40px 40px 0 40px; max-width: 1240px; margin: 0 auto">
       <sc-for list="{{ tools }}" as="project" hint-placeholder-count="1">
-        <div ref="{{ project.setCardRef }}" style="background: {{ project.cardBg }}; border: 2px solid {{ project.borderAccent }}; border-radius: 2px">
+        <div ref="{{ project.setCardRef }}" style="background: {{ project.cardBg }}; border: 10px solid {{ project.borderAccent }}; border-radius: 2px">
           <div style="height: 380px; background: {{ project.bannerBg }}; display: flex; align-items: center; justify-content: center; border-bottom: 1px solid {{ project.borderMid }}; position: relative">
             <sc-if value="{{ project.noBanner }}" hint-placeholder-val="{{ false }}">
               <div style="font-family: 'JetBrains Mono', monospace; font-size: 12px; letter-spacing: 0.2em; color: #FFFFFF">TOOL_STILL / KEY ART</div>
@@ -936,7 +936,7 @@ class Component extends DCLogic {
         ...m, showRunner: active, textAccent: textAccent(m.accent), onCard: '#14161A',
         setMilestoneRef: (el) => { this.milestoneEls[i] = el; },
         rowStyle: { position: 'relative', display: 'flex', justifyContent: left ? 'flex-start' : 'flex-end', padding: '50px 0', minHeight: '160px' },
-        cardStyle: { position: 'relative', width: 'calc(50% - 40px)', background: '#FFFFFF', border: `2px solid ${vividize(m.accent)}`, padding: '22px 24px', boxSizing: 'border-box', overflow: 'visible' },
+        cardStyle: { position: 'relative', width: 'calc(50% - 40px)', background: '#FFFFFF', border: `10px solid ${vividize(m.accent)}`, padding: '22px 24px', boxSizing: 'border-box', overflow: 'visible' },
         runnerStyle: { position: 'absolute', top: 0, left: '50%', transform: 'translate(-50%, -60%)', zIndex: 5, pointerEvents: 'none', animation: 'ap-teleport-in 0.5s cubic-bezier(0.2, 0.9, 0.3, 1) both' },
         dotStyle: { position: 'absolute', top: '58px', left: '50%', transform: 'translateX(-50%)', width: '14px', height: '14px', borderRadius: '50%', background: m.accent, boxShadow: `0 0 14px ${m.accent}` }
       };
