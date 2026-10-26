@@ -94,7 +94,7 @@
             </sc-if>
 
             <sc-if value="{{ section.hasImages }}" hint-placeholder-val="{{ false }}">
-              <div style="width: 100vw; max-width: 1600px; position: relative; left: 50%; transform: translateX(-50%); padding: 0 20px; box-sizing: border-box">
+              <div>
                 <div style="border: 1px solid rgba(20,22,26,0.14); border-radius: 4px; overflow: hidden">
                   <sc-for list="{{ section.images }}" as="img" hint-placeholder-count="3">
                     <img src="{{ img }}" alt="{{ section.heading }}" onError="this.style.display='none'" loading="lazy" style="width: 100%; display: block">
