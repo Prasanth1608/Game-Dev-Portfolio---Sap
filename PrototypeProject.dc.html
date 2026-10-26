@@ -256,7 +256,7 @@ const RAW_PROTOTYPES = [
           {
             heading: 'CLEAN CODE ARCHITECTURE',
             body: "Every class has exactly one architectural role, and the engine's own construct for that role is never borrowed for something else: Actors own world presence and behavior (stations, slots, items), Components own reusable, composable logic shared across actors (UInventory, UTimer, UStackPointComponent), Data Assets own static configuration (items, stations, slots, recipes), GameMode owns match rules (daily recipes, round timing), GameState owns shared state (the centralized inventory), PlayerState owns per-player state (money), and interfaces (IInteractable) own the contracts shared across otherwise-unrelated classes. Keeping each concern in its proper layer means a change to one (a new station type, a new recipe rule) stays isolated to that layer instead of rippling through the rest of the codebase.",
-            media: ['assets/prototypes/restaurant-tycoon/clean-architecture-1.png']
+            media: ['assets/prototypes/restaurant-tycoon/clean-architecture-1.png', 'assets/prototypes/restaurant-tycoon/clean-architecture-2.png']
           },
           {
             heading: 'DECOUPLED LISTENERS FOR UI, SFX & VFX',
