@@ -65,7 +65,12 @@
     <div style="position: relative; z-index: 2; max-width: 1400px; margin: 0 auto; padding: 0 40px; box-sizing: border-box">
 
       <!-- big preview, wide banner -->
-      <div style="width: 100vw; position: relative; left: 50%; margin-left: -50vw; height: min(52vh, 40vw); border-bottom: 1px solid {{ project.borderMid }}; background: {{ project.bannerBg }}; display: flex; align-items: center; justify-content: center; box-sizing: border-box">
+      <div style="width: 100vw; position: relative; left: 50%; margin-left: -50vw; height: min(52vh, 40vw); border-bottom: 1px solid {{ project.borderMid }}; background: {{ project.bannerBg }}; display: flex; align-items: center; justify-content: center; box-sizing: border-box; overflow: hidden">
+        <sc-if value="{{ project.bannerVideoId }}" hint-placeholder-val="{{ false }}">
+          <div style="position: absolute; inset: 0; overflow: hidden; pointer-events: none">
+            <iframe src="{{ project.bannerVideoSrc }}" title="Trailer" width="1920" height="1080" style="position: absolute; top: 50%; left: 50%; width: 177.78vh; min-width: 100%; height: 100vh; min-height: 56.25vw; transform: translate(-50%, -50%); border: 0" allow="autoplay; encrypted-media" allowfullscreen="true"></iframe>
+          </div>
+        </sc-if>
         <sc-if value="{{ project.noBanner }}" hint-placeholder-val="{{ false }}">
           <div style="font-family: 'JetBrains Mono', monospace; font-size: 12px; letter-spacing: 0.2em; color: #FFFFFF">PROJECT_STILL / KEY ART</div>
         </sc-if>
@@ -233,6 +238,7 @@ const RAW_PROJECTS = [
     tags: 'UNREAL ENGINE 5 · C++ · SHOOTER',
     accent: '#1C6FC2',
     banner: 'assets/games/cluckmare/banner.jpg',
+    bannerVideoId: 'AKqoDcYymbk',
     itchUrl: 'https://prasanth1608.itch.io/cluckmare',
     ctaText: 'Excited to play Cluckmare?',
     overview: 'A first-person shooter where you fight your way through a nightmare chicken factory. Built solo as the sole programmer on a 5-person team, driving character movement, dual weapon types, combat/damage resolution, and AI enemies that chase, attack, and visibly grow with every hit. Hacking terminals gate checkpoint progress, escalating from a tutorial encounter to a 25-enemy final wave.',
@@ -335,7 +341,8 @@ class Component extends DCLogic {
       ...p,
       index,
       bannerBg: p.banner ? `center / cover no-repeat url(${p.banner}), linear-gradient(160deg, #0C1418, #050809)` : `linear-gradient(160deg, #0C1418, #050809)`,
-      noBanner: !p.banner,
+      bannerVideoSrc: p.bannerVideoId ? `https://www.youtube.com/embed/${p.bannerVideoId}?autoplay=1&mute=1&loop=1&controls=0&showinfo=0&modestbranding=1&rel=0&playsinline=1&iv_load_policy=3&disablekb=1&fs=0&playlist=${p.bannerVideoId}` : '',
+      noBanner: !p.banner && !p.bannerVideoId,
       borderMid: hexToRgba(p.accent, 0.35),
       borderLight: hexToRgba(p.accent, 0.25),
       textAccent: mixWithDark(p.accent, 0.5, [10, 10, 14]),
