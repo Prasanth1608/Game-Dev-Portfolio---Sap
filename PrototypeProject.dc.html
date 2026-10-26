@@ -130,6 +130,16 @@
           </div>
         </sc-for>
       </div>
+
+      <!-- ===== repo link ===== -->
+      <sc-if value="{{ project.gitUrl }}" hint-placeholder-val="{{ false }}">
+        <div class="rt-pad" style="max-width: 1160px; margin: 0 auto; padding: 36px 40px 20px 40px; border-top: 1px solid rgba(20,22,26,0.12); text-align: center; box-sizing: border-box">
+          <a href="{{ project.gitUrl }}" target="_blank" rel="noopener" style="display: inline-flex; align-items: center; gap: 10px; font-family: 'JetBrains Mono', monospace; font-size: 13px; letter-spacing: 0.1em; color: #14161A">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="6" cy="5" r="2.4"></circle><circle cx="6" cy="19" r="2.4"></circle><circle cx="18" cy="9" r="2.4"></circle><path d="M6 7.4v9.2M18 11.4c0 3-3 4-7 4"></path></svg>
+            LINK TO CODE REPOSITORY
+          </a>
+        </div>
+      </sc-if>
     </div>
   </sc-if>
 
@@ -146,6 +156,7 @@ const RAW_PROTOTYPES = [
   {
     title: 'COLLECTIONS', tags: 'UNREAL ENGINE 5 · C++ · GAMEPLAY SYSTEMS', accent: '#6EE7C8',
     banner: 'assets/prototypes/collections/banner.png',
+    gitUrl: 'https://gitlab.com/prasanth1608/Collections',
     sections: [
       {
         heading: 'PROTOTYPE FEATURES',

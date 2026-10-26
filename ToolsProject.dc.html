@@ -87,6 +87,30 @@
     </div>
 
     <div style="position: relative; z-index: 2; max-width: 1080px; margin: 0 auto; padding: 0 40px; box-sizing: border-box">
+
+      <!-- ===== generic sections (used by tools without the full WindField-style layout) ===== -->
+      <sc-if value="{{ project.hasSections }}" hint-placeholder-val="{{ false }}">
+        <sc-for list="{{ project.sections }}" as="section" hint-placeholder-count="4">
+          <div style="margin-top: 64px">
+            <div style="font-family: 'Bebas Neue', sans-serif; font-size: 32px; letter-spacing: 0.03em; text-align: center">{{ section.heading }}</div>
+            <sc-if value="{{ section.intro }}" hint-placeholder-val="{{ false }}">
+              <div style="font-family: 'Inter', sans-serif; font-size: 16px; line-height: 1.8; color: #14161A; max-width: 760px; margin: 18px auto 0 auto; white-space: pre-line">{{ section.intro }}</div>
+            </sc-if>
+            <sc-if value="{{ section.hasBullets }}" hint-placeholder-val="{{ false }}">
+              <div style="display: flex; flex-direction: column; gap: 14px; max-width: 760px; margin: 22px auto 0 auto">
+                <sc-for list="{{ section.bullets }}" as="bullet" hint-placeholder-count="3">
+                  <div style="display: flex; align-items: flex-start; gap: 14px; background: #FFFFFF; border-top: 3px solid {{ project.accent }}; border-radius: 3px; padding: 16px 20px; font-family: 'Inter', sans-serif; font-size: 15px; line-height: 1.6; color: #14161A">
+                    <span>{{ bullet }}</span>
+                  </div>
+                </sc-for>
+              </div>
+            </sc-if>
+          </div>
+        </sc-for>
+      </sc-if>
+
+      <!-- ===== WindField-style layout (overview triad, comparison, customization, performance, steps, architecture) ===== -->
+      <sc-if value="{{ project.hasLegacyLayout }}" hint-placeholder-val="{{ true }}">
       <!-- ===== OVERVIEW ===== -->
       <div style="margin-top: 64px">
         <div style="font-family: 'JetBrains Mono', monospace; font-size: 12px; letter-spacing: 0.35em; color: #14161A; text-align: center">01. OVERVIEW</div>
@@ -274,13 +298,27 @@
       </div>
 
       <!-- ===== FAB CTA ===== -->
-      <div style="margin-top: 84px; padding-top: 40px; border-top: 1px solid rgba(20,22,26,0.12); text-align: center">
-        <div style="font-family: 'Bebas Neue', sans-serif; font-size: 34px; letter-spacing: 0.03em; color: #14161A; margin-bottom: 24px">BUY THE PLUGIN ON FAB</div>
-        <a href="https://www.fab.com/listings/e5496656-6142-490f-8578-316b3eb8cca4" target="_blank" rel="noopener" style="display: inline-flex; align-items: center; gap: 10px; font-family: 'Bebas Neue', sans-serif; font-size: 18px; letter-spacing: 0.12em; color: #FFFFFF; background: #14161A; padding: 12px 28px">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="1.8"><path d="M12 2 L21 7 L21 17 L12 22 L3 17 L3 7 Z"></path><path d="M12 2 L12 22 M3 7 L12 12 L21 7 M3 17 L12 12 M21 17 L12 12"></path></svg>
-          BUY ON FAB
-        </a>
-      </div>
+      <sc-if value="{{ project.fabUrl }}" hint-placeholder-val="{{ false }}">
+        <div style="margin-top: 84px; padding-top: 40px; border-top: 1px solid rgba(20,22,26,0.12); text-align: center">
+          <div style="font-family: 'Bebas Neue', sans-serif; font-size: 34px; letter-spacing: 0.03em; color: #14161A; margin-bottom: 24px">BUY THE PLUGIN ON FAB</div>
+          <a href="{{ project.fabUrl }}" target="_blank" rel="noopener" style="display: inline-flex; align-items: center; gap: 10px; font-family: 'Bebas Neue', sans-serif; font-size: 18px; letter-spacing: 0.12em; color: #FFFFFF; background: #14161A; padding: 12px 28px">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="1.8"><path d="M12 2 L21 7 L21 17 L12 22 L3 17 L3 7 Z"></path><path d="M12 2 L12 22 M3 7 L12 12 L21 7 M3 17 L12 12 M21 17 L12 12"></path></svg>
+            BUY ON FAB
+          </a>
+        </div>
+      </sc-if>
+
+      </sc-if>
+
+      <!-- ===== repo link ===== -->
+      <sc-if value="{{ project.gitUrl }}" hint-placeholder-val="{{ false }}">
+        <div style="margin-top: 60px; padding-top: 36px; border-top: 1px solid rgba(20,22,26,0.12); text-align: center">
+          <a href="{{ project.gitUrl }}" target="_blank" rel="noopener" style="display: inline-flex; align-items: center; gap: 10px; font-family: 'JetBrains Mono', monospace; font-size: 13px; letter-spacing: 0.1em; color: #14161A">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="6" cy="5" r="2.4"></circle><circle cx="6" cy="19" r="2.4"></circle><circle cx="18" cy="9" r="2.4"></circle><path d="M6 7.4v9.2M18 11.4c0 3-3 4-7 4"></path></svg>
+            LINK TO CODE REPOSITORY
+          </a>
+        </div>
+      </sc-if>
 
     </div>
   </sc-if>
@@ -400,6 +438,7 @@ const RAW_TOOLS = [
     tags: 'UNREAL ENGINE 5 · C++ · PLUGIN',
     accent: '#FF7A4D',
     gitUrl: 'https://gitlab.com/prasanth1608/wind-field',
+    fabUrl: 'https://www.fab.com/listings/e5496656-6142-490f-8578-316b3eb8cca4',
     banner: 'assets/plugins/windfield/hero.gif', bannerVideoId: 'SLXdYUJeqb4',
     tagline: 'A drag-and-drop, physically reactive wind plugin for Unreal Engine 5, built from procedural grid math and cached detection, not a single line trace.',
     overviewIntro: "WindField is an Unreal Engine 5 plugin that adds real-time, physically reactive wind to a scene in minutes, no Blueprint graphs or C++ required. Wind is generated procedurally and interacts directly with static meshes, breaking on obstacles instead of passing through them.",
@@ -455,6 +494,44 @@ const RAW_TOOLS = [
       'Objects under roughly 25kg (with mass overridden) respond noticeably; heavier objects increasingly resist, a smooth curve, not a hard cutoff'
     ],
     forceFormulaBody: "Applied natively, not simulated. Wind hands Unreal's physics engine a force vector and lets it do what it already does best, integrate it against real mass, real velocity, real collision state. No parallel physics model to keep in sync."
+  },
+  {
+    title: 'INTERACTIVE CODE ARCHITECTURE VIEWER',
+    eyebrow: 'DEV TOOLING',
+    tags: 'C++ · CLAUDE CODE · DEV TOOLING',
+    accent: '#CBB9EF',
+    bannerVideoId: 'hy9voWFubKI',
+    tagline: 'A browser-based reference tool that turns a growing Unreal Engine C++ codebase into class cards and traceable dependencies, built with Claude Code.',
+    sections: [
+      {
+        heading: 'WHY I BUILT IT',
+        intro: "While working on my cooking simulator in Unreal Engine 5.6, I realised that understanding the overall structure of a growing C++ codebase wasn't always straightforward. Unreal provides tools for browsing classes and asset references, but I wanted something that would help me visualise my C++ classes, understand their relationships, and navigate dependencies in one place."
+      },
+      {
+        heading: 'WHAT IT DOES',
+        bullets: [
+          'High-level architecture: organises classes into categories such as Actors and Components, making the overall class structure easier to understand.',
+          'Class reference viewer: parses my C++ headers and source files to generate class cards, properties, functions, and dependencies.',
+          'Interactive dependency tracing: select a class to highlight what it depends on and which other classes depend on it.'
+        ]
+      },
+      {
+        heading: 'HAS IT BEEN USEFUL?',
+        intro: "Absolutely. It's saving me a lot of time when debugging, revisiting, and refining my code architecture, and it's significantly cut down the time I used to spend manually drawing UML and architecture diagrams just to document my own code. Having these relationships visualised in one place makes it much easier to navigate the codebase and understand how different classes connect."
+      },
+      {
+        heading: 'IS AI ACCURATE?',
+        intro: "Not always on the first attempt, and that's where the process matters. I refined the tool through multiple prompts, reviewing the generated implementation, cross-checking the results against my actual C++ source code, and validating the output before polishing the final version. The experience reinforced that getting useful results from AI isn't just about writing a prompt, it's about iterating, questioning the output, and validating the implementation against the actual requirements."
+      },
+      {
+        heading: 'TAKEAWAYS',
+        bullets: [
+          'AI coding agents can help turn everyday development frustrations into practical tools.',
+          'Clear requirements, iterative prompting, and validation are essential to getting reliable results.',
+          'Automating repetitive documentation and code navigation tasks can free up more time for actual development.'
+        ]
+      }
+    ]
   }
 ];
 
@@ -485,7 +562,10 @@ class Component extends DCLogic {
       noBanner: !p.banner && !p.bannerVideoId,
       borderMid: hexToRgba(p.accent, 0.35),
       borderLight: hexToRgba(p.accent, 0.25),
-      deepDives: (p.deepDives || []).map((d) => ({ ...d, textColor: mixWithDark(d.color, 0.5, [10, 10, 14]) }))
+      deepDives: (p.deepDives || []).map((d) => ({ ...d, textColor: mixWithDark(d.color, 0.5, [10, 10, 14]) })),
+      hasSections: !!(p.sections && p.sections.length),
+      hasLegacyLayout: !!p.overviewTriad,
+      sections: (p.sections || []).map((s) => ({ ...s, hasBullets: !!(s.bullets && s.bullets.length) }))
     };
 
     const backdropBg = `#ECEBEA`;
