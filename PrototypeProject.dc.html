@@ -413,7 +413,7 @@ class Component extends DCLogic {
           const mediaList = Array.isArray(g.media) ? g.media : [];
           const mediaSlots = [0, 1].map((i) => mediaList[i] ? { src: mediaList[i], isPlaceholder: false } : { src: '', isPlaceholder: true });
           const cardStyle = g.wide
-            ? { background: '#FFFFFF', borderTop: `28px solid ${vividize(accent)}`, padding: '26px 32px', borderRadius: '2px', width: '100vw', maxWidth: '1600px', position: 'relative', left: '50%', transform: 'translateX(-50%)', boxSizing: 'border-box' }
+            ? { background: '#FFFFFF', borderTop: `28px solid ${vividize(accent)}`, padding: '20px 26px', borderRadius: '2px', width: '94vw', maxWidth: '800px', position: 'relative', left: '50%', transform: 'translateX(-50%)', boxSizing: 'border-box' }
             : { background: '#FFFFFF', borderTop: `28px solid ${vividize(accent)}`, padding: '18px 22px', borderRadius: '2px' };
           return { ...g, hasPoints: !!(g.points && g.points.length), hasMedia: !!g.media, mediaSlots, accent, fillBg: '#FFFFFF', onCard: '#14161A', borderAccent: vividize(accent), cardStyle };
         })
