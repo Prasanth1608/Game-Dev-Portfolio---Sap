@@ -264,37 +264,44 @@ const RAW_PROTOTYPES = [
           {
             heading: 'INFERRED RECIPE COOKING',
             body: "A cooking slot infers what's being made purely from the sequence of ingredients placed — each placement narrows a list of candidate recipes to whichever still match, and once only one remains and its final step completes, the dish assembles automatically.\n\nA cooking slot only ever accepts ingredients that belong to one of GameMode's currently available recipes — anything else is ignored outright, whether or not a recipe is already in progress on that slot.",
-            media: ['assets/prototypes/restaurant-tycoon/inferred-cooking-1.png', 'assets/prototypes/restaurant-tycoon/inferred-cooking-2.png']
+            media: ['assets/prototypes/restaurant-tycoon/inferred-cooking-1.png', 'assets/prototypes/restaurant-tycoon/inferred-cooking-2.png'],
+            wide: true
           },
           {
             heading: 'CLEAN CODE ARCHITECTURE',
             body: "Every class has exactly one architectural role, and the engine's own construct for that role is never borrowed for something else: Actors own world presence and behavior (stations, slots, items), Components own reusable, composable logic shared across actors (UInventory, UTimer, UStackPointComponent), Data Assets own static configuration (items, stations, slots, recipes), GameMode owns match rules (daily recipes, round timing), GameState owns shared state (the centralized inventory), PlayerState owns per-player state (money), and interfaces (IInteractable) own the contracts shared across otherwise-unrelated classes. Keeping each concern in its proper layer means a change to one (a new station type, a new recipe rule) stays isolated to that layer instead of rippling through the rest of the codebase.",
-            media: ['assets/prototypes/restaurant-tycoon/clean-architecture-1.png', 'assets/prototypes/restaurant-tycoon/clean-architecture-2.png']
+            media: ['assets/prototypes/restaurant-tycoon/clean-architecture-1.png', 'assets/prototypes/restaurant-tycoon/clean-architecture-2.png'],
+            wide: true
           },
           {
             heading: 'DECOUPLED LISTENERS FOR UI, SFX & VFX',
             body: "Gameplay classes broadcast delegates (OnTimerCompleted, OnStationInteracted, OnTimerUpdated, and others) without ever holding a reference to whoever's listening — UI, SFX, VFX, or any Blueprint-side logic binds in wherever it's actually needed. A class never needs to know who's listening, or how many listeners there are, so new presentation or feedback can be wired up without touching the underlying gameplay logic at all.",
-            media: ['assets/prototypes/restaurant-tycoon/decoupled-listeners-1.png']
+            media: ['assets/prototypes/restaurant-tycoon/decoupled-listeners-1.png'],
+            wide: true
           },
           {
             heading: 'REUSABLE STACKPOINT FRAMEWORK',
             body: 'One UStackPointComponent (snap-to-point placement with configurable capacity) is reused, unmodified, across six different contexts: a plate station’s stack, a washing station’s wash point, a table’s placement spots, a trash bin’s discard point, a cooking slot’s ingredient point, and a plate’s own food point — composition over duplicated per-station logic.',
-            media: ['assets/prototypes/restaurant-tycoon/stackpoint-1.png', 'assets/prototypes/restaurant-tycoon/stackpoint-2.png']
+            media: ['assets/prototypes/restaurant-tycoon/stackpoint-1.png', 'assets/prototypes/restaurant-tycoon/stackpoint-2.png'],
+            wide: true
           },
           {
             heading: 'REUSABLE INTERACTION INTERFACE',
             body: 'Every interactable actor — stations, slots, world items, tables — implements one interface, IInteractable::Interact(), with over 15 separate implementations today, each overriding it with exactly the logic its own actor needs, from starting a cook timer to handing an item back to the player. Scalable and reusable stays the core principle throughout: new station and slot types grow out of a shared base by overriding its logic rather than rewriting it.',
-            media: ['assets/prototypes/restaurant-tycoon/interaction-interface-1.png', 'assets/prototypes/restaurant-tycoon/interaction-interface-2.png']
+            media: ['assets/prototypes/restaurant-tycoon/interaction-interface-1.png', 'assets/prototypes/restaurant-tycoon/interaction-interface-2.png'],
+            wide: true
           },
           {
             heading: 'CENTRALIZED STATION & SLOT',
             body: 'One AStationBase is the single shared implementation every station type extends from — the default interaction, timer, and widget-facing logic stays identical across all of them, with only the station-specific behavior layered on top in each subclass. ASlotsBase follows the same pattern: it gives every slot access to a stack point, where items get placed to drive either cooking or plate-cleaning, and each slot type extends that shared base only as far as its own logic actually needs to diverge.',
-            media: ['assets/prototypes/restaurant-tycoon/station-centralized-1.png', 'assets/prototypes/restaurant-tycoon/station-centralized-2.png']
+            media: ['assets/prototypes/restaurant-tycoon/station-centralized-1.png', 'assets/prototypes/restaurant-tycoon/station-centralized-2.png'],
+            wide: true
           },
           {
             heading: 'CENTRALISED INVENTORY',
             body: 'One UInventory component holds the core inventory logic — AddItem, RemoveItem, PickItem, DropItem — and gets reused across every storage-type station (shelf, fridge) rather than reimplemented per class. At game start, each shelf or fridge pulls its own share out of one central inventory, filtered by storage location, so stock configuration lives in one place instead of being duplicated per station.',
-            media: ['assets/prototypes/restaurant-tycoon/centralized-inventory-1.png', 'assets/prototypes/restaurant-tycoon/centralized-inventory-2.png']
+            media: ['assets/prototypes/restaurant-tycoon/centralized-inventory-1.png', 'assets/prototypes/restaurant-tycoon/centralized-inventory-2.png'],
+            wide: true
           }
         ]
       },
