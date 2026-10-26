@@ -261,7 +261,7 @@ const RAW_PROTOTYPES = [
           {
             heading: 'DECOUPLED LISTENERS FOR UI, SFX & VFX',
             body: "Gameplay classes broadcast delegates (OnTimerCompleted, OnStationInteracted, OnTimerUpdated, and others) without ever holding a reference to whoever's listening — UI, SFX, VFX, or any Blueprint-side logic binds in wherever it's actually needed. A class never needs to know who's listening, or how many listeners there are, so new presentation or feedback can be wired up without touching the underlying gameplay logic at all.",
-            media: true
+            media: ['assets/prototypes/restaurant-tycoon/decoupled-listeners-1.png', 'assets/prototypes/restaurant-tycoon/decoupled-listeners-2.png']
           },
           {
             heading: 'REUSABLE STACKPOINT FRAMEWORK',
