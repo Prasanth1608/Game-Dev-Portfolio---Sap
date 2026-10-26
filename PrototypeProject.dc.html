@@ -270,7 +270,7 @@ const RAW_PROTOTYPES = [
           },
           {
             heading: 'REUSABLE INTERACTION INTERFACE',
-            body: 'Every interactable actor — stations, slots, world items, tables — implements one interface, IInteractable::Interact(), with over 15 separate implementations today, each overriding it with exactly the logic its own actor needs, from starting a cook timer to handing an item back to the player. Scalable and reusable stays the core principle throughout: new station and slot types grow out of a shared base by overriding its logic rather than rewriting it, inventory logic lives in one centralised component reused across every storage station, and item, station, slot and recipe data live on Data Assets, so the game can be expanded or rebalanced without touching code.',
+            body: 'Every interactable actor — stations, slots, world items, tables — implements one interface, IInteractable::Interact(), with over 15 separate implementations today, each overriding it with exactly the logic its own actor needs, from starting a cook timer to handing an item back to the player. Scalable and reusable stays the core principle throughout: new station and slot types grow out of a shared base by overriding its logic rather than rewriting it.',
             media: true
           },
           {
