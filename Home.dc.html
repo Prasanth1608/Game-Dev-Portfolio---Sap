@@ -194,10 +194,10 @@
 
     <div style="position: relative; z-index: 2; text-align: center; padding: 60px 40px 0 40px; font-family: 'Bebas Neue', sans-serif; font-size: 34px; letter-spacing: 0.06em; color: #14161A">GAMES &amp; PROTOTYPES</div>
 
-    <div class="rt-role-grid" style="position: relative; z-index: 2; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 24px; padding: 24px 40px 0 40px; max-width: 1160px; margin: 0 auto; box-sizing: border-box">
+    <div class="rt-role-grid" style="position: relative; z-index: 2; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 28px; padding: 24px 40px 0 40px; max-width: 1320px; margin: 0 auto; box-sizing: border-box">
       <sc-for list="{{ works }}" as="project" hint-placeholder-count="3">
         <div ref="{{ project.setCardRef }}" style="min-width: 0; background: {{ project.cardBg }}; border-top: 16px solid {{ project.borderAccent }}; border-radius: 2px; overflow: hidden">
-          <div style="aspect-ratio: 16 / 6; background: {{ project.bannerBg }}; display: flex; align-items: center; justify-content: center; border-bottom: 1px solid {{ project.borderMid }}; position: relative">
+          <div style="aspect-ratio: 16 / 7; background: {{ project.bannerBg }}; display: flex; align-items: center; justify-content: center; border-bottom: 1px solid {{ project.borderMid }}; position: relative">
             <sc-if value="{{ project.noBanner }}" hint-placeholder-val="{{ false }}">
               <div style="font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.2em; color: #FFFFFF">PROJECT_STILL / KEY ART</div>
             </sc-if>
@@ -211,7 +211,7 @@
             </div>
             <div style="position: absolute; left: 16px; bottom: 10px; right: 16px; display: flex; justify-content: space-between; align-items: flex-end; gap: 12px">
               <div>
-                <div style="font-family: 'Bebas Neue', sans-serif; font-size: 27px; letter-spacing: 0.02em; color: #FFFFFF; line-height: 1; text-shadow: 0 2px 20px rgba(0,0,0,0.8)">{{ project.title }}</div>
+                <div style="font-family: 'Bebas Neue', sans-serif; font-size: 30px; letter-spacing: 0.02em; color: #FFFFFF; line-height: 1; text-shadow: 0 2px 20px rgba(0,0,0,0.8)">{{ project.title }}</div>
                 <div style="font-family: 'JetBrains Mono', monospace; font-size: 9.5px; letter-spacing: 0.1em; color: {{ project.accent }}; margin-top: 5px">{{ project.tags }}</div>
               </div>
               <sc-if value="{{ project.showDetailLinks }}" hint-placeholder-val="{{ true }}">
@@ -242,7 +242,7 @@
               <sc-if value="{{ project.isTrailer }}" hint-placeholder-val="{{ false }}">
                 <sc-if value="{{ project.trailerId }}" hint-placeholder-val="{{ false }}">
                   <div style="max-width: 100%; margin: 0 auto; aspect-ratio: 16/9; border: 1px solid {{ project.borderMid }}">
-                    <iframe src="{{ project.trailerEmbedSrc }}" title="Trailer" style="width: 100%; height: 100%; border: 0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen="true"></iframe>
+                    <iframe src="{{ project.trailerEmbedSrc }}" title="Trailer" width="1280" height="720" style="width: 100%; height: 100%; border: 0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen="true"></iframe>
                   </div>
                 </sc-if>
                 <sc-if value="{{ project.noTrailer }}" hint-placeholder-val="{{ true }}">
@@ -267,12 +267,12 @@
 
     <div style="position: relative; z-index: 2; text-align: center; padding: 60px 40px 0 40px; font-family: 'Bebas Neue', sans-serif; font-size: 34px; letter-spacing: 0.06em; color: #14161A">REAL-TIME 3D APPLICATIONS</div>
 
-    <div class="rt-role-grid" style="position: relative; z-index: 2; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 24px; padding: 24px 40px 0 40px; max-width: 1160px; margin: 0 auto; box-sizing: border-box">
+    <div class="rt-role-grid" style="position: relative; z-index: 2; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 28px; padding: 24px 40px 0 40px; max-width: 1320px; margin: 0 auto; box-sizing: border-box">
       <sc-for list="{{ roles }}" as="role" hint-placeholder-count="3">
         <div ref="{{ role.setCardRef }}" style="display: flex; flex-direction: column; min-width: 0; background: {{ role.cardBg }}; border-top: 16px solid {{ role.borderAccent }}; border-radius: 2px; overflow: hidden">
 
           <!-- media: still image (or accent panel) that swaps to the walkthrough video on click -->
-          <div style="position: relative; aspect-ratio: 16 / 6; background: {{ role.bannerBg }}; border-bottom: 1px solid {{ role.borderMid }}">
+          <div style="position: relative; aspect-ratio: 16 / 7; background: {{ role.bannerBg }}; border-bottom: 1px solid {{ role.borderMid }}">
             <sc-if value="{{ role.isPlaying }}" hint-placeholder-val="{{ false }}">
               <iframe src="{{ role.videoSrc }}" title="Walkthrough video" style="position: absolute; inset: 0; width: 100%; height: 100%; border: 0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen="true"></iframe>
             </sc-if>
@@ -288,7 +288,7 @@
           </div>
 
           <div style="display: flex; flex-direction: column; flex: 1; padding: 12px 14px 14px 14px">
-            <div style="font-family: 'Bebas Neue', sans-serif; font-size: 23px; letter-spacing: 0.02em; line-height: 1.05; color: {{ role.onCard }}; text-shadow: 0 1px 3px rgba(0,0,0,0.18)">{{ role.title }}</div>
+            <div style="font-family: 'Bebas Neue', sans-serif; font-size: 25px; letter-spacing: 0.02em; line-height: 1.05; color: {{ role.onCard }}; text-shadow: 0 1px 3px rgba(0,0,0,0.18)">{{ role.title }}</div>
             <div style="font-family: 'JetBrains Mono', monospace; font-size: 9.5px; letter-spacing: 0.1em; color: {{ role.onCard }}; margin: 6px 0 8px 0; opacity: 0.85">{{ role.tags }}</div>
             <div style="font-family: 'Inter', sans-serif; font-size: 12px; line-height: 1.55; color: {{ role.onCard }}">{{ role.summary }}</div>
 
@@ -317,10 +317,10 @@
 
     <div style="position: relative; z-index: 2; text-align: center; padding: 60px 40px 0 40px; font-family: 'Bebas Neue', sans-serif; font-size: 34px; letter-spacing: 0.06em; color: #14161A">TOOLS</div>
 
-    <div class="rt-role-grid" style="position: relative; z-index: 2; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 24px; padding: 24px 40px 0 40px; max-width: 1160px; margin: 0 auto; box-sizing: border-box">
+    <div class="rt-role-grid" style="position: relative; z-index: 2; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 28px; padding: 24px 40px 0 40px; max-width: 1320px; margin: 0 auto; box-sizing: border-box">
       <sc-for list="{{ tools }}" as="project" hint-placeholder-count="1">
         <div ref="{{ project.setCardRef }}" style="min-width: 0; background: {{ project.cardBg }}; border-top: 16px solid {{ project.borderAccent }}; border-radius: 2px; overflow: hidden">
-          <div style="aspect-ratio: 16 / 6; background: {{ project.bannerBg }}; display: flex; align-items: center; justify-content: center; border-bottom: 1px solid {{ project.borderMid }}; position: relative">
+          <div style="aspect-ratio: 16 / 7; background: {{ project.bannerBg }}; display: flex; align-items: center; justify-content: center; border-bottom: 1px solid {{ project.borderMid }}; position: relative">
             <sc-if value="{{ project.noBanner }}" hint-placeholder-val="{{ false }}">
               <div style="font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.2em; color: #FFFFFF">TOOL_STILL / KEY ART</div>
             </sc-if>
@@ -328,7 +328,7 @@
             <div style="position: absolute; top: 10px; left: 14px; font-family: 'Bebas Neue', sans-serif; font-size: 16px; letter-spacing: 0.1em; color: {{ project.accent }}; background: rgba(0,0,0,0.45); padding: 2px 8px; border-radius: 3px; display: inline-block">{{ project.index }}</div>
             <div style="position: absolute; left: 16px; bottom: 10px; right: 16px; display: flex; justify-content: space-between; align-items: flex-end; gap: 12px">
               <div>
-                <div style="font-family: 'Bebas Neue', sans-serif; font-size: 27px; letter-spacing: 0.02em; color: #FFFFFF; line-height: 1; text-shadow: 0 2px 20px rgba(0,0,0,0.8)">{{ project.title }}</div>
+                <div style="font-family: 'Bebas Neue', sans-serif; font-size: 30px; letter-spacing: 0.02em; color: #FFFFFF; line-height: 1; text-shadow: 0 2px 20px rgba(0,0,0,0.8)">{{ project.title }}</div>
                 <div style="font-family: 'JetBrains Mono', monospace; font-size: 9.5px; letter-spacing: 0.1em; color: {{ project.accent }}; margin-top: 5px">{{ project.tags }}</div>
               </div>
               <sc-if value="{{ project.showDetailLinks }}" hint-placeholder-val="{{ true }}">
@@ -359,7 +359,7 @@
               <sc-if value="{{ project.isTrailer }}" hint-placeholder-val="{{ false }}">
                 <sc-if value="{{ project.trailerId }}" hint-placeholder-val="{{ false }}">
                   <div style="max-width: 100%; margin: 0 auto; aspect-ratio: 16/9; border: 1px solid {{ project.borderMid }}">
-                    <iframe src="{{ project.trailerEmbedSrc }}" title="Trailer" style="width: 100%; height: 100%; border: 0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen="true"></iframe>
+                    <iframe src="{{ project.trailerEmbedSrc }}" title="Trailer" width="1280" height="720" style="width: 100%; height: 100%; border: 0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen="true"></iframe>
                   </div>
                 </sc-if>
                 <sc-if value="{{ project.noTrailer }}" hint-placeholder-val="{{ true }}">
