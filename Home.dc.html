@@ -59,7 +59,7 @@
   </template>
 </helmet>
 
-<div style="position: relative; background: #ECEBEA; font-family: 'Space Grotesk', sans-serif; color: #14161A; padding-top: 68px">
+<div style="position: relative; min-height: 100vh; background: #ECEBEA; font-family: 'Space Grotesk', sans-serif; color: #14161A; padding-top: 68px; box-sizing: border-box; display: flex; flex-direction: column">
 
   <!-- ===== ONE shared fixed backdrop (pattern + colour) for the whole page ===== -->
   <div ref="{{ sharedBackdropRef }}" style="position: fixed; inset: 0; pointer-events: none; z-index: 0; background: {{ sharedBackdropBg }}"></div>
@@ -81,6 +81,7 @@
     </div>
   </div>
 
+  <div style="flex: 1 0 auto; width: 100%">
   <!-- ================= HOME ================= -->
   <section id="home" ref="{{ sectionRefs.home }}" style="position: relative; width: 100%; height: 100vh; min-height: 700px; overflow: hidden">
     <div style="position: absolute; inset: 0; z-index: 0; overflow: hidden; background: #060609">
@@ -409,9 +410,10 @@
       </sc-for>
     </div>
   </section>
+  </div>
 
   <!-- ===== single footer ===== -->
-  <div style="position: relative; z-index: 2; border-top: 3px solid #FFC857; background: #14161A; padding: 24px 40px; display: flex; justify-content: space-between; align-items: center; font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.15em; color: #FFFFFF">
+  <div style="position: relative; z-index: 2; flex: none; border-top: 3px solid #FFC857; background: #14161A; padding: 24px 40px; display: flex; justify-content: space-between; align-items: center; font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.15em; color: #FFFFFF">
     <span>© ANANTHA PRASANTH</span>
     <div style="display: flex; align-items: center; gap: 22px">
       <a href="https://www.linkedin.com/in/anantha-prasanth" target="_blank" rel="noopener" aria-label="LinkedIn" style="color: #4DC3FF; display: flex" style-hover="color: #FFC857">
