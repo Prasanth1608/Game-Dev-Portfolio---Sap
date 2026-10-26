@@ -466,7 +466,6 @@ const RAW_PROTOTYPES = [
   },
   {
     title: 'RESTAURANT TYCOON', tags: 'UNREAL ENGINE · C++ · GAMEPLAY SYSTEMS', accent: PALETTE.amber,
-    hideDetailPage: true,
     overview: 'RESTAURANT TYCOON is a cooking-and-serving management prototype built in Unreal Engine, where players prep ingredients, cook orders at the stove, plate them, serve tables, and keep washing stations clear before time runs out.\n\nWhat makes it different: a single reusable stack-point component, handling snap-to-point placement with configurable capacity, is reused unmodified across six different contexts, a plate station’s stack, a washing station’s wash point, a table’s placement spots, a trash bin’s discard point, a cooking slot’s ingredient point, and a plate’s own food point, composition over duplicated per-station logic.\n\nEngineering Quality: every interactable implements a single Interact() interface, reused across 15+ use cases such as stations and slots, with logic overridden per use case and no casts anywhere.'
   }
 ];
@@ -786,6 +785,7 @@ class Component extends DCLogic {
         overviewTabStyle: tabStyle(tab === 'overview', '#14161A', cardBorder, '#14161A'),
         trailerTabStyle: tabStyle(tab === 'trailer', '#14161A', cardBorder, '#14161A'),
         gitTabStyle: tabStyle(tab === 'git', '#14161A', cardBorder, '#14161A'),
+        playButtonStyle: { fontFamily: "'Bebas Neue', sans-serif", fontSize: '18px', letterSpacing: '0.12em', color: '#FFFFFF', background: '#14161A', padding: '11px 26px', flex: 'none' },
         selectOverview: () => this.setProtoTab(i, 'overview'),
         selectTrailer: () => this.setProtoTab(i, 'trailer'),
         selectGit: () => this.setProtoTab(i, 'git')

@@ -113,6 +113,12 @@
                         </sc-for>
                       </div>
                     </sc-if>
+                    <sc-if value="{{ goal.hasMedia }}" hint-placeholder-val="{{ false }}">
+                      <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px; margin-top: 14px">
+                        <div style="aspect-ratio: 16/10; border: 1px dashed rgba(20,22,26,0.3); border-radius: 3px; display: flex; align-items: center; justify-content: center; font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.1em; color: rgba(20,22,26,0.55); text-align: center; padding: 8px; box-sizing: border-box">SCREENSHOT — drop image here</div>
+                        <div style="aspect-ratio: 16/10; border: 1px dashed rgba(20,22,26,0.3); border-radius: 3px; display: flex; align-items: center; justify-content: center; font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.1em; color: rgba(20,22,26,0.55); text-align: center; padding: 8px; box-sizing: border-box">SCREENSHOT — drop image here</div>
+                      </div>
+                    </sc-if>
                   </div>
                 </sc-for>
               </div>
@@ -199,6 +205,57 @@ const RAW_PROTOTYPES = [
           { heading: 'DATA-DRIVEN DESIGN', body: 'I wanted designers to be able to iterate on gameplay data without modifying the underlying systems.' },
           { heading: 'OBJECT CACHING & REUSE', body: 'I introduced object caching where appropriate so existing references can be reused instead of repeatedly resolving objects or performing unnecessary casts during gameplay.' },
           { heading: 'DYNAMIC UI SYSTEMS', body: 'The HUD is updated dynamically based on gameplay state, including collection progress and remaining time.' }
+        ]
+      }
+    ]
+  },
+  {
+    title: 'RESTAURANT TYCOON', tags: 'UNREAL ENGINE · C++ · GAMEPLAY SYSTEMS', accent: '#EFD18E',
+    sections: [
+      {
+        heading: 'ENGINEERING ARCHITECTURE',
+        intro: 'Restaurant Tycoon is a cooking-and-serving management prototype built in Unreal Engine, where players prep ingredients, cook orders at the stove, plate them, serve tables, and keep washing stations clear before time runs out. Below is the architecture that holds it together.',
+        goals: [
+          {
+            heading: 'DATA-DRIVEN DESIGN',
+            body: "Every ingredient, station, slot, and recipe is a UDataAsset (UItemData, UStationData, USlotData, URecipeData) — pricing, mesh, icon, cook duration, enum states, and target station all live as editable fields on the asset itself. Adding a new ingredient or recipe is an editor-only change: no C++ edits, no recompile.",
+            media: true
+          },
+          {
+            heading: 'INFERRED RECIPE COOKING',
+            body: "A cooking slot infers what's being made purely from the sequence of ingredients placed — each placement narrows a list of candidate recipes to whichever still match, and once only one remains and its final step completes, the dish assembles automatically.\n\nA cooking slot only ever accepts ingredients that belong to one of GameMode's currently available recipes — anything else is ignored outright, whether or not a recipe is already in progress on that slot.",
+            media: true
+          },
+          {
+            heading: 'CLEAN CODE ARCHITECTURE',
+            body: "Every class has exactly one architectural role, and the engine's own construct for that role is never borrowed for something else: Actors own world presence and behavior (stations, slots, items), Components own reusable, composable logic shared across actors (UInventory, UTimer, UStackPointComponent), Data Assets own static configuration (items, stations, slots, recipes), GameMode owns match rules (daily recipes, round timing), GameState owns shared state (the centralized inventory), PlayerState owns per-player state (money), and interfaces (IInteractable) own the contracts shared across otherwise-unrelated classes. Keeping each concern in its proper layer means a change to one (a new station type, a new recipe rule) stays isolated to that layer instead of rippling through the rest of the codebase.",
+            media: true
+          },
+          {
+            heading: 'DECOUPLED LISTENERS FOR UI, SFX & VFX',
+            body: "Gameplay classes broadcast delegates (OnTimerCompleted, OnStationInteracted, OnTimerUpdated, and others) without ever holding a reference to whoever's listening — UI, SFX, VFX, or any Blueprint-side logic binds in wherever it's actually needed. A class never needs to know who's listening, or how many listeners there are, so new presentation or feedback can be wired up without touching the underlying gameplay logic at all.",
+            media: true
+          },
+          {
+            heading: 'REUSABLE STACKPOINT FRAMEWORK',
+            body: 'One UStackPointComponent (snap-to-point placement with configurable capacity) is reused, unmodified, across six different contexts: a plate station’s stack, a washing station’s wash point, a table’s placement spots, a trash bin’s discard point, a cooking slot’s ingredient point, and a plate’s own food point — composition over duplicated per-station logic.',
+            media: true
+          },
+          {
+            heading: 'REUSABLE INTERACTION INTERFACE',
+            body: 'Every interactable actor — stations, slots, world items, tables — implements one interface, IInteractable::Interact(), with no casting required anywhere in the call path. That single contract has over 15 separate implementations today, each overriding it with exactly the logic its own actor needs, from starting a cook timer to handing an item back to the player.',
+            media: true
+          },
+          {
+            heading: 'CENTRALIZED STATION & SLOT',
+            body: 'One AStationBase is the single shared implementation every station type extends from — the default interaction, timer, and widget-facing logic stays identical across all of them, with only the station-specific behavior layered on top in each subclass. ASlotsBase follows the same pattern: it gives every slot access to a stack point, where items get placed to drive either cooking or plate-cleaning, and each slot type extends that shared base only as far as its own logic actually needs to diverge.',
+            media: true
+          },
+          {
+            heading: 'CENTRALISED INVENTORY',
+            body: 'One UInventory component holds the core inventory logic — AddItem, RemoveItem, PickItem, DropItem — and gets reused across every storage-type station (shelf, fridge) rather than reimplemented per class. At game start, each shelf or fridge pulls its own share out of one central inventory, filtered by storage location, so stock configuration lives in one place instead of being duplicated per station.',
+            media: true
+          }
         ]
       }
     ]
@@ -297,7 +354,7 @@ class Component extends DCLogic {
         hasGoals: !!(s.goals && s.goals.length),
         goals: (s.goals || []).map((g, gi) => {
           const accent = GOAL_PALETTE[gi % GOAL_PALETTE.length];
-          return { ...g, hasPoints: !!(g.points && g.points.length), accent, fillBg: '#FFFFFF', onCard: '#14161A', borderAccent: vividize(accent) };
+          return { ...g, hasPoints: !!(g.points && g.points.length), hasMedia: !!g.media, accent, fillBg: '#FFFFFF', onCard: '#14161A', borderAccent: vividize(accent) };
         })
       }))
     };
