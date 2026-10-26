@@ -203,7 +203,7 @@
             </sc-if>
             <div style="position: absolute; inset: 0; background: linear-gradient(0deg, rgba(0,0,0,0.85) 0%, transparent 45%); pointer-events: none"></div>
             <div style="position: absolute; top: 10px; left: 14px; display: flex; align-items: center; gap: 6px">
-              <span style="font-family: 'Bebas Neue', sans-serif; font-size: 16px; letter-spacing: 0.1em; color: {{ project.accent }}; text-shadow: 0 2px 12px rgba(0,0,0,0.8)">{{ project.index }}</span>
+              <span style="font-family: 'Bebas Neue', sans-serif; font-size: 16px; letter-spacing: 0.1em; color: {{ project.accent }}; background: rgba(0,0,0,0.45); padding: 2px 8px; border-radius: 3px">{{ project.index }}</span>
               <span style="font-family: 'JetBrains Mono', monospace; font-size: 8.5px; letter-spacing: 0.14em; color: #FFFFFF; background: rgba(0,0,0,0.45); padding: 2px 6px; border-radius: 3px">{{ project.kindLabel }}</span>
               <sc-if value="{{ project.inDevelopment }}" hint-placeholder-val="{{ false }}">
                 <span style="font-family: 'JetBrains Mono', monospace; font-size: 8.5px; letter-spacing: 0.14em; color: #14161A; background: #FFC857; padding: 2px 6px; border-radius: 3px">IN DEVELOPMENT</span>
@@ -282,7 +282,7 @@
                 <div style="position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; font-family: 'Bebas Neue', sans-serif; font-size: 110px; line-height: 1; letter-spacing: 0.04em; color: {{ role.accent }}; opacity: 0.22; pointer-events: none">{{ role.index }}</div>
               </sc-if>
               <sc-if value="{{ role.hasBanner }}" hint-placeholder-val="{{ true }}">
-                <div style="position: absolute; top: 10px; left: 14px; font-family: 'Bebas Neue', sans-serif; font-size: 16px; letter-spacing: 0.1em; color: {{ role.accent }}; text-shadow: 0 2px 12px rgba(0,0,0,0.8)">{{ role.index }}</div>
+                <div style="position: absolute; top: 10px; left: 14px; font-family: 'Bebas Neue', sans-serif; font-size: 16px; letter-spacing: 0.1em; color: {{ role.accent }}; background: rgba(0,0,0,0.45); padding: 2px 8px; border-radius: 3px">{{ role.index }}</div>
               </sc-if>
             </sc-if>
           </div>
@@ -325,7 +325,7 @@
               <div style="font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.2em; color: #FFFFFF">TOOL_STILL / KEY ART</div>
             </sc-if>
             <div style="position: absolute; inset: 0; background: linear-gradient(0deg, rgba(0,0,0,0.85) 0%, transparent 45%); pointer-events: none"></div>
-            <div style="position: absolute; top: 10px; left: 14px; font-family: 'Bebas Neue', sans-serif; font-size: 16px; letter-spacing: 0.1em; color: {{ project.accent }}; text-shadow: 0 2px 12px rgba(0,0,0,0.8)">{{ project.index }}</div>
+            <div style="position: absolute; top: 10px; left: 14px; font-family: 'Bebas Neue', sans-serif; font-size: 16px; letter-spacing: 0.1em; color: {{ project.accent }}; background: rgba(0,0,0,0.45); padding: 2px 8px; border-radius: 3px; display: inline-block">{{ project.index }}</div>
             <div style="position: absolute; left: 16px; bottom: 10px; right: 16px; display: flex; justify-content: space-between; align-items: flex-end; gap: 12px">
               <div>
                 <div style="font-family: 'Bebas Neue', sans-serif; font-size: 23px; letter-spacing: 0.02em; color: #FFFFFF; line-height: 1; text-shadow: 0 2px 20px rgba(0,0,0,0.8)">{{ project.title }}</div>
