@@ -86,6 +86,10 @@
               <div style="font-family: 'Inter', sans-serif; font-size: 15px; line-height: 1.8; color: #14161A; margin-bottom: 18px">{{ section.intro }}</div>
             </sc-if>
 
+            <sc-if value="{{ section.image }}" hint-placeholder-val="{{ false }}">
+              <img src="{{ section.image }}" alt="{{ section.heading }}" onError="this.style.display='none'" loading="lazy" style="width: 100%; border-radius: 4px; border: 1px solid rgba(20,22,26,0.14); display: block">
+            </sc-if>
+
             <sc-if value="{{ section.hasBullets }}" hint-placeholder-val="{{ false }}">
               <div style="display: flex; flex-direction: column; gap: 10px">
                 <sc-for list="{{ section.bullets }}" as="bullet" hint-placeholder-count="4">
@@ -155,6 +159,11 @@ const RAW_PROTOTYPES = [
           'Teleporters',
           'Dynamic HUD updates for collection progress and remaining time'
         ]
+      },
+      {
+        heading: 'GAMEPLAY ARCHITECTURE',
+        intro: 'Timed maze game: find and collect the target item before the clock runs out. How the systems talk to each other, end to end.',
+        image: 'assets/prototypes/collections/architecture.png'
       },
       {
         heading: 'ITERATIVE IMPLEMENTATIONS',
