@@ -94,10 +94,12 @@
             </sc-if>
 
             <sc-if value="{{ section.hasImages }}" hint-placeholder-val="{{ false }}">
-              <div style="display: flex; flex-direction: column; gap: 16px">
-                <sc-for list="{{ section.images }}" as="img" hint-placeholder-count="3">
-                  <img src="{{ img }}" alt="{{ section.heading }}" onError="this.style.display='none'" loading="lazy" style="width: 100%; border-radius: 4px; border: 1px solid rgba(20,22,26,0.14); display: block">
-                </sc-for>
+              <div style="width: 100vw; max-width: 1600px; position: relative; left: 50%; transform: translateX(-50%); padding: 0 20px; box-sizing: border-box">
+                <div style="border: 1px solid rgba(20,22,26,0.14); border-radius: 4px; overflow: hidden">
+                  <sc-for list="{{ section.images }}" as="img" hint-placeholder-count="3">
+                    <img src="{{ img }}" alt="{{ section.heading }}" onError="this.style.display='none'" loading="lazy" style="width: 100%; display: block">
+                  </sc-for>
+                </div>
               </div>
             </sc-if>
 
@@ -115,7 +117,7 @@
             <sc-if value="{{ section.hasGoals }}" hint-placeholder-val="{{ false }}">
               <div style="display: flex; flex-direction: column; gap: 16px">
                 <sc-for list="{{ section.goals }}" as="goal" hint-placeholder-count="6">
-                  <div style="background: {{ goal.fillBg }}; border-top: 28px solid {{ goal.borderAccent }}; padding: 18px 22px; border-radius: 2px">
+                  <div style="{{ goal.cardStyle }}">
                     <div style="font-family: 'Bebas Neue', sans-serif; font-size: 24px; letter-spacing: 0.04em; color: {{ goal.onCard }}; margin-bottom: 8px; text-shadow: 0 1px 3px rgba(0,0,0,0.18)">{{ goal.heading }}</div>
                     <div style="font-family: 'Inter', sans-serif; font-size: 14px; line-height: 1.8; color: {{ goal.onCard }}">{{ goal.body }}</div>
                     <sc-if value="{{ goal.hasPoints }}" hint-placeholder-val="{{ false }}">
@@ -256,7 +258,8 @@ const RAW_PROTOTYPES = [
           {
             heading: 'DATA-DRIVEN DESIGN',
             body: "Every ingredient, station, slot, and recipe is a UDataAsset (UItemData, UStationData, USlotData, URecipeData) — pricing, mesh, icon, cook duration, enum states, and target station all live as editable fields on the asset itself. Adding a new ingredient or recipe is an editor-only change: no C++ edits, no recompile.",
-            media: ['assets/prototypes/restaurant-tycoon/data-driven-assets.png', 'assets/prototypes/restaurant-tycoon/data-driven-item-detail.png']
+            media: ['assets/prototypes/restaurant-tycoon/data-driven-assets.png', 'assets/prototypes/restaurant-tycoon/data-driven-item-detail.png'],
+            wide: true
           },
           {
             heading: 'INFERRED RECIPE COOKING',
@@ -402,7 +405,10 @@ class Component extends DCLogic {
           const accent = GOAL_PALETTE[gi % GOAL_PALETTE.length];
           const mediaList = Array.isArray(g.media) ? g.media : [];
           const mediaSlots = [0, 1].map((i) => mediaList[i] ? { src: mediaList[i], isPlaceholder: false } : { src: '', isPlaceholder: true });
-          return { ...g, hasPoints: !!(g.points && g.points.length), hasMedia: !!g.media, mediaSlots, accent, fillBg: '#FFFFFF', onCard: '#14161A', borderAccent: vividize(accent) };
+          const cardStyle = g.wide
+            ? { background: '#FFFFFF', borderTop: `28px solid ${vividize(accent)}`, padding: '26px 32px', borderRadius: '2px', width: '100vw', maxWidth: '1600px', position: 'relative', left: '50%', transform: 'translateX(-50%)', boxSizing: 'border-box' }
+            : { background: '#FFFFFF', borderTop: `28px solid ${vividize(accent)}`, padding: '18px 22px', borderRadius: '2px' };
+          return { ...g, hasPoints: !!(g.points && g.points.length), hasMedia: !!g.media, mediaSlots, accent, fillBg: '#FFFFFF', onCard: '#14161A', borderAccent: vividize(accent), cardStyle };
         })
       }))
     };
