@@ -412,7 +412,7 @@ class Component extends DCLogic {
           const accent = GOAL_PALETTE[gi % GOAL_PALETTE.length];
           const mediaList = Array.isArray(g.media) ? g.media : [];
           const mediaSlots = [0, 1].map((i) => mediaList[i] ? { src: mediaList[i], isPlaceholder: false } : { src: '', isPlaceholder: true });
-          const cardStyle = { background: '#FFFFFF', borderTop: `28px solid ${vividize(accent)}`, padding: '18px 22px', borderRadius: '2px' };
+          const cardStyle = { background: '#FFFFFF', borderTop: `14px solid ${vividize(accent)}`, padding: '18px 22px', borderRadius: '2px' };
           return { ...g, hasPoints: !!(g.points && g.points.length), hasMedia: !!g.media, mediaSlots, accent, fillBg: '#FFFFFF', onCard: '#14161A', borderAccent: vividize(accent), cardStyle };
         })
       }))
