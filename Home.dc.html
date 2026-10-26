@@ -80,14 +80,14 @@
     </div>
 
     <div style="position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; z-index: 7; pointer-events: none; padding-bottom: 110px">
-      <div style="font-family: 'JetBrains Mono', monospace; font-size: 13px; letter-spacing: 0.4em; color: #D6336C; margin-bottom: 18px">&gt; WELCOME, GUEST</div>
-      <h1 style="margin: 0; text-align: center; white-space: nowrap; font-family: 'Bebas Neue', sans-serif; font-weight: 400; font-size: clamp(32px, 5vw, 92px); line-height: 0.86; letter-spacing: 0.01em; color: #B8860B; text-shadow: 0 2px 10px rgba(0,0,0,0.12)">ANANTHA PRASANTH</h1>
+      <div style="font-family: 'JetBrains Mono', monospace; font-size: 13px; letter-spacing: 0.4em; color: #38BDF8; margin-bottom: 18px">&gt; WELCOME, GUEST</div>
+      <h1 style="margin: 0; text-align: center; white-space: nowrap; font-family: 'Bebas Neue', sans-serif; font-weight: 400; font-size: clamp(32px, 5vw, 92px); line-height: 0.86; letter-spacing: 0.01em; color: #FFE600; text-shadow: 0 2px 10px rgba(0,0,0,0.12)">ANANTHA PRASANTH</h1>
       <div style="display: flex; align-items: center; gap: 16px; margin-top: 26px">
         <div style="width: 46px; height: 1px; background: rgba(255,200,87,0.6)"></div>
-        <div style="font-family: 'JetBrains Mono', monospace; font-size: 15px; letter-spacing: 0.45em; color: #7B2FD6">GAMEPLAY ENGINEER<span style="display: inline-block; width: 9px; height: 16px; background: #FFC857; vertical-align: middle; margin-left: 8px; animation: ap-blink 1s steps(1) infinite"></span></div>
+        <div style="font-family: 'JetBrains Mono', monospace; font-size: 15px; letter-spacing: 0.45em; color: #14161A">GAMEPLAY ENGINEER<span style="display: inline-block; width: 9px; height: 16px; background: #FFC857; vertical-align: middle; margin-left: 8px; animation: ap-blink 1s steps(1) infinite"></span></div>
         <div style="width: 46px; height: 1px; background: rgba(255,200,87,0.6)"></div>
       </div>
-      <a href="#games" onClick="{{ goTo }}" data-target="games" style="margin-top: 34px; pointer-events: auto; font-family: 'Bebas Neue', sans-serif; font-size: 20px; letter-spacing: 0.12em; background: #7858C9; color: #FFFFFF; padding: 11px 26px; cursor: pointer" style-hover="background: #14161A; color: #FFFFFF">PRESS START ▸</a>
+      <a href="#games" onClick="{{ goTo }}" data-target="games" style="margin-top: 34px; pointer-events: auto; font-family: 'Bebas Neue', sans-serif; font-size: 20px; letter-spacing: 0.12em; background: #FFE600; color: #14161A; padding: 11px 26px; cursor: pointer" style-hover="background: #14161A; color: #FFE600">PRESS START ▸</a>
     </div>
 
     <div style="position: absolute; left: 0; right: 0; bottom: 78px; z-index: 8; display: flex; flex-direction: column; align-items: center; gap: 8px; pointer-events: none">
@@ -107,7 +107,7 @@
     <div style="position: relative; z-index: 2; max-width: 1500px; width: 100%; margin: 0 auto; padding: 24px 40px 0 40px; box-sizing: border-box">
       <div class="rt-grid3" style="display: grid; grid-template-columns: repeat(3, 1fr); grid-template-rows: repeat(2, minmax(0, 1fr)); gap: 22px; margin-top: 28px">
         <sc-for list="{{ categories }}" as="cat" hint-placeholder-count="6">
-          <div class="exp-card" onMouseEnter="{{ cat.onEnter }}" style="background: {{ cat.cardBg }}; border-top: 28px solid {{ cat.borderAccent }}; padding: 14px 22px; border-radius: 2px; box-sizing: border-box; display: flex; flex-direction: column; justify-content: flex-start; overflow: hidden; min-height: 0; min-width: 0">
+          <div class="exp-card" onMouseEnter="{{ cat.onEnter }}" style="background: {{ cat.cardBg }}; border-top: 20px solid {{ cat.borderAccent }}; padding: 14px 22px; border-radius: 2px; box-sizing: border-box; display: flex; flex-direction: column; justify-content: flex-start; overflow: hidden; min-height: 0; min-width: 0">
             <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 6px; flex-shrink: 0">
               <div style="font-family: 'JetBrains Mono', monospace; font-weight: 700; font-size: 12px; letter-spacing: 0.1em; color: {{ cat.onAccent }}; background: {{ cat.accent }}; padding: 3px 8px; border-radius: 3px; flex: none">{{ cat.index }}</div>
               <div style="font-family: 'Bebas Neue', sans-serif; font-size: 21px; letter-spacing: 0.03em; color: {{ cat.onCard }}">{{ cat.title }}</div>
@@ -184,19 +184,19 @@
 
     <div style="position: relative; z-index: 2; text-align: center; padding: 60px 40px 0 40px; font-family: 'Bebas Neue', sans-serif; font-size: 40px; letter-spacing: 0.06em; color: #14161A">GAMES</div>
 
-    <div style="position: relative; z-index: 2; display: flex; flex-direction: column; gap: 40px; padding: 40px 40px 0 40px; max-width: 1240px; margin: 0 auto">
+    <div class="rt-role-grid" style="position: relative; z-index: 2; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 32px; padding: 40px 40px 0 40px; max-width: 1240px; margin: 0 auto; box-sizing: border-box">
       <sc-for list="{{ projects }}" as="project" hint-placeholder-count="3">
-        <div ref="{{ project.setCardRef }}" style="background: {{ project.cardBg }}; border-top: 28px solid {{ project.borderAccent }}; border-radius: 2px">
-          <div style="height: 380px; background: {{ project.bannerBg }}; display: flex; align-items: center; justify-content: center; border-bottom: 1px solid {{ project.borderMid }}; position: relative">
+        <div ref="{{ project.setCardRef }}" style="min-width: 0; background: {{ project.cardBg }}; border-top: 20px solid {{ project.borderAccent }}; border-radius: 2px; overflow: hidden">
+          <div style="aspect-ratio: 16 / 9; background: {{ project.bannerBg }}; display: flex; align-items: center; justify-content: center; border-bottom: 1px solid {{ project.borderMid }}; position: relative">
             <sc-if value="{{ project.noBanner }}" hint-placeholder-val="{{ false }}">
               <div style="font-family: 'JetBrains Mono', monospace; font-size: 12px; letter-spacing: 0.2em; color: #FFFFFF">PROJECT_STILL / KEY ART</div>
             </sc-if>
             <div style="position: absolute; inset: 0; background: linear-gradient(0deg, rgba(0,0,0,0.85) 0%, transparent 45%); pointer-events: none"></div>
-            <div style="position: absolute; top: 18px; left: 22px; font-family: 'Bebas Neue', sans-serif; font-size: 26px; letter-spacing: 0.1em; color: {{ project.accent }}; text-shadow: 0 2px 12px rgba(0,0,0,0.8)">{{ project.index }}</div>
-            <div style="position: absolute; left: 30px; bottom: 22px; right: 30px; display: flex; justify-content: space-between; align-items: flex-end; gap: 20px">
+            <div style="position: absolute; top: 14px; left: 18px; font-family: 'Bebas Neue', sans-serif; font-size: 22px; letter-spacing: 0.1em; color: {{ project.accent }}; text-shadow: 0 2px 12px rgba(0,0,0,0.8)">{{ project.index }}</div>
+            <div style="position: absolute; left: 22px; bottom: 16px; right: 22px; display: flex; justify-content: space-between; align-items: flex-end; gap: 16px">
               <div>
-                <div style="font-family: 'Bebas Neue', sans-serif; font-size: 44px; letter-spacing: 0.02em; color: #FFFFFF; line-height: 1; text-shadow: 0 2px 20px rgba(0,0,0,0.8)">{{ project.title }}</div>
-                <div style="font-family: 'JetBrains Mono', monospace; font-size: 12px; letter-spacing: 0.12em; color: {{ project.accent }}; margin-top: 8px">{{ project.tags }}</div>
+                <div style="font-family: 'Bebas Neue', sans-serif; font-size: 32px; letter-spacing: 0.02em; color: #FFFFFF; line-height: 1; text-shadow: 0 2px 20px rgba(0,0,0,0.8)">{{ project.title }}</div>
+                <div style="font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.12em; color: {{ project.accent }}; margin-top: 8px">{{ project.tags }}</div>
               </div>
               <sc-if value="{{ project.showDetailLinks }}" hint-placeholder-val="{{ true }}">
                 <a href="{{ project.detailHref }}" style="{{ project.playButtonStyle }}">VIEW PROJECT →</a>
@@ -248,19 +248,19 @@
 
     <div style="position: relative; z-index: 2; text-align: center; padding: 60px 40px 0 40px; font-family: 'Bebas Neue', sans-serif; font-size: 40px; letter-spacing: 0.06em; color: #14161A">PROTOTYPES</div>
 
-    <div style="position: relative; z-index: 2; display: flex; flex-direction: column; gap: 40px; padding: 40px 40px 0 40px; max-width: 1240px; margin: 0 auto">
+    <div class="rt-role-grid" style="position: relative; z-index: 2; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 32px; padding: 40px 40px 0 40px; max-width: 1240px; margin: 0 auto; box-sizing: border-box">
       <sc-for list="{{ prototypes }}" as="project" hint-placeholder-count="1">
-        <div ref="{{ project.setCardRef }}" style="background: {{ project.cardBg }}; border-top: 28px solid {{ project.borderAccent }}; border-radius: 2px">
-          <div style="height: 380px; background: {{ project.bannerBg }}; display: flex; align-items: center; justify-content: center; border-bottom: 1px solid {{ project.borderMid }}; position: relative">
+        <div ref="{{ project.setCardRef }}" style="min-width: 0; background: {{ project.cardBg }}; border-top: 20px solid {{ project.borderAccent }}; border-radius: 2px; overflow: hidden">
+          <div style="aspect-ratio: 16 / 9; background: {{ project.bannerBg }}; display: flex; align-items: center; justify-content: center; border-bottom: 1px solid {{ project.borderMid }}; position: relative">
             <sc-if value="{{ project.noBanner }}" hint-placeholder-val="{{ false }}">
               <div style="font-family: 'JetBrains Mono', monospace; font-size: 12px; letter-spacing: 0.2em; color: #FFFFFF">PROTOTYPE_STILL / KEY ART</div>
             </sc-if>
             <div style="position: absolute; inset: 0; background: linear-gradient(0deg, rgba(0,0,0,0.85) 0%, transparent 45%); pointer-events: none"></div>
-            <div style="position: absolute; top: 18px; left: 22px; font-family: 'Bebas Neue', sans-serif; font-size: 26px; letter-spacing: 0.1em; color: {{ project.accent }}; text-shadow: 0 2px 12px rgba(0,0,0,0.8)">{{ project.index }}</div>
-            <div style="position: absolute; left: 30px; bottom: 22px; right: 30px; display: flex; justify-content: space-between; align-items: flex-end; gap: 20px">
+            <div style="position: absolute; top: 14px; left: 18px; font-family: 'Bebas Neue', sans-serif; font-size: 22px; letter-spacing: 0.1em; color: {{ project.accent }}; text-shadow: 0 2px 12px rgba(0,0,0,0.8)">{{ project.index }}</div>
+            <div style="position: absolute; left: 22px; bottom: 16px; right: 22px; display: flex; justify-content: space-between; align-items: flex-end; gap: 16px">
               <div>
-                <div style="font-family: 'Bebas Neue', sans-serif; font-size: 44px; letter-spacing: 0.02em; color: #FFFFFF; line-height: 1; text-shadow: 0 2px 20px rgba(0,0,0,0.8)">{{ project.title }}</div>
-                <div style="font-family: 'JetBrains Mono', monospace; font-size: 12px; letter-spacing: 0.12em; color: {{ project.accent }}; margin-top: 8px">{{ project.tags }}</div>
+                <div style="font-family: 'Bebas Neue', sans-serif; font-size: 32px; letter-spacing: 0.02em; color: #FFFFFF; line-height: 1; text-shadow: 0 2px 20px rgba(0,0,0,0.8)">{{ project.title }}</div>
+                <div style="font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.12em; color: {{ project.accent }}; margin-top: 8px">{{ project.tags }}</div>
               </div>
             </div>
           </div>
@@ -310,7 +310,7 @@
 
     <div class="rt-role-grid" style="position: relative; z-index: 2; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 32px; padding: 40px 40px 0 40px; max-width: 1240px; margin: 0 auto; box-sizing: border-box">
       <sc-for list="{{ roles }}" as="role" hint-placeholder-count="4">
-        <div ref="{{ role.setCardRef }}" style="display: flex; flex-direction: column; min-width: 0; background: {{ role.cardBg }}; border-top: 28px solid {{ role.borderAccent }}; border-radius: 2px; overflow: hidden">
+        <div ref="{{ role.setCardRef }}" style="display: flex; flex-direction: column; min-width: 0; background: {{ role.cardBg }}; border-top: 20px solid {{ role.borderAccent }}; border-radius: 2px; overflow: hidden">
 
           <!-- media: still image (or accent panel) that swaps to the walkthrough video on click -->
           <div style="position: relative; aspect-ratio: 16 / 9; background: {{ role.bannerBg }}; border-bottom: 1px solid {{ role.borderMid }}">
@@ -358,19 +358,19 @@
 
     <div style="position: relative; z-index: 2; text-align: center; padding: 60px 40px 0 40px; font-family: 'Bebas Neue', sans-serif; font-size: 40px; letter-spacing: 0.06em; color: #14161A">TOOLS</div>
 
-    <div style="position: relative; z-index: 2; display: flex; flex-direction: column; gap: 40px; padding: 40px 40px 0 40px; max-width: 1240px; margin: 0 auto">
+    <div class="rt-role-grid" style="position: relative; z-index: 2; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 32px; padding: 40px 40px 0 40px; max-width: 1240px; margin: 0 auto; box-sizing: border-box">
       <sc-for list="{{ tools }}" as="project" hint-placeholder-count="1">
-        <div ref="{{ project.setCardRef }}" style="background: {{ project.cardBg }}; border-top: 28px solid {{ project.borderAccent }}; border-radius: 2px">
-          <div style="height: 380px; background: {{ project.bannerBg }}; display: flex; align-items: center; justify-content: center; border-bottom: 1px solid {{ project.borderMid }}; position: relative">
+        <div ref="{{ project.setCardRef }}" style="min-width: 0; background: {{ project.cardBg }}; border-top: 20px solid {{ project.borderAccent }}; border-radius: 2px; overflow: hidden">
+          <div style="aspect-ratio: 16 / 9; background: {{ project.bannerBg }}; display: flex; align-items: center; justify-content: center; border-bottom: 1px solid {{ project.borderMid }}; position: relative">
             <sc-if value="{{ project.noBanner }}" hint-placeholder-val="{{ false }}">
               <div style="font-family: 'JetBrains Mono', monospace; font-size: 12px; letter-spacing: 0.2em; color: #FFFFFF">TOOL_STILL / KEY ART</div>
             </sc-if>
             <div style="position: absolute; inset: 0; background: linear-gradient(0deg, rgba(0,0,0,0.85) 0%, transparent 45%); pointer-events: none"></div>
-            <div style="position: absolute; top: 18px; left: 22px; font-family: 'Bebas Neue', sans-serif; font-size: 26px; letter-spacing: 0.1em; color: {{ project.accent }}; text-shadow: 0 2px 12px rgba(0,0,0,0.8)">{{ project.index }}</div>
-            <div style="position: absolute; left: 30px; bottom: 22px; right: 30px; display: flex; justify-content: space-between; align-items: flex-end; gap: 20px">
+            <div style="position: absolute; top: 14px; left: 18px; font-family: 'Bebas Neue', sans-serif; font-size: 22px; letter-spacing: 0.1em; color: {{ project.accent }}; text-shadow: 0 2px 12px rgba(0,0,0,0.8)">{{ project.index }}</div>
+            <div style="position: absolute; left: 22px; bottom: 16px; right: 22px; display: flex; justify-content: space-between; align-items: flex-end; gap: 16px">
               <div>
-                <div style="font-family: 'Bebas Neue', sans-serif; font-size: 44px; letter-spacing: 0.02em; color: #FFFFFF; line-height: 1; text-shadow: 0 2px 20px rgba(0,0,0,0.8)">{{ project.title }}</div>
-                <div style="font-family: 'JetBrains Mono', monospace; font-size: 12px; letter-spacing: 0.12em; color: {{ project.accent }}; margin-top: 8px">{{ project.tags }}</div>
+                <div style="font-family: 'Bebas Neue', sans-serif; font-size: 32px; letter-spacing: 0.02em; color: #FFFFFF; line-height: 1; text-shadow: 0 2px 20px rgba(0,0,0,0.8)">{{ project.title }}</div>
+                <div style="font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.12em; color: {{ project.accent }}; margin-top: 8px">{{ project.tags }}</div>
               </div>
               <sc-if value="{{ project.showDetailLinks }}" hint-placeholder-val="{{ true }}">
                 <a href="{{ project.detailHref }}" style="{{ project.playButtonStyle }}">VIEW PROJECT →</a>
