@@ -80,7 +80,9 @@
       <div class="rt-pad" style="max-width: 1160px; margin: 0 auto; padding: 40px 40px 20px 40px; box-sizing: border-box">
         <sc-for list="{{ project.sections }}" as="section" hint-placeholder-count="2">
           <div style="margin-bottom: 40px">
-            <div style="font-family: 'Bebas Neue', sans-serif; font-size: 32px; letter-spacing: 0.04em; color: {{ project.textAccent }}; margin-bottom: 12px">{{ section.heading }}</div>
+            <sc-if value="{{ section.heading }}" hint-placeholder-val="{{ true }}">
+              <div style="font-family: 'Bebas Neue', sans-serif; font-size: 32px; letter-spacing: 0.04em; color: {{ project.textAccent }}; margin-bottom: 12px">{{ section.heading }}</div>
+            </sc-if>
 
             <sc-if value="{{ section.intro }}" hint-placeholder-val="{{ false }}">
               <div style="font-family: 'Inter', sans-serif; font-size: 15px; line-height: 1.8; color: #14161A; margin-bottom: 18px">{{ section.intro }}</div>
@@ -119,8 +121,14 @@
                     </sc-if>
                     <sc-if value="{{ goal.hasMedia }}" hint-placeholder-val="{{ false }}">
                       <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px; margin-top: 14px">
-                        <div style="aspect-ratio: 16/10; border: 1px dashed rgba(20,22,26,0.3); border-radius: 3px; display: flex; align-items: center; justify-content: center; font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.1em; color: rgba(20,22,26,0.55); text-align: center; padding: 8px; box-sizing: border-box">SCREENSHOT — drop image here</div>
-                        <div style="aspect-ratio: 16/10; border: 1px dashed rgba(20,22,26,0.3); border-radius: 3px; display: flex; align-items: center; justify-content: center; font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.1em; color: rgba(20,22,26,0.55); text-align: center; padding: 8px; box-sizing: border-box">SCREENSHOT — drop image here</div>
+                        <sc-for list="{{ goal.mediaSlots }}" as="slot" hint-placeholder-count="2">
+                          <sc-if value="{{ slot.src }}" hint-placeholder-val="{{ false }}">
+                            <img src="{{ slot.src }}" alt="Screenshot" onError="this.style.display='none'" loading="lazy" style="width: 100%; aspect-ratio: 16/10; object-fit: cover; border-radius: 3px; border: 1px solid rgba(20,22,26,0.14); display: block">
+                          </sc-if>
+                          <sc-if value="{{ slot.isPlaceholder }}" hint-placeholder-val="{{ true }}">
+                            <div style="aspect-ratio: 16/10; border: 1px dashed rgba(20,22,26,0.3); border-radius: 3px; display: flex; align-items: center; justify-content: center; font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.1em; color: rgba(20,22,26,0.55); text-align: center; padding: 8px; box-sizing: border-box">SCREENSHOT — drop image here</div>
+                          </sc-if>
+                        </sc-for>
                       </div>
                     </sc-if>
                   </div>
@@ -234,13 +242,11 @@ const RAW_PROTOTYPES = [
     banner: 'assets/prototypes/restaurant-tycoon/banner.png',
     sections: [
       {
-        heading: 'ENGINEERING ARCHITECTURE',
-        intro: 'Restaurant Tycoon is a cooking-and-serving management prototype built in Unreal Engine, where players prep ingredients, cook orders at the stove, plate them, serve tables, and keep washing stations clear before time runs out. Below is the architecture that holds it together.',
         goals: [
           {
             heading: 'DATA-DRIVEN DESIGN',
             body: "Every ingredient, station, slot, and recipe is a UDataAsset (UItemData, UStationData, USlotData, URecipeData) — pricing, mesh, icon, cook duration, enum states, and target station all live as editable fields on the asset itself. Adding a new ingredient or recipe is an editor-only change: no C++ edits, no recompile.",
-            media: true
+            media: ['assets/prototypes/restaurant-tycoon/data-driven-assets.png']
           },
           {
             heading: 'INFERRED RECIPE COOKING',
@@ -375,7 +381,9 @@ class Component extends DCLogic {
         hasGoals: !!(s.goals && s.goals.length),
         goals: (s.goals || []).map((g, gi) => {
           const accent = GOAL_PALETTE[gi % GOAL_PALETTE.length];
-          return { ...g, hasPoints: !!(g.points && g.points.length), hasMedia: !!g.media, accent, fillBg: '#FFFFFF', onCard: '#14161A', borderAccent: vividize(accent) };
+          const mediaList = Array.isArray(g.media) ? g.media : [];
+          const mediaSlots = [0, 1].map((i) => mediaList[i] ? { src: mediaList[i], isPlaceholder: false } : { src: '', isPlaceholder: true });
+          return { ...g, hasPoints: !!(g.points && g.points.length), hasMedia: !!g.media, mediaSlots, accent, fillBg: '#FFFFFF', onCard: '#14161A', borderAccent: vividize(accent) };
         })
       }))
     };
