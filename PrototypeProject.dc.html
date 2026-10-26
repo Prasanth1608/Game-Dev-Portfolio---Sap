@@ -93,6 +93,14 @@
               <img src="{{ section.image }}" alt="{{ section.heading }}" onError="this.style.display='none'" loading="lazy" style="width: 100%; border-radius: 4px; border: 1px solid rgba(20,22,26,0.14); display: block">
             </sc-if>
 
+            <sc-if value="{{ section.hasImages }}" hint-placeholder-val="{{ false }}">
+              <div style="display: flex; flex-direction: column; gap: 16px">
+                <sc-for list="{{ section.images }}" as="img" hint-placeholder-count="3">
+                  <img src="{{ img }}" alt="{{ section.heading }}" onError="this.style.display='none'" loading="lazy" style="width: 100%; border-radius: 4px; border: 1px solid rgba(20,22,26,0.14); display: block">
+                </sc-for>
+              </div>
+            </sc-if>
+
             <sc-if value="{{ section.hasBullets }}" hint-placeholder-val="{{ false }}">
               <div style="display: flex; flex-direction: column; gap: 10px">
                 <sc-for list="{{ section.bullets }}" as="bullet" hint-placeholder-count="4">
@@ -286,6 +294,14 @@ const RAW_PROTOTYPES = [
             media: ['assets/prototypes/restaurant-tycoon/centralized-inventory-1.png', 'assets/prototypes/restaurant-tycoon/centralized-inventory-2.png']
           }
         ]
+      },
+      {
+        heading: 'CODE ARCHITECTURE',
+        images: [
+          'assets/prototypes/restaurant-tycoon/code-architecture-1.png',
+          'assets/prototypes/restaurant-tycoon/code-architecture-2.png',
+          'assets/prototypes/restaurant-tycoon/code-architecture-3.png'
+        ]
       }
     ]
   }
@@ -381,6 +397,7 @@ class Component extends DCLogic {
         ...s,
         hasBullets: !!(s.bullets && s.bullets.length),
         hasGoals: !!(s.goals && s.goals.length),
+        hasImages: !!(s.images && s.images.length),
         goals: (s.goals || []).map((g, gi) => {
           const accent = GOAL_PALETTE[gi % GOAL_PALETTE.length];
           const mediaList = Array.isArray(g.media) ? g.media : [];
