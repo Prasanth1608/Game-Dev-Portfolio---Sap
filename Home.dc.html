@@ -231,7 +231,7 @@
           <div style="padding: 12px 14px 14px 14px; min-height: {{ project.tabMinHeight }}; display: flex; justify-content: {{ project.tabJustify }}; align-items: {{ project.tabAlignItems }}; gap: 16px; flex-wrap: wrap">
             <div style="flex: 1; min-width: 200px; text-align: {{ project.tabTextAlign }}">
               <sc-if value="{{ project.isOverview }}" hint-placeholder-val="{{ true }}">
-                <div style="font-family: 'Inter', sans-serif; font-size: 17.5px; line-height: 1.6; color: {{ project.onCard }}; white-space: pre-line">{{ project.overview }}</div>
+                <div style="font-family: 'Inter', sans-serif; font-size: 12px; line-height: 1.55; color: {{ project.onCard }}; white-space: pre-line">{{ project.overview }}</div>
               </sc-if>
               <sc-if value="{{ project.isTrailer }}" hint-placeholder-val="{{ false }}">
                 <sc-if value="{{ project.trailerId }}" hint-placeholder-val="{{ false }}">
@@ -284,7 +284,7 @@
           <div style="display: flex; flex-direction: column; flex: 1; padding: 12px 14px 14px 14px">
             <div style="font-family: 'Bebas Neue', sans-serif; font-size: 20px; letter-spacing: 0.02em; line-height: 1.05; color: {{ role.onCard }}; text-shadow: 0 1px 3px rgba(0,0,0,0.18)">{{ role.title }}</div>
             <div style="font-family: 'JetBrains Mono', monospace; font-size: 9.5px; letter-spacing: 0.1em; color: {{ role.onCard }}; margin: 6px 0 8px 0; opacity: 0.85">{{ role.tags }}</div>
-            <div style="font-family: 'Inter', sans-serif; font-size: 17.5px; line-height: 1.6; color: {{ role.onCard }}">{{ role.summary }}</div>
+            <div style="font-family: 'Inter', sans-serif; font-size: 12px; line-height: 1.55; color: {{ role.onCard }}">{{ role.summary }}</div>
 
             <div style="display: flex; flex-direction: column; gap: 4px; margin-top: 8px">
               <sc-for list="{{ role.highlights }}" as="point" hint-placeholder-count="2">
@@ -348,7 +348,7 @@
           <div style="padding: 12px 14px 14px 14px; min-height: {{ project.tabMinHeight }}; display: flex; justify-content: {{ project.tabJustify }}; align-items: {{ project.tabAlignItems }}; gap: 16px; flex-wrap: wrap">
             <div style="flex: 1; min-width: 200px; text-align: {{ project.tabTextAlign }}">
               <sc-if value="{{ project.isOverview }}" hint-placeholder-val="{{ true }}">
-                <div style="font-family: 'Inter', sans-serif; font-size: 17.5px; line-height: 1.6; color: {{ project.onCard }}; white-space: pre-line">{{ project.overview }}</div>
+                <div style="font-family: 'Inter', sans-serif; font-size: 12px; line-height: 1.55; color: {{ project.onCard }}; white-space: pre-line">{{ project.overview }}</div>
               </sc-if>
               <sc-if value="{{ project.isTrailer }}" hint-placeholder-val="{{ false }}">
                 <sc-if value="{{ project.trailerId }}" hint-placeholder-val="{{ false }}">
