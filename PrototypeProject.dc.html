@@ -65,7 +65,12 @@
     <div style="position: relative; z-index: 2">
 
       <!-- wide banner -->
-      <div style="width: 100%; height: min(52vh, 40vw); min-height: 260px; border-bottom: 1px solid {{ project.borderMid }}; background: {{ project.bannerBg }}; position: relative; box-sizing: border-box; display: flex; align-items: center; justify-content: center">
+      <div style="width: 100%; height: min(52vh, 40vw); min-height: 260px; border-bottom: 1px solid {{ project.borderMid }}; background: {{ project.bannerBg }}; position: relative; box-sizing: border-box; display: flex; align-items: center; justify-content: center; overflow: hidden">
+        <sc-if value="{{ project.bannerVideoId }}" hint-placeholder-val="{{ false }}">
+          <div style="position: absolute; inset: 0; overflow: hidden; pointer-events: none">
+            <iframe src="{{ project.bannerVideoSrc }}" title="Trailer" style="position: absolute; top: 50%; left: 50%; width: 177.78vh; min-width: 100%; height: 100vh; min-height: 56.25vw; transform: translate(-50%, -50%); border: 0" allow="autoplay; encrypted-media" allowfullscreen="true"></iframe>
+          </div>
+        </sc-if>
         <sc-if value="{{ project.noBanner }}" hint-placeholder-val="{{ false }}">
           <div style="font-family: 'JetBrains Mono', monospace; font-size: 12px; letter-spacing: 0.2em; color: #FFFFFF">PROTOTYPE_STILL / KEY ART</div>
         </sc-if>
@@ -251,7 +256,7 @@ const RAW_PROTOTYPES = [
   },
   {
     title: 'RESTAURANT TYCOON', tags: 'UNREAL ENGINE · C++ · GAMEPLAY SYSTEMS', accent: '#EFD18E',
-    banner: 'assets/prototypes/restaurant-tycoon/banner.png',
+    banner: 'assets/prototypes/restaurant-tycoon/banner.png', bannerVideoId: 'ck9lDlO1nqY',
     sections: [
       {
         goals: [
@@ -399,7 +404,8 @@ class Component extends DCLogic {
     const project = {
       ...p,
       bannerBg: p.banner ? `center / cover no-repeat url(${p.banner}), linear-gradient(160deg, #0C1418, #050809)` : `linear-gradient(160deg, #0C1418, #050809)`,
-      noBanner: !p.banner,
+      bannerVideoSrc: p.bannerVideoId ? `https://www.youtube.com/embed/${p.bannerVideoId}?autoplay=1&mute=1&loop=1&controls=0&showinfo=0&modestbranding=1&rel=0&playsinline=1&iv_load_policy=3&disablekb=1&fs=0&playlist=${p.bannerVideoId}` : '',
+      noBanner: !p.banner && !p.bannerVideoId,
       borderMid: hexToRgba(p.accent, 0.35),
       textAccent: mixWithDark(p.accent, 0.5, [10, 10, 14]),
       fillBg: mixWithDark(p.accent, 0.35, [255, 255, 255]),
