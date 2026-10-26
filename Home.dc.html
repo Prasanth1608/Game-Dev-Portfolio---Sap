@@ -23,6 +23,13 @@
     a { color: #9C6B00; text-decoration: none; }
     a:hover { filter: brightness(1.15); }
     @keyframes ap-blink { 0%, 49% { opacity: 1; } 50%, 100% { opacity: 0; } }
+    @keyframes ap-bg-drift {
+      0%   { transform: translate3d(-3%, -2%, 0) scale(1.08); filter: blur(110px) hue-rotate(0deg); }
+      25%  { transform: translate3d(2%, 3%, 0) scale(1.14); filter: blur(120px) hue-rotate(18deg); }
+      50%  { transform: translate3d(3%, -3%, 0) scale(1.1); filter: blur(100px) hue-rotate(-14deg); }
+      75%  { transform: translate3d(-2%, 2%, 0) scale(1.16); filter: blur(130px) hue-rotate(10deg); }
+      100% { transform: translate3d(-3%, -2%, 0) scale(1.08); filter: blur(110px) hue-rotate(0deg); }
+    }
     @keyframes ap-marquee { from { transform: translateX(0); } to { transform: translateX(-50%); } }
     @keyframes ap-marquee-rev { from { transform: translateX(-50%); } to { transform: translateX(0); } }
     .exp-card { transition: transform 0.2s ease, border-color 0.2s ease; }
@@ -64,34 +71,34 @@
       <a href="#expertise" onClick="{{ goTo }}" data-target="expertise" style="{{ navStyles.expertise }}">EXPERTISE</a>
       <a href="#games" onClick="{{ goTo }}" data-target="games" style="{{ navStyles.games }}">GAMES</a>
       <sc-if value="{{ hasPrototypes }}" hint-placeholder-val="{{ false }}">
-        <a href="#prototypes" onClick="{{ goTo }}" data-target="prototypes" style="{{ navStyles.prototypes }}">PROTOTYPES</a>
+        <a href="#games" onClick="{{ goTo }}" data-target="games" style="{{ navStyles.games }}">PROTOTYPES</a>
       </sc-if>
       <a href="#professional" onClick="{{ goTo }}" data-target="professional" style="{{ navStyles.professional }}">APPS</a>
-      <a href="#tools" onClick="{{ goTo }}" data-target="tools" style="{{ navStyles.tools }}">TOOLS</a>
+      <a href="#games" onClick="{{ goTo }}" data-target="games" style="{{ navStyles.games }}">TOOLS</a>
       <a href="#journey" onClick="{{ goTo }}" data-target="journey" style="{{ navStyles.journey }}">JOURNEY</a>
     </div>
   </div>
 
   <!-- ================= HOME ================= -->
   <section id="home" ref="{{ sectionRefs.home }}" style="position: relative; width: 100%; height: 100vh; min-height: 700px; overflow: hidden">
-    <div style="position: absolute; inset: 0; z-index: 0; overflow: hidden; background: #FFFFFF">
-      <div style="position: absolute; inset: 0; opacity: 0.55; filter: blur(110px); background: radial-gradient(circle at 15% 20%, #4DC3FF 0%, transparent 55%), radial-gradient(circle at 85% 15%, #B98BFF 0%, transparent 55%), radial-gradient(circle at 20% 88%, #FF6F91 0%, transparent 55%), radial-gradient(circle at 82% 82%, #FFC857 0%, transparent 55%), radial-gradient(circle at 50% 50%, #6EE7C8 0%, transparent 60%); pointer-events: none"></div>
-      <div style="position: absolute; inset: 0; background: radial-gradient(ellipse at center, rgba(255,255,255,0.05) 30%, rgba(255,255,255,0.35) 100%), linear-gradient(180deg, rgba(255,255,255,0.4) 0%, rgba(255,255,255,0.05) 22%, transparent 40%, transparent 60%, rgba(255,255,255,0.45) 100%); pointer-events: none"></div>
+    <div style="position: absolute; inset: 0; z-index: 0; overflow: hidden; background: #060609">
+      <div style="position: absolute; inset: 0; opacity: 0.5; mix-blend-mode: screen; background: radial-gradient(circle at 18% 22%, #3DA9FF 0%, transparent 42%), radial-gradient(circle at 82% 18%, #B35CFF 0%, transparent 42%), radial-gradient(circle at 22% 85%, #FF4D7D 0%, transparent 40%), radial-gradient(circle at 80% 80%, #FFC857 0%, transparent 38%), radial-gradient(circle at 50% 50%, #27D9B5 0%, transparent 46%); animation: ap-bg-drift 22s ease-in-out infinite"></div>
+      <div style="position: absolute; inset: 0; background: radial-gradient(ellipse at center, rgba(6,6,9,0) 15%, rgba(6,6,9,0.6) 62%, rgba(6,6,9,0.97) 100%)"></div>
     </div>
 
     <div style="position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; z-index: 7; pointer-events: none; padding-bottom: 110px">
       <div style="font-family: 'JetBrains Mono', monospace; font-size: 13px; letter-spacing: 0.4em; color: #38BDF8; margin-bottom: 18px">&gt; WELCOME, GUEST</div>
-      <h1 style="margin: 0; text-align: center; white-space: nowrap; font-family: 'Bebas Neue', sans-serif; font-weight: 400; font-size: clamp(32px, 5vw, 92px); line-height: 0.86; letter-spacing: 0.01em; color: #FFE600; text-shadow: 0 2px 10px rgba(0,0,0,0.12)">ANANTHA PRASANTH</h1>
+      <h1 style="margin: 0; text-align: center; white-space: nowrap; font-family: 'Bebas Neue', sans-serif; font-weight: 400; font-size: clamp(32px, 5vw, 92px); line-height: 0.86; letter-spacing: 0.01em; color: #FFE600; text-shadow: 0 2px 18px rgba(0,0,0,0.65)">ANANTHA PRASANTH</h1>
       <div style="display: flex; align-items: center; gap: 16px; margin-top: 26px">
-        <div style="width: 46px; height: 1px; background: rgba(255,200,87,0.6)"></div>
-        <div style="font-family: 'JetBrains Mono', monospace; font-size: 15px; letter-spacing: 0.45em; color: #14161A">GAMEPLAY ENGINEER<span style="display: inline-block; width: 9px; height: 16px; background: #FFC857; vertical-align: middle; margin-left: 8px; animation: ap-blink 1s steps(1) infinite"></span></div>
-        <div style="width: 46px; height: 1px; background: rgba(255,200,87,0.6)"></div>
+        <div style="width: 46px; height: 1px; background: rgba(255,200,87,0.4)"></div>
+        <div style="font-family: 'JetBrains Mono', monospace; font-size: 15px; letter-spacing: 0.45em; color: #F2F1EF">GAMEPLAY ENGINEER<span style="display: inline-block; width: 9px; height: 16px; background: #FFC857; vertical-align: middle; margin-left: 8px; animation: ap-blink 1s steps(1) infinite"></span></div>
+        <div style="width: 46px; height: 1px; background: rgba(255,200,87,0.4)"></div>
       </div>
       <a href="#games" onClick="{{ goTo }}" data-target="games" style="margin-top: 34px; pointer-events: auto; font-family: 'Bebas Neue', sans-serif; font-size: 20px; letter-spacing: 0.12em; background: #FFE600; color: #14161A; padding: 11px 26px; cursor: pointer" style-hover="background: #14161A; color: #FFE600">PRESS START ▸</a>
     </div>
 
     <div style="position: absolute; left: 0; right: 0; bottom: 78px; z-index: 8; display: flex; flex-direction: column; align-items: center; gap: 8px; pointer-events: none">
-      <div style="font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.3em; color: #14161A">SCROLL</div>
+      <div style="font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.3em; color: #F2F1EF">SCROLL</div>
       <svg width="18" height="24" viewBox="0 0 18 24" fill="none" stroke="#FFC857" stroke-width="1.4" style="animation: ap-scroll-bounce 1.6s ease-in-out infinite"><rect x="1" y="1" width="16" height="22" rx="8"></rect><circle cx="9" cy="7" r="1.6" fill="#FFC857" stroke="none"></circle></svg>
     </div>
 
@@ -179,20 +186,21 @@
     </div>
   </section>
 
-  <!-- ================= GAMES ================= -->
+  <!-- ================= GAMES + PROTOTYPES (merged: singles flow into a shared row) ================= -->
   <section id="games" ref="{{ sectionRefs.games }}" style="position: relative; padding-bottom: 40px; box-sizing: border-box; overflow: hidden">
 
-    <div style="position: relative; z-index: 2; text-align: center; padding: 60px 40px 0 40px; font-family: 'Bebas Neue', sans-serif; font-size: 40px; letter-spacing: 0.06em; color: #14161A">GAMES</div>
-
-    <div class="rt-role-grid" style="position: relative; z-index: 2; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 32px; padding: 40px 40px 0 40px; max-width: 1240px; margin: 0 auto; box-sizing: border-box">
-      <sc-for list="{{ projects }}" as="project" hint-placeholder-count="3">
+    <div class="rt-role-grid" style="position: relative; z-index: 2; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 32px; padding: 60px 40px 0 40px; max-width: 1240px; margin: 0 auto; box-sizing: border-box">
+      <sc-for list="{{ works }}" as="project" hint-placeholder-count="2">
         <div ref="{{ project.setCardRef }}" style="min-width: 0; background: {{ project.cardBg }}; border-top: 20px solid {{ project.borderAccent }}; border-radius: 2px; overflow: hidden">
           <div style="aspect-ratio: 16 / 9; background: {{ project.bannerBg }}; display: flex; align-items: center; justify-content: center; border-bottom: 1px solid {{ project.borderMid }}; position: relative">
             <sc-if value="{{ project.noBanner }}" hint-placeholder-val="{{ false }}">
               <div style="font-family: 'JetBrains Mono', monospace; font-size: 12px; letter-spacing: 0.2em; color: #FFFFFF">PROJECT_STILL / KEY ART</div>
             </sc-if>
             <div style="position: absolute; inset: 0; background: linear-gradient(0deg, rgba(0,0,0,0.85) 0%, transparent 45%); pointer-events: none"></div>
-            <div style="position: absolute; top: 14px; left: 18px; font-family: 'Bebas Neue', sans-serif; font-size: 22px; letter-spacing: 0.1em; color: {{ project.accent }}; text-shadow: 0 2px 12px rgba(0,0,0,0.8)">{{ project.index }}</div>
+            <div style="position: absolute; top: 14px; left: 18px; display: flex; align-items: center; gap: 8px">
+              <span style="font-family: 'Bebas Neue', sans-serif; font-size: 22px; letter-spacing: 0.1em; color: {{ project.accent }}; text-shadow: 0 2px 12px rgba(0,0,0,0.8)">{{ project.index }}</span>
+              <span style="font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.15em; color: #FFFFFF; background: rgba(0,0,0,0.45); padding: 3px 8px; border-radius: 3px">{{ project.kindLabel }}</span>
+            </div>
             <div style="position: absolute; left: 22px; bottom: 16px; right: 22px; display: flex; justify-content: space-between; align-items: flex-end; gap: 16px">
               <div>
                 <div style="font-family: 'Bebas Neue', sans-serif; font-size: 32px; letter-spacing: 0.02em; color: #FFFFFF; line-height: 1; text-shadow: 0 2px 20px rgba(0,0,0,0.8)">{{ project.title }}</div>
@@ -205,8 +213,12 @@
           </div>
           <div style="display: flex; align-items: center; gap: 6px; padding: 20px 30px 0 30px; border-bottom: 1px solid {{ project.borderLight }}">
             <div onClick="{{ project.selectOverview }}" style="{{ project.overviewTabStyle }}">OVERVIEW</div>
-            <div onClick="{{ project.selectTrailer }}" style="{{ project.trailerTabStyle }}">TRAILER</div>
-            <div onClick="{{ project.selectGit }}" style="{{ project.gitTabStyle }}">REPOSITORY</div>
+            <sc-if value="{{ project.hasVideo }}" hint-placeholder-val="{{ true }}">
+              <div onClick="{{ project.selectTrailer }}" style="{{ project.trailerTabStyle }}">TRAILER</div>
+            </sc-if>
+            <sc-if value="{{ project.hasGitUrl }}" hint-placeholder-val="{{ true }}">
+              <div onClick="{{ project.selectGit }}" style="{{ project.gitTabStyle }}">REPOSITORY</div>
+            </sc-if>
             <sc-if value="{{ project.showDetailLinks }}" hint-placeholder-val="{{ true }}">
               <a href="{{ project.detailHref }}" style="display: inline-flex; align-items: center; gap: 8px; font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.15em; padding: 10px 18px; color: {{ project.onCard }}; background: #F2F1EF">TECHNICAL BREAKDOWN <span>▸</span></a>
             </sc-if>
@@ -241,67 +253,6 @@
       </sc-for>
     </div>
   </section>
-
-  <!-- ================= PROTOTYPES ================= -->
-  <sc-if value="{{ hasPrototypes }}" hint-placeholder-val="{{ false }}">
-  <section id="prototypes" ref="{{ sectionRefs.prototypes }}" style="position: relative; padding-bottom: 40px; box-sizing: border-box; overflow: hidden">
-
-    <div style="position: relative; z-index: 2; text-align: center; padding: 60px 40px 0 40px; font-family: 'Bebas Neue', sans-serif; font-size: 40px; letter-spacing: 0.06em; color: #14161A">PROTOTYPES</div>
-
-    <div class="rt-role-grid" style="position: relative; z-index: 2; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 32px; padding: 40px 40px 0 40px; max-width: 1240px; margin: 0 auto; box-sizing: border-box">
-      <sc-for list="{{ prototypes }}" as="project" hint-placeholder-count="1">
-        <div ref="{{ project.setCardRef }}" style="min-width: 0; background: {{ project.cardBg }}; border-top: 20px solid {{ project.borderAccent }}; border-radius: 2px; overflow: hidden">
-          <div style="aspect-ratio: 16 / 9; background: {{ project.bannerBg }}; display: flex; align-items: center; justify-content: center; border-bottom: 1px solid {{ project.borderMid }}; position: relative">
-            <sc-if value="{{ project.noBanner }}" hint-placeholder-val="{{ false }}">
-              <div style="font-family: 'JetBrains Mono', monospace; font-size: 12px; letter-spacing: 0.2em; color: #FFFFFF">PROTOTYPE_STILL / KEY ART</div>
-            </sc-if>
-            <div style="position: absolute; inset: 0; background: linear-gradient(0deg, rgba(0,0,0,0.85) 0%, transparent 45%); pointer-events: none"></div>
-            <div style="position: absolute; top: 14px; left: 18px; font-family: 'Bebas Neue', sans-serif; font-size: 22px; letter-spacing: 0.1em; color: {{ project.accent }}; text-shadow: 0 2px 12px rgba(0,0,0,0.8)">{{ project.index }}</div>
-            <div style="position: absolute; left: 22px; bottom: 16px; right: 22px; display: flex; justify-content: space-between; align-items: flex-end; gap: 16px">
-              <div>
-                <div style="font-family: 'Bebas Neue', sans-serif; font-size: 32px; letter-spacing: 0.02em; color: #FFFFFF; line-height: 1; text-shadow: 0 2px 20px rgba(0,0,0,0.8)">{{ project.title }}</div>
-                <div style="font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.12em; color: {{ project.accent }}; margin-top: 8px">{{ project.tags }}</div>
-              </div>
-            </div>
-          </div>
-          <div style="display: flex; align-items: center; gap: 6px; padding: 20px 30px 0 30px; border-bottom: 1px solid {{ project.borderLight }}">
-            <div onClick="{{ project.selectOverview }}" style="{{ project.overviewTabStyle }}">OVERVIEW</div>
-            <sc-if value="{{ project.hasVideo }}" hint-placeholder-val="{{ false }}">
-              <div onClick="{{ project.selectTrailer }}" style="{{ project.trailerTabStyle }}">TRAILER</div>
-            </sc-if>
-            <sc-if value="{{ project.hasGitUrl }}" hint-placeholder-val="{{ true }}">
-              <div onClick="{{ project.selectGit }}" style="{{ project.gitTabStyle }}">REPOSITORY</div>
-            </sc-if>
-            <sc-if value="{{ project.showDetailLinks }}" hint-placeholder-val="{{ true }}">
-              <a href="{{ project.detailHref }}" style="display: inline-flex; align-items: center; gap: 8px; font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.15em; padding: 10px 18px; color: {{ project.onCard }}; background: #F2F1EF">TECHNICAL BREAKDOWN <span>▸</span></a>
-            </sc-if>
-            <sc-if value="{{ project.itchUrl }}" hint-placeholder-val="{{ false }}">
-              <a href="{{ project.itchUrl }}" target="_blank" rel="noopener" style="display: inline-flex; align-items: center; gap: 6px; font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.15em; padding: 10px 18px; margin-left: auto; color: #FFFFFF; background: #14161A">▶ PLAY</a>
-            </sc-if>
-          </div>
-          <div style="padding: 26px 30px 30px 30px; min-height: {{ project.tabMinHeight }}; display: flex; justify-content: {{ project.tabJustify }}; align-items: {{ project.tabAlignItems }}; gap: 20px; flex-wrap: wrap">
-            <div style="flex: 1; min-width: 260px; text-align: {{ project.tabTextAlign }}">
-              <sc-if value="{{ project.isOverview }}" hint-placeholder-val="{{ true }}">
-                <div style="font-family: 'Inter', sans-serif; font-size: 15px; line-height: 1.7; color: {{ project.onCard }}; white-space: pre-line">{{ project.overview }}</div>
-              </sc-if>
-              <sc-if value="{{ project.isTrailer }}" hint-placeholder-val="{{ false }}">
-                <div style="max-width: 720px; margin: 0 auto; aspect-ratio: 16/9; border: 1px solid {{ project.borderMid }}">
-                  <iframe src="{{ project.trailerEmbedSrc }}" title="Trailer" style="width: 100%; height: 100%; border: 0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen="true"></iframe>
-                </div>
-              </sc-if>
-              <sc-if value="{{ project.isGit }}" hint-placeholder-val="{{ false }}">
-                <a href="{{ project.gitUrl }}" style="display: inline-flex; align-items: center; gap: 10px; font-family: 'JetBrains Mono', monospace; font-size: 13px; letter-spacing: 0.08em; color: {{ project.onCard }}">
-                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="6" cy="5" r="2.4"></circle><circle cx="6" cy="19" r="2.4"></circle><circle cx="18" cy="9" r="2.4"></circle><path d="M6 7.4v9.2M18 11.4c0 3-3 4-7 4"></path></svg>
-                  {{ project.gitLabel }}
-                </a>
-              </sc-if>
-            </div>
-          </div>
-        </div>
-      </sc-for>
-    </div>
-  </section>
-  </sc-if>
 
   <!-- ================= REAL-TIME 3D APPLICATIONS (id kept as "professional") ================= -->
   <section id="professional" ref="{{ sectionRefs.professional }}" style="position: relative; padding-bottom: 40px; box-sizing: border-box; overflow: hidden">
@@ -548,7 +499,7 @@ const RAW_ROLES = [
 const RAW_TOOLS = [
   {
     title: 'WIND FIELD', tags: 'UNREAL ENGINE · C++ · PLUGIN', accent: PALETTE.orange,
-    banner: 'assets/plugins/windfield/card-thumbnail.png', trailerId: 'nAI2--ftOKQ',
+    banner: 'assets/plugins/windfield/card-thumbnail.png', trailerId: 'SLXdYUJeqb4',
     overview: 'WindField is an Unreal Engine 5 plugin that brings physically reactive wind to any level in minutes, drag, drop, and the environment starts moving. Built for game developers and archviz artists who need believable environmental motion without hand-rolling a wind system from scratch.\n\nWhat makes it different: WindField is fully obstacle-aware, detecting geometry and breaking around it, without a single raytrace or per-tick collision query. Every interaction runs on pure math-based grid and vector calculations instead, keeping it highly optimised enough to simulate 200+ objects at under 3ms on the game thread.\n\nEngineering Quality: built on solid OOP architecture with dedicated error handling and debugging strategies for long-term maintainability, developed end-to-end following Agile practices, from first prototype through iterative polish.',
     gitUrl: 'https://gitlab.com/prasanth1608/wind-field'
   }
@@ -834,6 +785,7 @@ class Component extends DCLogic {
         tabAlignItems: tab === 'git' ? 'center' : tab === 'overview' ? 'flex-start' : 'flex-end',
         tabTextAlign: tab === 'trailer' ? 'center' : 'left',
         detailHref: `Project.dc.html?slug=${slug}`,
+        hasVideo: !!p.trailerId, hasGitUrl: !!p.gitUrl, kindLabel: 'GAME',
         isOverview: tab === 'overview', isTrailer: tab === 'trailer', isGit: tab === 'git',
         overviewTabStyle: tabStyle(tab === 'overview', '#14161A', cardBorder, '#14161A'),
         trailerTabStyle: tabStyle(tab === 'trailer', '#14161A', cardBorder, '#14161A'),
@@ -857,14 +809,14 @@ class Component extends DCLogic {
         cardBg: '#FFFFFF', onCard: '#14161A', borderAccent: vividize(p.accent),
         borderImage: 'none',
         bannerBg: p.banner ? `center / cover no-repeat url(${p.banner}), linear-gradient(160deg, #0C1418, #050809)` : `linear-gradient(160deg, #0C1418, #050809)`,
-        noBanner: !p.banner, trailerEmbedSrc: p.trailerId ? `https://www.youtube.com/embed/${p.trailerId}` : '', hasVideo: !!p.trailerId,
-        index: String(i + 1).padStart(2, '0'),
+        noBanner: !p.banner, trailerEmbedSrc: p.trailerId ? `https://www.youtube.com/embed/${p.trailerId}` : '', hasVideo: !!p.trailerId, noTrailer: !p.trailerId,
+        index: String(i + 1).padStart(2, '0'), kindLabel: 'PROTOTYPE',
         gitUrl: p.gitUrl || '#', hasGitUrl: !!p.gitUrl, gitLabel: p.gitUrl ? p.gitUrl.replace(/^https?:\/\//, '') : `link your repo here`,
         tabMinHeight: tab === 'git' ? '0' : tab === 'trailer' ? '0' : '140px',
         tabJustify: tab === 'trailer' ? 'center' : 'space-between',
         tabAlignItems: tab === 'git' ? 'center' : tab === 'overview' ? 'flex-start' : 'flex-end',
         tabTextAlign: tab === 'trailer' ? 'center' : 'left',
-        isOverview: tab === 'overview' || (tab === 'trailer' && !p.trailerId), isTrailer: tab === 'trailer' && !!p.trailerId, isGit: tab === 'git',
+        isOverview: tab === 'overview', isTrailer: tab === 'trailer', isGit: tab === 'git',
         overviewTabStyle: tabStyle(tab === 'overview', '#14161A', cardBorder, '#14161A'),
         trailerTabStyle: tabStyle(tab === 'trailer', '#14161A', cardBorder, '#14161A'),
         gitTabStyle: tabStyle(tab === 'git', '#14161A', cardBorder, '#14161A'),
@@ -951,6 +903,7 @@ class Component extends DCLogic {
       categories,
       projects,
       prototypes,
+      works: [...projects, ...prototypes],
       hasPrototypes: RAW_PROTOTYPES.length > 0,
       roles,
       tools,
