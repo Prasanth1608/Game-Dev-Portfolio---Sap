@@ -284,7 +284,7 @@
           <div style="display: flex; flex-direction: column; flex: 1; padding: 12px 14px 14px 14px">
             <div style="font-family: 'Bebas Neue', sans-serif; font-size: 20px; letter-spacing: 0.02em; line-height: 1.05; color: {{ role.onCard }}; text-shadow: 0 1px 3px rgba(0,0,0,0.18)">{{ role.title }}</div>
             <div style="font-family: 'JetBrains Mono', monospace; font-size: 9.5px; letter-spacing: 0.1em; color: {{ role.onCard }}; margin: 6px 0 8px 0; opacity: 0.85">{{ role.tags }}</div>
-            <div style="font-family: 'Inter', sans-serif; font-size: 12px; line-height: 1.5; color: {{ role.onCard }}">{{ role.summary }}</div>
+            <div style="font-family: 'Inter', sans-serif; font-size: 12.5px; line-height: 1.55; color: {{ role.onCard }}">{{ role.summary }}</div>
 
             <div style="display: flex; flex-direction: column; gap: 4px; margin-top: 8px">
               <sc-for list="{{ role.highlights }}" as="point" hint-placeholder-count="2">
@@ -463,6 +463,11 @@ const RAW_PROTOTYPES = [
     title: 'COLLECTIONS', tags: 'UNREAL ENGINE 5 · C++ · GAMEPLAY SYSTEMS', accent: PALETTE.teal,
     banner: 'assets/prototypes/collections/banner.png', gitUrl: 'https://gitlab.com/prasanth1608/Collections',
     overview: 'COLLECTIONS is a third-person gameplay prototype built in Unreal Engine as a coding challenge, completed within a week to sharpen my problem-solving and system-design skills. Race a countdown to gather randomized collectibles across the level, using locked and unlocked doors and teleporters, with a live HUD tracking progress and time.\n\nWhat makes it different: the goal was as much architecture as gameplay. Every interactable, whether a collectible, door or teleporter, is driven through a shared interaction interface, so the player never needs to know a concrete class and never casts. No hard references anywhere, with assets loaded asynchronously instead. Objectives and item counts are data-driven through Data Assets, so designers can tune and test the prototype without ever opening a Blueprint.\n\nEngineering Quality: built from reusable components rather than logic tied to individual actors, with cached object references reused instead of repeatedly resolved.'
+  },
+  {
+    title: 'RESTAURANT TYCOON', tags: 'UNREAL ENGINE · C++ · GAMEPLAY SYSTEMS', accent: PALETTE.amber,
+    hideDetailPage: true,
+    overview: 'RESTAURANT TYCOON is a cooking-and-serving management prototype built in Unreal Engine, where players prep ingredients, cook orders at the stove, plate them, serve tables, and keep washing stations clear before time runs out.\n\nWhat makes it different: a single reusable stack-point component, handling snap-to-point placement with configurable capacity, is reused unmodified across six different contexts, a plate station’s stack, a washing station’s wash point, a table’s placement spots, a trash bin’s discard point, a cooking slot’s ingredient point, and a plate’s own food point, composition over duplicated per-station logic.\n\nEngineering Quality: every interactable implements a single Interact() interface, reused across 15+ use cases such as stations and slots, with logic overridden per use case and no casts anywhere.'
   }
 ];
 
