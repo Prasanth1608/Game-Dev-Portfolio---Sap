@@ -24,12 +24,14 @@
     a:hover { filter: brightness(1.15); }
     @keyframes ap-blink { 0%, 49% { opacity: 1; } 50%, 100% { opacity: 0; } }
     @keyframes ap-bg-drift {
-      0%   { transform: translate3d(-3%, -2%, 0) scale(1.08); filter: blur(110px) hue-rotate(0deg); }
-      25%  { transform: translate3d(2%, 3%, 0) scale(1.14); filter: blur(120px) hue-rotate(18deg); }
-      50%  { transform: translate3d(3%, -3%, 0) scale(1.1); filter: blur(100px) hue-rotate(-14deg); }
-      75%  { transform: translate3d(-2%, 2%, 0) scale(1.16); filter: blur(130px) hue-rotate(10deg); }
-      100% { transform: translate3d(-3%, -2%, 0) scale(1.08); filter: blur(110px) hue-rotate(0deg); }
+      0%   { transform: translate3d(-3%, -2%, 0) scale(1.08); }
+      25%  { transform: translate3d(2%, 3%, 0) scale(1.14); }
+      50%  { transform: translate3d(3%, -3%, 0) scale(1.1); }
+      75%  { transform: translate3d(-2%, 2%, 0) scale(1.16); }
+      100% { transform: translate3d(-3%, -2%, 0) scale(1.08); }
     }
+    .ap-hero-glow { filter: blur(115px); will-change: transform; animation: ap-bg-drift 22s ease-in-out infinite; }
+    .ap-hero-glow.ap-paused { animation-play-state: paused; }
     @keyframes ap-marquee { from { transform: translateX(0); } to { transform: translateX(-50%); } }
     @keyframes ap-marquee-rev { from { transform: translateX(-50%); } to { transform: translateX(0); } }
     .exp-card { transition: transform 0.2s ease, border-color 0.2s ease; }
@@ -82,7 +84,7 @@
   <!-- ================= HOME ================= -->
   <section id="home" ref="{{ sectionRefs.home }}" style="position: relative; width: 100%; height: 100vh; min-height: 700px; overflow: hidden">
     <div style="position: absolute; inset: 0; z-index: 0; overflow: hidden; background: #060609">
-      <div style="position: absolute; inset: 0; opacity: 0.5; mix-blend-mode: screen; background: radial-gradient(circle at 18% 22%, #3DA9FF 0%, transparent 42%), radial-gradient(circle at 82% 18%, #B35CFF 0%, transparent 42%), radial-gradient(circle at 22% 85%, #FF4D7D 0%, transparent 40%), radial-gradient(circle at 80% 80%, #FFC857 0%, transparent 38%), radial-gradient(circle at 50% 50%, #27D9B5 0%, transparent 46%); animation: ap-bg-drift 22s ease-in-out infinite"></div>
+      <div ref="{{ heroGlowRef }}" class="ap-hero-glow" style="position: absolute; inset: 0; opacity: 0.5; mix-blend-mode: screen; background: radial-gradient(circle at 18% 22%, #3DA9FF 0%, transparent 42%), radial-gradient(circle at 82% 18%, #B35CFF 0%, transparent 42%), radial-gradient(circle at 22% 85%, #FF4D7D 0%, transparent 40%), radial-gradient(circle at 80% 80%, #FFC857 0%, transparent 38%), radial-gradient(circle at 50% 50%, #27D9B5 0%, transparent 46%)"></div>
       <div style="position: absolute; inset: 0; background: radial-gradient(ellipse at center, rgba(6,6,9,0) 15%, rgba(6,6,9,0.6) 62%, rgba(6,6,9,0.97) 100%)"></div>
     </div>
 
@@ -576,12 +578,6 @@ function vividize(hex) {
   const [h, s, l] = hexToHsl(hex);
   return hslToHex(h, Math.min(0.85, s * 1.25 + 0.05), 0.62);
 }
-function hexToRgbObj(hex) {
-  const h = hex.replace('#', '');
-  return { r: parseInt(h.substring(0, 2), 16), g: parseInt(h.substring(2, 4), 16), b: parseInt(h.substring(4, 6), 16) };
-}
-function lerp(a, b, t) { return a + (b - a) * t; }
-
 function overviewWithLeads(text, accent) {
   const paragraphs = (text || '').split('\n\n');
   const nodes = [];
@@ -620,10 +616,6 @@ function nearestToCenter(refsArr) {
 class Component extends DCLogic {
   state = {
     expAccent: '#FFFFFF',
-    worksAccent: RAW_PROJECTS[0].accent,
-    protoAccent: RAW_PROTOTYPES.length ? RAW_PROTOTYPES[0].accent : '#FFFFFF',
-    proAccent: RAW_ROLES[0].accent,
-    toolsAccent: RAW_TOOLS[0].accent,
     journeyIndex: 0,
     projectTabs: RAW_PROJECTS.map(() => 'overview'),
     protoTabs: RAW_PROTOTYPES.map(() => 'overview'),
@@ -636,12 +628,12 @@ class Component extends DCLogic {
     super(props);
     this.sectionRefs = { home: React.createRef(), expertise: React.createRef(), games: React.createRef(), prototypes: React.createRef(), professional: React.createRef(), tools: React.createRef(), journey: React.createRef() };
     this.sharedBackdropRef = React.createRef();
+    this.heroGlowRef = React.createRef();
     this.projectCardEls = [];
     this.protoCardEls = [];
     this.roleCardEls = [];
     this.toolCardEls = [];
     this.milestoneEls = [];
-    this.sharedRGB = hexToRgbObj('#15181a');
   }
 
   setProjectTab(i, tab) { this.setState((s) => { const t = s.projectTabs.slice(); t[i] = tab; return { projectTabs: t }; }); }
@@ -667,26 +659,6 @@ class Component extends DCLogic {
       this.raf = requestAnimationFrame(() => {
         this.raf = null;
 
-        const bestProject = nearestToCenter(this.projectCardEls);
-        if (bestProject !== null) {
-          const accent = RAW_PROJECTS[bestProject].accent;
-          if (accent !== this.state.worksAccent) this.setState({ worksAccent: accent });
-        }
-        const bestProto = nearestToCenter(this.protoCardEls);
-        if (bestProto !== null) {
-          const accent = RAW_PROTOTYPES[bestProto].accent;
-          if (accent !== this.state.protoAccent) this.setState({ protoAccent: accent });
-        }
-        const bestRole = nearestToCenter(this.roleCardEls);
-        if (bestRole !== null) {
-          const accent = RAW_ROLES[bestRole].accent;
-          if (accent !== this.state.proAccent) this.setState({ proAccent: accent });
-        }
-        const bestTool = nearestToCenter(this.toolCardEls);
-        if (bestTool !== null) {
-          const accent = RAW_TOOLS[bestTool].accent;
-          if (accent !== this.state.toolsAccent) this.setState({ toolsAccent: accent });
-        }
         const bestMilestone = nearestToCenter(this.milestoneEls);
         const atBottom = window.innerHeight + window.scrollY >= document.documentElement.scrollHeight - 4;
         const finalMilestone = atBottom ? MILESTONES.length - 1 : bestMilestone;
@@ -709,33 +681,20 @@ class Component extends DCLogic {
     window.addEventListener('scroll', this.onScroll, { passive: true });
     this.onScroll();
 
-    const currentAccent = () => {
-      switch (this.state.activeSection) {
-        case 'expertise': return '#FFFFFF';
-        case 'games': return this.state.worksAccent;
-        case 'prototypes': return this.state.protoAccent;
-        case 'professional': return this.state.proAccent;
-        case 'tools': return this.state.toolsAccent;
-        case 'journey': return MILESTONES[this.state.journeyIndex].accent;
-        default: return '#FFFFFF';
-      }
-    };
-
-    const tick = () => {
-      const target = hexToRgbObj(currentAccent());
-      this.sharedRGB = { r: lerp(this.sharedRGB.r, target.r, 0.08), g: lerp(this.sharedRGB.g, target.g, 0.08), b: lerp(this.sharedRGB.b, target.b, 0.08) };
-      if (this.sharedBackdropRef.current) {
-        this.sharedBackdropRef.current.style.background = '#ECEBEA';
-      }
-      this.lerpRaf = requestAnimationFrame(tick);
-    };
-    this.lerpRaf = requestAnimationFrame(tick);
+    if (window.IntersectionObserver && this.heroGlowRef.current) {
+      this.heroGlowObserver = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          this.heroGlowRef.current && this.heroGlowRef.current.classList.toggle('ap-paused', !entry.isIntersecting);
+        });
+      });
+      this.heroGlowObserver.observe(this.heroGlowRef.current);
+    }
   }
 
   componentWillUnmount() {
     window.removeEventListener('scroll', this.onScroll);
     if (this.raf) cancelAnimationFrame(this.raf);
-    if (this.lerpRaf) cancelAnimationFrame(this.lerpRaf);
+    if (this.heroGlowObserver) this.heroGlowObserver.disconnect();
   }
 
   renderVals() {
@@ -899,6 +858,7 @@ class Component extends DCLogic {
       navStyles,
       goTo: (e) => { e.preventDefault(); this.goToId(e.currentTarget.getAttribute('data-target')); },
       sharedBackdropRef: this.sharedBackdropRef,
+      heroGlowRef: this.heroGlowRef,
       sharedBackdropBg: '#ECEBEA',
       categories,
       projects,
