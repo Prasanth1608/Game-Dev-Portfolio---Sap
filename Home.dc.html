@@ -75,7 +75,7 @@
       <sc-if value="{{ hasPrototypes }}" hint-placeholder-val="{{ false }}">
         <a href="#games" onClick="{{ goTo }}" data-target="games" style="{{ navStyles.games }}">PROTOTYPES</a>
       </sc-if>
-      <a href="#professional" onClick="{{ goTo }}" data-target="professional" style="{{ navStyles.professional }}">APPS</a>
+      <a href="#games" onClick="{{ goTo }}" data-target="games" style="{{ navStyles.games }}">APPS</a>
       <a href="#games" onClick="{{ goTo }}" data-target="games" style="{{ navStyles.games }}">TOOLS</a>
       <a href="#journey" onClick="{{ goTo }}" data-target="journey" style="{{ navStyles.journey }}">JOURNEY</a>
     </div>
@@ -188,64 +188,66 @@
     </div>
   </section>
 
-  <!-- ================= GAMES + PROTOTYPES (merged: singles flow into a shared row) ================= -->
+  <!-- ================= GAMES + PROTOTYPES + TOOLS + APPS (all merged: one flowing row, small cards) ================= -->
   <section id="games" ref="{{ sectionRefs.games }}" style="position: relative; padding-bottom: 40px; box-sizing: border-box; overflow: hidden">
 
-    <div class="rt-role-grid" style="position: relative; z-index: 2; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 32px; padding: 60px 40px 0 40px; max-width: 1240px; margin: 0 auto; box-sizing: border-box">
-      <sc-for list="{{ works }}" as="project" hint-placeholder-count="2">
-        <div ref="{{ project.setCardRef }}" style="min-width: 0; background: {{ project.cardBg }}; border-top: 20px solid {{ project.borderAccent }}; border-radius: 2px; overflow: hidden">
-          <div style="aspect-ratio: 16 / 9; background: {{ project.bannerBg }}; display: flex; align-items: center; justify-content: center; border-bottom: 1px solid {{ project.borderMid }}; position: relative">
+    <div style="position: relative; z-index: 2; text-align: center; padding: 44px 40px 0 40px; font-family: 'JetBrains Mono', monospace; font-size: 12px; letter-spacing: 0.3em; color: #6B7178">GAMES · PROTOTYPES · TOOLS · APPS</div>
+
+    <div class="rt-role-grid" style="position: relative; z-index: 2; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 24px; padding: 20px 40px 0 40px; max-width: 1160px; margin: 0 auto; box-sizing: border-box">
+      <sc-for list="{{ works }}" as="project" hint-placeholder-count="3">
+        <div ref="{{ project.setCardRef }}" style="min-width: 0; background: {{ project.cardBg }}; border-top: 16px solid {{ project.borderAccent }}; border-radius: 2px; overflow: hidden">
+          <div style="aspect-ratio: 16 / 6; background: {{ project.bannerBg }}; display: flex; align-items: center; justify-content: center; border-bottom: 1px solid {{ project.borderMid }}; position: relative">
             <sc-if value="{{ project.noBanner }}" hint-placeholder-val="{{ false }}">
-              <div style="font-family: 'JetBrains Mono', monospace; font-size: 12px; letter-spacing: 0.2em; color: #FFFFFF">PROJECT_STILL / KEY ART</div>
+              <div style="font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.2em; color: #FFFFFF">PROJECT_STILL / KEY ART</div>
             </sc-if>
             <div style="position: absolute; inset: 0; background: linear-gradient(0deg, rgba(0,0,0,0.85) 0%, transparent 45%); pointer-events: none"></div>
-            <div style="position: absolute; top: 14px; left: 18px; display: flex; align-items: center; gap: 8px">
-              <span style="font-family: 'Bebas Neue', sans-serif; font-size: 22px; letter-spacing: 0.1em; color: {{ project.accent }}; text-shadow: 0 2px 12px rgba(0,0,0,0.8)">{{ project.index }}</span>
-              <span style="font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.15em; color: #FFFFFF; background: rgba(0,0,0,0.45); padding: 3px 8px; border-radius: 3px">{{ project.kindLabel }}</span>
+            <div style="position: absolute; top: 10px; left: 14px; display: flex; align-items: center; gap: 6px">
+              <span style="font-family: 'Bebas Neue', sans-serif; font-size: 16px; letter-spacing: 0.1em; color: {{ project.accent }}; text-shadow: 0 2px 12px rgba(0,0,0,0.8)">{{ project.index }}</span>
+              <span style="font-family: 'JetBrains Mono', monospace; font-size: 8.5px; letter-spacing: 0.14em; color: #FFFFFF; background: rgba(0,0,0,0.45); padding: 2px 6px; border-radius: 3px">{{ project.kindLabel }}</span>
             </div>
-            <div style="position: absolute; left: 22px; bottom: 16px; right: 22px; display: flex; justify-content: space-between; align-items: flex-end; gap: 16px">
+            <div style="position: absolute; left: 16px; bottom: 10px; right: 16px; display: flex; justify-content: space-between; align-items: flex-end; gap: 12px">
               <div>
-                <div style="font-family: 'Bebas Neue', sans-serif; font-size: 32px; letter-spacing: 0.02em; color: #FFFFFF; line-height: 1; text-shadow: 0 2px 20px rgba(0,0,0,0.8)">{{ project.title }}</div>
-                <div style="font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.12em; color: {{ project.accent }}; margin-top: 8px">{{ project.tags }}</div>
+                <div style="font-family: 'Bebas Neue', sans-serif; font-size: 23px; letter-spacing: 0.02em; color: #FFFFFF; line-height: 1; text-shadow: 0 2px 20px rgba(0,0,0,0.8)">{{ project.title }}</div>
+                <div style="font-family: 'JetBrains Mono', monospace; font-size: 9.5px; letter-spacing: 0.1em; color: {{ project.accent }}; margin-top: 5px">{{ project.tags }}</div>
               </div>
               <sc-if value="{{ project.showDetailLinks }}" hint-placeholder-val="{{ true }}">
-                <a href="{{ project.detailHref }}" style="{{ project.playButtonStyle }}">VIEW PROJECT →</a>
+                <a href="{{ project.detailHref }}" style="{{ project.playButtonStyle }}">VIEW →</a>
               </sc-if>
             </div>
           </div>
-          <div style="display: flex; align-items: center; gap: 6px; padding: 20px 30px 0 30px; border-bottom: 1px solid {{ project.borderLight }}">
+          <div style="display: flex; align-items: center; gap: 4px; padding: 10px 14px 0 14px; border-bottom: 1px solid {{ project.borderLight }}">
             <div onClick="{{ project.selectOverview }}" style="{{ project.overviewTabStyle }}">OVERVIEW</div>
             <sc-if value="{{ project.hasVideo }}" hint-placeholder-val="{{ true }}">
               <div onClick="{{ project.selectTrailer }}" style="{{ project.trailerTabStyle }}">TRAILER</div>
             </sc-if>
             <sc-if value="{{ project.hasGitUrl }}" hint-placeholder-val="{{ true }}">
-              <div onClick="{{ project.selectGit }}" style="{{ project.gitTabStyle }}">REPOSITORY</div>
+              <div onClick="{{ project.selectGit }}" style="{{ project.gitTabStyle }}">REPO</div>
             </sc-if>
             <sc-if value="{{ project.showDetailLinks }}" hint-placeholder-val="{{ true }}">
-              <a href="{{ project.detailHref }}" style="display: inline-flex; align-items: center; gap: 8px; font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.15em; padding: 10px 18px; color: {{ project.onCard }}; background: #F2F1EF">TECHNICAL BREAKDOWN <span>▸</span></a>
+              <a href="{{ project.detailHref }}" style="display: inline-flex; align-items: center; gap: 5px; font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.1em; padding: 7px 11px; color: {{ project.onCard }}; background: #F2F1EF">BREAKDOWN <span>▸</span></a>
             </sc-if>
             <sc-if value="{{ project.itchUrl }}" hint-placeholder-val="{{ false }}">
-              <a href="{{ project.itchUrl }}" target="_blank" rel="noopener" style="display: inline-flex; align-items: center; gap: 6px; font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.15em; padding: 10px 18px; margin-left: auto; color: #FFFFFF; background: #14161A">▶ PLAY</a>
+              <a href="{{ project.itchUrl }}" target="_blank" rel="noopener" style="display: inline-flex; align-items: center; gap: 4px; font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.1em; padding: 7px 11px; margin-left: auto; color: #FFFFFF; background: #14161A">▶ PLAY</a>
             </sc-if>
           </div>
-          <div style="padding: 26px 30px 30px 30px; min-height: {{ project.tabMinHeight }}; display: flex; justify-content: {{ project.tabJustify }}; align-items: {{ project.tabAlignItems }}; gap: 20px; flex-wrap: wrap">
-            <div style="flex: 1; min-width: 260px; text-align: {{ project.tabTextAlign }}">
+          <div style="padding: 12px 14px 14px 14px; min-height: {{ project.tabMinHeight }}; display: flex; justify-content: {{ project.tabJustify }}; align-items: {{ project.tabAlignItems }}; gap: 16px; flex-wrap: wrap">
+            <div style="flex: 1; min-width: 200px; text-align: {{ project.tabTextAlign }}">
               <sc-if value="{{ project.isOverview }}" hint-placeholder-val="{{ true }}">
-                <div style="font-family: 'Inter', sans-serif; font-size: 15px; line-height: 1.7; color: {{ project.onCard }}; white-space: pre-line">{{ project.overview }}</div>
+                <div style="font-family: 'Inter', sans-serif; font-size: 12.5px; line-height: 1.55; color: {{ project.onCard }}; white-space: pre-line; max-height: 105px; overflow-y: auto">{{ project.overview }}</div>
               </sc-if>
               <sc-if value="{{ project.isTrailer }}" hint-placeholder-val="{{ false }}">
                 <sc-if value="{{ project.trailerId }}" hint-placeholder-val="{{ false }}">
-                  <div style="max-width: 720px; margin: 0 auto; aspect-ratio: 16/9; border: 1px solid {{ project.borderMid }}">
+                  <div style="max-width: 100%; margin: 0 auto; aspect-ratio: 16/9; border: 1px solid {{ project.borderMid }}">
                     <iframe src="{{ project.trailerEmbedSrc }}" title="Trailer" style="width: 100%; height: 100%; border: 0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen="true"></iframe>
                   </div>
                 </sc-if>
                 <sc-if value="{{ project.noTrailer }}" hint-placeholder-val="{{ true }}">
-                  <div style="height: 260px; max-width: 720px; margin: 0 auto; background: #F2F1EF; display: flex; align-items: center; justify-content: center; font-family: 'JetBrains Mono', monospace; font-size: 12px; letter-spacing: 0.15em; color: {{ project.onCard }}">TRAILER VIDEO — drop file here</div>
+                  <div style="height: 140px; max-width: 100%; margin: 0 auto; background: #F2F1EF; display: flex; align-items: center; justify-content: center; font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.1em; color: {{ project.onCard }}">TRAILER VIDEO — drop file here</div>
                 </sc-if>
               </sc-if>
               <sc-if value="{{ project.isGit }}" hint-placeholder-val="{{ false }}">
-                <a href="{{ project.gitUrl }}" style="display: inline-flex; align-items: center; gap: 10px; font-family: 'JetBrains Mono', monospace; font-size: 13px; letter-spacing: 0.08em; color: {{ project.onCard }}">
-                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="6" cy="5" r="2.4"></circle><circle cx="6" cy="19" r="2.4"></circle><circle cx="18" cy="9" r="2.4"></circle><path d="M6 7.4v9.2M18 11.4c0 3-3 4-7 4"></path></svg>
+                <a href="{{ project.gitUrl }}" style="display: inline-flex; align-items: center; gap: 8px; font-family: 'JetBrains Mono', monospace; font-size: 11.5px; letter-spacing: 0.06em; color: {{ project.onCard }}">
+                  <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="6" cy="5" r="2.4"></circle><circle cx="6" cy="19" r="2.4"></circle><circle cx="18" cy="9" r="2.4"></circle><path d="M6 7.4v9.2M18 11.4c0 3-3 4-7 4"></path></svg>
                   {{ project.gitLabel }}
                 </a>
               </sc-if>
@@ -253,118 +255,48 @@
           </div>
         </div>
       </sc-for>
-    </div>
-  </section>
 
-  <!-- ================= REAL-TIME 3D APPLICATIONS (id kept as "professional") ================= -->
-  <section id="professional" ref="{{ sectionRefs.professional }}" style="position: relative; padding-bottom: 40px; box-sizing: border-box; overflow: hidden">
-
-    <div style="position: relative; z-index: 2; text-align: center; padding: 60px 40px 0 40px; font-family: 'Bebas Neue', sans-serif; font-size: 40px; letter-spacing: 0.06em; color: #14161A">REAL-TIME 3D APPLICATIONS</div>
-
-    <div class="rt-role-grid" style="position: relative; z-index: 2; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 32px; padding: 40px 40px 0 40px; max-width: 1240px; margin: 0 auto; box-sizing: border-box">
-      <sc-for list="{{ roles }}" as="role" hint-placeholder-count="4">
-        <div ref="{{ role.setCardRef }}" style="display: flex; flex-direction: column; min-width: 0; background: {{ role.cardBg }}; border-top: 20px solid {{ role.borderAccent }}; border-radius: 2px; overflow: hidden">
+      <sc-for list="{{ roles }}" as="role" hint-placeholder-count="3">
+        <div ref="{{ role.setCardRef }}" style="display: flex; flex-direction: column; min-width: 0; background: {{ role.cardBg }}; border-top: 16px solid {{ role.borderAccent }}; border-radius: 2px; overflow: hidden">
 
           <!-- media: still image (or accent panel) that swaps to the walkthrough video on click -->
-          <div style="position: relative; aspect-ratio: 16 / 9; background: {{ role.bannerBg }}; border-bottom: 1px solid {{ role.borderMid }}">
+          <div style="position: relative; aspect-ratio: 16 / 6; background: {{ role.bannerBg }}; border-bottom: 1px solid {{ role.borderMid }}">
             <sc-if value="{{ role.isPlaying }}" hint-placeholder-val="{{ false }}">
               <iframe src="{{ role.videoSrc }}" title="Walkthrough video" style="position: absolute; inset: 0; width: 100%; height: 100%; border: 0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen="true"></iframe>
             </sc-if>
             <sc-if value="{{ role.showStill }}" hint-placeholder-val="{{ true }}">
               <div style="position: absolute; inset: 0; background: linear-gradient(0deg, rgba(0,0,0,0.75) 0%, transparent 50%); pointer-events: none"></div>
               <sc-if value="{{ role.noBanner }}" hint-placeholder-val="{{ false }}">
-                <div style="position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; font-family: 'Bebas Neue', sans-serif; font-size: 150px; line-height: 1; letter-spacing: 0.04em; color: {{ role.accent }}; opacity: 0.22; pointer-events: none">{{ role.index }}</div>
+                <div style="position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; font-family: 'Bebas Neue', sans-serif; font-size: 110px; line-height: 1; letter-spacing: 0.04em; color: {{ role.accent }}; opacity: 0.22; pointer-events: none">{{ role.index }}</div>
               </sc-if>
-              <sc-if value="{{ role.hasBanner }}" hint-placeholder-val="{{ true }}">
-                <div style="position: absolute; top: 14px; left: 18px; font-family: 'Bebas Neue', sans-serif; font-size: 24px; letter-spacing: 0.1em; color: {{ role.accent }}; text-shadow: 0 2px 12px rgba(0,0,0,0.8)">{{ role.index }}</div>
-              </sc-if>
+              <div style="position: absolute; top: 10px; left: 14px; display: flex; align-items: center; gap: 6px">
+                <sc-if value="{{ role.hasBanner }}" hint-placeholder-val="{{ true }}">
+                  <span style="font-family: 'Bebas Neue', sans-serif; font-size: 16px; letter-spacing: 0.1em; color: {{ role.accent }}; text-shadow: 0 2px 12px rgba(0,0,0,0.8)">{{ role.index }}</span>
+                </sc-if>
+                <span style="font-family: 'JetBrains Mono', monospace; font-size: 8.5px; letter-spacing: 0.14em; color: #FFFFFF; background: rgba(0,0,0,0.45); padding: 2px 6px; border-radius: 3px">{{ role.kindLabel }}</span>
+              </div>
             </sc-if>
           </div>
 
-          <div style="display: flex; flex-direction: column; flex: 1; padding: 22px 26px 26px 26px">
-            <div style="font-family: 'Bebas Neue', sans-serif; font-size: 32px; letter-spacing: 0.02em; line-height: 1.05; color: {{ role.onCard }}; text-shadow: 0 1px 3px rgba(0,0,0,0.18)">{{ role.title }}</div>
-            <div style="font-family: 'JetBrains Mono', monospace; font-size: 11.5px; letter-spacing: 0.12em; color: {{ role.onCard }}; margin: 8px 0 14px 0; opacity: 0.85">{{ role.tags }}</div>
-            <div style="font-family: 'Inter', sans-serif; font-size: 14.5px; line-height: 1.7; color: {{ role.onCard }}">{{ role.summary }}</div>
+          <div style="display: flex; flex-direction: column; flex: 1; padding: 12px 14px 14px 14px">
+            <div style="font-family: 'Bebas Neue', sans-serif; font-size: 20px; letter-spacing: 0.02em; line-height: 1.05; color: {{ role.onCard }}; text-shadow: 0 1px 3px rgba(0,0,0,0.18)">{{ role.title }}</div>
+            <div style="font-family: 'JetBrains Mono', monospace; font-size: 9.5px; letter-spacing: 0.1em; color: {{ role.onCard }}; margin: 6px 0 8px 0; opacity: 0.85">{{ role.tags }}</div>
+            <div style="font-family: 'Inter', sans-serif; font-size: 12px; line-height: 1.5; color: {{ role.onCard }}; max-height: 56px; overflow-y: auto">{{ role.summary }}</div>
 
-            <div style="display: flex; flex-direction: column; gap: 8px; margin-top: 16px">
-              <sc-for list="{{ role.highlights }}" as="point" hint-placeholder-count="3">
-                <div style="display: flex; align-items: flex-start; gap: 12px; font-family: 'Inter', sans-serif; font-size: 13.5px; line-height: 1.6; color: {{ role.onCard }}">
-                  <span style="flex: none; width: 6px; height: 6px; margin-top: 8px; background: {{ role.onCard }}"></span>
+            <div style="display: flex; flex-direction: column; gap: 4px; margin-top: 8px; max-height: 50px; overflow-y: auto">
+              <sc-for list="{{ role.highlights }}" as="point" hint-placeholder-count="2">
+                <div style="display: flex; align-items: flex-start; gap: 8px; font-family: 'Inter', sans-serif; font-size: 11px; line-height: 1.45; color: {{ role.onCard }}">
+                  <span style="flex: none; width: 5px; height: 5px; margin-top: 6px; background: {{ role.onCard }}"></span>
                   <span>{{ point }}</span>
                 </div>
               </sc-for>
             </div>
 
             <sc-if value="{{ role.hasVideo }}" hint-placeholder-val="{{ true }}">
-              <div style="margin-top: auto; padding-top: 22px">
+              <div style="margin-top: auto; padding-top: 12px">
                 <div onClick="{{ role.toggleVideo }}" style="{{ role.videoButtonStyle }}">{{ role.videoButtonLabel }}</div>
               </div>
             </sc-if>
-          </div>
-        </div>
-      </sc-for>
-    </div>
-  </section>
-
-<!-- ================= TOOLS ================= -->
-  <section id="tools" ref="{{ sectionRefs.tools }}" style="position: relative; padding-bottom: 40px; box-sizing: border-box; overflow: hidden">
-
-    <div style="position: relative; z-index: 2; text-align: center; padding: 60px 40px 0 40px; font-family: 'Bebas Neue', sans-serif; font-size: 40px; letter-spacing: 0.06em; color: #14161A">TOOLS</div>
-
-    <div class="rt-role-grid" style="position: relative; z-index: 2; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 32px; padding: 40px 40px 0 40px; max-width: 1240px; margin: 0 auto; box-sizing: border-box">
-      <sc-for list="{{ tools }}" as="project" hint-placeholder-count="1">
-        <div ref="{{ project.setCardRef }}" style="min-width: 0; background: {{ project.cardBg }}; border-top: 20px solid {{ project.borderAccent }}; border-radius: 2px; overflow: hidden">
-          <div style="aspect-ratio: 16 / 9; background: {{ project.bannerBg }}; display: flex; align-items: center; justify-content: center; border-bottom: 1px solid {{ project.borderMid }}; position: relative">
-            <sc-if value="{{ project.noBanner }}" hint-placeholder-val="{{ false }}">
-              <div style="font-family: 'JetBrains Mono', monospace; font-size: 12px; letter-spacing: 0.2em; color: #FFFFFF">TOOL_STILL / KEY ART</div>
-            </sc-if>
-            <div style="position: absolute; inset: 0; background: linear-gradient(0deg, rgba(0,0,0,0.85) 0%, transparent 45%); pointer-events: none"></div>
-            <div style="position: absolute; top: 14px; left: 18px; font-family: 'Bebas Neue', sans-serif; font-size: 22px; letter-spacing: 0.1em; color: {{ project.accent }}; text-shadow: 0 2px 12px rgba(0,0,0,0.8)">{{ project.index }}</div>
-            <div style="position: absolute; left: 22px; bottom: 16px; right: 22px; display: flex; justify-content: space-between; align-items: flex-end; gap: 16px">
-              <div>
-                <div style="font-family: 'Bebas Neue', sans-serif; font-size: 32px; letter-spacing: 0.02em; color: #FFFFFF; line-height: 1; text-shadow: 0 2px 20px rgba(0,0,0,0.8)">{{ project.title }}</div>
-                <div style="font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.12em; color: {{ project.accent }}; margin-top: 8px">{{ project.tags }}</div>
-              </div>
-              <sc-if value="{{ project.showDetailLinks }}" hint-placeholder-val="{{ true }}">
-                <a href="{{ project.detailHref }}" style="{{ project.playButtonStyle }}">VIEW PROJECT →</a>
-              </sc-if>
-            </div>
-          </div>
-          <div style="display: flex; align-items: center; gap: 6px; padding: 20px 30px 0 30px; border-bottom: 1px solid {{ project.borderLight }}">
-            <div onClick="{{ project.selectOverview }}" style="{{ project.overviewTabStyle }}">OVERVIEW</div>
-            <div onClick="{{ project.selectTrailer }}" style="{{ project.trailerTabStyle }}">TRAILER</div>
-            <sc-if value="{{ project.hasGitUrl }}" hint-placeholder-val="{{ true }}">
-              <div onClick="{{ project.selectGit }}" style="{{ project.gitTabStyle }}">REPOSITORY</div>
-            </sc-if>
-            <sc-if value="{{ project.showDetailLinks }}" hint-placeholder-val="{{ true }}">
-              <a href="{{ project.detailHref }}" style="display: inline-flex; align-items: center; gap: 8px; font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.15em; padding: 10px 18px; color: {{ project.onCard }}; background: #F2F1EF">TECHNICAL BREAKDOWN <span>▸</span></a>
-            </sc-if>
-            <sc-if value="{{ project.itchUrl }}" hint-placeholder-val="{{ false }}">
-              <a href="{{ project.itchUrl }}" target="_blank" rel="noopener" style="display: inline-flex; align-items: center; gap: 6px; font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.15em; padding: 10px 18px; margin-left: auto; color: #FFFFFF; background: #14161A">▶ PLAY</a>
-            </sc-if>
-          </div>
-          <div style="padding: 26px 30px 30px 30px; min-height: {{ project.tabMinHeight }}; display: flex; justify-content: {{ project.tabJustify }}; align-items: {{ project.tabAlignItems }}; gap: 20px; flex-wrap: wrap">
-            <div style="flex: 1; min-width: 260px; text-align: {{ project.tabTextAlign }}">
-              <sc-if value="{{ project.isOverview }}" hint-placeholder-val="{{ true }}">
-                <div style="font-family: 'Inter', sans-serif; font-size: 15px; line-height: 1.7; color: {{ project.onCard }}; white-space: pre-line">{{ project.overview }}</div>
-              </sc-if>
-              <sc-if value="{{ project.isTrailer }}" hint-placeholder-val="{{ false }}">
-                <sc-if value="{{ project.trailerId }}" hint-placeholder-val="{{ false }}">
-                  <div style="max-width: 720px; margin: 0 auto; aspect-ratio: 16/9; border: 1px solid {{ project.borderMid }}">
-                    <iframe src="{{ project.trailerEmbedSrc }}" title="Trailer" style="width: 100%; height: 100%; border: 0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen="true"></iframe>
-                  </div>
-                </sc-if>
-                <sc-if value="{{ project.noTrailer }}" hint-placeholder-val="{{ true }}">
-                  <div style="height: 260px; max-width: 720px; margin: 0 auto; background: #F2F1EF; display: flex; align-items: center; justify-content: center; font-family: 'JetBrains Mono', monospace; font-size: 12px; letter-spacing: 0.15em; color: {{ project.onCard }}">TRAILER VIDEO — drop file here</div>
-                </sc-if>
-              </sc-if>
-              <sc-if value="{{ project.isGit }}" hint-placeholder-val="{{ false }}">
-                <a href="{{ project.gitUrl }}" style="display: inline-flex; align-items: center; gap: 10px; font-family: 'JetBrains Mono', monospace; font-size: 13px; letter-spacing: 0.08em; color: {{ project.onCard }}">
-                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="6" cy="5" r="2.4"></circle><circle cx="6" cy="19" r="2.4"></circle><circle cx="18" cy="9" r="2.4"></circle><path d="M6 7.4v9.2M18 11.4c0 3-3 4-7 4"></path></svg>
-                  {{ project.gitLabel }}
-                </a>
-              </sc-if>
-            </div>
           </div>
         </div>
       </sc-for>
@@ -699,7 +631,7 @@ class Component extends DCLogic {
 
   renderVals() {
     const tabStyle = (active, color) => ({
-      fontFamily: "'JetBrains Mono', monospace", fontSize: '11px', letterSpacing: '0.15em', padding: '10px 18px', cursor: 'var(--cur-hover)',
+      fontFamily: "'JetBrains Mono', monospace", fontSize: '10px', letterSpacing: '0.13em', padding: '7px 13px', cursor: 'var(--cur-hover)',
       color: active ? '#FFFFFF' : '#14161A',
       background: active ? color : '#F2F1EF'
     });
@@ -739,7 +671,7 @@ class Component extends DCLogic {
         noBanner: !p.banner, trailerEmbedSrc: p.trailerId ? `https://www.youtube.com/embed/${p.trailerId}` : '', noTrailer: !p.trailerId,
         index: String(i + 1).padStart(2, '0'), slug,
         gitUrl: p.gitUrl || '#', gitLabel: p.gitUrl ? p.gitUrl.replace(/^https?:\/\//, '') : `link your repo here`,
-        tabMinHeight: tab === 'git' ? '0' : tab === 'trailer' ? '0' : '140px',
+        tabMinHeight: tab === 'git' ? '0' : tab === 'trailer' ? '0' : '80px',
         tabJustify: tab === 'trailer' ? 'center' : 'space-between',
         tabAlignItems: tab === 'git' ? 'center' : tab === 'overview' ? 'flex-start' : 'flex-end',
         tabTextAlign: tab === 'trailer' ? 'center' : 'left',
@@ -771,7 +703,7 @@ class Component extends DCLogic {
         noBanner: !p.banner, trailerEmbedSrc: p.trailerId ? `https://www.youtube.com/embed/${p.trailerId}` : '', hasVideo: !!p.trailerId, noTrailer: !p.trailerId,
         index: String(i + 1).padStart(2, '0'), kindLabel: 'PROTOTYPE',
         gitUrl: p.gitUrl || '#', hasGitUrl: !!p.gitUrl, gitLabel: p.gitUrl ? p.gitUrl.replace(/^https?:\/\//, '') : `link your repo here`,
-        tabMinHeight: tab === 'git' ? '0' : tab === 'trailer' ? '0' : '140px',
+        tabMinHeight: tab === 'git' ? '0' : tab === 'trailer' ? '0' : '80px',
         tabJustify: tab === 'trailer' ? 'center' : 'space-between',
         tabAlignItems: tab === 'git' ? 'center' : tab === 'overview' ? 'flex-start' : 'flex-end',
         tabTextAlign: tab === 'trailer' ? 'center' : 'left',
@@ -790,7 +722,7 @@ class Component extends DCLogic {
       const cardBorder = 'rgba(20,22,26,0.1)';
       return {
         ...p,
-        index: String(i + 1).padStart(2, '0'),
+        index: String(i + 1).padStart(2, '0'), kindLabel: 'APP',
         setCardRef: (el) => { this.roleCardEls[i] = el; },
         borderStrong: hexToRgba(p.accent, 0.45), borderMid: cardBorder,
         textAccent: textAccent(p.accent),
@@ -821,11 +753,11 @@ class Component extends DCLogic {
         cardBg: '#FFFFFF', onCard: '#14161A', borderAccent: vividize(p.accent),
         borderImage: 'none',
         bannerBg: p.banner ? `center / cover no-repeat url(${p.banner}), linear-gradient(160deg, #0C1418, #050809)` : `linear-gradient(160deg, #0C1418, #050809)`,
-        noBanner: !p.banner, trailerEmbedSrc: p.trailerId ? `https://www.youtube.com/embed/${p.trailerId}` : '', noTrailer: !p.trailerId,
-        index: String(i + 1).padStart(2, '0'),
+        noBanner: !p.banner, trailerEmbedSrc: p.trailerId ? `https://www.youtube.com/embed/${p.trailerId}` : '', noTrailer: !p.trailerId, hasVideo: !!p.trailerId,
+        index: String(i + 1).padStart(2, '0'), kindLabel: 'TOOL',
         detailHref: `${p.detailPage || 'ToolsProject.dc.html'}?slug=${p.title.toLowerCase().replace(/\s+/g, '-')}`,
         gitUrl: p.gitUrl || '#', hasGitUrl: !!p.gitUrl, gitLabel: p.gitUrl ? p.gitUrl.replace(/^https?:\/\//, '') : `link your repo here`,
-        tabMinHeight: tab === 'git' ? '0' : tab === 'trailer' ? '0' : '140px',
+        tabMinHeight: tab === 'git' ? '0' : tab === 'trailer' ? '0' : '80px',
         tabJustify: tab === 'trailer' ? 'center' : 'space-between',
         tabAlignItems: tab === 'git' ? 'center' : tab === 'overview' ? 'flex-start' : 'flex-end',
         tabTextAlign: tab === 'trailer' ? 'center' : 'left',
@@ -863,7 +795,7 @@ class Component extends DCLogic {
       categories,
       projects,
       prototypes,
-      works: [...projects, ...prototypes],
+      works: [...projects, ...prototypes, ...tools],
       hasPrototypes: RAW_PROTOTYPES.length > 0,
       roles,
       tools,
