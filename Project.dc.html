@@ -85,6 +85,16 @@
         </div>
       </div>
 
+      <!-- trailer, before the technical breakdown content starts -->
+      <sc-if value="{{ project.showTopTrailer }}" hint-placeholder-val="{{ false }}">
+        <div style="width: 100%; max-width: 1160px; margin: 40px auto 0 auto; padding: 0 20px; box-sizing: border-box">
+          <div style="font-family: 'Bebas Neue', sans-serif; font-size: 28px; letter-spacing: 0.04em; color: {{ project.textAccent }}; text-align: center; margin-bottom: 14px">TRAILER</div>
+          <div style="aspect-ratio: 16 / 9; border-radius: 4px; overflow: hidden; border: 1px solid rgba(20,22,26,0.14)">
+            <iframe src="{{ project.trailerEmbedSrc }}" title="Trailer" width="1280" height="720" style="width: 100%; height: 100%; border: 0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen="true"></iframe>
+          </div>
+        </div>
+      </sc-if>
+
       <!-- technical breakdown, right below the preview -->
       <div style="box-sizing: border-box; display: flex; flex-direction: column; align-items: center; padding: 40px 20px 60px 20px">
         <div style="width: 100%; max-width: 1160px; text-align: left">
@@ -343,6 +353,8 @@ class Component extends DCLogic {
       bannerBg: p.banner ? `center / cover no-repeat url(${p.banner}), linear-gradient(160deg, #0C1418, #050809)` : `linear-gradient(160deg, #0C1418, #050809)`,
       bannerVideoSrc: p.bannerVideoId ? `https://www.youtube.com/embed/${p.bannerVideoId}?autoplay=1&mute=1&loop=1&controls=0&showinfo=0&modestbranding=1&rel=0&playsinline=1&iv_load_policy=3&disablekb=1&fs=0&playlist=${p.bannerVideoId}` : '',
       noBanner: !p.banner && !p.bannerVideoId,
+      showTopTrailer: !!p.bannerVideoId,
+      trailerEmbedSrc: p.bannerVideoId ? `https://www.youtube.com/embed/${p.bannerVideoId}?rel=0` : '',
       borderMid: hexToRgba(p.accent, 0.35),
       borderLight: hexToRgba(p.accent, 0.25),
       textAccent: mixWithDark(p.accent, 0.5, [10, 10, 14]),
