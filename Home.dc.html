@@ -210,6 +210,12 @@
                 <span style="font-family: 'JetBrains Mono', monospace; font-size: 8.5px; letter-spacing: 0.14em; color: #14161A; background: #FFC857; padding: 2px 6px; border-radius: 3px">IN DEVELOPMENT</span>
               </sc-if>
             </div>
+            <sc-if value="{{ project.hasBuildTime }}" hint-placeholder-val="{{ false }}">
+              <div style="position: absolute; top: 10px; right: 14px; display: flex; align-items: center; gap: 4px; font-family: 'JetBrains Mono', monospace; font-size: 8.5px; letter-spacing: 0.1em; color: #FFFFFF; background: rgba(0,0,0,0.45); padding: 2px 7px; border-radius: 3px">
+                <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><circle cx="12" cy="12" r="10"></circle><path d="M12 6v6l4 2"></path></svg>
+                {{ project.buildTime }}
+              </div>
+            </sc-if>
             <div style="position: absolute; left: 16px; bottom: 10px; right: 16px; display: flex; justify-content: space-between; align-items: flex-end; gap: 12px">
               <div>
                 <div style="font-family: 'Bebas Neue', sans-serif; font-size: 34px; letter-spacing: 0.02em; color: #FFFFFF; line-height: 1; text-shadow: 0 2px 20px rgba(0,0,0,0.8)">{{ project.title }}</div>
@@ -285,6 +291,12 @@
               <sc-if value="{{ role.hasBanner }}" hint-placeholder-val="{{ true }}">
                 <div style="position: absolute; top: 10px; left: 14px; font-family: 'Bebas Neue', sans-serif; font-size: 16px; letter-spacing: 0.1em; color: {{ role.accent }}; background: rgba(0,0,0,0.45); padding: 2px 8px; border-radius: 3px">{{ role.index }}</div>
               </sc-if>
+              <sc-if value="{{ role.hasBuildTime }}" hint-placeholder-val="{{ false }}">
+                <div style="position: absolute; top: 10px; right: 14px; display: flex; align-items: center; gap: 4px; font-family: 'JetBrains Mono', monospace; font-size: 8.5px; letter-spacing: 0.1em; color: #FFFFFF; background: rgba(0,0,0,0.45); padding: 2px 7px; border-radius: 3px">
+                  <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><circle cx="12" cy="12" r="10"></circle><path d="M12 6v6l4 2"></path></svg>
+                  {{ role.buildTime }}
+                </div>
+              </sc-if>
             </sc-if>
           </div>
 
@@ -327,6 +339,12 @@
             </sc-if>
             <div style="position: absolute; inset: 0; background: linear-gradient(0deg, rgba(0,0,0,0.85) 0%, transparent 45%); pointer-events: none"></div>
             <div style="position: absolute; top: 10px; left: 14px; font-family: 'Bebas Neue', sans-serif; font-size: 16px; letter-spacing: 0.1em; color: {{ project.accent }}; background: rgba(0,0,0,0.45); padding: 2px 8px; border-radius: 3px; display: inline-block">{{ project.index }}</div>
+            <sc-if value="{{ project.hasBuildTime }}" hint-placeholder-val="{{ false }}">
+              <div style="position: absolute; top: 10px; right: 14px; display: flex; align-items: center; gap: 4px; font-family: 'JetBrains Mono', monospace; font-size: 8.5px; letter-spacing: 0.1em; color: #FFFFFF; background: rgba(0,0,0,0.45); padding: 2px 7px; border-radius: 3px">
+                <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><circle cx="12" cy="12" r="10"></circle><path d="M12 6v6l4 2"></path></svg>
+                {{ project.buildTime }}
+              </div>
+            </sc-if>
             <div style="position: absolute; left: 16px; bottom: 10px; right: 16px; display: flex; justify-content: space-between; align-items: flex-end; gap: 12px">
               <div>
                 <div style="font-family: 'Bebas Neue', sans-serif; font-size: 34px; letter-spacing: 0.02em; color: #FFFFFF; line-height: 1; text-shadow: 0 2px 20px rgba(0,0,0,0.8)">{{ project.title }}</div>
@@ -468,7 +486,7 @@ const EXP_ACCENTS = [PALETTE.blue, PALETTE.amber, PALETTE.rose, PALETTE.teal, PA
 const RAW_PROJECTS = [
   {
     title: 'CLUCKMARE', tags: 'UNREAL ENGINE 5 · C++ · SHOOTER', accent: PALETTE.mauve,
-    banner: 'assets/games/cluckmare/banner.jpg', trailerId: 'AKqoDcYymbk', gitUrl: 'https://gitlab.com/prasanth1608/cluckmare', itchUrl: 'https://prasanth1608.itch.io/cluckmare',
+    banner: 'assets/games/cluckmare/banner.jpg', trailerId: 'AKqoDcYymbk', gitUrl: 'https://gitlab.com/prasanth1608/cluckmare', itchUrl: 'https://prasanth1608.itch.io/cluckmare', buildTime: '3 Months',
     overview: 'CLUCKMARE is a first-person shooter built in Unreal Engine 5.4, fighting through a nightmare chicken factory with dual weapon types and escalating AI waves. Built solo as the sole programmer on a 5-person team.\n\nWhat makes it different: enemies that visibly grow with every hit, a hacking mini-game with a guaranteed non-repeating key sequence, and a single shared component driving damage, health, and weapons for both enemies and the player, instead of duplicated logic across each.\n\nEngineering Quality: built on component-composition architecture with the Enhanced Input System, AIController + Behavior Trees, and TSubclassOf data-driven spawning. Optimised memory by avoiding hard references, cutting 1.92GB off the map size. Held a steady 60+ fps throughout the game.'
   }
 ];
@@ -479,7 +497,7 @@ const RAW_PROJECTS = [
 const RAW_PROTOTYPES = [
   {
     title: 'COLLECTIONS', tags: 'UNREAL ENGINE 5 · C++ · GAMEPLAY SYSTEMS', accent: PALETTE.teal,
-    banner: 'assets/prototypes/collections/banner.png', gitUrl: 'https://gitlab.com/prasanth1608/Collections',
+    banner: 'assets/prototypes/collections/banner.png', gitUrl: 'https://gitlab.com/prasanth1608/Collections', buildTime: '10 Days',
     overview: 'COLLECTIONS is a third-person gameplay prototype built in Unreal Engine as a coding challenge, completed within a week to sharpen my problem-solving and system-design skills. Race a countdown to gather randomized collectibles across the level, using locked and unlocked doors and teleporters, with a live HUD tracking progress and time.\n\nWhat makes it different: the goal was as much architecture as gameplay. Every interactable, whether a collectible, door or teleporter, is driven through a shared interaction interface, so the player never needs to know a concrete class and never casts. No hard references anywhere, with assets loaded asynchronously instead. Objectives and item counts are data-driven through Data Assets, so designers can tune and test the prototype without ever opening a Blueprint.\n\nEngineering Quality: built from reusable components rather than logic tied to individual actors, with cached object references reused instead of repeatedly resolved.'
   },
   {
@@ -489,7 +507,7 @@ const RAW_PROTOTYPES = [
   },
   {
     title: 'SPACE EXPLORER', tags: 'UNREAL ENGINE · BLUEPRINT · SPACE SHOOTER', accent: PALETTE.violet,
-    trailerId: 'f_NG2ZoT7bo',
+    trailerId: 'f_NG2ZoT7bo', buildTime: '20 Days',
     overview: 'A spaceship mechanics prototype inspired by Everspace 2, with smooth and believable controls, where the ship can shoot projectiles, dodge space obstacles, and grab powerups such as boost and shield.\n\nWhat makes it different: the spaceship is controlled using mouse and keyboard, movement is driven by keyboard input while turning follows the mouse cursor in screen space, with a procedural acceleration system modelled on vehicle gearing, and procedural randomized obstacle spawners.\n\nEngineering Quality: built entirely in Blueprints, with object pooling used for bullets instead of spawning and destroying projectiles.'
   }
 ];
@@ -498,7 +516,7 @@ const RAW_PROTOTYPES = [
 const RAW_ROLES = [
   {
     title: 'INTERACTIVE WALKTHROUGHS', tags: 'UNREAL ENGINE · BLUEPRINT · ARCHVIZ', accent: PALETTE.blue,
-    banner: 'assets/professional/cavalli-couture/banner-2.png', trailerId: 'StRz906EKm8',
+    banner: 'assets/professional/cavalli-couture/banner-2.png', trailerId: 'StRz906EKm8', buildTime: '3 Months',
     summary: 'Production interactive walkthrough applications that let buyers explore real-estate developments in real time before they are built, for developers including DAMAC, LODHA, KAFD and Prestige Group. I developed and integrated new Blueprint features on a proprietary framework, working inside a large existing codebase and maintaining its documentation.',
     highlights: [
       'Fixed bugs in an existing large codebase and refactored it over multiple iterations to make it scalable and maintainable',
@@ -508,7 +526,7 @@ const RAW_ROLES = [
   },
   {
     title: 'ANALYTICS INTEGRATION', tags: 'UNREAL ENGINE · JSON · GAME ANALYTICS', accent: PALETTE.amber,
-    banner: 'assets/professional/interactive-walkthrough/gallery-4-analytics.png',
+    banner: 'assets/professional/interactive-walkthrough/gallery-4-analytics.png', buildTime: '1 Month',
     summary: 'A reusable analytics feature added to an existing production application. It feeds user retention, interest and engagement metrics into a game analytics dashboard, so clients can see how buyers behave and support data-driven sales and marketing.',
     highlights: [
       'New tracked events are added entirely through JSON, with no code or editor changes',
@@ -518,7 +536,7 @@ const RAW_ROLES = [
   },
   {
     title: 'NETWORKED HOLOGRAM APPLICATION', tags: 'UNREAL ENGINE · NETWORKING · REPLICATION', accent: PALETTE.rose,
-    banner: 'assets/professional/hologram/banner.png',
+    banner: 'assets/professional/hologram/banner.png', buildTime: '10 Days',
     summary: 'A networked hologram application delivered under tight deadlines. Touch controls on the host rotate a 3D building model, and the rotation state is synchronised across multiple client displays.',
     highlights: [
       'Touch-based controls for rotating 3D building models on the host',
@@ -531,13 +549,13 @@ const RAW_ROLES = [
 const RAW_TOOLS = [
   {
     title: 'WIND FIELD', tags: 'UNREAL ENGINE · C++ · PLUGIN', accent: PALETTE.orange,
-    banner: 'assets/plugins/windfield/card-thumbnail.png', trailerId: 'SLXdYUJeqb4',
+    banner: 'assets/plugins/windfield/card-thumbnail.png', trailerId: 'SLXdYUJeqb4', buildTime: '4 Months',
     overview: 'WindField is an Unreal Engine 5 plugin that brings physically reactive wind to any level in minutes, drag, drop, and the environment starts moving. Built for game developers and archviz artists who need believable environmental motion without hand-rolling a wind system from scratch.\n\nWhat makes it different: WindField is fully obstacle-aware, detecting geometry and breaking around it, without a single raytrace or per-tick collision query. Every interaction runs on pure math-based grid and vector calculations instead, keeping it highly optimised enough to simulate 200+ objects at under 3ms on the game thread.\n\nEngineering Quality: built on solid OOP architecture with dedicated error handling and debugging strategies for long-term maintainability, developed end-to-end following Agile practices, from first prototype through iterative polish.',
     gitUrl: 'https://gitlab.com/prasanth1608/wind-field'
   },
   {
     title: 'INTERACTIVE CODE ARCHITECTURE VIEWER', tags: 'C++ · CLAUDE CODE · DEV TOOLING', accent: PALETTE.violet,
-    banner: 'assets/tools/architecture-viewer/banner.png', trailerId: 'hy9voWFubKI',
+    banner: 'assets/tools/architecture-viewer/banner.png', trailerId: 'hy9voWFubKI', buildTime: '2 Days',
     overview: "INTERACTIVE CODE ARCHITECTURE VIEWER is a browser-based reference tool I built with Claude Code to make sense of a growing Unreal Engine C++ codebase at a glance, generated straight from my own source files instead of drawn by hand.\n\nWhat makes it different: it parses my C++ headers and source to build class cards, organised into categories like Actors and Components, each with its properties, functions and dependencies laid out. Selecting a class highlights what it depends on and what depends on it, so tracing a relationship takes a click instead of a search.\n\nWhy it exists: documenting and re-deriving architecture by hand was eating real development time. Every generated pass was cross-checked against the actual source before I trusted it, iterating on the prompt rather than the output."
   }
 ];
@@ -772,7 +790,7 @@ class Component extends DCLogic {
         borderImage: 'none',
         bannerBg: p.banner ? `center / cover no-repeat url(${p.banner}), linear-gradient(160deg, #0C1418, #050809)` : `linear-gradient(160deg, #0C1418, #050809)`,
         noBanner: !p.banner, trailerEmbedSrc: p.trailerId ? `https://www.youtube.com/embed/${p.trailerId}` : '', noTrailer: !p.trailerId,
-        index: String(i + 1).padStart(2, '0'), slug,
+        index: String(i + 1).padStart(2, '0'), slug, hasBuildTime: !!p.buildTime,
         gitUrl: p.gitUrl || '#', gitLabel: p.gitUrl ? p.gitUrl.replace(/^https?:\/\//, '') : `link your repo here`,
         tabMinHeight: tab === 'git' ? '0' : tab === 'trailer' ? '0' : '80px',
         tabJustify: tab === 'trailer' ? 'center' : 'space-between',
@@ -804,7 +822,7 @@ class Component extends DCLogic {
         borderImage: 'none',
         bannerBg: p.banner ? `center / cover no-repeat url(${p.banner}), linear-gradient(160deg, #0C1418, #050809)` : `linear-gradient(160deg, #0C1418, #050809)`,
         noBanner: !p.banner, trailerEmbedSrc: p.trailerId ? `https://www.youtube.com/embed/${p.trailerId}` : '', hasVideo: !!p.trailerId, noTrailer: !p.trailerId,
-        index: String(i + 1).padStart(2, '0'), kindLabel: 'PROTOTYPE',
+        index: String(i + 1).padStart(2, '0'), kindLabel: 'PROTOTYPE', hasBuildTime: !!p.buildTime,
         gitUrl: p.gitUrl || '#', hasGitUrl: !!p.gitUrl, gitLabel: p.gitUrl ? p.gitUrl.replace(/^https?:\/\//, '') : `link your repo here`,
         tabMinHeight: tab === 'git' ? '0' : tab === 'trailer' ? '0' : '80px',
         tabJustify: tab === 'trailer' ? 'center' : 'space-between',
@@ -826,7 +844,7 @@ class Component extends DCLogic {
       const cardBorder = 'rgba(20,22,26,0.1)';
       return {
         ...p,
-        index: String(i + 1).padStart(2, '0'), kindLabel: 'APP',
+        index: String(i + 1).padStart(2, '0'), kindLabel: 'APP', hasBuildTime: !!p.buildTime,
         setCardRef: (el) => { this.roleCardEls[i] = el; },
         borderStrong: hexToRgba(p.accent, 0.45), borderMid: cardBorder,
         textAccent: textAccent(p.accent),
@@ -858,7 +876,7 @@ class Component extends DCLogic {
         borderImage: 'none',
         bannerBg: p.banner ? `center / cover no-repeat url(${p.banner}), linear-gradient(160deg, #0C1418, #050809)` : `linear-gradient(160deg, #0C1418, #050809)`,
         noBanner: !p.banner, trailerEmbedSrc: p.trailerId ? `https://www.youtube.com/embed/${p.trailerId}` : '', noTrailer: !p.trailerId, hasVideo: !!p.trailerId,
-        index: String(i + 1).padStart(2, '0'), kindLabel: 'TOOL',
+        index: String(i + 1).padStart(2, '0'), kindLabel: 'TOOL', hasBuildTime: !!p.buildTime,
         detailHref: `${p.detailPage || 'ToolsProject.dc.html'}?slug=${p.title.toLowerCase().replace(/\s+/g, '-')}`,
         gitUrl: p.gitUrl || '#', hasGitUrl: !!p.gitUrl, gitLabel: p.gitUrl ? p.gitUrl.replace(/^https?:\/\//, '') : `link your repo here`,
         tabMinHeight: tab === 'git' ? '0' : tab === 'trailer' ? '0' : '80px',
