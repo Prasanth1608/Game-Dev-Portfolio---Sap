@@ -53,6 +53,14 @@
     </div>
   </div>
 
+  <!-- ===== image lightbox ===== -->
+  <sc-if value="{{ hasLightbox }}" hint-placeholder-val="{{ false }}">
+    <div onClick="{{ closeLightbox }}" style="position: fixed; inset: 0; z-index: 1000; background: rgba(5,6,8,0.94); display: flex; align-items: center; justify-content: center; padding: 60px 40px; box-sizing: border-box; cursor: pointer">
+      <button onClick="{{ closeLightbox }}" style="position: absolute; top: 22px; right: 32px; background: transparent; border: 1px solid rgba(255,255,255,0.3); border-radius: 2px; color: #FFFFFF; font-family: 'JetBrains Mono', monospace; font-size: 12px; letter-spacing: 0.15em; padding: 8px 14px; z-index: 1001; cursor: pointer">CLOSE ✕</button>
+      <img src="{{ lightboxSrc }}" onClick="{{ stopProp }}" style="max-width: 90vw; max-height: 86vh; object-fit: contain; border-radius: 4px; box-shadow: 0 30px 80px rgba(0,0,0,0.7); cursor: default">
+    </div>
+  </sc-if>
+
   <div style="flex: 1 0 auto; width: 100%; padding-bottom: 60px; box-sizing: border-box">
   <!-- ===== not found ===== -->
   <sc-if value="{{ notFound }}" hint-placeholder-val="{{ false }}">
@@ -95,14 +103,14 @@
             </sc-if>
 
             <sc-if value="{{ section.image }}" hint-placeholder-val="{{ false }}">
-              <img src="{{ section.image }}" alt="{{ section.heading }}" onError="this.style.display='none'" loading="lazy" style="width: 100%; border-radius: 4px; border: 1px solid rgba(20,22,26,0.14); display: block">
+              <img src="{{ section.image }}" alt="{{ section.heading }}" onError="this.style.display='none'" loading="lazy" onClick="{{ project.openLightbox }}" style="width: 100%; border-radius: 4px; border: 1px solid rgba(20,22,26,0.14); display: block; {{ project.imgCursorStyle }}">
             </sc-if>
 
             <sc-if value="{{ section.hasImages }}" hint-placeholder-val="{{ false }}">
               <div style="width: 100vw; max-width: 1900px; position: relative; left: 50%; transform: translateX(-50%); padding: 0 20px; box-sizing: border-box">
                 <div style="border: 1px solid rgba(20,22,26,0.14); border-radius: 4px; overflow: hidden">
                   <sc-for list="{{ section.images }}" as="img" hint-placeholder-count="3">
-                    <img src="{{ img }}" alt="{{ section.heading }}" onError="this.style.display='none'" loading="lazy" style="width: 100%; display: block">
+                    <img src="{{ img }}" alt="{{ section.heading }}" onError="this.style.display='none'" loading="lazy" onClick="{{ project.openLightbox }}" style="width: 100%; display: block; {{ project.imgCursorStyle }}">
                   </sc-for>
                 </div>
               </div>
@@ -139,7 +147,7 @@
                       <div style="{{ goal.mediaGridStyle }}">
                         <sc-for list="{{ goal.mediaSlots }}" as="slot" hint-placeholder-count="2">
                           <sc-if value="{{ slot.src }}" hint-placeholder-val="{{ false }}">
-                            <img src="{{ slot.src }}" alt="Screenshot" onError="this.style.display='none'" loading="lazy" style="width: 100%; max-height: 260px; object-fit: contain; background: #F2F1EF; border-radius: 3px; border: 1px solid rgba(20,22,26,0.14); display: block">
+                            <img src="{{ slot.src }}" alt="Screenshot" onError="this.style.display='none'" loading="lazy" onClick="{{ project.openLightbox }}" style="width: 100%; max-height: 260px; object-fit: contain; background: #F2F1EF; border-radius: 3px; border: 1px solid rgba(20,22,26,0.14); display: block; {{ project.imgCursorStyle }}">
                           </sc-if>
                           <sc-if value="{{ slot.isPlaceholder }}" hint-placeholder-val="{{ true }}">
                             <div style="aspect-ratio: 16/10; border: 1px dashed rgba(20,22,26,0.3); border-radius: 3px; display: flex; align-items: center; justify-content: center; font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.1em; color: rgba(20,22,26,0.55); text-align: center; padding: 8px; box-sizing: border-box">SCREENSHOT — drop image here</div>
@@ -415,6 +423,15 @@ class Component extends DCLogic {
     return new URLSearchParams(window.location.search).get('slug') || '';
   }
 
+  openLightbox(e) {
+    this.setState({ lightboxSrc: e.currentTarget.getAttribute('src') });
+  }
+
+  closeLightbox(e) {
+    e.preventDefault();
+    this.setState({ lightboxSrc: null });
+  }
+
   renderVals() {
     const slugOf = (p) => p.title.toLowerCase().replace(/\s+/g, '-');
     const slug = this.getSlug() || slugOf(RAW_PROTOTYPES[0]);
@@ -430,11 +447,14 @@ class Component extends DCLogic {
 
     // Same shared palette as the rest of the site: solid, moderately saturated, not neon.
     const GOAL_PALETTE = ['#A9CDEC', '#EFD18E', '#F0B5C7', '#A3E1D3', '#CBB9EF', '#F2C49E'];
+    const lightboxEnabled = p.title === 'SPACE EXPLORER';
     const project = {
       ...p,
       bannerBg: p.banner ? `center / cover no-repeat url(${p.banner}), linear-gradient(160deg, #0C1418, #050809)` : `linear-gradient(160deg, #0C1418, #050809)`,
       bannerVideoSrc: p.bannerVideoId ? `https://www.youtube.com/embed/${p.bannerVideoId}?autoplay=1&mute=1&loop=1&controls=0&showinfo=0&modestbranding=1&rel=0&playsinline=1&iv_load_policy=3&disablekb=1&fs=0&playlist=${p.bannerVideoId}` : '',
       noBanner: !p.banner && !p.bannerVideoId,
+      imgCursorStyle: lightboxEnabled ? 'cursor: pointer;' : '',
+      openLightbox: lightboxEnabled ? (e) => this.openLightbox(e) : (e) => {},
       borderMid: hexToRgba(p.accent, 0.35),
       textAccent: mixWithDark(p.accent, 0.5, [10, 10, 14]),
       fillBg: mixWithDark(p.accent, 0.35, [255, 255, 255]),
@@ -457,7 +477,14 @@ class Component extends DCLogic {
 
     const backdropBg = `#ECEBEA`;
 
-    return { notFound: false, found: true, project, backdropBg, scrollToTop: (e) => { e.preventDefault(); window.scrollTo({ top: 0, behavior: 'smooth' }); } };
+    return {
+      notFound: false, found: true, project, backdropBg,
+      scrollToTop: (e) => { e.preventDefault(); window.scrollTo({ top: 0, behavior: 'smooth' }); },
+      hasLightbox: !!this.state.lightboxSrc,
+      lightboxSrc: this.state.lightboxSrc || '',
+      closeLightbox: (e) => this.closeLightbox(e),
+      stopProp: (e) => e.stopPropagation()
+    };
   }
 }
 </script>
