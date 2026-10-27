@@ -136,7 +136,7 @@
                       </div>
                     </sc-if>
                     <sc-if value="{{ goal.hasMedia }}" hint-placeholder-val="{{ false }}">
-                      <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px; margin-top: 14px">
+                      <div style="{{ goal.mediaGridStyle }}">
                         <sc-for list="{{ goal.mediaSlots }}" as="slot" hint-placeholder-count="2">
                           <sc-if value="{{ slot.src }}" hint-placeholder-val="{{ false }}">
                             <img src="{{ slot.src }}" alt="Screenshot" onError="this.style.display='none'" loading="lazy" style="width: 100%; max-height: 260px; object-fit: contain; background: #F2F1EF; border-radius: 3px; border: 1px solid rgba(20,22,26,0.14); display: block">
@@ -319,6 +319,35 @@ const RAW_PROTOTYPES = [
         ]
       }
     ]
+  },
+  {
+    title: 'SPACE EXPLORER', tags: 'UNREAL ENGINE · BLUEPRINT · SPACE SHOOTER', accent: '#CBB9EF',
+    sections: [
+      {
+        goals: [
+          {
+            heading: 'SPACESHIP MOVEMENT & CONTROLS',
+            body: "The spaceship is controlled using mouse and keyboard together: forward/backward movement and braking respond to keyboard input, while turning follows the mouse cursor's position in screen space rather than a fixed rotation key. Acceleration runs through a procedural system modelled on vehicle gearing, so speed ramps up through gears instead of a flat linear accelerate/decelerate curve, giving the ship a smoother, more believable feel to fly.",
+            media: []
+          },
+          {
+            heading: 'PROCEDURAL OBSTACLE SPAWNER',
+            body: "A dedicated spawner actor procedurally places space obstacles around the ship without letting them overlap each other, keeping believable gaps between every obstacle it places. Each obstacle's size, rotation, and shape is randomized on spawn, so the field never repeats and reads as a real, varied stretch of space rather than a handful of reused props.",
+            media: []
+          },
+          {
+            heading: 'POWERUPS',
+            body: "Dedicated spawners handle each powerup type — boost, shield, and invulnerability — placing them through the level for the player to collect and giving the ship temporary bonuses on pickup.",
+            media: []
+          },
+          {
+            heading: 'BULLET PROJECTILES (OBJECT POOLING)',
+            body: "Bullets are object-pooled instead of spawned and destroyed per shot: 40 bullets are created once at game start, split across the ship's two fire sockets, and each bullet is reused the moment it hits something rather than being destroyed and replaced, avoiding the spawn/destroy overhead of a naive projectile system.",
+            media: []
+          }
+        ]
+      }
+    ]
   }
 ];
 
@@ -417,9 +446,11 @@ class Component extends DCLogic {
         goals: (s.goals || []).map((g, gi) => {
           const accent = GOAL_PALETTE[gi % GOAL_PALETTE.length];
           const mediaList = Array.isArray(g.media) ? g.media : [];
-          const mediaSlots = [0, 1].map((i) => mediaList[i] ? { src: mediaList[i], isPlaceholder: false } : { src: '', isPlaceholder: true });
+          const slotCount = mediaList.length || 1;
+          const mediaSlots = Array.from({ length: slotCount }, (_, i) => mediaList[i] ? { src: mediaList[i], isPlaceholder: false } : { src: '', isPlaceholder: true });
+          const mediaGridStyle = `display: grid; grid-template-columns: repeat(${slotCount}, 1fr); gap: 10px; margin-top: 14px`;
           const cardStyle = { background: '#FFFFFF', borderTop: `14px solid ${vividize(accent)}`, padding: '18px 22px', borderRadius: '2px' };
-          return { ...g, hasPoints: !!(g.points && g.points.length), hasMedia: !!g.media, mediaSlots, accent, fillBg: '#FFFFFF', onCard: '#14161A', borderAccent: vividize(accent), cardStyle };
+          return { ...g, hasPoints: !!(g.points && g.points.length), hasMedia: !!g.media, mediaSlots, mediaGridStyle, accent, fillBg: '#FFFFFF', onCard: '#14161A', borderAccent: vividize(accent), cardStyle };
         })
       }))
     };
