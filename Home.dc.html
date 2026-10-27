@@ -78,6 +78,7 @@
       <a href="#professional" onClick="{{ goTo }}" data-target="professional" style="{{ navStyles.professional }}">APPS</a>
       <a href="#tools" onClick="{{ goTo }}" data-target="tools" style="{{ navStyles.tools }}">TOOLS</a>
       <a href="#journey" onClick="{{ goTo }}" data-target="journey" style="{{ navStyles.journey }}">JOURNEY</a>
+      <a href="#contact" onClick="{{ goTo }}" data-target="contact" style="{{ navStyles.contact }}">CONTACT</a>
     </div>
   </div>
 
@@ -412,7 +413,7 @@
   </section>
 
   <!-- ================= CONTACT ================= -->
-  <section id="contact" style="position: relative; padding: 70px 40px 80px 40px; box-sizing: border-box; overflow: hidden">
+  <section id="contact" ref="{{ sectionRefs.contact }}" style="position: relative; padding: 70px 40px 80px 40px; box-sizing: border-box; overflow: hidden">
     <div style="position: relative; z-index: 2; text-align: center">
       <div style="font-family: 'JetBrains Mono', monospace; font-size: 12px; letter-spacing: 0.4em; color: #0E7A63">&gt; SEND A SIGNAL</div>
       <h1 style="margin: 12px 0 0 0; font-family: 'Bebas Neue', sans-serif; font-weight: 400; font-size: clamp(40px, 6vw, 80px); line-height: 0.9; color: #14161A">GET IN TOUCH</h1>
@@ -672,7 +673,7 @@ class Component extends DCLogic {
 
   constructor(props) {
     super(props);
-    this.sectionRefs = { home: React.createRef(), expertise: React.createRef(), games: React.createRef(), prototypes: React.createRef(), professional: React.createRef(), tools: React.createRef(), journey: React.createRef() };
+    this.sectionRefs = { home: React.createRef(), expertise: React.createRef(), games: React.createRef(), prototypes: React.createRef(), professional: React.createRef(), tools: React.createRef(), journey: React.createRef(), contact: React.createRef() };
     this.sharedBackdropRef = React.createRef();
     this.heroGlowRef = React.createRef();
     this.projectCardEls = [];
@@ -713,7 +714,7 @@ class Component extends DCLogic {
         }
 
         // which section is active for nav highlighting
-        const order = ['home', 'expertise', 'games', 'prototypes', 'professional', 'tools', 'journey'];
+        const order = ['home', 'expertise', 'games', 'prototypes', 'professional', 'tools', 'journey', 'contact'];
         let active = 'home';
         for (const id of order) {
           const el = this.sectionRefs[id].current;
@@ -750,7 +751,7 @@ class Component extends DCLogic {
       background: active ? color : '#F2F1EF'
     });
 
-    const navOrder = ['home', 'expertise', 'games', 'prototypes', 'professional', 'tools', 'journey'];
+    const navOrder = ['home', 'expertise', 'games', 'prototypes', 'professional', 'tools', 'journey', 'contact'];
     const navStyles = {};
     navOrder.forEach((id) => {
       navStyles[id] = this.state.activeSection === id ? { color: '#FFC857' } : { color: 'rgba(255,255,255,0.65)' };
