@@ -189,6 +189,29 @@
     </div>
   </section>
 
+  <!-- ================= FEATURED (WindField, live on Fab) ================= -->
+  <sc-if value="{{ hasFeatured }}" hint-placeholder-val="{{ false }}">
+    <section id="featured" style="position: relative; padding: 0 40px 40px 40px; box-sizing: border-box; overflow: hidden">
+      <div style="position: relative; z-index: 2; text-align: center; font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.25em; color: {{ featured.textAccent }}; margin-bottom: 14px">FEATURED</div>
+      <div style="position: relative; max-width: 1160px; margin: 0 auto; background: {{ featured.bannerBg }}; border-radius: 4px; overflow: hidden; box-shadow: 0 30px 70px rgba(0,0,0,0.25)">
+        <div style="position: absolute; inset: 0; background: linear-gradient(100deg, rgba(5,8,9,0.92) 0%, rgba(5,8,9,0.72) 45%, rgba(5,8,9,0.3) 100%)"></div>
+        <div style="position: relative; z-index: 2; padding: 54px 48px; display: flex; flex-direction: column; gap: 16px; max-width: 620px">
+          <div style="display: inline-flex; align-items: center; gap: 7px; font-family: 'JetBrains Mono', monospace; font-size: 10.5px; letter-spacing: 0.14em; color: #14161A; background: #6EE7C8; padding: 5px 11px; border-radius: 3px; width: fit-content">
+            <span style="width: 6px; height: 6px; border-radius: 50%; background: #14161A; display: inline-block"></span>
+            LIVE ON FAB
+          </div>
+          <div style="font-family: 'Bebas Neue', sans-serif; font-size: clamp(40px, 5vw, 64px); letter-spacing: 0.02em; line-height: 1; color: #FFFFFF; text-shadow: 0 2px 20px rgba(0,0,0,0.6)">{{ featured.title }}</div>
+          <div style="font-family: 'JetBrains Mono', monospace; font-size: 10.5px; letter-spacing: 0.12em; color: {{ featured.textAccent }}">{{ featured.tags }}</div>
+          <div style="font-family: 'Inter', sans-serif; font-size: 14.5px; line-height: 1.6; color: rgba(255,255,255,0.88)">{{ featured.pitch }}</div>
+          <div style="display: flex; align-items: center; gap: 14px; margin-top: 6px; flex-wrap: wrap">
+            <a href="{{ featured.fabUrl }}" target="_blank" rel="noopener" style="font-family: 'Bebas Neue', sans-serif; font-size: 18px; letter-spacing: 0.1em; color: #14161A; background: #FFC857; padding: 13px 28px">VIEW ON FAB →</a>
+            <a href="{{ featured.detailHref }}" style="font-family: 'JetBrains Mono', monospace; font-size: 11.5px; letter-spacing: 0.1em; color: #FFFFFF; border: 1px solid rgba(255,255,255,0.4); padding: 12px 22px">BREAKDOWN ▸</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </sc-if>
+
   <!-- ================= GAMES + PROTOTYPES (merged row, per-card GAME/PROTOTYPE tag) ================= -->
   <section id="games" ref="{{ sectionRefs.games }}" style="position: relative; padding-bottom: 40px; box-sizing: border-box; overflow: hidden">
 
@@ -467,6 +490,7 @@ const RAW_TOOLS = [
   {
     title: 'WIND FIELD', tags: 'UNREAL ENGINE · C++ · PLUGIN', accent: PALETTE.orange,
     banner: 'assets/plugins/windfield/card-thumbnail.png', trailerId: 'SLXdYUJeqb4', buildTime: '4 Months',
+    fabUrl: 'https://www.fab.com/listings/e5496656-6142-490f-8578-316b3eb8cca4?lang=en',
     overview: 'WindField is an Unreal Engine 5 plugin that brings physically reactive wind to any level in minutes, drag, drop, and the environment starts moving. Built for game developers and archviz artists who need believable environmental motion without hand-rolling a wind system from scratch.\n\nWhat makes it different: WindField is fully obstacle-aware, detecting geometry and breaking around it, without a single raytrace or per-tick collision query. Every interaction runs on pure math-based grid and vector calculations instead, keeping it highly optimised enough to simulate 200+ objects at under 3ms on the game thread.\n\nEngineering Quality: built on solid OOP architecture with dedicated error handling and debugging strategies for long-term maintainability, developed end-to-end following Agile practices, from first prototype through iterative polish.',
     gitUrl: 'https://gitlab.com/prasanth1608/wind-field'
   },
@@ -824,6 +848,15 @@ class Component extends DCLogic {
       };
     });
 
+    const wf = RAW_TOOLS.find((t) => t.title === 'WIND FIELD');
+    const featured = wf ? {
+      ...wf,
+      textAccent: textAccent(wf.accent),
+      bannerBg: wf.banner ? `center / cover no-repeat url(${wf.banner}), linear-gradient(160deg, #0C1418, #050809)` : `linear-gradient(160deg, #0C1418, #050809)`,
+      pitch: wf.overview.split('\n\n')[0],
+      detailHref: `ToolsProject.dc.html?slug=${wf.title.toLowerCase().replace(/\s+/g, '-')}`
+    } : null;
+
     return {
       sectionRefs: this.sectionRefs,
       navStyles,
@@ -838,7 +871,9 @@ class Component extends DCLogic {
       hasPrototypes: RAW_PROTOTYPES.length > 0,
       roles,
       tools,
-      milestones
+      milestones,
+      featured,
+      hasFeatured: !!featured
     };
   }
 }
