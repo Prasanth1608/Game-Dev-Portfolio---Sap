@@ -47,6 +47,8 @@
       .rt-role-grid { grid-template-columns: 1fr !important; }
       .rt-journey-row { justify-content: center !important; padding: 26px 0 !important; }
       .rt-journey-card { width: 100% !important; }
+      .rt-feat-grid { grid-template-columns: 1fr !important; }
+      .rt-feat-media { aspect-ratio: 16 / 9 !important; }
     }
     @media (max-width: 640px) {
       .rt-nav-links { gap: 8px !important; font-size: 9.5px !important; }
@@ -192,20 +194,43 @@
   <!-- ================= FEATURED (WindField, live on Fab) ================= -->
   <sc-if value="{{ hasFeatured }}" hint-placeholder-val="{{ false }}">
     <section id="featured" style="position: relative; padding: 0 40px 40px 40px; box-sizing: border-box; overflow: hidden">
-      <div style="position: relative; z-index: 2; text-align: center; font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.25em; color: {{ featured.textAccent }}; margin-bottom: 14px">FEATURED</div>
-      <div style="position: relative; max-width: 1160px; margin: 0 auto; background: {{ featured.bannerBg }}; border-radius: 4px; overflow: hidden; box-shadow: 0 30px 70px rgba(0,0,0,0.25)">
-        <div style="position: absolute; inset: 0; background: linear-gradient(100deg, rgba(5,8,9,0.92) 0%, rgba(5,8,9,0.72) 45%, rgba(5,8,9,0.3) 100%)"></div>
-        <div style="position: relative; z-index: 2; padding: 54px 48px; display: flex; flex-direction: column; gap: 16px; max-width: 620px">
+      <div style="position: relative; z-index: 2; text-align: center; font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.25em; color: {{ featured.textAccent }}; margin-bottom: 14px">FEATURED · LIVE PRODUCT</div>
+      <div class="rt-feat-grid" style="position: relative; max-width: 1240px; margin: 0 auto; display: grid; grid-template-columns: minmax(0, 1.6fr) minmax(300px, 1fr); background: #FFFFFF; border-radius: 4px; overflow: hidden; box-shadow: 0 30px 70px rgba(0,0,0,0.2)">
+
+        <!-- media: ambient looping trailer, no controls, falls back to key art -->
+        <div class="rt-feat-media" style="position: relative; aspect-ratio: 16 / 10; background: {{ featured.bannerBg }}; overflow: hidden">
+          <sc-if value="{{ featured.hasVideo }}" hint-placeholder-val="{{ true }}">
+            <iframe src="{{ featured.bannerVideoSrc }}" title="WindField trailer" tabindex="-1" style="position: absolute; top: 50%; left: 50%; width: 100%; height: 100%; min-width: 177.8vh; min-height: 56.3vw; transform: translate(-50%, -50%); border: 0; pointer-events: none"></iframe>
+          </sc-if>
+        </div>
+
+        <!-- spec panel: Fab-listing style info sidebar -->
+        <div style="display: flex; flex-direction: column; gap: 14px; padding: 36px 32px; box-sizing: border-box">
           <div style="display: inline-flex; align-items: center; gap: 7px; font-family: 'JetBrains Mono', monospace; font-size: 10.5px; letter-spacing: 0.14em; color: #14161A; background: #6EE7C8; padding: 5px 11px; border-radius: 3px; width: fit-content">
             <span style="width: 6px; height: 6px; border-radius: 50%; background: #14161A; display: inline-block"></span>
             LIVE ON FAB
           </div>
-          <div style="font-family: 'Bebas Neue', sans-serif; font-size: clamp(40px, 5vw, 64px); letter-spacing: 0.02em; line-height: 1; color: #FFFFFF; text-shadow: 0 2px 20px rgba(0,0,0,0.6)">{{ featured.title }}</div>
-          <div style="font-family: 'JetBrains Mono', monospace; font-size: 10.5px; letter-spacing: 0.12em; color: {{ featured.textAccent }}">{{ featured.tags }}</div>
-          <div style="font-family: 'Inter', sans-serif; font-size: 14.5px; line-height: 1.6; color: rgba(255,255,255,0.88)">{{ featured.pitch }}</div>
-          <div style="display: flex; align-items: center; gap: 14px; margin-top: 6px; flex-wrap: wrap">
-            <a href="{{ featured.fabUrl }}" target="_blank" rel="noopener" style="font-family: 'Bebas Neue', sans-serif; font-size: 18px; letter-spacing: 0.1em; color: #14161A; background: #FFC857; padding: 13px 28px">VIEW ON FAB →</a>
-            <a href="{{ featured.detailHref }}" style="font-family: 'JetBrains Mono', monospace; font-size: 11.5px; letter-spacing: 0.1em; color: #FFFFFF; border: 1px solid rgba(255,255,255,0.4); padding: 12px 22px">BREAKDOWN ▸</a>
+          <div>
+            <div style="font-family: 'Bebas Neue', sans-serif; font-size: 40px; letter-spacing: 0.02em; line-height: 1; color: #14161A">{{ featured.title }}</div>
+            <div style="font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.1em; color: {{ featured.textAccent }}; margin-top: 6px">{{ featured.tags }}</div>
+          </div>
+          <div style="font-family: 'Inter', sans-serif; font-size: 13px; line-height: 1.6; color: #14161A; opacity: 0.85">{{ featured.pitch }}</div>
+
+          <div style="display: flex; flex-direction: column; gap: 0; border-top: 1px solid rgba(20,22,26,0.12); margin-top: 4px">
+            <div style="display: flex; justify-content: space-between; padding: 10px 0; border-bottom: 1px solid rgba(20,22,26,0.1); font-family: 'JetBrains Mono', monospace; font-size: 10.5px; letter-spacing: 0.06em">
+              <span style="opacity: 0.55">ENGINE</span><span>UNREAL ENGINE 5</span>
+            </div>
+            <div style="display: flex; justify-content: space-between; padding: 10px 0; border-bottom: 1px solid rgba(20,22,26,0.1); font-family: 'JetBrains Mono', monospace; font-size: 10.5px; letter-spacing: 0.06em">
+              <span style="opacity: 0.55">TYPE</span><span>PLUGIN</span>
+            </div>
+            <div style="display: flex; justify-content: space-between; padding: 10px 0; border-bottom: 1px solid rgba(20,22,26,0.1); font-family: 'JetBrains Mono', monospace; font-size: 10.5px; letter-spacing: 0.06em">
+              <span style="opacity: 0.55">STATUS</span><span style="color: {{ featured.textAccent }}">AVAILABLE ON FAB</span>
+            </div>
+          </div>
+
+          <div style="display: flex; flex-direction: column; gap: 10px; margin-top: 10px">
+            <a href="{{ featured.fabUrl }}" target="_blank" rel="noopener" style="text-align: center; font-family: 'Bebas Neue', sans-serif; font-size: 18px; letter-spacing: 0.1em; color: #14161A; background: #FFC857; padding: 13px 24px">VIEW ON FAB →</a>
+            <a href="{{ featured.detailHref }}" style="text-align: center; font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.1em; color: #14161A; border: 1px solid rgba(20,22,26,0.25); padding: 12px 22px">BREAKDOWN ▸</a>
           </div>
         </div>
       </div>
@@ -853,6 +878,8 @@ class Component extends DCLogic {
       ...wf,
       textAccent: textAccent(wf.accent),
       bannerBg: wf.banner ? `center / cover no-repeat url(${wf.banner}), linear-gradient(160deg, #0C1418, #050809)` : `linear-gradient(160deg, #0C1418, #050809)`,
+      bannerVideoSrc: wf.trailerId ? `https://www.youtube.com/embed/${wf.trailerId}?autoplay=1&mute=1&loop=1&controls=0&showinfo=0&modestbranding=1&rel=0&playsinline=1&iv_load_policy=3&disablekb=1&fs=0&playlist=${wf.trailerId}` : '',
+      hasVideo: !!wf.trailerId,
       pitch: wf.overview.split('\n\n')[0],
       detailHref: `ToolsProject.dc.html?slug=${wf.title.toLowerCase().replace(/\s+/g, '-')}`
     } : null;
