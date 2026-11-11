@@ -165,6 +165,12 @@
                         </sc-for>
                       </div>
                     </sc-if>
+                    <sc-if value="{{ goal.hasNote }}" hint-placeholder-val="{{ false }}">
+                      <div style="margin-top: 14px; padding: 12px 16px; border-left: 3px solid #E2584D; background: rgba(226,88,77,0.08); border-radius: 2px">
+                        <div style="font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.14em; color: #E2584D; margin-bottom: 4px">{{ goal.noteLabel }}</div>
+                        <div style="font-family: 'Inter', sans-serif; font-size: 13.5px; line-height: 1.65; color: {{ goal.onCard }}">{{ goal.note }}</div>
+                      </div>
+                    </sc-if>
                   </div>
                 </sc-for>
               </div>
@@ -382,7 +388,9 @@ const RAW_PROTOTYPES = [
           {
             heading: 'SPREAD DETECTION',
             body: "Fire spread detection is driven directly by the live Niagara simulation instead of a fixed trigger volume. Niagara's Export Particle Data module hands its particle data to C++ through INiagaraParticleCallbackHandler every frame, and the fire actor receives that data and runs a capsule sweep built from the exact position and scale of the exported particle. Because the sweep's placement and radius come straight from the particle itself rather than a fixed offset, I never have to hardcode where the fire sits or which way it faces: as the fire moves, grows or changes shape at runtime, the detection sweep follows it automatically.",
-            media: []
+            media: [],
+            noteLabel: 'OPTIMIZATION',
+            note: "The total number of animated particle frames is collapsed down to a single sweep. If a fire FX has, say, 72 animated frames, the system isn't sweeping 72 times, it takes only the outermost layer of the fire. Precision stays the same, but the per-frame performance overhead is avoided."
           }
         ]
       }
@@ -503,7 +511,7 @@ class Component extends DCLogic {
           const mediaSlots = Array.from({ length: slotCount }, (_, i) => mediaList[i] ? { src: mediaList[i], isPlaceholder: false } : { src: '', isPlaceholder: true });
           const mediaGridStyle = `display: grid; grid-template-columns: repeat(${slotCount}, 1fr); gap: 10px; margin-top: 14px`;
           const cardStyle = { background: '#FFFFFF', borderTop: `14px solid ${vividize(accent)}`, padding: '18px 22px', borderRadius: '2px' };
-          return { ...g, hasPoints: !!(g.points && g.points.length), hasMedia: !!(g.media && g.media.length), mediaSlots, mediaGridStyle, accent, fillBg: '#FFFFFF', onCard: '#14161A', borderAccent: vividize(accent), cardStyle };
+          return { ...g, hasPoints: !!(g.points && g.points.length), hasMedia: !!(g.media && g.media.length), hasNote: !!g.note, noteLabel: g.noteLabel || 'NOTE', mediaSlots, mediaGridStyle, accent, fillBg: '#FFFFFF', onCard: '#14161A', borderAccent: vividize(accent), cardStyle };
         })
       }))
     };
