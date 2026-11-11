@@ -376,7 +376,7 @@ const RAW_PROTOTYPES = [
   },
   {
     title: 'AMBIENT FIRE SYSTEM', tags: 'UNREAL ENGINE 5 · C++ · NIAGARA · CHAOS PHYSICS', accent: '#F0B5C7',
-    banner: 'assets/prototypes/ambient-fire-system/banner.png',
+    banner: 'assets/prototypes/ambient-fire-system/banner.png', bannerVideoId: 'OVh105VYLOw',
     sections: [
       {
         goals: [
@@ -395,18 +395,11 @@ const RAW_PROTOTYPES = [
           {
             heading: 'FIRE CLASS & BURNABLE COMPONENT',
             body: "The system is split across two classes by responsibility, each owning one half of the problem. AFire is the flame: it knows how to look for fuel, spread to it, and burn itself out. UBurnable is the fuel: it decides how its owner burns, for how long, and what happens to it as it does. The two never reach into each other's internals, they talk through a single call and a single event: AFire calls Ignite() on the UBurnable it finds, and UBurnable broadcasts OnBurnStateChanged when its state moves on, which AFire listens for to know when to start fading out.",
-            points: [
-              "Visual flame and particles stay on AFire, since the Niagara system lives on the actor that actually moves, scales and burns out",
-              "Finding neighbours to ignite stays on AFire too, because detection follows the live particle positions it already has",
-              "Burn state, duration and charring live on UBurnable, so there's one source of truth per object no matter how many separate fires touch it",
-              "Which parts collapse, and when, is also UBurnable's call, since that's object-specific data rather than anything about the flame itself",
-              "Ending the fire is AFire reacting, not UBurnable reaching out: the fuel only ever announces that it's done, it never touches the flame directly"
-            ],
             media: []
           },
           {
             heading: 'BURN LIFECYCLE & CHAR MATERIAL',
-            body: "Once ignited, an object moves forward through a small state machine that never runs backwards: Fresh, Burning, Collapsing, Burnt. Ignite() flips the state to Burning synchronously, so the moment it fires, every other check for that same frame already sees the object as no longer Fresh, which is what stops it from being ignited twice. While Burning, the object's surface chars through a single parent material rather than any kind of texture swap: every tick, UBurnable grows a BurnRadius outward from the exact point of ignition, and the material lerps any pixel inside that radius to full black. Noise is layered onto the distance check so the front reads as a ragged, organic edge instead of a perfect circle.\n\nTolerance is the one value that drives all of this, and it's deliberately a measure of time rather than distance: a two-metre door and a twenty-centimetre crate both finish charring in exactly the same number of seconds, because BurnRadius is scaled by how much of that Tolerance has elapsed rather than by a fixed speed. The ignition point itself is stored in the object's local space and converted to world space every tick, so the char stays glued to the correct spot even if the object is swinging, falling or otherwise moving while it burns. Once elapsed time reaches Tolerance, the surface is fully black and the object moves on to Collapsing, or straight to Burnt if it has nothing marked to collapse.",
+            body: "Once ignited, an object moves through four states in one direction only: Fresh, Burning, Collapsing, Burnt. Ignite() switches it to Burning immediately, so nothing can ever ignite the same object twice, by the time any other check looks at it that frame, it's already past Fresh.\n\nWhile Burning, the surface chars using one material, not a texture swap. Each tick, a BurnRadius grows outward from the exact point the fire touched, and anything inside that radius is lerped toward black. A layer of noise keeps the edge of that radius ragged and organic instead of a clean circle.\n\nTolerance is what paces all of this, and it's a measure of time, not size: a door and a small crate both finish charring in the same number of seconds, since BurnRadius grows in step with how much of that Tolerance has elapsed, not at a fixed speed. The ignition point is also tracked in local space and converted to world space every tick, so the char stays put even while the object is moving or falling.\n\nOnce Tolerance runs out, the object is fully black and moves on, to Collapsing if it has parts marked to fall, otherwise straight to Burnt.",
             media: []
           },
           {
