@@ -403,6 +403,34 @@ const RAW_PROTOTYPES = [
               "Ending the fire is AFire reacting, not UBurnable reaching out: the fuel only ever announces that it's done, it never touches the flame directly"
             ],
             media: []
+          },
+          {
+            heading: 'BURN LIFECYCLE & CHAR MATERIAL',
+            body: "Once ignited, an object moves forward through a small state machine that never runs backwards: Fresh, Burning, Collapsing, Burnt. Ignite() flips the state to Burning synchronously, so the moment it fires, every other check for that same frame already sees the object as no longer Fresh, which is what stops it from being ignited twice. While Burning, the object's surface chars through a single parent material rather than any kind of texture swap: every tick, UBurnable grows a BurnRadius outward from the exact point of ignition, and the material lerps any pixel inside that radius to full black. Noise is layered onto the distance check so the front reads as a ragged, organic edge instead of a perfect circle.\n\nTolerance is the one value that drives all of this, and it's deliberately a measure of time rather than distance: a two-metre door and a twenty-centimetre crate both finish charring in exactly the same number of seconds, because BurnRadius is scaled by how much of that Tolerance has elapsed rather than by a fixed speed. The ignition point itself is stored in the object's local space and converted to world space every tick, so the char stays glued to the correct spot even if the object is swinging, falling or otherwise moving while it burns. Once elapsed time reaches Tolerance, the surface is fully black and the object moves on to Collapsing, or straight to Burnt if it has nothing marked to collapse.",
+            media: []
+          },
+          {
+            heading: 'STRUCTURAL COLLAPSE',
+            body: "Collapse reuses whatever mesh parts a designer already built rather than fracturing anything procedurally: any static mesh component tagged Collapsable is eligible to fall, and anything left untagged just stays put. The moment an object ignites, its hierarchy is flattened, every tagged part is re-parented directly under the root with its world transform kept intact. This matters because of how Chaos physics works: simulating a component welds everything attached beneath it into one rigid body, so a part still parented under another part would never fall on its own, it would just ride along with whatever it's attached to.\n\nOnce the object is fully charred and a short CollapseDelay has passed, a looping timer picks a random remaining part each interval and runs it through the same sequence: detach it, make it movable, shrink it slightly, rebuild its collision, switch it to simulated physics, then wake the rigid body. Each part is removed from the pending list the moment it starts falling, so nothing can ever be picked twice. Once Chaos reports a fallen part has gone to sleep, it's frozen in place, physics turned back off, collision set to query-only, so it settles into static debris that a player can still walk on but never push around. The last part falling is also what finally moves the object into the Burnt state, which is the signal that tells the fire itself to start fading out.",
+            noteLabel: 'BUG FIX',
+            note: "Shrinking a part makes Chaos rebuild its collision shape, and switching that same part to simulated physics in the same frame could reach the old, stale shape before the rebuild lands, the checkbox would say simulating, but the part just hung in the air. Explicitly rebuilding the physics state between the shrink and the simulate call makes the order deterministic and the bug goes away.",
+            media: []
+          },
+          {
+            heading: 'DESIGNER PARAMETERS',
+            body: "Everything described above is exposed as tunable settings on the two components, so a designer gets very different fire behaviour out of the same two classes without ever opening the C++.",
+            points: [
+              "Tolerance controls how long, in seconds, an object takes to fully char, independent of its physical size",
+              "FireEffect lets an individual object swap in its own Niagara effect on ignition, e.g. small flames for paper versus large ones for wood",
+              "CollapseParts and its tag decide which mesh components are even eligible to fall once an object chars",
+              "CollapseDelay is the pause after an object finishes charring before its first part starts dropping",
+              "CollapseScale is how far a part visibly shrinks the instant it breaks off",
+              "FreezePartsDelay is how long a fallen part keeps simulating before it settles into static, walkable debris",
+              "RadiusScale and HalfHeightScale size the detection capsule relative to the exported particle, controlling how far a fire reaches",
+              "ParentScaleMultiplier sets how large a newly spread fire is relative to the parent fire it spread from",
+              "FadeDuration and a safety timeout control how a fire visually burns out once its object reaches Burnt"
+            ],
+            media: []
           }
         ]
       }
