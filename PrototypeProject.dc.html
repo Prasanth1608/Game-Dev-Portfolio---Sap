@@ -367,6 +367,21 @@ const RAW_PROTOTYPES = [
         ]
       }
     ]
+  },
+  {
+    title: 'AMBIENT FIRE SYSTEM', tags: 'UNREAL ENGINE 5 · C++ · NIAGARA · CHAOS PHYSICS', accent: '#F0B5C7',
+    banner: 'assets/prototypes/ambient-fire-system/banner.png',
+    sections: [
+      {
+        goals: [
+          {
+            heading: 'OVERVIEW',
+            body: "Fire spread detection is driven directly by the live Niagara simulation instead of a fixed trigger volume. Niagara's Export Particle Data module hands its particle data to C++ through INiagaraParticleCallbackHandler every frame, and the fire actor receives that data and runs a capsule sweep built from the exact position and scale of the exported particle. Because the sweep's placement and radius come straight from the particle itself rather than a fixed offset, I never have to hardcode where the fire sits or which way it faces: as the fire moves, grows or changes shape at runtime, the detection sweep follows it automatically.",
+            media: []
+          }
+        ]
+      }
+    ]
   }
 ];
 
