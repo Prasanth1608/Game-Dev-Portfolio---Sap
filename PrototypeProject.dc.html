@@ -376,6 +376,11 @@ const RAW_PROTOTYPES = [
         goals: [
           {
             heading: 'OVERVIEW',
+            body: "AMBIENT FIRE SYSTEM is a gameplay system built in Unreal Engine 5 where fire spreads from object to object on its own, chars what it touches, and brings structures down piece by piece, driven by two small C++ classes and a single material.",
+            media: []
+          },
+          {
+            heading: 'SPREAD DETECTION',
             body: "Fire spread detection is driven directly by the live Niagara simulation instead of a fixed trigger volume. Niagara's Export Particle Data module hands its particle data to C++ through INiagaraParticleCallbackHandler every frame, and the fire actor receives that data and runs a capsule sweep built from the exact position and scale of the exported particle. Because the sweep's placement and radius come straight from the particle itself rather than a fixed offset, I never have to hardcode where the fire sits or which way it faces: as the fire moves, grows or changes shape at runtime, the detection sweep follows it automatically.",
             media: []
           }
