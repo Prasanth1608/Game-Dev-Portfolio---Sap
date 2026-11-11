@@ -503,7 +503,7 @@ class Component extends DCLogic {
           const mediaSlots = Array.from({ length: slotCount }, (_, i) => mediaList[i] ? { src: mediaList[i], isPlaceholder: false } : { src: '', isPlaceholder: true });
           const mediaGridStyle = `display: grid; grid-template-columns: repeat(${slotCount}, 1fr); gap: 10px; margin-top: 14px`;
           const cardStyle = { background: '#FFFFFF', borderTop: `14px solid ${vividize(accent)}`, padding: '18px 22px', borderRadius: '2px' };
-          return { ...g, hasPoints: !!(g.points && g.points.length), hasMedia: !!g.media, mediaSlots, mediaGridStyle, accent, fillBg: '#FFFFFF', onCard: '#14161A', borderAccent: vividize(accent), cardStyle };
+          return { ...g, hasPoints: !!(g.points && g.points.length), hasMedia: !!(g.media && g.media.length), mediaSlots, mediaGridStyle, accent, fillBg: '#FFFFFF', onCard: '#14161A', borderAccent: vividize(accent), cardStyle };
         })
       }))
     };
