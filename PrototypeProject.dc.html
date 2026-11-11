@@ -391,6 +391,18 @@ const RAW_PROTOTYPES = [
             media: [],
             noteLabel: 'OPTIMIZATION',
             note: "The total number of animated particle frames is collapsed down to a single sweep. If a fire FX has, say, 72 animated frames, the system isn't sweeping 72 times, it takes only the outermost layer of the fire. Precision stays the same, but the per-frame performance overhead is avoided."
+          },
+          {
+            heading: 'FIRE CLASS & BURNABLE COMPONENT',
+            body: "The system is split across two classes by responsibility, each owning one half of the problem. AFire is the flame: it knows how to look for fuel, spread to it, and burn itself out. UBurnable is the fuel: it decides how its owner burns, for how long, and what happens to it as it does. The two never reach into each other's internals, they talk through a single call and a single event: AFire calls Ignite() on the UBurnable it finds, and UBurnable broadcasts OnBurnStateChanged when its state moves on, which AFire listens for to know when to start fading out.",
+            points: [
+              "Visual flame and particles stay on AFire, since the Niagara system lives on the actor that actually moves, scales and burns out",
+              "Finding neighbours to ignite stays on AFire too, because detection follows the live particle positions it already has",
+              "Burn state, duration and charring live on UBurnable, so there's one source of truth per object no matter how many separate fires touch it",
+              "Which parts collapse, and when, is also UBurnable's call, since that's object-specific data rather than anything about the flame itself",
+              "Ending the fire is AFire reacting, not UBurnable reaching out: the fuel only ever announces that it's done, it never touches the flame directly"
+            ],
+            media: []
           }
         ]
       }
