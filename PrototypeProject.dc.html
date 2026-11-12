@@ -100,6 +100,26 @@
         </div>
       </sc-if>
 
+      <!-- in a nutshell: 2x2 gif grid -->
+      <sc-if value="{{ project.hasNutshell }}" hint-placeholder-val="{{ false }}">
+        <div class="rt-pad" style="max-width: 900px; margin: 40px auto 0 auto; padding: 0 40px; box-sizing: border-box">
+          <div style="font-family: 'Bebas Neue', sans-serif; font-size: 28px; letter-spacing: 0.04em; color: {{ project.textAccent }}; text-align: center; margin-bottom: 14px">IN A NUTSHELL</div>
+          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px">
+            <sc-for list="{{ project.nutshell }}" as="step" hint-placeholder-count="4">
+              <div style="border: 1px solid rgba(20,22,26,0.14); border-radius: 6px; overflow: hidden; background: #FFFFFF">
+                <div style="aspect-ratio: 16 / 10; background: #0C1418; overflow: hidden">
+                  <img src="{{ step.src }}" alt="{{ step.label }}" loading="lazy" onError="this.style.display='none'" style="width: 100%; height: 100%; object-fit: cover; display: block">
+                </div>
+                <div style="display: flex; align-items: center; gap: 10px; padding: 10px 14px">
+                  <span style="flex: none; width: 22px; height: 22px; border-radius: 50%; background: {{ project.accent }}; color: #14161A; font-family: 'JetBrains Mono', monospace; font-size: 12px; font-weight: 700; display: flex; align-items: center; justify-content: center">{{ step.num }}</span>
+                  <span style="font-family: 'Bebas Neue', sans-serif; font-size: 18px; letter-spacing: 0.06em; color: #14161A">{{ step.label }}</span>
+                </div>
+              </div>
+            </sc-for>
+          </div>
+        </div>
+      </sc-if>
+
       <!-- architecture doc, book-style page viewer -->
       <sc-if value="{{ project.hasArchitecture }}" hint-placeholder-val="{{ false }}">
         <div class="rt-pad" style="max-width: 760px; margin: 40px auto 0 auto; padding: 0 40px; box-sizing: border-box">
@@ -398,6 +418,12 @@ const RAW_PROTOTYPES = [
     banner: 'assets/prototypes/dynamic-fire-system/banner.png', bannerVideoId: 'OVh105VYLOw',
     // Technical architecture PDF viewer removed for now — restore by uncommenting:
     // archBasePath: 'assets/prototypes/dynamic-fire-system/architecture', archPageCount: 8,
+    nutshellGifs: [
+      { label: 'IGNITE', src: 'assets/prototypes/dynamic-fire-system/gifs/ignite.gif' },
+      { label: 'SPREAD', src: 'assets/prototypes/dynamic-fire-system/gifs/spread.gif' },
+      { label: 'BURN', src: 'assets/prototypes/dynamic-fire-system/gifs/burn.gif' },
+      { label: 'COLLAPSE', src: 'assets/prototypes/dynamic-fire-system/gifs/collapse.gif' }
+    ],
     sections: [
       {
         goals: [
@@ -545,8 +571,11 @@ class Component extends DCLogic {
     const lightboxEnabled = p.title === 'SPACE EXPLORER';
     const archPages = p.archPageCount ? Array.from({ length: p.archPageCount }, (_, i) => `${p.archBasePath}/page-${i + 1}.png`) : [];
     const archIndex = Math.min(Math.max(this.state.archPage || 0, 0), Math.max(archPages.length - 1, 0));
+    const nutshell = (p.nutshellGifs || []).map((g, i) => ({ ...g, num: i + 1 }));
     const project = {
       ...p,
+      nutshell,
+      hasNutshell: nutshell.length > 0,
       bannerBg: p.banner ? `center / cover no-repeat url(${p.banner}), linear-gradient(160deg, #0C1418, #050809)` : `linear-gradient(160deg, #0C1418, #050809)`,
       bannerVideoSrc: p.bannerVideoId ? `https://www.youtube.com/embed/${p.bannerVideoId}?autoplay=1&mute=1&loop=1&controls=0&showinfo=0&modestbranding=1&rel=0&playsinline=1&iv_load_policy=3&disablekb=1&fs=0&playlist=${p.bannerVideoId}` : '',
       noBanner: !p.banner && !p.bannerVideoId,
