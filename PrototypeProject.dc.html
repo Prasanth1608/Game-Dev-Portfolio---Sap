@@ -408,7 +408,7 @@ const RAW_PROTOTYPES = [
           {
             heading: 'SPREAD DETECTION',
             body: "Fire spread detection is driven directly by the live Niagara simulation instead of a fixed trigger volume. Niagara's Export Particle Data module hands its particle data to C++ through INiagaraParticleCallbackHandler every frame, and the fire actor receives that data and runs a capsule sweep built from the exact position and scale of the exported particle. Because the sweep's placement and radius come straight from the particle itself rather than a fixed offset, I never have to hardcode where the fire sits or which way it faces: as the fire moves, grows or changes shape at runtime, the detection sweep follows it automatically.",
-            media: [],
+            media: ['assets/prototypes/dynamic-fire-system/architecture/fig4-placement-scale.png'],
             noteLabel: 'OPTIMIZATION',
             note: "The total number of animated particle frames is collapsed down to a single sweep. If a fire FX has, say, 72 animated frames, the system isn't sweeping 72 times, it takes only the outermost layer of the fire. Precision stays the same, but the per-frame performance overhead is avoided."
           },
