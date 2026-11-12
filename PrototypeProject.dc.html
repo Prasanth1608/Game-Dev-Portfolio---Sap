@@ -90,6 +90,16 @@
         </div>
       </div>
 
+      <!-- overview, pulled out of the breakdown to show first -->
+      <sc-if value="{{ project.hasOverviewGoal }}" hint-placeholder-val="{{ false }}">
+        <div class="rt-pad" style="max-width: 1160px; margin: 40px auto 0 auto; padding: 0 40px; box-sizing: border-box">
+          <div style="{{ project.overviewGoal.cardStyle }}">
+            <div style="font-family: 'Bebas Neue', sans-serif; font-size: 24px; letter-spacing: 0.04em; color: {{ project.overviewGoal.onCard }}; margin-bottom: 8px; text-shadow: 0 1px 3px rgba(0,0,0,0.18)">{{ project.overviewGoal.heading }}</div>
+            <div style="font-family: 'Inter', sans-serif; font-size: 14px; line-height: 1.8; color: {{ project.overviewGoal.onCard }}">{{ project.overviewGoal.body }}</div>
+          </div>
+        </div>
+      </sc-if>
+
       <!-- trailer, before the technical breakdown content starts -->
       <sc-if value="{{ project.showTopTrailer }}" hint-placeholder-val="{{ false }}">
         <div class="rt-pad" style="max-width: 1160px; margin: 40px auto 0 auto; padding: 0 40px; box-sizing: border-box">
@@ -613,6 +623,19 @@ class Component extends DCLogic {
         })
       }))
     };
+
+    // Pull the OVERVIEW goal out of the breakdown and show it at the top, before the trailer.
+    let overviewGoal = null;
+    project.sections = project.sections.map((s) => {
+      if (overviewGoal || !s.goals.length) return s;
+      const goals = s.goals.filter((g) => {
+        if (!overviewGoal && g.heading === 'OVERVIEW') { overviewGoal = g; return false; }
+        return true;
+      });
+      return { ...s, goals, hasGoals: goals.length > 0 };
+    });
+    project.overviewGoal = overviewGoal;
+    project.hasOverviewGoal = !!overviewGoal;
 
     const backdropBg = `#ECEBEA`;
 
