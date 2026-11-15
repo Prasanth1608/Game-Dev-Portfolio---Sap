@@ -499,8 +499,10 @@ const RAW_PROTOTYPES = [
             media: []
           },
           {
-            heading: 'EXPLORING AND EXTENDING A LARGE CODEBASE',
-            body: "Lyra ships as a large, production-scale reference project, with its own conventions running through GAS, its ability sets, and its ability system component wiring. Before writing any gameplay code of my own, I had to read through that codebase closely enough to understand how its systems actually fit together, how abilities are granted, how effects apply, how attributes flow into the UI, rather than guessing from the outside.\n\nThat understanding is what made the survival mode possible. The zombie enemies, their behaviours, and the new abilities and effects driving their combat all went in as a genuinely new layer, built by duplicating and modifying Lyra's own GA/GE patterns rather than bypassing them. None of Lyra's existing player character, weapon, UI, or attribute systems needed to be rewritten or patched to make room for it, everything that shipped with Lyra still works exactly as it did, with zombie survival sitting on top of it.",
+            heading: "WHAT I'VE DONE",
+            points: [
+              "Created a dedicated Game Feature Plugin for a Zombie Game Mode, implementing it as a separate Lyra Experience to maintain modularity and separation from existing gameplay experiences."
+            ],
             media: []
           }
         ]
