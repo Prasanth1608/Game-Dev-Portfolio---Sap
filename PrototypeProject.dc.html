@@ -486,6 +486,26 @@ const RAW_PROTOTYPES = [
         ]
       }
     ]
+  },
+  {
+    title: 'LYRA ZOMBIE SURVIVAL', tags: 'UNREAL ENGINE 5 · C++ · GAS · LYRA FRAMEWORK', accent: '#A3E1D3',
+    banner: 'assets/prototypes/lyra-zombie-survival/banner.png',
+    sections: [
+      {
+        goals: [
+          {
+            heading: 'OVERVIEW',
+            body: "LYRA ZOMBIE SURVIVAL extends Epic Games' Lyra Starter Game with an original zombie survival game mode. I designed independent zombie enemy classes and behaviours, then extended Lyra's Gameplay Ability System (GAS) implementation by duplicating and modifying its existing Gameplay Abilities (GA) and Gameplay Effects (GE) to drive zombie combat, integrating the result into Lyra's existing weapon, damage, and gameplay attribute systems, and leveraging its existing player character, weapon systems, gameplay attributes, and UI throughout.",
+            media: []
+          },
+          {
+            heading: 'EXPLORING AND EXTENDING A LARGE CODEBASE',
+            body: "Lyra ships as a large, production-scale reference project, with its own conventions running through GAS, its ability sets, and its ability system component wiring. Before writing any gameplay code of my own, I had to read through that codebase closely enough to understand how its systems actually fit together, how abilities are granted, how effects apply, how attributes flow into the UI, rather than guessing from the outside.\n\nThat understanding is what made the survival mode possible. The zombie enemies, their behaviours, and the new abilities and effects driving their combat all went in as a genuinely new layer, built by duplicating and modifying Lyra's own GA/GE patterns rather than bypassing them. None of Lyra's existing player character, weapon, UI, or attribute systems needed to be rewritten or patched to make room for it, everything that shipped with Lyra still works exactly as it did, with zombie survival sitting on top of it.",
+            media: []
+          }
+        ]
+      }
+    ]
   }
 ];
 

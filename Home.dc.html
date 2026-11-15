@@ -506,6 +506,11 @@ const RAW_PROTOTYPES = [
     title: 'DYNAMIC FIRE SYSTEM', tags: 'UNREAL ENGINE 5 · C++ · NIAGARA · CHAOS PHYSICS', accent: PALETTE.rose,
     banner: 'assets/prototypes/dynamic-fire-system/banner.png', trailerId: 'OVh105VYLOw',
     overview: 'DYNAMIC FIRE SYSTEM is a gameplay system built in Unreal Engine 5 where fire spreads from object to object on its own, chars what it touches, and brings structures down piece by piece, driven by two small C++ classes and a single material.\n\nWhat makes it different: spread is driven by the simulation itself, a Niagara particle system exports its live particle data straight into C++, which sweeps for burnable neighbours and ignites them, so a bigger or wilder fire naturally reaches further with no scripted spread volumes. Designers here can tweak values to make the best and believable fire, with just a few settings.'
+  },
+  {
+    title: 'LYRA ZOMBIE SURVIVAL', tags: 'UNREAL ENGINE 5 · C++ · GAS · LYRA FRAMEWORK', accent: PALETTE.teal,
+    banner: 'assets/prototypes/lyra-zombie-survival/banner.png',
+    overview: "LYRA ZOMBIE SURVIVAL extends Epic Games' Lyra Starter Game with an original zombie survival game mode, built on top of its existing framework rather than beside it. I designed independent zombie enemy classes and behaviours, then extended Lyra's Gameplay Ability System (GAS) implementation by duplicating and modifying its existing Gameplay Abilities (GA) and Gameplay Effects (GE) to drive zombie combat, integrating them into Lyra's existing weapon, damage, and gameplay attribute systems.\n\nWhat makes it different: Lyra ships as a large, production-scale reference codebase with its own conventions running through GAS, its ability sets, and its ability system component wiring. Before writing a single line of gameplay code, I had to read through that codebase closely enough to actually understand how its systems fit together. The survival mode went in as a genuinely new game mode, with new enemies, new abilities and new effects, without rewriting or breaking any of Lyra's existing player character, weapon, UI, or attribute systems. Everything that shipped with Lyra still works exactly as it did before, zombie survival just sits on top of it."
   }
 ];
 
