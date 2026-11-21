@@ -488,7 +488,7 @@ const RAW_TOOLS = [
       card(PALETTE[1], { num: '2', title: 'Cache Nearby Objects', body: 'Actors overlapping the volume are cached once via overlap events, never queried again per tick.' }),
       card(PALETTE[3], { num: '3', title: 'Cells March Forward', body: "Each cell's position is spawn point + (direction × distance traveled), vector addition, not a trace." }),
       card(PALETTE[4], { num: '4', title: "Compare, Don't Query", body: "Every tick, a cell's position is checked against cached objects using closest-point-on-box math, comparing numbers already in memory, never asking the Collision or Physics engine anything." }),
-      card(PALETTE[5], { num: '5', title: 'React & Retire', body: 'On detection, the cell stops evaluating immediately, and if the object is eligible, a mass-aware force is applied, or the wind cell dies on hitting an obstacle.' })
+      card(PALETTE[5], { num: '5', title: 'React & Retire', body: 'On detection, the cell stops evaluating immediately, and if the object is eligible, a mass-aware force is applied. On hitting an obstacle, the wind cell does not die, it retires in place and stays still until the next wave starts.' })
     ].map((s, i) => ({
       ...s,
       media: ((i === 2 || i === 3 || i === 4) ? [1, 2, 3] : [1, 2, 3, 4]).map((n) => ({
