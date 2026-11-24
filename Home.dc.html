@@ -78,6 +78,7 @@
         <a href="#games" onClick="{{ goTo }}" data-target="games" style="{{ navStyles.games }}">PROTOTYPES</a>
       </sc-if>
       <a href="#tools" onClick="{{ goTo }}" data-target="tools" style="{{ navStyles.tools }}">TOOLS</a>
+      <a href="#jams" onClick="{{ goTo }}" data-target="jams" style="{{ navStyles.jams }}">GAME JAMS</a>
       <a href="#journey" onClick="{{ goTo }}" data-target="journey" style="{{ navStyles.journey }}">JOURNEY</a>
       <a href="#contact" onClick="{{ goTo }}" data-target="contact" style="{{ navStyles.contact }}">CONTACT</a>
     </div>
@@ -390,6 +391,79 @@
     </div>
   </section>
 
+  <!-- ================= GAME JAMS ================= -->
+  <section id="jams" ref="{{ sectionRefs.jams }}" style="position: relative; padding-bottom: 40px; box-sizing: border-box; overflow: hidden">
+
+    <div style="position: relative; z-index: 2; text-align: center; padding: 60px 40px 0 40px; font-family: 'Bebas Neue', sans-serif; font-size: 34px; letter-spacing: 0.06em; color: #14161A">GAME JAMS</div>
+
+    <div class="rt-role-grid" style="position: relative; z-index: 2; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 32px; padding: 24px 40px 0 40px; max-width: 1460px; margin: 0 auto; box-sizing: border-box">
+      <sc-for list="{{ jams }}" as="project" hint-placeholder-count="1">
+        <div ref="{{ project.setCardRef }}" style="min-width: 0; background: {{ project.cardBg }}; border-top: 16px solid {{ project.borderAccent }}; border-radius: 2px; overflow: hidden">
+          <div style="aspect-ratio: 16 / 8; background: {{ project.bannerBg }}; display: flex; align-items: center; justify-content: center; border-bottom: 1px solid {{ project.borderMid }}; position: relative">
+            <sc-if value="{{ project.noBanner }}" hint-placeholder-val="{{ false }}">
+              <div style="font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.2em; color: #FFFFFF">JAM_STILL / KEY ART</div>
+            </sc-if>
+            <div style="position: absolute; inset: 0; background: linear-gradient(0deg, rgba(0,0,0,0.85) 0%, transparent 45%); pointer-events: none"></div>
+            <div style="position: absolute; top: 10px; left: 14px; font-family: 'Bebas Neue', sans-serif; font-size: 16px; letter-spacing: 0.1em; color: {{ project.accent }}; background: rgba(0,0,0,0.45); padding: 2px 8px; border-radius: 3px; display: inline-block">{{ project.index }}</div>
+            <sc-if value="{{ project.hasBuildTime }}" hint-placeholder-val="{{ false }}">
+              <div style="position: absolute; top: 10px; right: 14px; display: flex; align-items: center; gap: 5px; font-family: 'JetBrains Mono', monospace; font-size: 11.5px; font-weight: 600; letter-spacing: 0.06em; color: #FFFFFF; background: rgba(0,0,0,0.5); padding: 4px 9px; border-radius: 3px">
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><circle cx="12" cy="12" r="10"></circle><path d="M12 6v6l4 2"></path></svg>
+                {{ project.buildTime }}
+              </div>
+            </sc-if>
+            <div style="position: absolute; left: 16px; bottom: 10px; right: 16px; display: flex; justify-content: space-between; align-items: flex-end; gap: 12px">
+              <div>
+                <div style="font-family: 'Bebas Neue', sans-serif; font-size: 34px; letter-spacing: 0.02em; color: #FFFFFF; line-height: 1; text-shadow: 0 2px 20px rgba(0,0,0,0.8)">{{ project.title }}</div>
+                <div style="font-family: 'JetBrains Mono', monospace; font-size: 9.5px; letter-spacing: 0.1em; color: {{ project.accent }}; margin-top: 5px">{{ project.tags }}</div>
+              </div>
+              <sc-if value="{{ project.showDetailLinks }}" hint-placeholder-val="{{ true }}">
+                <a href="{{ project.detailHref }}" style="{{ project.playButtonStyle }}">VIEW →</a>
+              </sc-if>
+            </div>
+          </div>
+          <div style="display: flex; align-items: center; gap: 4px; padding: 10px 14px 0 14px; border-bottom: 1px solid {{ project.borderLight }}">
+            <div onClick="{{ project.selectOverview }}" style="{{ project.overviewTabStyle }}">OVERVIEW</div>
+            <sc-if value="{{ project.hasVideo }}" hint-placeholder-val="{{ true }}">
+              <div onClick="{{ project.selectTrailer }}" style="{{ project.trailerTabStyle }}">TRAILER</div>
+            </sc-if>
+            <sc-if value="{{ project.hasGitUrl }}" hint-placeholder-val="{{ true }}">
+              <div onClick="{{ project.selectGit }}" style="{{ project.gitTabStyle }}">REPO</div>
+            </sc-if>
+            <sc-if value="{{ project.showDetailLinks }}" hint-placeholder-val="{{ true }}">
+              <a href="{{ project.detailHref }}" style="display: inline-flex; align-items: center; gap: 5px; font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.1em; padding: 7px 11px; color: {{ project.onCard }}; background: #F2F1EF">VIEW FULL DETAILS <span>▸</span></a>
+            </sc-if>
+            <sc-if value="{{ project.itchUrl }}" hint-placeholder-val="{{ false }}">
+              <a href="{{ project.itchUrl }}" target="_blank" rel="noopener" style="display: inline-flex; align-items: center; gap: 4px; font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.1em; padding: 7px 11px; margin-left: auto; color: #FFFFFF; background: #14161A">▶ PLAY</a>
+            </sc-if>
+          </div>
+          <div style="padding: 12px 14px 14px 14px; min-height: {{ project.tabMinHeight }}; display: flex; justify-content: {{ project.tabJustify }}; align-items: {{ project.tabAlignItems }}; gap: 16px; flex-wrap: wrap">
+            <div style="flex: 1; min-width: 200px; text-align: {{ project.tabTextAlign }}">
+              <sc-if value="{{ project.isOverview }}" hint-placeholder-val="{{ true }}">
+                <div style="font-family: 'Inter', sans-serif; font-size: 12px; line-height: 1.55; color: {{ project.onCard }}; white-space: pre-line">{{ project.overview }}</div>
+              </sc-if>
+              <sc-if value="{{ project.isTrailer }}" hint-placeholder-val="{{ false }}">
+                <sc-if value="{{ project.trailerId }}" hint-placeholder-val="{{ false }}">
+                  <div style="max-width: 100%; margin: 0 auto; aspect-ratio: 16/9; border: 1px solid {{ project.borderMid }}">
+                    <iframe src="{{ project.trailerEmbedSrc }}" title="Trailer" width="1280" height="720" style="width: 100%; height: 100%; border: 0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen="true"></iframe>
+                  </div>
+                </sc-if>
+                <sc-if value="{{ project.noTrailer }}" hint-placeholder-val="{{ true }}">
+                  <div style="height: 140px; max-width: 100%; margin: 0 auto; background: #F2F1EF; display: flex; align-items: center; justify-content: center; font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.1em; color: {{ project.onCard }}">TRAILER VIDEO — drop file here</div>
+                </sc-if>
+              </sc-if>
+              <sc-if value="{{ project.isGit }}" hint-placeholder-val="{{ false }}">
+                <a href="{{ project.gitUrl }}" style="display: inline-flex; align-items: center; gap: 8px; font-family: 'JetBrains Mono', monospace; font-size: 11.5px; letter-spacing: 0.06em; color: {{ project.onCard }}">
+                  <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="6" cy="5" r="2.4"></circle><circle cx="6" cy="19" r="2.4"></circle><circle cx="18" cy="9" r="2.4"></circle><path d="M6 7.4v9.2M18 11.4c0 3-3 4-7 4"></path></svg>
+                  {{ project.gitLabel }}
+                </a>
+              </sc-if>
+            </div>
+          </div>
+        </div>
+      </sc-for>
+    </div>
+  </section>
+
   <!-- ================= JOURNEY ================= -->
   <section id="journey" ref="{{ sectionRefs.journey }}" style="position: relative; min-height: 100vh; padding-bottom: 60px; box-sizing: border-box; overflow: hidden">
 
@@ -544,6 +618,15 @@ const RAW_TOOLS = [
   }
 ];
 
+// Game jam entries. Optional per entry: banner (image path), trailerId (YouTube video id).
+const RAW_JAMS = [
+  {
+    title: 'ORBIT 21', tags: 'UNREAL ENGINE · BLUEPRINTS · CARD GAME', accent: PALETTE.teal, hideDetailPage: true,
+    buildTime: '36 Hours', itchUrl: 'https://prasanth1608.itch.io/orbit-21',
+    overview: "ORBIT 21 is a push-your-luck card duel built for the Devs That Jam 36-Hour Challenge: a space freight dealer squares off against a rival ship, collecting cargo from nearby planets to land as close to 21 as possible without going over.\n\nWhat makes it different: every planet is an Accept-or-Pass decision, taking cargo pushes your total up, passing locks it in and ends the round immediately, while the rival dealer plays by its own fixed rule, it keeps collecting until its total hits 17 or more. Built entirely in Blueprints in Unreal Engine, with a four-person team, inside the jam's 36-hour window."
+  }
+];
+
 const MILESTONES = [
   { year: '2021', tag: 'THE BEGINNING', accent: PALETTE.teal, text: 'While studying for a Bachelor\'s in I.T., a sudden idea struck: make games, not just play them. Explored game dev routes, engines and starting steps, understood the basics of game development, and built my first ever game in Unity using C#.' },
   { year: '2022', tag: 'FIRST JOB', accent: PALETTE.amber, text: 'Followed by my first game, I became more enthusiastic about building further prototypes and games to learn game dev concepts, built a portfolio within 6 months of learning, and landed my first job as a Unity developer, choosing among 3 offers from studios.' },
@@ -658,18 +741,20 @@ class Component extends DCLogic {
     protoTabs: RAW_PROTOTYPES.map(() => 'overview'),
     playingRole: null,
     toolTabs: RAW_TOOLS.map(() => 'overview'),
+    jamTabs: RAW_JAMS.map(() => 'overview'),
     activeSection: 'home'
   };
 
   constructor(props) {
     super(props);
-    this.sectionRefs = { home: React.createRef(), expertise: React.createRef(), games: React.createRef(), prototypes: React.createRef(), tools: React.createRef(), journey: React.createRef(), contact: React.createRef() };
+    this.sectionRefs = { home: React.createRef(), expertise: React.createRef(), games: React.createRef(), prototypes: React.createRef(), tools: React.createRef(), jams: React.createRef(), journey: React.createRef(), contact: React.createRef() };
     this.sharedBackdropRef = React.createRef();
     this.heroGlowRef = React.createRef();
     this.projectCardEls = [];
     this.protoCardEls = [];
     this.roleCardEls = [];
     this.toolCardEls = [];
+    this.jamCardEls = [];
     this.milestoneEls = [];
   }
 
@@ -677,6 +762,7 @@ class Component extends DCLogic {
   setProtoTab(i, tab) { this.setState((s) => { const t = s.protoTabs.slice(); t[i] = tab; return { protoTabs: t }; }); }
   toggleRoleVideo(i) { this.setState((s) => ({ playingRole: s.playingRole === i ? null : i })); }
   setToolTab(i, tab) { this.setState((s) => { const t = s.toolTabs.slice(); t[i] = tab; return { toolTabs: t }; }); }
+  setJamTab(i, tab) { this.setState((s) => { const t = s.jamTabs.slice(); t[i] = tab; return { jamTabs: t }; }); }
 
   goToId(id) {
     const el = this.sectionRefs[id] && this.sectionRefs[id].current;
@@ -704,7 +790,7 @@ class Component extends DCLogic {
         }
 
         // which section is active for nav highlighting
-        const order = ['home', 'expertise', 'games', 'prototypes', 'tools', 'journey', 'contact'];
+        const order = ['home', 'expertise', 'games', 'prototypes', 'tools', 'jams', 'journey', 'contact'];
         let active = 'home';
         for (const id of order) {
           const el = this.sectionRefs[id].current;
@@ -741,7 +827,7 @@ class Component extends DCLogic {
       background: active ? color : '#F2F1EF'
     });
 
-    const navOrder = ['home', 'expertise', 'games', 'prototypes', 'tools', 'journey', 'contact'];
+    const navOrder = ['home', 'expertise', 'games', 'prototypes', 'tools', 'jams', 'journey', 'contact'];
     const navStyles = {};
     navOrder.forEach((id) => {
       navStyles[id] = this.state.activeSection === id ? { color: '#FFC857' } : { color: 'rgba(255,255,255,0.65)' };
@@ -878,6 +964,36 @@ class Component extends DCLogic {
       };
     });
 
+    const jams = RAW_JAMS.map((p, i) => {
+      const tab = this.state.jamTabs[i];
+      const cardBorder = 'rgba(20,22,26,0.1)';
+      return {
+        showDetailLinks: p.hideDetailPage !== true,
+        ...p, overview: overviewWithLeads(p.overview, textAccent(p.accent)), setCardRef: (el) => { this.jamCardEls[i] = el; },
+        borderStrong: hexToRgba(p.accent, 0.45), borderMid: cardBorder, borderLight: cardBorder,
+        textAccent: textAccent(p.accent),
+        cardBg: '#FFFFFF', onCard: '#14161A', borderAccent: vividize(p.accent),
+        borderImage: 'none',
+        bannerBg: p.banner ? `center / cover no-repeat url(${p.banner}), linear-gradient(160deg, #0C1418, #050809)` : `linear-gradient(160deg, #0C1418, #050809)`,
+        noBanner: !p.banner, trailerEmbedSrc: p.trailerId ? `https://www.youtube.com/embed/${p.trailerId}` : '', noTrailer: !p.trailerId, hasVideo: !!p.trailerId,
+        index: String(i + 1).padStart(2, '0'), kindLabel: 'JAM', hasBuildTime: !!p.buildTime,
+        detailHref: `${p.detailPage || 'ToolsProject.dc.html'}?slug=${p.title.toLowerCase().replace(/\s+/g, '-')}`,
+        gitUrl: p.gitUrl || '#', hasGitUrl: !!p.gitUrl, gitLabel: p.gitUrl ? p.gitUrl.replace(/^https?:\/\//, '') : `link your repo here`,
+        tabMinHeight: tab === 'git' ? '0' : tab === 'trailer' ? '0' : '80px',
+        tabJustify: tab === 'trailer' ? 'center' : 'space-between',
+        tabAlignItems: tab === 'git' ? 'center' : tab === 'overview' ? 'flex-start' : 'flex-end',
+        tabTextAlign: tab === 'trailer' ? 'center' : 'left',
+        isOverview: tab === 'overview', isTrailer: tab === 'trailer', isGit: tab === 'git',
+        overviewTabStyle: tabStyle(tab === 'overview', '#14161A', cardBorder, '#14161A'),
+        trailerTabStyle: tabStyle(tab === 'trailer', '#14161A', cardBorder, '#14161A'),
+        gitTabStyle: tabStyle(tab === 'git', '#14161A', cardBorder, '#14161A'),
+        playButtonStyle: { fontFamily: "'Bebas Neue', sans-serif", fontSize: '18px', letterSpacing: '0.12em', color: '#FFFFFF', background: '#14161A', padding: '11px 26px', flex: 'none' },
+        selectOverview: () => this.setJamTab(i, 'overview'),
+        selectTrailer: () => this.setJamTab(i, 'trailer'),
+        selectGit: () => this.setJamTab(i, 'git')
+      };
+    });
+
     const milestones = MILESTONES.map((m, i) => {
       const left = i % 2 === 0;
       const active = i === this.state.journeyIndex;
@@ -916,6 +1032,7 @@ class Component extends DCLogic {
       hasPrototypes: RAW_PROTOTYPES.length > 0,
       roles,
       tools,
+      jams,
       milestones,
       featured,
       hasFeatured: !!featured
