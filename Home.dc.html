@@ -77,6 +77,7 @@
       <sc-if value="{{ hasPrototypes }}" hint-placeholder-val="{{ false }}">
         <a href="#games" onClick="{{ goTo }}" data-target="games" style="{{ navStyles.games }}">PROTOTYPES</a>
       </sc-if>
+      <a href="#systems" onClick="{{ goTo }}" data-target="systems" style="{{ navStyles.systems }}">GAMEPLAY SYSTEMS</a>
       <a href="#tools" onClick="{{ goTo }}" data-target="tools" style="{{ navStyles.tools }}">TOOLS</a>
       <a href="#jams" onClick="{{ goTo }}" data-target="jams" style="{{ navStyles.jams }}">GAME JAMS</a>
       <a href="#journey" onClick="{{ goTo }}" data-target="journey" style="{{ navStyles.journey }}">JOURNEY</a>
@@ -288,6 +289,82 @@
             </sc-if>
             <sc-if value="{{ project.itchUrl }}" hint-placeholder-val="{{ false }}">
               <a href="{{ project.itchUrl }}" target="_blank" rel="noopener" style="display: inline-flex; align-items: center; gap: 4px; font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.1em; padding: 7px 11px; margin-left: auto; color: #FFFFFF; background: #14161A">▶ PLAY</a>
+            </sc-if>
+          </div>
+          <div style="padding: 12px 14px 14px 14px; min-height: {{ project.tabMinHeight }}; display: flex; justify-content: {{ project.tabJustify }}; align-items: {{ project.tabAlignItems }}; gap: 16px; flex-wrap: wrap">
+            <div style="flex: 1; min-width: 200px; text-align: {{ project.tabTextAlign }}">
+              <sc-if value="{{ project.isOverview }}" hint-placeholder-val="{{ true }}">
+                <div style="font-family: 'Inter', sans-serif; font-size: 12px; line-height: 1.55; color: {{ project.onCard }}; white-space: pre-line">{{ project.overview }}</div>
+              </sc-if>
+              <sc-if value="{{ project.isTrailer }}" hint-placeholder-val="{{ false }}">
+                <sc-if value="{{ project.trailerId }}" hint-placeholder-val="{{ false }}">
+                  <div style="max-width: 100%; margin: 0 auto; aspect-ratio: 16/9; border: 1px solid {{ project.borderMid }}">
+                    <iframe src="{{ project.trailerEmbedSrc }}" title="Trailer" width="1280" height="720" style="width: 100%; height: 100%; border: 0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen="true"></iframe>
+                  </div>
+                </sc-if>
+                <sc-if value="{{ project.noTrailer }}" hint-placeholder-val="{{ true }}">
+                  <div style="height: 140px; max-width: 100%; margin: 0 auto; background: #F2F1EF; display: flex; align-items: center; justify-content: center; font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.1em; color: {{ project.onCard }}">TRAILER VIDEO — drop file here</div>
+                </sc-if>
+              </sc-if>
+              <sc-if value="{{ project.isGit }}" hint-placeholder-val="{{ false }}">
+                <a href="{{ project.gitUrl }}" style="display: inline-flex; align-items: center; gap: 8px; font-family: 'JetBrains Mono', monospace; font-size: 11.5px; letter-spacing: 0.06em; color: {{ project.onCard }}">
+                  <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="6" cy="5" r="2.4"></circle><circle cx="6" cy="19" r="2.4"></circle><circle cx="18" cy="9" r="2.4"></circle><path d="M6 7.4v9.2M18 11.4c0 3-3 4-7 4"></path></svg>
+                  {{ project.gitLabel }}
+                </a>
+              </sc-if>
+            </div>
+          </div>
+        </div>
+      </sc-for>
+    </div>
+  </section>
+
+  <!-- ================= GAMEPLAY SYSTEMS ================= -->
+  <section id="systems" ref="{{ sectionRefs.systems }}" style="position: relative; padding-bottom: 40px; box-sizing: border-box; overflow: hidden">
+
+    <div style="position: relative; z-index: 2; text-align: center; padding: 60px 40px 0 40px; font-family: 'Bebas Neue', sans-serif; font-size: 34px; letter-spacing: 0.06em; color: #14161A">GAMEPLAY SYSTEMS</div>
+
+    <div class="rt-role-grid" style="position: relative; z-index: 2; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 32px; padding: 24px 40px 0 40px; max-width: 1460px; margin: 0 auto; box-sizing: border-box">
+      <sc-for list="{{ gameplaySystems }}" as="project" hint-placeholder-count="1">
+        <div ref="{{ project.setCardRef }}" style="min-width: 0; background: {{ project.cardBg }}; border-top: 16px solid {{ project.borderAccent }}; border-radius: 2px; overflow: hidden">
+          <div style="aspect-ratio: 16 / 8; background: {{ project.bannerBg }}; display: flex; align-items: center; justify-content: center; border-bottom: 1px solid {{ project.borderMid }}; position: relative">
+            <sc-if value="{{ project.noBanner }}" hint-placeholder-val="{{ false }}">
+              <div style="font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.2em; color: #FFFFFF">SYSTEM_STILL / KEY ART</div>
+            </sc-if>
+            <div style="position: absolute; inset: 0; background: linear-gradient(0deg, rgba(0,0,0,0.85) 0%, transparent 45%); pointer-events: none"></div>
+            <div style="position: absolute; top: 10px; left: 14px; font-family: 'Bebas Neue', sans-serif; font-size: 16px; letter-spacing: 0.1em; color: {{ project.accent }}; background: rgba(0,0,0,0.45); padding: 2px 8px; border-radius: 3px; display: inline-block">{{ project.index }}</div>
+            <sc-if value="{{ project.hasBuildTime }}" hint-placeholder-val="{{ false }}">
+              <div style="position: absolute; top: 10px; right: 14px; display: flex; align-items: center; gap: 5px; font-family: 'JetBrains Mono', monospace; font-size: 11.5px; font-weight: 600; letter-spacing: 0.06em; color: #FFFFFF; background: rgba(0,0,0,0.5); padding: 4px 9px; border-radius: 3px">
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><circle cx="12" cy="12" r="10"></circle><path d="M12 6v6l4 2"></path></svg>
+                {{ project.buildTime }}
+              </div>
+            </sc-if>
+            <div style="position: absolute; left: 16px; bottom: 10px; right: 16px; display: flex; justify-content: space-between; align-items: flex-end; gap: 12px">
+              <div>
+                <div style="font-family: 'Bebas Neue', sans-serif; font-size: 34px; letter-spacing: 0.02em; color: #FFFFFF; line-height: 1; text-shadow: 0 2px 20px rgba(0,0,0,0.8)">{{ project.title }}</div>
+                <div style="font-family: 'JetBrains Mono', monospace; font-size: 9.5px; letter-spacing: 0.1em; color: {{ project.accent }}; margin-top: 5px">{{ project.tags }}</div>
+              </div>
+              <sc-if value="{{ project.showDetailLinks }}" hint-placeholder-val="{{ true }}">
+                <a href="{{ project.detailHref }}" style="{{ project.playButtonStyle }}">VIEW →</a>
+              </sc-if>
+            </div>
+          </div>
+          <div style="display: flex; align-items: center; gap: 4px; padding: 10px 14px 0 14px; border-bottom: 1px solid {{ project.borderLight }}">
+            <div onClick="{{ project.selectOverview }}" style="{{ project.overviewTabStyle }}">OVERVIEW</div>
+            <sc-if value="{{ project.hasVideo }}" hint-placeholder-val="{{ true }}">
+              <div onClick="{{ project.selectTrailer }}" style="{{ project.trailerTabStyle }}">TRAILER</div>
+            </sc-if>
+            <sc-if value="{{ project.hasGitUrl }}" hint-placeholder-val="{{ true }}">
+              <div onClick="{{ project.selectGit }}" style="{{ project.gitTabStyle }}">REPO</div>
+            </sc-if>
+            <sc-if value="{{ project.showDetailLinks }}" hint-placeholder-val="{{ true }}">
+              <a href="{{ project.detailHref }}" style="display: inline-flex; align-items: center; gap: 5px; font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.1em; padding: 7px 11px; color: {{ project.onCard }}; background: #F2F1EF">VIEW FULL DETAILS <span>▸</span></a>
+            </sc-if>
+            <sc-if value="{{ project.itchUrl }}" hint-placeholder-val="{{ false }}">
+              <a href="{{ project.itchUrl }}" target="_blank" rel="noopener" style="display: inline-flex; align-items: center; gap: 4px; font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.1em; padding: 7px 11px; margin-left: auto; color: #FFFFFF; background: #14161A">▶ PLAY</a>
+            </sc-if>
+            <sc-if value="{{ project.liveUrl }}" hint-placeholder-val="{{ false }}">
+              <a href="{{ project.liveUrl }}" target="_blank" rel="noopener" style="display: inline-flex; align-items: center; gap: 4px; font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.1em; padding: 7px 11px; margin-left: auto; color: #FFFFFF; background: #14161A">▶ LAUNCH APP</a>
             </sc-if>
           </div>
           <div style="padding: 12px 14px 14px 14px; min-height: {{ project.tabMinHeight }}; display: flex; justify-content: {{ project.tabJustify }}; align-items: {{ project.tabAlignItems }}; gap: 16px; flex-wrap: wrap">
@@ -581,14 +658,25 @@ const RAW_PROTOTYPES = [
     overview: 'A spaceship mechanics prototype inspired by Everspace 2, with smooth and believable controls, where the ship can shoot projectiles, dodge space obstacles, and grab powerups such as boost and shield.\n\nWhat makes it different: the spaceship is controlled using mouse and keyboard, movement is driven by keyboard input while turning follows the mouse cursor in screen space, with a procedural acceleration system modelled on vehicle gearing, and procedural randomized obstacle spawners.\n\nEngineering Quality: built entirely in Blueprints, with object pooling used for bullets instead of spawning and destroying projectiles.'
   },
   {
-    title: 'DYNAMIC FIRE SYSTEM', tags: 'UNREAL ENGINE 5 · C++ · NIAGARA · CHAOS PHYSICS', accent: PALETTE.rose,
+    title: 'LYRA ZOMBIE SURVIVAL', tags: 'UNREAL ENGINE 5 · C++ · GAS · LYRA FRAMEWORK', accent: PALETTE.teal,
+    banner: 'assets/prototypes/lyra-zombie-survival/banner.png', trailerId: 'r_0XnifpJ-s',
+    overview: "LYRA ZOMBIE SURVIVAL extends Epic Games' Lyra Starter Game with an original zombie survival game mode, built on top of its existing framework rather than beside it. I designed independent zombie enemy classes and behaviours, then extended Lyra's Gameplay Ability System (GAS) implementation by duplicating and modifying its existing Gameplay Abilities (GA) and Gameplay Effects (GE) to drive zombie combat, integrating them into Lyra's existing weapon, damage, and gameplay attribute systems.\n\nWhat makes it different: Lyra ships as a large, production-scale reference codebase with its own conventions running through GAS, its ability sets, and its ability system component wiring. Before writing a single line of gameplay code, I had to read through that codebase closely enough to actually understand how its systems fit together. The survival mode went in as a genuinely new game mode, with new enemies, new abilities and new effects, without rewriting or breaking any of Lyra's existing player character, weapon, UI, or attribute systems. Everything that shipped with Lyra still works exactly as it did before, zombie survival just sits on top of it."
+  }
+];
+
+// Standalone gameplay systems: reusable mechanics/plugins rather than full games, prototypes or dev tools.
+// detailPage points each entry back at whichever template file still holds its full breakdown content.
+const RAW_GAMEPLAY_SYSTEMS = [
+  {
+    title: 'DYNAMIC FIRE SYSTEM', tags: 'UNREAL ENGINE 5 · C++ · NIAGARA · CHAOS PHYSICS', accent: PALETTE.rose, detailPage: 'PrototypeProject.dc.html',
     banner: 'assets/prototypes/dynamic-fire-system/banner.png', trailerId: 'OVh105VYLOw',
     overview: 'DYNAMIC FIRE SYSTEM is a gameplay system built in Unreal Engine 5 where fire spreads from object to object on its own, chars what it touches, and brings structures down piece by piece, driven by two small C++ classes and a single material.\n\nWhat makes it different: spread is driven by the simulation itself, a Niagara particle system exports its live particle data straight into C++, which sweeps for burnable neighbours and ignites them, so a bigger or wilder fire naturally reaches further with no scripted spread volumes. Designers here can tweak values to make the best and believable fire, with just a few settings.'
   },
   {
-    title: 'LYRA ZOMBIE SURVIVAL', tags: 'UNREAL ENGINE 5 · C++ · GAS · LYRA FRAMEWORK', accent: PALETTE.teal,
-    banner: 'assets/prototypes/lyra-zombie-survival/banner.png', trailerId: 'r_0XnifpJ-s',
-    overview: "LYRA ZOMBIE SURVIVAL extends Epic Games' Lyra Starter Game with an original zombie survival game mode, built on top of its existing framework rather than beside it. I designed independent zombie enemy classes and behaviours, then extended Lyra's Gameplay Ability System (GAS) implementation by duplicating and modifying its existing Gameplay Abilities (GA) and Gameplay Effects (GE) to drive zombie combat, integrating them into Lyra's existing weapon, damage, and gameplay attribute systems.\n\nWhat makes it different: Lyra ships as a large, production-scale reference codebase with its own conventions running through GAS, its ability sets, and its ability system component wiring. Before writing a single line of gameplay code, I had to read through that codebase closely enough to actually understand how its systems fit together. The survival mode went in as a genuinely new game mode, with new enemies, new abilities and new effects, without rewriting or breaking any of Lyra's existing player character, weapon, UI, or attribute systems. Everything that shipped with Lyra still works exactly as it did before, zombie survival just sits on top of it."
+    title: 'WIND FIELD', tags: 'UNREAL ENGINE · C++ · PLUGIN', accent: PALETTE.orange, detailPage: 'ToolsProject.dc.html',
+    banner: 'assets/plugins/windfield/card-thumbnail.png', trailerId: 'SLXdYUJeqb4', buildTime: '4 Months',
+    fabUrl: 'https://www.fab.com/listings/e5496656-6142-490f-8578-316b3eb8cca4?lang=en',
+    overview: 'WindField is an Unreal Engine 5 plugin that brings physically reactive wind to any level in minutes, drag, drop, and the environment starts moving. Built for designers and artists who need believable environmental motion without hand-rolling a wind system from scratch.\n\nWhat makes it different: WindField is fully obstacle-aware, detecting geometry and breaking around it, without a single raytrace or per-tick collision query. Every interaction runs on pure math-based grid and vector calculations instead, keeping it highly optimised enough to simulate 200+ objects at under 3ms on the game thread.\n\nEngineering Quality: built on solid OOP architecture with dedicated error handling and debugging strategies for long-term maintainability, developed end-to-end following Agile practices, from first prototype through iterative polish.'
   }
 ];
 
@@ -600,12 +688,6 @@ const RAW_TOOLS = [
     title: 'ANALYTICS INTEGRATION', tags: 'UNREAL ENGINE · JSON · GAME ANALYTICS', accent: PALETTE.amber,
     banner: 'assets/professional/interactive-walkthrough/gallery-4-analytics.png', trailerId: 'StRz906EKm8', buildTime: '1 Month', hideDetailPage: true,
     overview: 'A reusable analytics tool built into an existing production application. It feeds user retention, interest and engagement metrics into a game analytics dashboard, so clients can see how buyers behave and support data-driven sales and marketing.\n\nNew tracked events are added entirely through JSON, with no code or editor changes, making it reusable across applications rather than built for a single project. Shipped to the client dashboard within two months of scoping.'
-  },
-  {
-    title: 'WIND FIELD', tags: 'UNREAL ENGINE · C++ · PLUGIN', accent: PALETTE.orange,
-    banner: 'assets/plugins/windfield/card-thumbnail.png', trailerId: 'SLXdYUJeqb4', buildTime: '4 Months',
-    fabUrl: 'https://www.fab.com/listings/e5496656-6142-490f-8578-316b3eb8cca4?lang=en',
-    overview: 'WindField is an Unreal Engine 5 plugin that brings physically reactive wind to any level in minutes, drag, drop, and the environment starts moving. Built for designers and artists who need believable environmental motion without hand-rolling a wind system from scratch.\n\nWhat makes it different: WindField is fully obstacle-aware, detecting geometry and breaking around it, without a single raytrace or per-tick collision query. Every interaction runs on pure math-based grid and vector calculations instead, keeping it highly optimised enough to simulate 200+ objects at under 3ms on the game thread.\n\nEngineering Quality: built on solid OOP architecture with dedicated error handling and debugging strategies for long-term maintainability, developed end-to-end following Agile practices, from first prototype through iterative polish.'
   },
   {
     title: 'SYSTEM DIRECTORY SCANNER', tags: 'CMAKE · C++ · CLI TOOL', accent: '#B98BFF', detailPage: 'Project.dc.html', hideDetailPage: true,
@@ -751,19 +833,21 @@ class Component extends DCLogic {
     protoTabs: RAW_PROTOTYPES.map(() => 'overview'),
     playingRole: null,
     toolTabs: RAW_TOOLS.map(() => 'overview'),
+    gsTabs: RAW_GAMEPLAY_SYSTEMS.map(() => 'overview'),
     jamTabs: RAW_JAMS.map(() => 'overview'),
     activeSection: 'home'
   };
 
   constructor(props) {
     super(props);
-    this.sectionRefs = { home: React.createRef(), expertise: React.createRef(), games: React.createRef(), prototypes: React.createRef(), tools: React.createRef(), jams: React.createRef(), journey: React.createRef(), contact: React.createRef() };
+    this.sectionRefs = { home: React.createRef(), expertise: React.createRef(), games: React.createRef(), prototypes: React.createRef(), systems: React.createRef(), tools: React.createRef(), jams: React.createRef(), journey: React.createRef(), contact: React.createRef() };
     this.sharedBackdropRef = React.createRef();
     this.heroGlowRef = React.createRef();
     this.projectCardEls = [];
     this.protoCardEls = [];
     this.roleCardEls = [];
     this.toolCardEls = [];
+    this.gsCardEls = [];
     this.jamCardEls = [];
     this.milestoneEls = [];
   }
@@ -772,6 +856,7 @@ class Component extends DCLogic {
   setProtoTab(i, tab) { this.setState((s) => { const t = s.protoTabs.slice(); t[i] = tab; return { protoTabs: t }; }); }
   toggleRoleVideo(i) { this.setState((s) => ({ playingRole: s.playingRole === i ? null : i })); }
   setToolTab(i, tab) { this.setState((s) => { const t = s.toolTabs.slice(); t[i] = tab; return { toolTabs: t }; }); }
+  setGsTab(i, tab) { this.setState((s) => { const t = s.gsTabs.slice(); t[i] = tab; return { gsTabs: t }; }); }
   setJamTab(i, tab) { this.setState((s) => { const t = s.jamTabs.slice(); t[i] = tab; return { jamTabs: t }; }); }
 
   goToId(id) {
@@ -800,7 +885,7 @@ class Component extends DCLogic {
         }
 
         // which section is active for nav highlighting
-        const order = ['home', 'expertise', 'games', 'prototypes', 'tools', 'jams', 'journey', 'contact'];
+        const order = ['home', 'expertise', 'games', 'prototypes', 'systems', 'tools', 'jams', 'journey', 'contact'];
         let active = 'home';
         for (const id of order) {
           const el = this.sectionRefs[id].current;
@@ -837,7 +922,7 @@ class Component extends DCLogic {
       background: active ? color : '#F2F1EF'
     });
 
-    const navOrder = ['home', 'expertise', 'games', 'prototypes', 'tools', 'jams', 'journey', 'contact'];
+    const navOrder = ['home', 'expertise', 'games', 'prototypes', 'systems', 'tools', 'jams', 'journey', 'contact'];
     const navStyles = {};
     navOrder.forEach((id) => {
       navStyles[id] = this.state.activeSection === id ? { color: '#FFC857' } : { color: 'rgba(255,255,255,0.65)' };
@@ -974,6 +1059,36 @@ class Component extends DCLogic {
       };
     });
 
+    const gameplaySystems = RAW_GAMEPLAY_SYSTEMS.map((p, i) => {
+      const tab = this.state.gsTabs[i];
+      const cardBorder = 'rgba(20,22,26,0.1)';
+      return {
+        showDetailLinks: p.hideDetailPage !== true,
+        ...p, overview: overviewWithLeads(p.overview, textAccent(p.accent)), setCardRef: (el) => { this.gsCardEls[i] = el; },
+        borderStrong: hexToRgba(p.accent, 0.45), borderMid: cardBorder, borderLight: cardBorder,
+        textAccent: textAccent(p.accent),
+        cardBg: '#FFFFFF', onCard: '#14161A', borderAccent: vividize(p.accent),
+        borderImage: 'none',
+        bannerBg: p.banner ? `center / cover no-repeat url(${p.banner}), linear-gradient(160deg, #0C1418, #050809)` : `linear-gradient(160deg, #0C1418, #050809)`,
+        noBanner: !p.banner, trailerEmbedSrc: p.trailerId ? `https://www.youtube.com/embed/${p.trailerId}` : '', noTrailer: !p.trailerId, hasVideo: !!p.trailerId,
+        index: String(i + 1).padStart(2, '0'), kindLabel: 'SYSTEM', hasBuildTime: !!p.buildTime,
+        detailHref: `${p.detailPage || 'ToolsProject.dc.html'}?slug=${p.title.toLowerCase().replace(/\s+/g, '-')}`,
+        gitUrl: p.gitUrl || '#', hasGitUrl: !!p.gitUrl, gitLabel: p.gitUrl ? p.gitUrl.replace(/^https?:\/\//, '') : `link your repo here`,
+        tabMinHeight: tab === 'git' ? '0' : tab === 'trailer' ? '0' : '80px',
+        tabJustify: tab === 'trailer' ? 'center' : 'space-between',
+        tabAlignItems: tab === 'git' ? 'center' : tab === 'overview' ? 'flex-start' : 'flex-end',
+        tabTextAlign: tab === 'trailer' ? 'center' : 'left',
+        isOverview: tab === 'overview', isTrailer: tab === 'trailer', isGit: tab === 'git',
+        overviewTabStyle: tabStyle(tab === 'overview', '#14161A', cardBorder, '#14161A'),
+        trailerTabStyle: tabStyle(tab === 'trailer', '#14161A', cardBorder, '#14161A'),
+        gitTabStyle: tabStyle(tab === 'git', '#14161A', cardBorder, '#14161A'),
+        playButtonStyle: { fontFamily: "'Bebas Neue', sans-serif", fontSize: '18px', letterSpacing: '0.12em', color: '#FFFFFF', background: '#14161A', padding: '11px 26px', flex: 'none' },
+        selectOverview: () => this.setGsTab(i, 'overview'),
+        selectTrailer: () => this.setGsTab(i, 'trailer'),
+        selectGit: () => this.setGsTab(i, 'git')
+      };
+    });
+
     const jams = RAW_JAMS.map((p, i) => {
       const tab = this.state.jamTabs[i];
       const cardBorder = 'rgba(20,22,26,0.1)';
@@ -1017,7 +1132,7 @@ class Component extends DCLogic {
       };
     });
 
-    const wf = RAW_TOOLS.find((t) => t.title === 'WIND FIELD');
+    const wf = RAW_GAMEPLAY_SYSTEMS.find((t) => t.title === 'WIND FIELD');
     const featured = wf ? {
       ...wf,
       textAccent: textAccent(wf.accent),
@@ -1042,6 +1157,7 @@ class Component extends DCLogic {
       hasPrototypes: RAW_PROTOTYPES.length > 0,
       roles,
       tools,
+      gameplaySystems,
       jams,
       milestones,
       featured,

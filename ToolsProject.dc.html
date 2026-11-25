@@ -51,6 +51,7 @@
       <a href="Home.dc.html#expertise" style="color: rgba(255,255,255,0.65)" style-hover="color: #FFC857">EXPERTISE</a>
       <a href="Home.dc.html#games" style="color: rgba(255,255,255,0.65)" style-hover="color: #FFC857">GAMES</a>
       <a href="Home.dc.html#games" style="color: rgba(255,255,255,0.65)" style-hover="color: #FFC857">PROTOTYPES</a>
+      <a href="Home.dc.html#systems" style="color: rgba(255,255,255,0.65)" style-hover="color: #FFC857">GAMEPLAY SYSTEMS</a>
       <a href="Home.dc.html#tools" style="color: #FFC857">TOOLS</a>
       <a href="Home.dc.html#jams" style="color: rgba(255,255,255,0.65)" style-hover="color: #FFC857">GAME JAMS</a>
       <a href="Home.dc.html#journey" style="color: rgba(255,255,255,0.65)" style-hover="color: #FFC857">JOURNEY</a>
@@ -117,9 +118,9 @@
         <div style="font-family: 'Bebas Neue', sans-serif; font-size: 28px; letter-spacing: 0.04em; color: {{ project.accent }}; text-align: center; margin-bottom: 14px">LIVE APP</div>
         <div ref="{{ liveAppRef }}" style="position: relative; height: 800px; border-radius: 4px; overflow: hidden; border: 1px solid rgba(20,22,26,0.14); background: #000000">
           <iframe src="{{ project.liveUrl }}" title="Live app" style="width: 100%; height: 100%; border: 0" allow="fullscreen" allowfullscreen="true"></iframe>
-          <div onClick="{{ fullscreenLiveApp }}" style="position: absolute; top: 12px; right: 12px; display: inline-flex; align-items: center; gap: 6px; font-family: 'JetBrains Mono', monospace; font-size: 10.5px; letter-spacing: 0.1em; padding: 7px 12px; color: #FFFFFF; background: rgba(0,0,0,0.6); border-radius: 3px; cursor: var(--cur-hover)">
+          <div onClick="{{ toggleLiveAppFullscreen }}" style="position: absolute; top: 12px; right: 12px; display: inline-flex; align-items: center; gap: 6px; font-family: 'JetBrains Mono', monospace; font-size: 10.5px; letter-spacing: 0.1em; padding: 7px 12px; color: #FFFFFF; background: rgba(0,0,0,0.6); border-radius: 3px; cursor: var(--cur-hover)">
             <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M8 3H5a2 2 0 0 0-2 2v3"></path><path d="M16 3h3a2 2 0 0 1 2 2v3"></path><path d="M8 21H5a2 2 0 0 1-2-2v-3"></path><path d="M16 21h3a2 2 0 0 0 2-2v-3"></path></svg>
-            FULLSCREEN
+            {{ fullscreenLabel }}
           </div>
         </div>
         <div style="text-align: center; margin-top: 12px">
@@ -659,18 +660,35 @@ const RAW_TOOLS = [
 ];
 
 class Component extends DCLogic {
+  state = { liveAppFullscreen: false };
+
   constructor(props) {
     super(props);
     this.liveAppRef = React.createRef();
+  }
+
+  componentDidMount() {
+    this.onFullscreenChange = () => {
+      this.setState({ liveAppFullscreen: document.fullscreenElement === this.liveAppRef.current });
+    };
+    document.addEventListener('fullscreenchange', this.onFullscreenChange);
+  }
+
+  componentWillUnmount() {
+    document.removeEventListener('fullscreenchange', this.onFullscreenChange);
   }
 
   getSlug() {
     return new URLSearchParams(window.location.search).get('slug') || '';
   }
 
-  fullscreenLiveApp() {
+  toggleLiveAppFullscreen() {
     const el = this.liveAppRef.current;
-    if (el && el.requestFullscreen) el.requestFullscreen();
+    if (document.fullscreenElement) {
+      document.exitFullscreen();
+    } else if (el && el.requestFullscreen) {
+      el.requestFullscreen();
+    }
   }
 
   renderVals() {
@@ -713,7 +731,14 @@ class Component extends DCLogic {
     const backdropBg = `#ECEBEA`;
     const navBg = mixWithDark(p.accent, 0.19, [0, 0, 0]);
 
-    return { notFound: false, found: true, project, backdropBg, navBg, liveAppRef: this.liveAppRef, fullscreenLiveApp: () => this.fullscreenLiveApp(), scrollToTop: (e) => { e.preventDefault(); window.scrollTo({ top: 0, behavior: 'smooth' }); } };
+    return {
+      notFound: false, found: true, project, backdropBg, navBg,
+      liveAppRef: this.liveAppRef,
+      toggleLiveAppFullscreen: () => this.toggleLiveAppFullscreen(),
+      liveAppFullscreen: this.state.liveAppFullscreen,
+      fullscreenLabel: this.state.liveAppFullscreen ? 'EXIT FULLSCREEN' : 'FULLSCREEN',
+      scrollToTop: (e) => { e.preventDefault(); window.scrollTo({ top: 0, behavior: 'smooth' }); }
+    };
   }
 }
 
