@@ -20,6 +20,7 @@
     body { cursor: var(--cur-default); }
     a, button { cursor: var(--cur-hover); }
     a { color: #FFC857; text-decoration: none; }
+    .rt-nav-links > a:not(:first-child) { border-left: 1px solid rgba(255,255,255,0.18); padding-left: 12px; }
     a:hover { filter: brightness(1.15); }
     @media (max-width: 600px) {
       .rt-nav-links { gap: 10px !important; font-size: 10px !important; flex-wrap: wrap !important; justify-content: flex-end !important; }
@@ -39,7 +40,7 @@
   <!-- ===== nav (sticky, full navigation) ===== -->
   <div style="position: sticky; top: 0; display: flex; justify-content: space-between; align-items: center; padding: 18px 40px; z-index: 20; background: #14161A; -webkit-backdrop-filter: blur(10px); border-bottom: 3px solid #FFC857; flex: none">
     <a href="Home.dc.html#home" style="font-family: 'Bebas Neue', sans-serif; font-size: 24px; letter-spacing: 0.08em; color: #FFFFFF">AP<span style="color: #FFC857">®</span></a>
-    <div class="rt-nav-links" style="display: flex; align-items: center; gap: 24px; font-family: 'JetBrains Mono', monospace; font-size: 12px; letter-spacing: 0.2em">
+    <div class="rt-nav-links" style="display: flex; align-items: center; gap: 14px; font-family: 'JetBrains Mono', monospace; font-size: 12px; letter-spacing: 0.2em">
       <a href="Home.dc.html#home" style="color: rgba(255,255,255,0.65)" style-hover="color: #FFC857">HOME</a>
       <a href="Home.dc.html#expertise" style="color: rgba(255,255,255,0.65)" style-hover="color: #FFC857">EXPERTISE</a>
       <a href="Home.dc.html#games" style="color: rgba(255,255,255,0.65)" style-hover="color: #FFC857">GAMES</a>

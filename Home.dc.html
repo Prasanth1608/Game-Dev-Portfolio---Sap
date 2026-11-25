@@ -21,6 +21,7 @@
     body { cursor: var(--cur-default); }
     a, button { cursor: var(--cur-hover); }
     a { color: #9C6B00; text-decoration: none; }
+    .rt-nav-links > a:not(:first-child) { border-left: 1px solid rgba(255,255,255,0.18); padding-left: 12px; }
     a:hover { filter: brightness(1.15); }
     @keyframes ap-blink { 0%, 49% { opacity: 1; } 50%, 100% { opacity: 0; } }
     @keyframes ap-bg-drift {
@@ -70,7 +71,7 @@
   <!-- ===== ONE persistent header, fixed on top of everything ===== -->
   <div style="position: fixed; top: 0; left: 0; right: 0; display: flex; justify-content: space-between; align-items: center; padding: 18px 40px; z-index: 100; background: #14161A; border-bottom: 3px solid #FFC857">
     <a href="#home" onClick="{{ goTo }}" data-target="home" class="rt-nav-brand" style="font-family: 'Bebas Neue', sans-serif; font-size: 24px; letter-spacing: 0.08em; color: #FFFFFF">AP<span style="color: #FFC857">®</span></a>
-    <div class="rt-nav-links" style="display: flex; align-items: center; gap: 24px; font-family: 'JetBrains Mono', monospace; font-size: 12px; letter-spacing: 0.2em">
+    <div class="rt-nav-links" style="display: flex; align-items: center; gap: 14px; font-family: 'JetBrains Mono', monospace; font-size: 12px; letter-spacing: 0.2em">
       <a href="#home" onClick="{{ goTo }}" data-target="home" style="{{ navStyles.home }}">HOME</a>
       <a href="#expertise" onClick="{{ goTo }}" data-target="expertise" style="{{ navStyles.expertise }}">EXPERTISE</a>
       <a href="#games" onClick="{{ goTo }}" data-target="games" style="{{ navStyles.games }}">GAMES</a>
