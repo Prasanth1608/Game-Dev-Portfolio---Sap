@@ -111,6 +111,19 @@
       </div>
     </sc-if>
 
+    <!-- embedded live app, before the trailer -->
+    <sc-if value="{{ project.liveUrl }}" hint-placeholder-val="{{ false }}">
+      <div style="position: relative; z-index: 2; max-width: 1080px; margin: 40px auto 0 auto; padding: 0 40px; box-sizing: border-box">
+        <div style="font-family: 'Bebas Neue', sans-serif; font-size: 28px; letter-spacing: 0.04em; color: {{ project.accent }}; text-align: center; margin-bottom: 14px">LIVE APP</div>
+        <div style="height: 800px; border-radius: 4px; overflow: hidden; border: 1px solid rgba(20,22,26,0.14)">
+          <iframe src="{{ project.liveUrl }}" title="Live app" style="width: 100%; height: 100%; border: 0" allow="fullscreen" allowfullscreen="true"></iframe>
+        </div>
+        <div style="text-align: center; margin-top: 12px">
+          <a href="{{ project.liveUrl }}" target="_blank" rel="noopener" style="font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.1em; color: #14161A">Not loading? Open it in a new tab ▸</a>
+        </div>
+      </div>
+    </sc-if>
+
     <!-- trailer, before the rest of the content -->
     <sc-if value="{{ project.showTopTrailer }}" hint-placeholder-val="{{ false }}">
       <div style="position: relative; z-index: 2; max-width: 1080px; margin: 40px auto 0 auto; padding: 0 40px; box-sizing: border-box">
