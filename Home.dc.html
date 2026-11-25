@@ -362,6 +362,9 @@
             <sc-if value="{{ project.itchUrl }}" hint-placeholder-val="{{ false }}">
               <a href="{{ project.itchUrl }}" target="_blank" rel="noopener" style="display: inline-flex; align-items: center; gap: 4px; font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.1em; padding: 7px 11px; margin-left: auto; color: #FFFFFF; background: #14161A">▶ PLAY</a>
             </sc-if>
+            <sc-if value="{{ project.liveUrl }}" hint-placeholder-val="{{ false }}">
+              <a href="{{ project.liveUrl }}" target="_blank" rel="noopener" style="display: inline-flex; align-items: center; gap: 4px; font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.1em; padding: 7px 11px; margin-left: auto; color: #FFFFFF; background: #14161A">▶ LAUNCH APP</a>
+            </sc-if>
           </div>
           <div style="padding: 12px 14px 14px 14px; min-height: {{ project.tabMinHeight }}; display: flex; justify-content: {{ project.tabJustify }}; align-items: {{ project.tabAlignItems }}; gap: 16px; flex-wrap: wrap">
             <div style="flex: 1; min-width: 200px; text-align: {{ project.tabTextAlign }}">
@@ -620,6 +623,7 @@ const RAW_TOOLS = [
     title: 'PLAYER ACTIVITY VISUALISER', tags: 'PYTHON · WEB APP · DATA VISUALISATION', accent: PALETTE.blue,
     banner: 'assets/tools/player-activity-visualiser/banner.png', buildTime: '5 Days',
     gitUrl: 'https://github.com/Prasanth1608/Player-Journeys-battle-royale-telemetry-explorer',
+    liveUrl: 'https://player-journeys-telemetry-visualize-ivory.vercel.app/',
     overview: "PLAYER ACTIVITY VISUALISER lets you explore where players move, fight, loot, and die across battle royale matches. Built specifically for level designers, this web app turns raw game telemetry into clear, interactive visualisations so you can inspect player behaviour quickly and easily. It reads a match's .nakama match-data files and turns them into a full, explorable view of that match, right in the browser.\n\nWhat makes it different: the real work is turning raw 3D world telemetry into a 2D map that lines up correctly, then surfacing the right filters and features on top of it, kill zones, loot zones, movement paths, so a designer can read player behaviour and spot design flaws directly, instead of wading through messy raw data and spreadsheets.\n\nEngineering Quality: built entirely with Claude Code in 5 days, after first researching and deliberately choosing the tech stack and design approach rather than defaulting to the familiar. Designed for scalability and robustness while staying lightweight, with room for future expansion, and well documented throughout. Python cleans and converts raw match data into Parquet offline, then exports to JSON for the web layer, with caching keeping the live, web-deployed app fast and light."
   }
 ];

@@ -345,9 +345,16 @@
 
       </sc-if>
 
+      <!-- ===== live app link ===== -->
+      <sc-if value="{{ project.liveUrl }}" hint-placeholder-val="{{ false }}">
+        <div style="margin-top: 60px; text-align: center">
+          <a href="{{ project.liveUrl }}" target="_blank" rel="noopener" style="display: inline-flex; align-items: center; gap: 10px; font-family: 'Bebas Neue', sans-serif; font-size: 18px; letter-spacing: 0.1em; color: #FFFFFF; background: #14161A; padding: 13px 24px; border-radius: 3px">▶ LAUNCH LIVE APP</a>
+        </div>
+      </sc-if>
+
       <!-- ===== repo link ===== -->
       <sc-if value="{{ project.gitUrl }}" hint-placeholder-val="{{ false }}">
-        <div style="margin-top: 60px; padding-top: 36px; border-top: 1px solid rgba(20,22,26,0.12); text-align: center">
+        <div style="margin-top: 24px; padding-top: 36px; border-top: 1px solid rgba(20,22,26,0.12); text-align: center">
           <a href="{{ project.gitUrl }}" target="_blank" rel="noopener" style="display: inline-flex; align-items: center; gap: 10px; font-family: 'JetBrains Mono', monospace; font-size: 13px; letter-spacing: 0.1em; color: #14161A">
             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="6" cy="5" r="2.4"></circle><circle cx="6" cy="19" r="2.4"></circle><circle cx="18" cy="9" r="2.4"></circle><path d="M6 7.4v9.2M18 11.4c0 3-3 4-7 4"></path></svg>
             LINK TO CODE REPOSITORY
@@ -574,6 +581,7 @@ const RAW_TOOLS = [
     tags: 'PYTHON · WEB APP · DATA VISUALISATION',
     accent: '#A9CDEC',
     gitUrl: 'https://github.com/Prasanth1608/Player-Journeys-battle-royale-telemetry-explorer',
+    liveUrl: 'https://player-journeys-telemetry-visualize-ivory.vercel.app/',
     banner: 'assets/tools/player-activity-visualiser/banner.png',
     techStack: ['PYTHON', 'PANDAS / PYARROW', 'REACT 18 + VITE', 'HTML CANVAS', 'VERCEL'],
     sections: [
