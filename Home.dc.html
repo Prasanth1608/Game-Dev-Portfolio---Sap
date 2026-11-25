@@ -610,11 +610,12 @@ const RAW_TOOLS = [
     overview: 'System Directory Scanner is a C++17 command-line tool, built solo in 5 days, that scans any directory and reports each file\'s name, size, extension, type, and count, straight to the console or exported to CSV. Created with designers and artists in mind, for organising a smooth filesystem workflow across their projects.\n\nWhat makes it different: zero external dependencies, built entirely on std::filesystem and the C++ standard library, with a data-driven extension-to-type lookup table instead of scattered if-chains, so a new file type is one map entry away, not a rewrite. CLI commands are order-independent, and results can be exported to CSV or read straight from the console.',
     gitUrl: 'https://gitlab.com/prasanth1608/system-directory-scanner'
   },
-  {
-    title: 'INTERACTIVE CODE ARCHITECTURE VIEWER', tags: 'C++ · CLAUDE CODE · DEV TOOLING', accent: PALETTE.violet,
-    banner: 'assets/tools/architecture-viewer/banner.png', trailerId: 'hy9voWFubKI', buildTime: '2 Days',
-    overview: "INTERACTIVE CODE ARCHITECTURE VIEWER is a browser-based reference tool I built with Claude Code to make sense of a growing Unreal Engine C++ codebase at a glance, generated straight from my own source files instead of drawn by hand.\n\nWhat makes it different: it parses my C++ headers and source to build class cards, organised into categories like Actors and Components, each with its properties, functions and dependencies laid out. Selecting a class highlights what it depends on and what depends on it, so tracing a relationship takes a click instead of a search.\n\nWhy it exists: documenting and re-deriving architecture by hand was eating real development time. Every generated pass was cross-checked against the actual source before I trusted it, iterating on the prompt rather than the output."
-  },
+  // Interactive Code Architecture Viewer removed for now — restore by uncommenting:
+  // {
+  //   title: 'INTERACTIVE CODE ARCHITECTURE VIEWER', tags: 'C++ · CLAUDE CODE · DEV TOOLING', accent: PALETTE.violet,
+  //   banner: 'assets/tools/architecture-viewer/banner.png', trailerId: 'hy9voWFubKI', buildTime: '2 Days',
+  //   overview: "INTERACTIVE CODE ARCHITECTURE VIEWER is a browser-based reference tool I built with Claude Code to make sense of a growing Unreal Engine C++ codebase at a glance, generated straight from my own source files instead of drawn by hand.\n\nWhat makes it different: it parses my C++ headers and source to build class cards, organised into categories like Actors and Components, each with its properties, functions and dependencies laid out. Selecting a class highlights what it depends on and what depends on it, so tracing a relationship takes a click instead of a search.\n\nWhy it exists: documenting and re-deriving architecture by hand was eating real development time. Every generated pass was cross-checked against the actual source before I trusted it, iterating on the prompt rather than the output."
+  // },
   {
     title: 'PLAYER ACTIVITY VISUALISER', tags: 'PYTHON · WEB APP · DATA VISUALISATION', accent: PALETTE.blue,
     banner: 'assets/tools/player-activity-visualiser/banner.png', buildTime: '5 Days',
