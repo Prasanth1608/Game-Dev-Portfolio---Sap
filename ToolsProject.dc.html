@@ -88,7 +88,30 @@
       </div>
     </div>
 
-    <!-- trailer, before the content starts -->
+    <!-- tech stack badges, above the trailer -->
+    <sc-if value="{{ project.hasTechStack }}" hint-placeholder-val="{{ false }}">
+      <div style="position: relative; z-index: 2; max-width: 1080px; margin: 28px auto 0 auto; padding: 0 40px; box-sizing: border-box; display: flex; justify-content: flex-end">
+        <div style="display: flex; flex-wrap: wrap; justify-content: flex-end; gap: 8px">
+          <sc-for list="{{ project.techStack }}" as="tech" hint-placeholder-count="4">
+            <div style="font-family: 'JetBrains Mono', monospace; font-size: 10.5px; letter-spacing: 0.1em; color: {{ project.accent }}; border: 1px solid {{ project.borderMid }}; padding: 5px 11px; border-radius: 3px">{{ tech }}</div>
+          </sc-for>
+        </div>
+      </div>
+    </sc-if>
+
+    <!-- overview, pulled out to show first, before the trailer -->
+    <sc-if value="{{ project.hasOverviewSection }}" hint-placeholder-val="{{ false }}">
+      <div style="position: relative; z-index: 2; max-width: 1080px; margin: 22px auto 0 auto; padding: 0 40px; box-sizing: border-box">
+        <div style="margin-top: 20px">
+          <div style="font-family: 'Bebas Neue', sans-serif; font-size: 32px; letter-spacing: 0.03em; text-align: center">{{ project.overviewSection.heading }}</div>
+          <sc-if value="{{ project.overviewSection.intro }}" hint-placeholder-val="{{ false }}">
+            <div style="font-family: 'Inter', sans-serif; font-size: 16px; line-height: 1.8; color: #14161A; max-width: 760px; margin: 18px auto 0 auto; white-space: pre-line">{{ project.overviewSection.intro }}</div>
+          </sc-if>
+        </div>
+      </div>
+    </sc-if>
+
+    <!-- trailer, before the rest of the content -->
     <sc-if value="{{ project.showTopTrailer }}" hint-placeholder-val="{{ false }}">
       <div style="position: relative; z-index: 2; max-width: 1080px; margin: 40px auto 0 auto; padding: 0 40px; box-sizing: border-box">
         <div style="font-family: 'Bebas Neue', sans-serif; font-size: 28px; letter-spacing: 0.04em; color: {{ project.accent }}; text-align: center; margin-bottom: 14px">TRAILER</div>
@@ -102,7 +125,7 @@
 
       <!-- ===== generic sections (used by tools without the full WindField-style layout) ===== -->
       <sc-if value="{{ project.hasSections }}" hint-placeholder-val="{{ false }}">
-        <sc-for list="{{ project.sections }}" as="section" hint-placeholder-count="4">
+        <sc-for list="{{ project.restSections }}" as="section" hint-placeholder-count="4">
           <div style="margin-top: 64px">
             <div style="font-family: 'Bebas Neue', sans-serif; font-size: 32px; letter-spacing: 0.03em; text-align: center">{{ section.heading }}</div>
             <sc-if value="{{ section.intro }}" hint-placeholder-val="{{ false }}">
@@ -544,6 +567,68 @@ const RAW_TOOLS = [
         ]
       }
     ]
+  },
+  {
+    title: 'PLAYER ACTIVITY VISUALISER',
+    eyebrow: 'DATA VISUALISATION',
+    tags: 'PYTHON · WEB APP · DATA VISUALISATION',
+    accent: '#A9CDEC',
+    banner: 'assets/tools/player-activity-visualiser/banner.png',
+    techStack: ['PYTHON', 'PANDAS / PYARROW', 'REACT 18 + VITE', 'HTML CANVAS', 'VERCEL'],
+    sections: [
+      {
+        heading: 'OVERVIEW',
+        intro: "PLAYER ACTIVITY VISUALISER is a web app that lets level designers explore where players move, fight, loot, and die across battle royale matches, turning raw match telemetry into clear, interactive visualisations instead of raw data and spreadsheets."
+      },
+      {
+        heading: 'FROM RAW TELEMETRY TO A CLEAN, CACHED DATASET',
+        intro: "The pipeline reads one Parquet file per player per match (.nakama), skips duplicate filenames, and tags every row with its source day before anything else happens to it.\n\nCleaning comes next: event names are decoded, duplicate movement and death snapshots are dropped (about 1.2% of rows), and every file is classified as human or bot by whether it contains a BotPosition event rather than trusting its numeric ID, anything ambiguous is reported, not guessed.\n\nOnce clean, the data is transformed into match summaries, per-player paths, event markers and 64×64 heatmap grids, then exported as static JSON, an index file, one file per match, one per map's heatmap, cached in the browser after the first fetch so revisiting a match or map never re-downloads it.",
+        bullets: [
+          'Tested with pytest across the pipeline\'s data rules, heatmap math, interpolation and playback timing, so its assumptions are checked before they ever reach the browser.',
+          'Deployed as a static site on Vercel: the built frontend and generated JSON/minimap assets are served directly, no server or environment variables required, the dataset is simply reprocessed and redeployed when the source data changes.'
+        ]
+      },
+      {
+        heading: 'MAPPING A 3D WORLD ONTO A 2D MINIMAP',
+        intro: "Game-world positions had to line up exactly with the top-down minimap images designers already recognise. Each map has its own configured world-space scale and origin, used to convert a player's x/z position into a normalised u/v fraction of the minimap, height is ignored entirely, so the same telemetry still works regardless of image size or zoom level. The renderer converts those fractions back into canvas pixels for the current viewport, flipping the vertical axis since the game's own coordinates and screen coordinates disagree about which way is up.\n\nThe whole match is then simulated back in the browser: a playback clock advances independently of React's own render cycle, and a Canvas renderer, deliberately kept outside React's component tree, redraws players, paths and event effects as that clock ticks, so variable playback speed never fights against React's update loop.",
+        bullets: [
+          'Python, pandas, PyArrow and NumPy handle the offline conversion: pandas for grouping and aggregating telemetry, PyArrow for reading Parquet directly, NumPy for the per-map coordinate and grid math.',
+          'React 18 and Vite 5 drive the interface, filters and state; HTML Canvas draws the map itself, since many moving points redrawing every frame don\'t belong as individual DOM elements.'
+        ]
+      },
+      {
+        heading: 'FEATURES: FILTERS, REPLAY & HEATMAPS',
+        intro: "The point of the tool is letting a designer ask their own questions of a match, so the controls are built around that, not around exposing every raw field.",
+        bullets: [
+          'Replay and Heatmaps are separate modes: Replay answers what happened in one match, Heatmaps answers where patterns repeat across many, each mode loads only the data it needs.',
+          'Multiple-match comparison: tick several matches to combine their data into a single heatmap, or compare a few at once in Replay.',
+          'Heatmap metrics: Traffic, Kills, Deaths, Storm Deaths and Loot, filterable by Players, Bots or Both, shown as three relative intensity levels with thin outlines so the minimap stays readable, hovering reveals the exact counts.',
+          'Variable-speed replay at 5×, 10×, 20× and 40×, with a full path or a rolling 30-second trail, and direction chevrons that reorient themselves along the path as you zoom.',
+          'One shared map viewport: mouse-wheel zoom and drag-to-pan apply identically to paths, markers and heatmaps, stored as map fractions so resizing the canvas never shifts the viewed area.',
+          'Light and dark themes, and a searchable match list sortable by players, kills, loot and more.'
+        ]
+      },
+      {
+        heading: 'ITERATION, EDGE CASES & POLISH',
+        intro: "Real telemetry is messier than it looks, and most of the actual engineering work was in deciding how to handle what the data didn't say outright.",
+        bullets: [
+          "Timestamps weren't labelled correctly, so the pipeline detects seconds, milliseconds, microseconds or nanoseconds from the magnitude of the values instead of trusting the label.",
+          'Duplicate files and repeated rows are dropped, while repeated loot and bot-kill rows are kept since they can represent legitimate events.',
+          "Position gaps over 20 seconds aren't connected into a path, so missing samples are never drawn as movement that was never recorded.",
+          'Unknown event types or unmapped maps are reported in a pipeline summary instead of silently failing the whole run.',
+          'Tested with pytest, Vitest and ESLint across the pipeline and frontend, then polished through several passes once the core tool was already working end to end.'
+        ]
+      },
+      {
+        heading: 'FINDING INSIGHTS FOR DESIGNERS',
+        intro: "To prove the tool surfaces more than pretty visuals, I used it on its own demo dataset the way a designer would: ticking every match in Heatmaps and reading the hover counts directly.",
+        bullets: [
+          'Most kills are player-vs-bot, not player-vs-player, even in matches with several humans present, pointing at map layout and bot placement rather than the players themselves.',
+          "On one map, the river's bridges carried about 9× their share of movement while the far coast sat almost empty, a chokepoint-and-dead-zone pattern worth a second bridge or a reason to visit the edge.",
+          'The highest-value loot sat at the map\'s edges, where the storm catches players who stayed to loot too long, risk came from the storm\'s timing, not from combat.'
+        ]
+      }
+    ]
   }
 ];
 
@@ -577,10 +662,17 @@ class Component extends DCLogic {
       borderMid: hexToRgba(p.accent, 0.35),
       borderLight: hexToRgba(p.accent, 0.25),
       deepDives: (p.deepDives || []).map((d) => ({ ...d, textColor: mixWithDark(d.color, 0.5, [10, 10, 14]) })),
-      hasSections: !!(p.sections && p.sections.length),
       hasLegacyLayout: !!p.overviewTriad,
-      sections: (p.sections || []).map((s) => ({ ...s, hasBullets: !!(s.bullets && s.bullets.length) }))
+      hasTechStack: !!(p.techStack && p.techStack.length),
+      techStack: p.techStack || []
     };
+
+    const mappedSections = (p.sections || []).map((s) => ({ ...s, hasBullets: !!(s.bullets && s.bullets.length) }));
+    const pullOverview = mappedSections.length > 0 && mappedSections[0].heading === 'OVERVIEW';
+    project.hasOverviewSection = pullOverview;
+    project.overviewSection = pullOverview ? mappedSections[0] : null;
+    project.restSections = pullOverview ? mappedSections.slice(1) : mappedSections;
+    project.hasSections = project.restSections.length > 0;
 
     const backdropBg = `#ECEBEA`;
     const navBg = mixWithDark(p.accent, 0.19, [0, 0, 0]);
