@@ -90,10 +90,10 @@
 
     <!-- tech stack badges, above the trailer -->
     <sc-if value="{{ project.hasTechStack }}" hint-placeholder-val="{{ false }}">
-      <div style="position: relative; z-index: 2; max-width: 1080px; margin: 28px auto 0 auto; padding: 0 40px; box-sizing: border-box; display: flex; justify-content: flex-end">
-        <div style="display: flex; flex-wrap: wrap; justify-content: flex-end; gap: 8px">
+      <div style="position: relative; z-index: 2; max-width: 1080px; margin: 28px auto 0 auto; padding: 0 40px; box-sizing: border-box; display: flex; justify-content: center">
+        <div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 8px">
           <sc-for list="{{ project.techStack }}" as="tech" hint-placeholder-count="4">
-            <div style="font-family: 'JetBrains Mono', monospace; font-size: 10.5px; letter-spacing: 0.1em; color: {{ project.accent }}; border: 1px solid {{ project.borderMid }}; padding: 5px 11px; border-radius: 3px">{{ tech }}</div>
+            <div style="font-family: 'JetBrains Mono', monospace; font-size: 10.5px; letter-spacing: 0.1em; color: {{ project.accent }}; background: #14161A; padding: 6px 13px; border-radius: 3px">{{ tech }}</div>
           </sc-for>
         </div>
       </div>
